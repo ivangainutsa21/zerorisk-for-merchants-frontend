@@ -1,0 +1,9 @@
+{{#if error}}
+	{{error}}
+{{/if}}
+
+<form {{action 'authenticate' on='submit'}}>
+	{{input value=identification id="email" type="email" class="validate"}}
+	{{input value=password id="password" type="password" class="validate"}}
+	{{input id="login-button" type="submit" class="btn cyan darken-2 z-depth-ldx" value="Login" disabled=isLoading}}
+</form>

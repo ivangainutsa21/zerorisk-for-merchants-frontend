@@ -1,0 +1,18 @@
+<a {{action 'new'}}>add new</a>
+
+<ul>
+  {{#each model as |entity|}}
+    <li><b>{{entity.companyName}}</b></li>
+    <ul>
+    {{#each entity.assetIps as |assetIp|}}    
+    	<li>{{assetIp.id }} | {{assetIp.ipnumber}} / {{assetIp.hostname}} / {{assetIp.tag}} / {{assetIp.description}}</li>
+    {{/each}}
+    </ul>
+  {{/each}}
+</ul>
+
+{{!-- <ul>
+{{#each model.assetIps as |assetIp|}}    
+	<li>{{assetIp.ipnumber}}</li>
+{{/each}}
+</ul> --}}

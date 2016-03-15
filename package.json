@@ -1,7 +1,7 @@
 {
   "name": "zerorisk-for-merchants",
   "version": "0.0.0",
-  "description": "Small description for zerorisk-for-merchants goes here",
+  "description": "Frontend app of ZeroRisk for Merchants",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -37,6 +37,7 @@
     "ember-export-application-global": "^1.0.4",
     "ember-load-initializers": "^0.5.0",
     "ember-resolver": "^2.0.3",
-    "loader.js": "^4.0.0"
+    "loader.js": "^4.0.0",
+    "ember-simple-auth": "1.1.0-beta.2"
   }
 }
