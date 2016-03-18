@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import 'pages';
 
-.ember-view {
+// Apply attr only to first .ember-view element inside body
+body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 	height: 100%;
 }

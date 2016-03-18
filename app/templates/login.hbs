@@ -19,7 +19,7 @@
   <div class="login-container bg-white">
     <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
       <img src="assets/img/logo_square.png" alt="logo" data-src="assets/img/logo_square.png" data-src-retina="assets/img/logo_square_2x.png" height="60">
-      <p class="p-t-35">Sign into your ZeroRisk for Merchants account</p>
+      <p class="p-t-35 hint-text">Sign into your ZeroRisk for Merchants account</p>
       <!-- START Login Form -->
       <form id="form-login" class="p-t-15" role="form" {{action 'authenticate' on='submit'}}>
         <!-- START Form Control-->
@@ -39,14 +39,8 @@
         </div>
         <!-- START Form Control-->
         <div class="row">
-          <div class="col-md-6 no-padding">
-            <div class="checkbox ">
-              <input type="checkbox" value="1" id="checkbox1">
-              <label for="checkbox1">Keep Me Signed in</label>
-            </div>
-          </div>
-          <div class="col-md-6 text-right">
-            <a href="#" class="text-info small">Help? Contact Support</a>
+          <div class="col-md-12 text-right ">       
+	          <a href="#" class="text-info small">Forgot password?</a>   
           </div>
         </div>
         <!-- END Form Control-->        
