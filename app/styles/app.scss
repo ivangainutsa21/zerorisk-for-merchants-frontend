@@ -1,7 +1,53 @@
 @import "bootstrap";
-@import 'pages';
+@import "pages";
+
+// Load font-awesome from its own directory instead of /fonts root
+$fa-font-path: "../fonts/font-awesome";
+@import "font-awesome";
 
 // Apply attr only to first .ember-view element inside body
 body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 	height: 100%;
+}
+
+/* Layout */
+.full-page-wrapper {
+	@extend .login-wrapper;
+}
+
+.breadcrumb a {
+	font-size: 14px!important;	
+}
+
+/* Sidebar */
+.sidebar-menu {
+	a {
+		cursor: pointer;
+	}
+}
+
+/* Tables */
+// .ips-table {
+// 	thead {
+// 		tr {
+// 			th:first-child {
+// 				padding-left: 50px !important;
+// 			}
+// 		}
+// 	}
+// 	tbody {
+// 		tr {
+// 			td {
+// 				padding-left: 50px; 
+// 			}
+// 		}
+// 	}
+// }
+
+/* Login */
+.login-wrapper {
+	background-color: #176E8E;
+	.bg-pic > img {
+		opacity: 0.3;
+	}
 }

@@ -1,0 +1,88 @@
+<!-- START PAGE CONTENT -->
+<div class="content">
+  <!-- START JUMBOTRON -->
+  <div class="jumbotron" data-pages="parallax">
+    <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+
+      <div class="pull-left">
+        <div class="inner">
+          <!-- START BREADCRUMB -->
+          <ul class="breadcrumb">
+            <li><a href="#" class="active">IPs</a>
+            </li>
+          </ul>
+          <!-- END BREADCRUMB -->
+        </div>
+      </div>
+
+      <div class="pull-right">
+        <div class="inner">
+      	 <button {{action 'new'}} type="button" class="btn btn-complete m-t-10" data-toggle="button">New IP</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- END JUMBOTRON -->
+  <!-- START CONTAINER FLUID -->
+  <div class="">
+    <!-- BEGIN PlACE PAGE CONTENT HERE -->
+
+
+    <div class="">
+      <table class="table ips-table">
+        <thead>
+          <tr>
+            <th>Hostname</th>
+            <th>IP Address</th>
+            <th>Tag</th>
+            <th>Description</th>   
+            <th></th>         
+          </tr>
+        </thead>
+        <tbody>
+        {{#each model as |entity|}}
+        <tr>
+          <td colspan=5 style="padding: 0px; background: transparent; border: none;">
+            <ul class="nav nav-tabs nav-tabs-linetriangle">
+              <li class="active">
+                <a data-toggle="tab" href="#home"><span><span class="hint-text">Merchant</span> {{entity.companyName}}</span>                  
+                </a>              
+              </li>
+            </ul>                      
+          </td>
+        </tr>
+          {{#each entity.assetIps as |assetIp|}}    
+            <tr>
+              <td>{{assetIp.hostName }}</td>
+              <td>{{assetIp.ipNumber }}</td>
+              <td>{{assetIp.tag }}</td>
+              <td>{{assetIp.description }}</td>
+              <td class="" style="padding: 12px; width: 250px;">
+                <div class="btn-group">
+                      <button type="button" class="btn btn-default"><i class="fa fa-bolt"></i> Scan</button>
+                      <div class="btn-group dropdown-default">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 10px;" aria-expanded="false">
+                        <i class="fa fa-ellipsis-v"></i>
+                        {{!-- <span class="caret"></span> --}}
+                        </button>
+                        <ul class="dropdown-menu" role="menu" style="width: 141px;">
+                        <li><a href="#">Schedule Scan</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Edit</a></li>
+                        <li><a href="#">Remove</a></li>
+                      </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+        {{/each}}
+        </tbody>          
+      </table>
+    </div>
+    <!-- END PLACE PAGE CONTENT HERE -->
+  </div>
+  <!-- END CONTAINER FLUID -->
+</div>
+<!-- END PAGE CONTENT -->

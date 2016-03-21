@@ -16,39 +16,47 @@
   <!-- BEGIN SIDEBAR MENU -->
   <div class="sidebar-menu">
     <ul class="menu-items">
-      <li class="m-t-30">
-        <a href="#" class="detailed">
+	    <li class="m-t-15">
+	      <a class="detailed">
+	        <span class="title">Dashboard</span>
+	        <span class="details">Quick overview</span>
+	      </a>
+	      <span class="icon-thumbnail bg-info"><i class="pg-home"></i></span>
+	    </li>
+      <li>
+        <a class="detailed">
           <span class="title">SAQ Central</span>
           <span class="details">Manage your SAQs</span>
         </a>
         <span class="icon-thumbnail ">Saq</span>
       </li>
-      <li class="">
-        <a href="#">
+      <li>
+        <a>
           <span class="title">ASV Scans</span>
-        </a>
-        <span class="icon-thumbnail ">Asv</span>
-      </li>
-      <li class="">
-        <a href="javascript:;">
-          <span class="title">Page 3</span>
           <span class=" arrow"></span>
         </a>
-        <span class="icon-thumbnail"><i class="pg-grid"></i></span>
+        <span class="icon-thumbnail ">Asv</span>
         <ul class="sub-menu">
-          <li class="">
-            <a href="#">Sub Page 1</a>
-            <span class="icon-thumbnail">sp</span>
-          </li>
-          <li class="">
-            <a href="#">Sub Page 2</a>
-            <span class="icon-thumbnail">sp</span>
-          </li>
-          <li class="">
-            <a href="#">Sub Page 3</a>
-            <span class="icon-thumbnail">sp</span>
+        {{#link-to 'ips' tagName="li"}}
+          <a>IPs</a>
+          <span class="icon-thumbnail">ips</span>
+        {{/link-to}}
+        	{{#link-to 'scans' tagName="li"}}
+        		<a>Scans</a>
+        		<span class="icon-thumbnail">scn</span>
+        	{{/link-to}}
+          <li>
+            <a>Schedules</a>
+            <span class="icon-thumbnail">sch</span>
           </li>
         </ul>
+      </li>
+      <li>
+        <a>
+          <span class="title">Users Management</span>
+          <span class=" arrow"></span>
+        </a>
+        <span class="icon-thumbnail">Usr</span>      
       </li>
     </ul>
     <div class="clearfix"></div>

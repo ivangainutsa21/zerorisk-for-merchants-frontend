@@ -4,7 +4,7 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 export default Ember.Route.extend(ApplicationRouteMixin, {
 	session: Ember.inject.service(),
 	// Overwriting 'sessionInvalidated' with a custom function to prevent location reloading and giving user custom messages
-	sessionInvalidated: function() {
+	sessionInvalidated: function() {		
 		Ember.run.once(this, () => {
 			if(this.get('session').get('data.reasonForInvalidation') === 'logout') {
 				// TODO: Toast stuff 
