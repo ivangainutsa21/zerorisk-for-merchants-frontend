@@ -1,6 +1,6 @@
 <!-- START PAGE CONTENT -->
 <div class="content">
-  <!-- START JUMBOTRON -->
+  <!-- START NAVBAR -->
   <div class="jumbotron" data-pages="parallax">
     <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
 
@@ -17,13 +17,13 @@
 
       <div class="pull-right">
         <div class="inner">
-      	 <button {{action 'new'}} type="button" class="btn btn-complete m-t-10" data-toggle="button">New IP</button>
+      	 {{#link-to "ips.new" tagName="button" type="button" class="btn btn-complete m-t-10" data-toggle="button"}}New IP{{/link-to}}
         </div>
       </div>
 
     </div>
   </div>
-  <!-- END JUMBOTRON -->
+  <!-- END NAVBAR -->
   <!-- START CONTAINER FLUID -->
   <div class="">
     <!-- BEGIN PlACE PAGE CONTENT HERE -->
@@ -54,16 +54,16 @@
         </tr>
           {{#each entity.assetIps as |assetIp|}}    
             <tr>
-              <td>{{assetIp.hostName }}</td>
-              <td>{{assetIp.ipNumber }}</td>
-              <td>{{assetIp.tag }}</td>
-              <td>{{assetIp.description }}</td>
+              <td>{{assetIp.hostName}}</td>
+              <td>{{assetIp.ipNumber}}</td>
+              <td><span class="label label-default">{{assetIp.tag}}</span></td>
+              <td>{{assetIp.description}}</td>
               <td class="" style="padding: 12px; width: 250px;">
                 <div class="btn-group">
-                      <button type="button" class="btn btn-default"><i class="fa fa-bolt"></i> Scan</button>
+                      <button type="button" class="btn btn-default"><i class="fa fa-bolt"></i>&nbsp; Scan </button>
                       <div class="btn-group dropdown-default">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 10px;" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-caret-down"></i>
                         {{!-- <span class="caret"></span> --}}
                         </button>
                         <ul class="dropdown-menu" role="menu" style="width: 141px;">
