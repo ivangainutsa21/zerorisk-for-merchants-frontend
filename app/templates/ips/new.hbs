@@ -1,0 +1,99 @@
+<!-- START PAGE CONTENT -->
+<div class="content">
+  <!-- START NAVBAR -->
+  <div class="jumbotron" data-pages="parallax">
+    <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+
+      <div class="pull-left">
+        <div class="inner">
+          <!-- START BREADCRUMB -->
+          <ul class="breadcrumb">
+      		<li> {{#link-to "ips"}}IPs{{/link-to}}</li>
+            <li><a class="active">New IP</a></li>
+          </ul>
+          <!-- END BREADCRUMB -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END NAVBAR -->
+<div class="container container-fluid">
+	<div class="panel panel-transparent">
+		<div class="panel-body">
+			<form id="form-personal" role="form" autocomplete="off" novalidate="novalidate">
+
+{{!-- 				{{#power-select options=model selected=entityId onchange=(action "selectEntity") as |entity|}}
+			      {{entity.companyName}}
+			    {{/power-select}} --}}
+
+				<div class="row clearfix">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<!-- Using data-init-plugin='select2' automatically initializes a basic Select2 -->
+							<select id="entity-select" class="full-width" data-init-plugin="select2">
+							    <optgroup label="Alaskan/Hawaiian Time Zone">
+							        <option value="AK">Alaska</option>
+							        <option value="HI">Hawaii</option>
+							    </optgroup>
+							    <optgroup label="Pacific Time Zone">
+							        <option value="CA">California</option>
+							        <option value="NV">Nevada</option>
+							        <option value="OR">Oregon</option>
+							        <option value="WA">Washington</option>
+							    </optgroup>
+							</select>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row clearfix">
+					<div class="col-sm-12">
+						<div class="form-group form-group-default">
+							<label>IP Address</label>
+				            {{input value=ipNumber id="ipNumber" type="text" class="form-control" placeholder="IP Address of the host you whis to add (e.g: 91.22.110.7)" required="" aria-required="true" }}            
+						</div>
+					</div>
+				</div>
+
+				<div class="row clearfix">
+					<div class="col-sm-12">
+						<div class="form-group form-group-default">
+							<label>Hostname</label>
+				            {{input value=hostname id="hostname" type="text" class="form-control" placeholder="Hostname of the host you whis to add (e.g: LAN02-DB01)" required="" aria-required="true" }}            
+						</div>
+					</div>
+				</div>
+
+				<div class="row clearfix">
+					<div class="col-sm-12">
+						<div class="form-group form-group-default">
+							<label>Tag</label>
+				            {{input value=tag id="tag" type="text" class="form-control" placeholder="Tag of the host you whis to add (e.g: database-1)" required="" aria-required="true" }}            
+						</div>
+					</div>
+				</div>
+
+				<div class="row clearfix">
+					<div class="col-sm-12">
+						<div class="form-group form-group-default">
+							<label>Description</label>
+				            {{input value=description id="description" type="text" class="form-control" placeholder="A brief description of the host you whis to add (e.g: first database server)" required="" aria-required="true" }}            
+						</div>
+					</div>
+				</div>
+
+
+				<p class="pull-left hint-text p-l-5">
+				I agree to the <a href="#">ZeroRisk Terms</a> and <a href="#">Privacy</a>.
+				</p>
+
+				<div class="clearfix"></div>
+				<button class="btn btn-complete pull-right" type="submit">Add a new IP</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+</div>
+<!-- END PAGE CONTENT -->

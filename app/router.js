@@ -9,7 +9,9 @@ Router.map(function() {
   this.route('login');
   this.route('dashboard');
   this.route('scans', function() {});
-  this.route('ips', function() {});
+  this.route('ips', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

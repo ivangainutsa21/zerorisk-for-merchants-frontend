@@ -5,6 +5,7 @@
 $fa-font-path: "../fonts/font-awesome";
 @import "font-awesome";
 
+
 // Apply attr only to first .ember-view element inside body
 body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 	height: 100%;

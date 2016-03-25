@@ -29,6 +29,12 @@ module.exports = function(defaults) {
   app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff2', { destDir: 'fonts/font-awesome'  });
   // Modernizr (pages customized version)
   app.import('vendor/pages_assets/plugins/modernizr.custom.js');
+  // Select2
+  app.import('vendor/pages_assets/plugins/bootstrap-select2/select2.min.js');
+  app.import('vendor/pages_assets/plugins/bootstrap-select2/select2.css');
+
+  // app.import('bower_components/select2/dist/js/select2.min.js');
+  // app.import('bower_components/select2/dist/css/select2.min.css');
   // jquery.scrollbar
   app.import('bower_components/jquery.scrollbar/jquery.scrollbar.min.js');
   app.import('bower_components/jquery.scrollbar/jquery.scrollbar.css');
