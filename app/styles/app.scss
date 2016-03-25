@@ -27,22 +27,28 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 }
 
 /* Tables */
-// .ips-table {
-// 	thead {
-// 		tr {
-// 			th:first-child {
-// 				padding-left: 50px !important;
-// 			}
-// 		}
-// 	}
-// 	tbody {
-// 		tr {
-// 			td {
-// 				padding-left: 50px; 
-// 			}
-// 		}
-// 	}
-// }
+.ips-table {
+	a[data-toggle="tab"] {
+		padding-left: 50px;
+	}
+	thead {
+		tr {
+			th {				
+				padding-left: 50px;
+				&:first-child {
+					padding-left: 50px !important;
+				}
+			}
+		}
+	}
+	tbody {
+		tr {
+			td {
+				padding-left: 50px; 
+			}
+		}
+	}
+}
 
 /* Login */
 .login-wrapper {
