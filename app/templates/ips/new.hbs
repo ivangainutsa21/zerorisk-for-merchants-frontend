@@ -1,36 +1,16 @@
 <!-- START PAGE CONTENT -->
 <div class="content">
-  <!-- START NAVBAR -->
-  <div class="jumbotron" data-pages="parallax">
-    <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
-
-      <div class="pull-left">
-        <div class="inner">
-          <!-- START BREADCRUMB -->
-          <ul class="breadcrumb">
-      		<li> {{#link-to "ips"}}IPs{{/link-to}}</li>
-            <li><a class="active">New IP</a></li>
-          </ul>
-          <!-- END BREADCRUMB -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- END NAVBAR -->
+{{pg-navbar first="IPs" second="New IP"}}
 <div class="container container-fluid">
 	<div class="panel panel-transparent">
 		<div class="panel-body">
 			<form id="form-personal" role="form" autocomplete="off" novalidate="novalidate">
 
-{{!-- 				{{#power-select options=model selected=entityId onchange=(action "selectEntity") as |entity|}}
-			      {{entity.companyName}}
-			    {{/power-select}} --}}
-
 				<div class="row clearfix">
 					<div class="col-sm-12">
-						<div class="form-group">
+						<div class="form-group form-group-default form-group-default-select2">
 							<!-- Using data-init-plugin='select2' automatically initializes a basic Select2 -->
-							<select id="entity-select" class="full-width" data-init-plugin="select2">
+{{!-- 							<select  class="full-width" data-init-plugin="select2">
 							    <optgroup label="Alaskan/Hawaiian Time Zone">
 							        <option value="AK">Alaska</option>
 							        <option value="HI">Hawaii</option>
@@ -41,10 +21,18 @@
 							        <option value="OR">Oregon</option>
 							        <option value="WA">Washington</option>
 							    </optgroup>
+							</select> --}}
+							<label class="">Merchant</label>				
+							<select id="entity-select" class="full-width select2-offscreen" data-placeholder="Select Merchant"  tabindex="-1" title="">
+								<option value="AK">Alaska</option>
 							</select>
 						</div>
 					</div>
 				</div>
+
+{{!-- 				<div class="form-group form-group-default form-group-default-select2 required">
+
+				</div> --}}
 
 
 				<div class="row clearfix">
@@ -89,7 +77,7 @@
 				</p>
 
 				<div class="clearfix"></div>
-				<button class="btn btn-complete pull-right" type="submit">Add a new IP</button>
+				<button class="btn btn-complete pull-right" type="submit">Create IP</button>
 			</form>
 		</div>
 	</div>

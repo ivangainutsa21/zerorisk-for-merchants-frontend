@@ -1,0 +1,22 @@
+<!-- START NAVBAR -->
+<div class="jumbotron m-b-0">
+  <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+
+    <div class="pull-left">
+      <div class="inner">
+        <!-- START BREADCRUMB -->
+        <ul class="breadcrumb">
+          <li><a href="#" class="active">{{first}}</a></li>
+          {{#if second}}
+          	<li><a href="#" class="active">{{second}}</a></li>
+          {{/if}}
+        </ul>
+        <!-- END BREADCRUMB -->
+      </div>
+    </div>
+
+		{{yield}}
+
+  </div>
+</div>
+<!-- END NAVBAR -->

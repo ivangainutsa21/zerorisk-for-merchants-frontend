@@ -16,8 +16,12 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 	@extend .login-wrapper;
 }
 
-.breadcrumb a {
-	font-size: 14px!important;	
+/* Navigation */
+.breadcrumb {
+	a, a.active {
+		font-size: 16px!important;	
+		color: $color-master;
+	}
 }
 
 /* Sidebar */

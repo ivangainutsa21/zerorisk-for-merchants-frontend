@@ -1,29 +1,12 @@
 <!-- START PAGE CONTENT -->
 <div class="content">
-  <!-- START NAVBAR -->
-  <div class="jumbotron" data-pages="parallax">
-    <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
-
-      <div class="pull-left">
-        <div class="inner">
-          <!-- START BREADCRUMB -->
-          <ul class="breadcrumb">
-            <li><a href="#" class="active">IPs</a>
-            </li>
-          </ul>
-          <!-- END BREADCRUMB -->
-        </div>
+  {{#pg-navbar first="IPs"}}
+    <div class="pull-right">
+      <div class="inner">
+       {{#link-to "ips.new" tagName="button" type="button" class="btn btn-complete m-t-10" data-toggle="button"}}New IP{{/link-to}}
       </div>
-
-      <div class="pull-right">
-        <div class="inner">
-      	 {{#link-to "ips.new" tagName="button" type="button" class="btn btn-complete m-t-10" data-toggle="button"}}New IP{{/link-to}}
-        </div>
-      </div>
-
     </div>
-  </div>
-  <!-- END NAVBAR -->
+  {{/pg-navbar}}
   <!-- START CONTAINER FLUID -->
   <div class="">
     <!-- BEGIN PlACE PAGE CONTENT HERE -->
@@ -34,7 +17,7 @@
         <thead>
           <tr>
             <th>Hostname</th>
-            <th>IP Address</th>
+            <th>IP</th>
             <th>Tag</th>
             <th>Description</th>   
             <th></th>         
