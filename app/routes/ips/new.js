@@ -8,6 +8,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		});
 	},
 	model() {
-		return this.store.findAll('entity');
+		return Ember.RSVP.hash({
+			entities: this.store.findAll('entity'),
+			assetIp: this.store.createRecord('asset-ip')
+		});
 	}
 });

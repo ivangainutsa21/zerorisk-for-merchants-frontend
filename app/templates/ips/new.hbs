@@ -23,8 +23,11 @@
 							    </optgroup>
 							</select> --}}
 							<label class="">Merchant</label>				
-							<select id="entity-select" class="full-width select2-offscreen" data-placeholder="Select Merchant"  tabindex="-1" title="">
-								<option value="AK">Alaska</option>
+							<select onchange={{action "selectEntity" value="target.value"}} id="entity-select" class="full-width select2-offscreen" data-placeholder="Select Merchant"  tabindex="-1" title="">
+								
+								{{#each model.entities as |entity|}}
+									<option value="{{entity.id}}">{{entity.companyName}}</option>
+								{{/each}}
 							</select>
 						</div>
 					</div>
@@ -39,7 +42,7 @@
 					<div class="col-sm-12">
 						<div class="form-group form-group-default">
 							<label>IP Address</label>
-				            {{input value=ipNumber id="ipNumber" type="text" class="form-control" placeholder="IP Address of the host you whis to add (e.g: 91.22.110.7)" required="" aria-required="true" }}            
+				            {{input value=model.assetIp.ipNumber id="ipNumber" type="text" class="form-control" placeholder="IP Address of the host you whis to add (e.g: 91.22.110.7)" required="" aria-required="true" }}            
 						</div>
 					</div>
 				</div>
@@ -48,7 +51,7 @@
 					<div class="col-sm-12">
 						<div class="form-group form-group-default">
 							<label>Hostname</label>
-				            {{input value=hostname id="hostname" type="text" class="form-control" placeholder="Hostname of the host you whis to add (e.g: LAN02-DB01)" required="" aria-required="true" }}            
+				            {{input value=model.assetIp.hostName id="hostname" type="text" class="form-control" placeholder="Hostname of the host you whis to add (e.g: LAN02-DB01)" required="" aria-required="true" }}            
 						</div>
 					</div>
 				</div>
@@ -57,7 +60,7 @@
 					<div class="col-sm-12">
 						<div class="form-group form-group-default">
 							<label>Tag</label>
-				            {{input value=tag id="tag" type="text" class="form-control" placeholder="Tag of the host you whis to add (e.g: database-1)" required="" aria-required="true" }}            
+				            {{input value=model.assetIp.tag id="tag" type="text" class="form-control" placeholder="Tag of the host you whis to add (e.g: database-1)" required="" aria-required="true" }}            
 						</div>
 					</div>
 				</div>
@@ -66,7 +69,7 @@
 					<div class="col-sm-12">
 						<div class="form-group form-group-default">
 							<label>Description</label>
-				            {{input value=description id="description" type="text" class="form-control" placeholder="A brief description of the host you whis to add (e.g: first database server)" required="" aria-required="true" }}            
+				            {{input value=model.assetIp.description id="description" type="text" class="form-control" placeholder="A brief description of the host you whis to add (e.g: first database server)" required="" aria-required="true" }}            
 						</div>
 					</div>
 				</div>
@@ -77,7 +80,7 @@
 				</p>
 
 				<div class="clearfix"></div>
-				<button class="btn btn-complete pull-right" type="submit">Create IP</button>
+				<button {{action "saveIp"}} class="btn btn-complete pull-right" type="submit">Create IP</button>
 			</form>
 		</div>
 	</div>

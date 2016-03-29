@@ -6,15 +6,12 @@ export default Base.extend({
   authenticationRoute: 'login',
 
   restore: function(data) {
-    console.log('restoring:');
     return new Ember.RSVP.Promise(function (resolve, reject) {
       if (!Ember.isEmpty(data.email)) {
         resolve(data);
-        console.log('ok');
       }
       else {
         reject();
-        console.log('fail');
       }
     });
   },

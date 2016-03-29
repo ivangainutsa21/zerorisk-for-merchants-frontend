@@ -17,6 +17,10 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 }
 
 /* Navigation */
+.navbar {
+	box-shadow: 2px 2px 5px #E8E8E8;
+    background-color: white;
+}
 .breadcrumb {
 	a, a.active {
 		font-size: 16px!important;	
@@ -34,14 +38,15 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 /* Tables */
 .ips-table {
 	a[data-toggle="tab"] {
-		padding-left: 50px;
+		padding-left: 36px;
 	}
 	thead {
 		tr {
 			th {				
-				padding-left: 50px;
+				padding-left: 36px;
+				color: $color-master;
 				&:first-child {
-					padding-left: 50px !important;
+					padding-left: 36px !important;
 				}
 			}
 		}
@@ -49,7 +54,7 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 	tbody {
 		tr {
 			td {
-				padding-left: 50px; 
+				padding-left: 36px; 
 			}
 		}
 	}

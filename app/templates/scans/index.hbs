@@ -1,0 +1,15 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{{#each model as |entity|}}
+
+	{{#each entity.scans as |scan|}}
+		{{scan.scanReference}}
+		{{#each scan.scannedIps as |scannedIp|}}
+			{{scannedIp.ipNumber}}
+		{{/each}}
+	{{/each}}
+{{/each}}
