@@ -13,10 +13,10 @@
 
 
     <div class="">
-      <table class="table ips-table">
+      <table class="table ips-table dataTable">
         <thead>
           <tr>
-            <th>Hostname</th>
+            <th class="sorting">Hostname</th>
             <th>IP</th>
             <th>Tag</th>
             <th>Description</th>   
@@ -41,21 +41,19 @@
               <td>{{assetIp.ipNumber}}</td>
               <td><span class="label label-default">{{assetIp.tag}}</span></td>
               <td>{{assetIp.description}}</td>
-              <td class="" style="padding: 12px; width: 200px;">
+              <td style="padding: 12px; width: 180px; text-align: center;">
                 <div class="btn-group">
-                      <div class="btn-group dropdown-default">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-bolt"></i>&nbsp; Scan </button>
-
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width: 10px;" aria-expanded="false">
-                        <i class="fa fa-caret-down"></i>
-                        {{!-- <span class="caret"></span> --}}
-                        </button>
-                        <ul class="dropdown-menu" role="menu" style="width: 141px;">
-                        <li><a href="#">Schedule Scan</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#">Remove</a></li>
-                      </ul>
+                  <div class="btn-group dropdown-default">
+                  <button type="button" class="btn btn-default"><i class="fa fa-bolt"></i>&nbsp; Scan</button>
+                  <button type="button" class="btn btn-default dropdown-toggle p-l-15 p-r-15" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Schedule Scan</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="#">Disable</a></li>
+                  </ul>
                   </div>
                 </div>
               </td>

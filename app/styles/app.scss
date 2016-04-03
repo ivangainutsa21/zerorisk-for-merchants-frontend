@@ -22,9 +22,9 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
     background-color: white;
 }
 .breadcrumb {
-	a, a.active {
+	a {
 		font-size: 16px!important;	
-		color: $color-master;
+		//color: $color-master;
 	}
 }
 
@@ -36,6 +36,9 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 }
 
 /* Tables */
+// th {
+// 	@extend .sm-pl-l-20;
+// }
 .ips-table {
 	a[data-toggle="tab"] {
 		padding-left: 36px;

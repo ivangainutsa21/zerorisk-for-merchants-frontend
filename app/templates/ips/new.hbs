@@ -9,22 +9,8 @@
 				<div class="row clearfix">
 					<div class="col-sm-12">
 						<div class="form-group form-group-default form-group-default-select2">
-							<!-- Using data-init-plugin='select2' automatically initializes a basic Select2 -->
-{{!-- 							<select  class="full-width" data-init-plugin="select2">
-							    <optgroup label="Alaskan/Hawaiian Time Zone">
-							        <option value="AK">Alaska</option>
-							        <option value="HI">Hawaii</option>
-							    </optgroup>
-							    <optgroup label="Pacific Time Zone">
-							        <option value="CA">California</option>
-							        <option value="NV">Nevada</option>
-							        <option value="OR">Oregon</option>
-							        <option value="WA">Washington</option>
-							    </optgroup>
-							</select> --}}
 							<label class="">Merchant</label>				
-							<select onchange={{action "selectEntity" value="target.value"}} id="entity-select" class="full-width select2-offscreen" data-placeholder="Select Merchant"  tabindex="-1" title="">
-								
+							<select onchange={{action "selectEntity" value="target.value"}} id="entity-select" class="full-width select2-offscreen" data-placeholder="Select Merchant"  tabindex="-1" title="">								
 								{{#each model.entities as |entity|}}
 									<option value="{{entity.id}}">{{entity.companyName}}</option>
 								{{/each}}
@@ -32,11 +18,6 @@
 						</div>
 					</div>
 				</div>
-
-{{!-- 				<div class="form-group form-group-default form-group-default-select2 required">
-
-				</div> --}}
-
 
 				<div class="row clearfix">
 					<div class="col-sm-12">
