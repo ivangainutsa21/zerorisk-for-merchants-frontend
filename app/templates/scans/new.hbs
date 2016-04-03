@@ -1,19 +1,51 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<!-- START PAGE CONTENT -->
+<div class="content">
+{{pg-navbar first="Scans" second="New scan"}}
+<div class="container container-fluid">
+	<div class="panel panel-transparent">
+		<div class="panel-body">
+			<form id="form-personal" role="form" autocomplete="off" novalidate="novalidate">
 
-<div class="form-group form-group-default form-group-default-select2">
-	<label>IP(s) to scan</label>
-	<select class="full-width select2-offscreen" onchange={{action "selectAssetIps" value="target.value"}} data-init-plugin="select2" multiple="" tabindex="-1">
-		{{#each model.entities as |entity|}}
-			<optgroup label="Merchant {{entity.companyName}}">
-			{{#each entity.assetIps as |assetIp|}}
-				<option value="{{assetIp.id}}"><b>{{assetIp.hostName}}</b> {{assetIp.ipNumber}}</option>
-			{{/each}}
-			</optgroup>
-		{{/each}}
-	</select>
+				<div class="row clearfix">
+					<div class="col-sm-12">
+						<div class="form-group form-group-default form-group-default-select2">
+							<label>IP(s) to scan</label>
+							<select class="full-width select2-offscreen" onchange={{action "selectAssetIps"}} data-init-plugin="select2" multiple="" placeholder="Choose what IPs to scan"tabindex="-1">
+								{{#each model.entities as |entity|}}
+									<optgroup label="Merchant {{entity.companyName}}">
+									{{#each entity.assetIps as |assetIp|}}
+										<option value="{{assetIp.id}}"><b>{{assetIp.hostName}}</b> {{assetIp.ipNumber}}</option>
+									{{/each}}
+									</optgroup>
+								{{/each}}
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="row clearfix">
+					<div class="col-sm-12">
+						<div class="form-group form-group-default form-group-default-select2">
+							<label class="">Merchant</label>				
+							<select onchange={{action "selectEntity" value="target.value"}} id="entity-select" data-init-plugin="select2" class="full-width select2-offscreen" data-placeholder="Select Merchant"  tabindex="-1" title="">								
+								{{#each model.entities as |entity|}}
+									<option value="{{entity.id}}">{{entity.companyName}}</option>
+								{{/each}}
+							</select>
+						</div>
+					</div>				
+				</div>
+
+				<p class="pull-left hint-text p-l-5">
+				I agree to the <a href="#">ZeroRisk Terms</a> and <a href="#">Privacy</a>.
+				</p>
+
+				<div class="clearfix"></div>
+				<button {{action "saveIp"}} class="btn btn-complete pull-right" type="submit">Launch scan</button>
+			</form>
+		</div>
+	</div>
 </div>
+
+</div>
+<!-- END PAGE CONTENT -->				
