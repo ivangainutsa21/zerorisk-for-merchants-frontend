@@ -6,9 +6,42 @@
        {{#link-to "ips.new" tagName="button" type="button" class="btn btn-complete m-t-10" data-toggle="button"}}New IP{{/link-to}}
       </div>
     </div>
+
+{{!--     <div class="container-md-height m-b-20">
+      <div class="row row-md-height">
+
+        <div class="col-lg-7 col-md-6 col-md-height col-middle bg-white">         
+        <span class="hint-text">You have <b>7</b> IPs, 5 of them are not PCI compliant</span>
+        </div>
+
+        <div class="col-lg-5 col-md-height col-md-6 col-top"> 
+        </div>
+
+      </div>
+    </div> --}}
+
   {{/pg-navbar}}
   <!-- START CONTAINER FLUID -->
   <div class="">
+    <div class="container-fluid container-fixed-lg p-l-35 sm-p-r-35 p-t-15 p-b-15" style="border-bottom: 1px solid #e6e6e6;">
+      <div class="row">
+        <div class="col-sm-6 col-md-height col-middle pull-left">         
+          <span class="hint-text">You have <b>7</b> IPs, 5 of them are not PCI compliant</span>
+        </div>
+        <div class="col-sm-6  col-md-height col-middle pull-right"> 
+          <div class="full-width">
+            <div class="input-group  p-l-0 transparent b-b b-transparent pull-right" style="border-color: rgba(0, 0, 0, 0.03);">
+              <input type="text" class="form-control bg-master no-border p-l-0 transparent" placeholder="Search IPs" style="background-color: transparent; ">
+              <span class="input-group-addon no-border">
+              <i class="pg-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
     <!-- BEGIN PlACE PAGE CONTENT HERE -->
 
 
@@ -17,8 +50,8 @@
         <thead>
           <tr>
             <th class="sorting">Hostname</th>
-            <th>IP</th>
-            <th>Tag</th>
+            <th class="sorting">IP</th>
+            <th class="sorting">Tag</th>
             <th>Description</th>   
             <th></th>         
           </tr>

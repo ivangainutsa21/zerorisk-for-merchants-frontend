@@ -1,1 +1,19 @@
-{{outlet}}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="form-group form-group-default form-group-default-select2">
+	<label>IP(s) to scan</label>
+	<select class="full-width select2-offscreen" onchange={{action "selectAssetIps" value="target.value"}} data-init-plugin="select2" multiple="" tabindex="-1">
+		{{#each model.entities as |entity|}}
+			<optgroup label="Merchant {{entity.companyName}}">
+			{{#each entity.assetIps as |assetIp|}}
+				<option value="{{assetIp.id}}"><b>{{assetIp.hostName}}</b> {{assetIp.ipNumber}}</option>
+			{{/each}}
+			</optgroup>
+		{{/each}}
+	</select>
+</div>

@@ -4,7 +4,8 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	activate() {
 		Ember.run.scheduleOnce('afterRender', this, () => {
-			$("#entity-select").select2();
+			//$("#entity-select").select2();
+			$.Pages.initSelect2Plugin();
 		});
 	},
 	model() {

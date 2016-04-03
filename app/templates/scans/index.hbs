@@ -1,15 +1,85 @@
-<br>
-<br>
-<br>
-<br>
-<br>
+<!-- START PAGE CONTENT -->
+<div class="content">
+  {{#pg-navbar first="Scans"}}
+    <div class="pull-right">
+      <div class="inner">
+       {{#link-to "scans.new" tagName="button" type="button" class="btn btn-complete m-t-10" data-toggle="button"}}New scan{{/link-to}}
+      </div>
+    </div>
 
-{{#each model as |entity|}}
+{{!--     <div class="container-md-height m-b-20">
+      <div class="row row-md-height">
 
-	{{#each entity.scans as |scan|}}
-		{{scan.scanReference}}
-		{{#each scan.scannedIps as |scannedIp|}}
-			{{scannedIp.ipNumber}}
-		{{/each}}
-	{{/each}}
-{{/each}}
+        <div class="col-lg-7 col-md-6 col-md-height col-middle bg-white">         
+        <span class="hint-text">You have <b>7</b> IPs, 5 of them are not PCI compliant</span>
+        </div>
+
+        <div class="col-lg-5 col-md-height col-md-6 col-top"> 
+        </div>
+
+      </div>
+    </div> --}}
+
+  {{/pg-navbar}}
+  <!-- START CONTAINER FLUID -->
+  <div class="">
+  
+    <!-- BEGIN PlACE PAGE CONTENT HERE -->
+
+
+    <div class="">
+      <table class="table ips-table dataTable">
+        <thead>
+          <tr>
+            <th class="sorting">Hostname</th>
+            <th>IP</th>
+            <th>Tag</th>
+            <th>Description</th>   
+            <th></th>         
+          </tr>
+        </thead>
+        <tbody>
+        {{#each model as |entity|}}
+        <tr>
+          <td colspan=5 style="padding: 0px; background: transparent; border: none;">
+            <ul class="nav nav-tabs nav-tabs-linetriangle">
+              <li class="active">
+                <a data-toggle="tab" href="#home"><span><span class="hint-text">Merchant</span> {{entity.companyName}}</span>                  
+                </a>              
+              </li>
+            </ul>                      
+          </td>
+        </tr>
+          {{#each entity.scans as |scan|}}    
+            <tr>
+              <td>{{assetIp.scanReference}}</td>
+              <td>{{assetIp.scanReference}}</td>
+              <td><span class="label label-default">{{assetIp.scanReference}}</span></td>
+              <td>{{assetIp.scanReference}}</td>
+              <td style="padding: 12px; width: 180px; text-align: center;">
+                <div class="btn-group">
+                  <div class="btn-group dropdown-default">
+                  <button type="button" class="btn btn-default"><i class="fa fa-bolt"></i>&nbsp; Scan</button>
+                  <button type="button" class="btn btn-default dropdown-toggle p-l-15 p-r-15" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Schedule Scan</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="#">Disable</a></li>
+                  </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+        {{/each}}
+        </tbody>          
+      </table>
+    </div>
+    <!-- END PLACE PAGE CONTENT HERE -->
+  </div>
+  <!-- END CONTAINER FLUID -->
+</div>
+<!-- END PAGE CONTENT -->
