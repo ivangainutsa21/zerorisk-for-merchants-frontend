@@ -14,6 +14,10 @@ Router.map(function() {
   this.route('ips', function() {
     this.route('new');
   });
+
+  this.route('scan', function() {
+    this.route('results');
+  });
 });
 
 export default Router;

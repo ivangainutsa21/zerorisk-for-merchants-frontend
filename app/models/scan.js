@@ -8,6 +8,9 @@ export default DS.Model.extend({
 	scanEnd: DS.attr('date'),
 	scanReference: DS.attr('string'),
 	statusAsString: DS.attr('string'),
+	humanStatus: Ember.computed('statusAsString', function() {
+		return this.get('statusAsString').toLowerCase();
+	}),
 	riskAverage: DS.attr('number'),
 	riskCoverage: DS.attr('number'),
 	totalVulnerabilities: DS.attr('number'),

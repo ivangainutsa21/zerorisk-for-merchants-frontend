@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 	},
 	model() {
 		return Ember.RSVP.hash({
-			assetIp: this.store.findAll('asset-ip'),
+			assetIps: this.store.findAll('asset-ip'),
 			entities: this.store.findAll('entity'),
 			scan: this.store.createRecord('scan'),
 		});

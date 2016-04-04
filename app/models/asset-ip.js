@@ -12,6 +12,30 @@ export default DS.Model.extend({
 	totalVulnerabilities: DS.attr('number'),
 	totalPCIVulnerabilities: DS.attr('number'),
 	status: DS.attr('string'),
+	humanStatus: Ember.computed('status', function() {
+		switch(this.get('status')) {
+			case "PASS":
+				return "Not Scanned";
+			case "NOT_SCANNED":
+				return "Not Scanned";
+			case "FAIL":
+				return "Fail";
+			default:
+				return "Unknown";
+		}
+	}),
 	PCIStatus: DS.attr('string'),
+	humanPCIStatus: Ember.computed('status', function() {
+		switch(this.get('status')) {
+			case "PASS":
+				return "pass";
+			case "NOT_SCANNED":
+				return "not scanned";
+			case "FAIL":
+				return "fail";
+			default:
+				return "unknown";
+		}
+	}),
 	isNotExpired: DS.attr('boolean')
 });

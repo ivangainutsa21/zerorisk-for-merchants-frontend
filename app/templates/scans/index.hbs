@@ -31,10 +31,9 @@
       <table class="table ips-table dataTable">
         <thead>
           <tr>
-            <th class="sorting">Hostname</th>
-            <th>IP</th>
-            <th>Tag</th>
-            <th>Description</th>   
+            <th class="sorting">Reference</th>
+            <th class="sorting">Status</th>
+            <th class="sorting">Finished</th>
             <th></th>         
           </tr>
         </thead>
@@ -50,30 +49,35 @@
             </ul>                      
           </td>
         </tr>
-          {{#each entity.scans as |scan|}}    
-            <tr>
-              <td>{{assetIp.scanReference}}</td>
-              <td>{{assetIp.scanReference}}</td>
-              <td><span class="label label-default">{{assetIp.scanReference}}</span></td>
-              <td>{{assetIp.scanReference}}</td>
-              <td style="padding: 12px; width: 180px; text-align: center;">
-                <div class="btn-group">
+          {{#if entity.scans}}
+            {{#each entity.scans as |scan|}}    
+              <tr>
+                <td>{{scan.scanReference}}</td>
+                <td><span class="label label-{{scan.statusAsString}}">{{scan.humanStatus}}</span></td>
+                <td>{{#if scan.scanEnd}}{{moment-to-now scan.scanEnd}}{{/if}}</td>
+                <td style="padding: 12px; width: 180px; text-align: center;">
                   <div class="btn-group dropdown-default">
-                  <button type="button" class="btn btn-default"><i class="fa fa-bolt"></i>&nbsp; Scan</button>
-                  <button type="button" class="btn btn-default dropdown-toggle p-l-15 p-r-15" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-caret-down"></i>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Schedule Scan</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Edit</a></li>
-                    <li><a href="#">Disable</a></li>
-                  </ul>
+                      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> Actions <span class="caret"></span> </a>
+                      <ul class="dropdown-menu ">
+                          <li><a href="#">Relaunch</a>
+                          </li>
+                          <li class="divider"></li>
+                          {{!-- <li>{{#link-to 'scan.results' scan.scanReportId}}View Report{{/link-to}} --}}
+                          {{!-- </li> --}}
+                          <li><a href="#">Download Report</a>
+                          </li>
+                      </ul>
                   </div>
-                </div>
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+              <td colspan=4>
+                aa
               </td>
             </tr>
-          {{/each}}
+          {{/if}}
         {{/each}}
         </tbody>          
       </table>

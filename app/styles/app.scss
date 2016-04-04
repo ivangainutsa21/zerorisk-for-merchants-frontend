@@ -20,6 +20,13 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 .full-page-wrapper {
 	@extend .login-wrapper;
 }
+/* Login */
+.login-wrapper {
+	background-color: #176E8E;
+	.bg-pic > img {
+		opacity: 0.2;
+	}
+}
 
 /* Navigation */
 .navbar {
@@ -69,11 +76,29 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 	}
 }
 
-/* Login */
-.login-wrapper {
-	background-color: #176E8E;
-	.bg-pic > img {
-		opacity: 0.3;
-	}
+/* Forms */
+//Select2
+.select2-container-multi .select2-choices .select2-search-field input {
+	padding-left: 12px;
+	padding-top: 8px;
 }
 
+/* Labels */
+.label {
+	text-transform: uppercase;
+}
+.label-NOT_SCANNED, .label-PAUSED, .label-STOPPED, label-QUEUED {
+	@extend .label-default;
+}
+.label-FINISHED {
+	@extend .label-info;
+}
+.label-PASS, .label-NEW, .label-STARTED {
+	@extend .label-success;
+}
+.label-FAIL, .label-FAILED {
+	@extend .label-important;
+}
+.label-PENDING {
+	@extend .label-warning;
+}
