@@ -1,0 +1,34 @@
+<tr>
+  <td colspan=5 style="padding: 0px; background: transparent; border: none;">
+    <ul class="nav nav-tabs nav-tabs-linetriangle">
+      <li class="active">
+        <a data-toggle="tab" href="#home"><span><span class="hint-text">Merchant</span> {{entity.companyName}}</span>                  
+        </a>              
+      </li>
+    </ul>                      
+  </td>
+</tr>
+{{#each filteredAssetIps as |assetIp|}}    
+	<tr>
+	  <td>{{assetIp.hostName}}</td>
+	  <td>{{assetIp.ipNumber}}</td>
+	  <td><span class="label label-default">{{assetIp.tag}}</span></td>
+	  <td><span class="label label-{{assetIp.status}}">{{assetIp.humanStatus}}</span></td>
+	  <td style="padding: 12px; width: 180px; text-align: center;">
+	    <div class="btn-group">
+	      <div class="btn-group dropdown-default">
+	      <button type="button" class="btn btn-default"><i class="fa fa-bolt"></i>&nbsp; Scan</button>
+	      <button type="button" class="btn btn-default dropdown-toggle p-l-15 p-r-15" data-toggle="dropdown" aria-expanded="false">
+	        <i class="fa fa-caret-down"></i>
+	      </button>
+	      <ul class="dropdown-menu" role="menu">
+	        <li><a href="#">Schedule Scan</a></li>
+	        <li class="divider"></li>
+	        <li><a href="#">Edit</a></li>
+	        <li><a href="#">Disable</a></li>
+	      </ul>
+	      </div>
+	    </div>
+	  </td>
+	</tr>
+{{/each}}

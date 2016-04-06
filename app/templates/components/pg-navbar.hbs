@@ -5,12 +5,13 @@
     <div class="pull-left">
       <div class="inner">
         <!-- START BREADCRUMB -->
-        <ul class="breadcrumb">
+        {{bread-crumbs tagName="ol" outputStyle="bootstrap" linkable=true}}
+{{!--         <ul class="breadcrumb">
           <li><a href="#" class="{{unless second 'active'}}">{{first}}</a></li>
           {{#if second}}
           	<li><a href="#" class="active">{{second}}</a></li>
           {{/if}}
-        </ul>
+        </ul> --}}
         <!-- END BREADCRUMB -->
       </div>
     </div>
