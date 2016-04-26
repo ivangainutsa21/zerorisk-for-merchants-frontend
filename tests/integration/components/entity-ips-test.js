@@ -11,14 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{entity-ips}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#entity-ips}}
-      template block text
-    {{/entity-ips}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Merchant');
 });
