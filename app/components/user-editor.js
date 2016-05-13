@@ -9,9 +9,15 @@ const Validations = buildValidations({
 });
 
 export default Ember.Component.extend(Validations, {
+  tagName: "form",
+
 	email: null,
 
   cantSave: Ember.computed.alias('validations.isInvalid'),
+
+  submit() {
+    this.sendAction('save');
+  },
 
   actions: {
     save() {
