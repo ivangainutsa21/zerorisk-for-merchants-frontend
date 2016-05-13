@@ -1,7 +1,18 @@
 <div class="row column-seperation">
   <div class="col-md-12">
-    <p class="pull-right">
-      {{#link-to "enrollment.saq-detection" tagName="button" class="btn btn-success btn-cons" type="button"}}Next{{/link-to}}
-    </p>
+    <div class="row row-same-height">
+      <div class="col-md-5 b-r b-dashed b-grey ">
+        <div class="padding-30 m-t-30">
+          <h2>Confirm your details</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque varius facilisis volutpat. Maecenas at felis sed ante ornare elementum. Duis imperdiet, sem ut luctus rhoncus, sapien augue interdum est, id gravida elit libero et lectus.</p>
+          <p class="small hint-text">Sed tempor efficitur eleifend. Donec sodales neque orci, ut vehicula velit fermentum a.</p>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="padding-30">
+          {{user-editor onComplete=(action "goToNextStep") saveText="Next"}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>

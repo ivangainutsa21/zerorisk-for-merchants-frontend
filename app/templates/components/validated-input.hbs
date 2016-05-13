@@ -1,0 +1,15 @@
+{{#tooltip-on-parent
+  event='manual'
+  visibility=showErrors
+  place='top'
+  typeClass='warning'
+}}
+  {{#each errorMessages as |errorMessage|}}
+    {{errorMessage}}<br>
+  {{/each}}
+{{/tooltip-on-parent}}
+
+<div class="form-group form-group-default">
+  <label>{{label}}</label>
+  {{input value=value type=type class="form-control" placeholder=placeholder disabled=disabled focus-out=(action 'setHasInteracted')}}
+</div>

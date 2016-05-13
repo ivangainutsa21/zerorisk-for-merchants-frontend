@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "folder_exclude_patterns":
+      [
+          ".git",
+          "dist",
+          "fastboot-dist",
+          "node_modules",
+          "bower_components",
+          ".idea",
+          "tmp"
+      ],
+    }
+  ],
+  "settings": {
+    "JSCS-Formatter": {
+    		"config_path": "/Users/ldx/Documents/zerorisk-for-merchants/.jscsrc",
+    		"format_on_save": false    	  
+    }
+  }
+}

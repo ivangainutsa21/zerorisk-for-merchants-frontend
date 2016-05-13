@@ -1,1 +1,20 @@
-{{yield}}
+<form>
+
+  <p style="margin-left: 2px;">Basic Information</p>
+  <div class="form-group-attached">
+    {{validated-input value=email label="Email" placeholder="Your user email address" validations=validations.attrs.email errors=errors.email}}
+    <div class="row clearfix">
+      <div class="col-sm-6">
+        {{validated-input label="First Name"}}
+      </div>
+      <div class="col-sm-6">
+        {{validated-input label="Last Name"}}
+      </div>
+    </div>
+  </div>
+
+  <p class="pull-right">
+    <button {{action "save"}} class="btn btn-success btn-cons" type="button" disabled={{cantSave}}>{{saveText}}</button>
+  </p>
+
+</form>
