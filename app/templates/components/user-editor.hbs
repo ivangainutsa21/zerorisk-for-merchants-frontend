@@ -1,6 +1,6 @@
 <form>
 
-  <p style="margin-left: 2px;">Basic Information</p>
+  <p>Contact Information</p>
   <div class="form-group-attached">
     {{validated-input value=email label="Email" placeholder="Your user email address" validations=validations.attrs.email errors=errors.email}}
     <div class="row clearfix">
@@ -11,9 +11,43 @@
         {{validated-input label="Last Name"}}
       </div>
     </div>
+    {{validated-input label="Company Name"}}
+    <div class="row clearfix">
+      <div class="col-sm-6">
+        {{validated-input label="Title" placeholder="e.g CEO"}}
+      </div>
+      <div class="col-sm-6">
+        {{validated-input label="DBA" placeholder="Doing Business As"}}
+      </div>
+    </div>
+    {{validated-input label="Phone Number"}}
   </div>
 
-  <p class="pull-right">
+  <br />
+
+  <p>Business Information</p>
+  <div class="form-group-attached">
+    {{validated-input label="Address"}}
+    <div class="row clearfix">
+      <div class="col-sm-6">
+        {{validated-input label="Country"}}
+      </div>
+      <div class="col-sm-6">
+        {{validated-input label="City"}}
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-sm-9">
+        {{validated-input label="State / Province" placeholder="e.g NY"}}
+      </div>
+      <div class="col-sm-3">
+        {{validated-input label="ZIP Code"}}
+      </div>
+    </div>
+    {{validated-input label="URL"}}
+  </div>
+
+  <p class="pull-right m-t-10">
     <button {{action "save"}} class="btn btn-success btn-cons" type="button" disabled={{cantSave}}>{{saveText}}</button>
   </p>
 

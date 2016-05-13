@@ -14,7 +14,7 @@ module.exports = function(defaults) {
   });
 
   // Pages
-  app.import('vendor/pages/js/pages.min.js');
+  app.import('vendor/pages/js/pages.js');
   // Pages icon css + font
   app.import('vendor/pages/css/pages-icons.css');
   app.import('vendor/pages/fonts/pages-icon/Pages-icon.woff', { destDir: 'fonts/pages-icon' });

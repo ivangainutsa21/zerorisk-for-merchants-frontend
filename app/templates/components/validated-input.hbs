@@ -3,13 +3,12 @@
   visibility=showErrors
   place='top'
   typeClass='warning'
+  tabIndex='-1'
 }}
   {{#each errorMessages as |errorMessage|}}
     {{errorMessage}}<br>
   {{/each}}
 {{/tooltip-on-parent}}
 
-<div class="form-group form-group-default">
-  <label>{{label}}</label>
-  {{input value=value type=type class="form-control" placeholder=placeholder disabled=disabled focus-out=(action 'setHasInteracted')}}
-</div>
+<label>{{label}}</label>
+{{input value=value type=type class="form-control" placeholder=placeholder disabled=disabled focus-out=(action 'setHasInteracted')}}

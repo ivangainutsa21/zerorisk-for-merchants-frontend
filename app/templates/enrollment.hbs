@@ -3,7 +3,7 @@
   <div class="panel panel-transparent">
     <div class="container-fluid container-fixed-lg">
 
-      <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm">   
+      <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm">
         {{#link-to "enrollment.welcome" tagName="li"}}<a><i class="fa fa-rocket tab-icon"></i><span>Welcome to ZeroRisk</span></a>{{/link-to}}
         {{#link-to "enrollment.user-details" tagName="li"}}<a><i class="fa fa-user tab-icon"></i><span>Business Details</span></a>{{/link-to}}
         {{#link-to "enrollment.saq-detection" tagName="li"}}<a><i class="fa fa-crosshairs tab-icon"></i><span>SAQ Detection</span></a>{{/link-to}}
@@ -11,7 +11,7 @@
 
       <div class="tab-content">
         <div class="tab-pane active">
-          {{outlet}}
+          {{liquid-outlet}}
         </div>
       </div>
 
