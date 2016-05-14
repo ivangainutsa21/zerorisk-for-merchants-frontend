@@ -25,8 +25,7 @@
       margin-right: 0;
       font-family: 'Montserrat';
       font-weight: 400;
-      color: fade($color-master,
-      70%);
+      color: fade-out($color-master,.3);
       font-size: 12px;
       min-width: 70px;
       text-transform: uppercase;
@@ -89,7 +88,7 @@
   }
 }
 
-/* Tabs : Simple
+/* Tabs : Simple 
 ------------------------------------
 */
 
@@ -311,7 +310,7 @@
   }
 }
 
-/* Tabs : Fill-up
+/* Tabs : Fill-up 
 ------------------------------------
 */
 
@@ -477,6 +476,44 @@
   }
 }
 
+.nav-tabs-header{
+  overflow: scroll;
+  width: 100%;
+  .nav-tabs{
+    width:auto;
+    white-space: nowrap;
+     & > li{
+        display:inline-block;
+        float: inherit;
+      }
+  }
+  &.nav-tabs-linetriangle{
+    height:61px;
+    overflow-y: hidden;
+    &:after{
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      width: 100%;
+      position: relative;
+      bottom: 3px;
+      z-index: 120;    
+      content: "";
+      clear: both;    
+    }
+    &  ~ .tab-content{
+      position: relative;
+      top:-12px;
+    }
+  }
+}
+.nav-tabs-header ~ .tab-content{
+  overflow: hidden;
+  padding: 15px;
+}
+.nav-tab-dropdown .cs-select{
+  width: 100% !important;
+  max-width: 100%;
+}
+
 /* Panel Groups
 ------------------------------------
 */
@@ -516,12 +553,11 @@
           color: $color-master;
         }
         &.collapsed {
-          color: fade($color-master,
-          70%);
+          color: 1px solid fade-out($color-master,.3);
           opacity: 1;
           &:after {
             content: "\f055";
-            color: fade($color-master, 70%);
+            color: fade-out($color-master,.3);
           }
         }
       }

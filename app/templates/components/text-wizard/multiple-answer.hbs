@@ -1,5 +1,5 @@
 <div style="width: 50%; text-align: center; margin: 0 auto;">
-  {{#stagger-set inDirection="up" outDirection="left" inEffect="slideAndFade" outEffect="slideAndFade"}}
+  {{#stagger-set inDirection="up" outDirection="left" inEffect="slideAndFade"}}
     {{#each answerObject as |answer|}}
       <button {{action attrs.answer}} class="btn btn-default btn-lg btn-larger btn-block text-left" style="white-space: normal; border-radius: 0;">
         <div>{{answer.text}}</div>

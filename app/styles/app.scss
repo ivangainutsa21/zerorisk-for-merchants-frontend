@@ -1,18 +1,13 @@
 @import 'bootstrap-custom';
 @import "pages";
 
-a {
-  cursor: pointer;
-}
-
-// Temporary fix until pages' issue #144 is solved
-.dropdown-menu {
-	@include box-shadow(0px 0px 5px rgba(98,98,98,0.2));
-}
-
 // Load font-awesome from its own directory instead of /fonts root
 $fa-font-path: "../fonts/font-awesome";
 @import "font-awesome";
+
+a {
+  cursor: pointer;
+}
 
 
 // Apply attr only to first .ember-view element inside body
@@ -91,7 +86,7 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 .label {
 	text-transform: uppercase;
 }
-.label-NOT_SCANNED, .label-PAUSED, .label-STOPPED, label-QUEUED {
+.label-NOT_SCANNED, .label-PAUSED, .label-STOPPED, .label-QUEUED {
 	@extend .label-default;
 }
 .label-FINISHED {
@@ -108,8 +103,8 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 }
 
 /* Tabs */
-.nav-tabs {
-  li > a {
-    color: rgba(98,98,98,0.7);
-  }
-}
+// .nav-tabs {
+//   li > a {
+//     color: rgba(98,98,98,0.7);
+//   }
+// }

@@ -88,7 +88,7 @@
     transition: color 0.1s linear 0s,background-color 0.1s linear 0s,opacity 0.2s linear 0s !important;
     &:hover{
         background-color: #fafafa;
-        border: 1px solid fade($color-master,27%);
+        border: 1px solid fade-out($color-master,.73);
     }
     &.active{
         border-color: $color-master-light;
@@ -155,7 +155,7 @@ Alternate buttons
   }
   &.hover, &:hover{
     background-color: $color-master-lightest;
-    border-color: fade($color-master,27%);
+    border-color: fade-out($color-master,.73);
     color: $color-master-darker;
   }
   &.active:hover{

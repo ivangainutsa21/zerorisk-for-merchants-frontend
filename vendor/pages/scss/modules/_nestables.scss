@@ -3,7 +3,7 @@
 */
 
 .dd-handle{
-	border-color: fade($color-master-light, 70%);
+	border-color: fade-out($color-master-light, .3);
 	color:$color-master;
 	&:hover{
 		background-color: $color-master-lightest
@@ -26,7 +26,7 @@
 
 .dd3-content{
 	background:#fff;
-	border-color: fade($color-master-light, 70%);
+	border-color: fade-out($color-master-light, .3);
 	color:$color-master;
 	&:hover{
 		background-color: $color-master-lightest
@@ -47,13 +47,13 @@
 
 .dd-placeholder{
 	background:$color-master-lighter;
-	border-color: fade($color-master, 35%);
+	border-color: fade-out($color-master, .65);
 }
 
 .dd-empty{
 	background-image:none;
 	background:$color-master-lighter;
-	border-color: fade($color-master, 50%);
+	border-color: fade-out($color-master, .5);
 }
 .dd-item > button{
 	font-size: 11px;
