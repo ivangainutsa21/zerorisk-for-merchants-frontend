@@ -46,7 +46,9 @@ $color-danger: #eb7374;
 $color-info: #4d6286;
 
 //Generating Menu font color
-$color-menu-light :mix($color-menu, #fff, 60%);
+$menu-mix-temp : mix($color-menu, #fff, 92%);
+$menu :blend-hardlight($menu-mix-temp,#fff);
+$color-menu-light :$menu;
 //Menu Font Color
 $color-menu-link-hover:#fff;
 

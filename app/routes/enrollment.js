@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  activate() {
+  beforeModel() {
     this.transitionTo('enrollment.welcome');
   }
 });

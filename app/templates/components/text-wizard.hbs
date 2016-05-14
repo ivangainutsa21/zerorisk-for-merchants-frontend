@@ -1,0 +1,20 @@
+{{#liquid-bind currentQuestionText use="toLeft" as |currentQuestionText|}}
+  <div class="container-fluid container-fixed-lg bg-white p-t-30 p-b-30">
+    {{!-- <div class="panel panel-default"> --}}
+      {{#if currentQuestionHasQuestionMark}}
+        {{!-- <div class="panel-heading">
+          <div class="panel-title hint-text">Question
+          </div>
+        </div> --}}
+        <div class="hint-text all-caps fs-10 font-montserrat" style="width: 80%; margin: 0 auto;">Question</div>
+      {{/if}}
+      {{!-- <div class="panel-body"> --}}
+        <h5 class="" style="width: 80%; margin: 0 auto;">{{{currentQuestionText}}}</h5>
+      {{!-- </div>
+    </div> --}}
+  </div>
+{{/liquid-bind}}
+
+<div class="p-t-20 p-b-20" style="background-color: #F7F7F7;">
+  {{component answerComponent answerObject=currentAnswerObject answer=(action 'answer')}}
+</div>

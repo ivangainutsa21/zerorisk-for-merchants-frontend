@@ -47,7 +47,8 @@ $color-menu-darker :mix($color-menu, #000, 90%);
 
 //Generating Menu font color
 $menu-mix-temp : mix($color-menu, #fff, 92%);
-$menu :blend-hardlight(#fff, $menu-mix-temp);
+$menu :blend-hardlight($menu-mix-temp,#fff);
+$color-menu-light :$menu;
 //Menu Font Color
 $color-menu-light :$menu;
 $color-menu-link-hover:#fff;
