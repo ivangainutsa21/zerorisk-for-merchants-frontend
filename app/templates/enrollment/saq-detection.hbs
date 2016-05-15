@@ -1,5 +1,23 @@
-<div class="row bg-master-lightest">
-  <div class="col-md-12">
-    {{text-wizard wizardId=3}}
+{{#if hasCompletedPreFlight}}
+  <div class="row bg-master-lightest">
+    <div class="col-md-12">
+      {{text-wizard wizardId=3}}
+    </div>
   </div>
-</div>
+{{else}}
+  <div class="row bg-white">
+    <div class="col-md-12">
+        <div class="p-t-10 p-r-40 p-l-40 p-b-30">
+          <h3>Next up</h3>
+          <p>In order to achieve PCI compliance, every merchant has to complete a Self Assessment Questionnaire (SAQ).</p>
+          <p>There are currently 8 types of SAQs, and understanding which one is the right for you is no easy task.</p>
+          <p>This is where ZeroRisk comes to the rescue, by clicking <b>Start</b> we'll ask you
+             some questions that will help you and us understand what is the SAQ you're supposed to complete.</p>
+          <p class="small hint-text">Sed tempor efficitur eleifend. Donec sodales neque orci, ut vehicula velit fermentum a.</p>
+        </div>
+        <p class="pull-right p-r-30 p-b-30">
+          <button {{action 'completePreFlight'}} class="btn btn-success btn-cons">Start</button>
+        </p>
+    </div>
+  </div>
+{{/if}}

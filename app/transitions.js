@@ -12,4 +12,14 @@ export default function(){
     this.use('toLeft'),
     this.reverse('toRight')
   );
+
+  this.transition(
+    // compare them by id and only run this animation if we're moving to
+    // a value with a higher id.
+    this.toValue(function(toValue, fromValue) {
+      return toValue && fromValue && toValue > fromValue;
+    }),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
 }

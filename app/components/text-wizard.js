@@ -6,16 +6,11 @@ export default Ember.Component.extend({
 
   // Attrs
   wizardId: null,
-  // questionIdsHistory: Ember.A([]),
-  currentQuestionId: null,
-  previousQuestionId: null,
-  // currentQuestionText: "",//'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque varius facilisis volutpat. Maecenas at felis sed ante ornare elementum. Duis imperdiet, sem ut luctus rhoncus, sapien augue interdum est, id gravida elit libero et lectus. Sed tempor efficitur eleifend. Donec sodales neque orci, ut vehicula velit fermentum a.',
-  // //currentAnswerObject: Ember.A([{"text": "eCommerce Website", "bringsTo": 53}, {"text": "eTerminal", "bringsTo": 58}, {"text": "Batch Transactions", "bringsTo": 54}, {"text": "DirectLink for eCommerce", "bringsTo": 55}]),
-  // currentAnswerType: null, //'multiple-answer',
-
+  // currentQuestionId: null,
+  // previousQuestionId: null,
+  questionIdsHistory: [],
   currentQuestion: Ember.Object.create(),
   currentAnswer: Ember.Object.create(),
-
 
   // CPs
   answerComponent: computed('currentAnswer.type', function() {
@@ -26,11 +21,6 @@ export default Ember.Component.extend({
     }
   }),
 
-  // currentQuestionId: computed('questionIdsHistory', function() {
-  //   let questionIdsHistory = get(this, 'questionIdsHistory');
-  //   return questionIdsHistory[questionIdsHistory-1];
-  // }),
-
   currentQuestionHasQuestionMark: computed('currentQuestion.text', function() {
     if(!isEmpty(get(this, 'currentQuestion.text'))) {
       return get(this, 'currentQuestion.text').indexOf('?') !== -1;
@@ -39,13 +29,35 @@ export default Ember.Component.extend({
     }
   }),
 
+  currentQuestionId: computed('questionIdsHistory.[]', function() {
+    console.log('recomputing bzz bzz');
+    let questionIdsHistory = get(this, 'questionIdsHistory');
+    console.log(questionIdsHistory.get('lastObject'));
+    // return questionIdsHistory[questionIdsHistory-1];
+    return questionIdsHistory.get('lastObject');
+  }),
+
+  previousQuestionId: computed('questionIdsHistory.[]', function() {
+    let questionIdsHistory = get(this, 'questionIdsHistory');
+    if(questionIdsHistory && questionIdsHistory.get('length') >= 2) {
+      return questionIdsHistory.objectAt(questionIdsHistory.get('length')-2);
+    } else {
+      return false;
+    }
+  }),
+
+  canGoBack: computed('currentQuestionId', 'previousQuestionId', function() {
+    return get(this, 'previousQuestionId') && (get(this, 'currentQuestionId') != get(this, 'previousQuestionId'));
+  }),
+
   // Hooks
   didInsertElement() {
-    this.initWizard();
+    this.startWizard();
   },
 
   // Methods
-  initWizard() {
+  startWizard() {
+    //set(this, 'questionIdsHistory', Ember.A([]));
     this.get('ajax').post(`/Wizard/Create?wizardId=${get(this, 'wizardId')}`).then(response => {
         console.log(response);
         this.setCurrentQuestionAndAnswer(response.result);
@@ -55,15 +67,26 @@ export default Ember.Component.extend({
   goToQuestionId(questionId) {
     this.get('ajax').post(`/Wizard/InProgress?userAnswerId=${questionId}`).then(response => {
         console.log(response);
-        this.setCurrentQuestionAndAnswer(response.result);
+        if(questionId != 0) {
+          this.setCurrentQuestionAndAnswer(response.result);
+        } else {
+          // End of the wizard
+          alert("End of the ride. What do you want me to do with this? " + response.result.wizardView.onGoalAction);
+        }
     });
   },
 
   setCurrentQuestionAndAnswer(hash) {
     // Question
-    set(this, 'currentQuestionId', hash.wizardActualQuestion);
-    set(this, 'previousQuestionId', hash.wizardView.previousQuestionId);
+    // if we are agoing to the first id in questionIdsHistory,
+    // that means that we are resetting the wizard and going back to the first question of it,
+    // so we'll reset its history
+    if(hash.wizardActualQuestion === get(this, 'questionIdsHistory').get('firstObject')) {
+        get(this, 'questionIdsHistory').clear();
+    }
+    get(this, 'questionIdsHistory').addObject(hash.wizardActualQuestion);
     set(this, 'currentQuestion.text', hash.wizardView.text);
+    set(this, 'currentQuestion.id', hash.wizardActualQuestion);
 
     // Answer
     if(hash.wizardView.answerType === "YES_NO") {
@@ -81,6 +104,11 @@ export default Ember.Component.extend({
   actions: {
     answer(destinationQuestionId) {
       this.goToQuestionId(destinationQuestionId);
+    },
+
+    goBack() {
+      this.goToQuestionId(get(this, 'previousQuestionId'));
+      get(this, 'questionIdsHistory').popObject();
     }
   }
 });
