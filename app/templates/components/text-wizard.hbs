@@ -1,4 +1,4 @@
-{{#liquid-bind currentQuestionText use="toLeft" as |currentQuestionText|}}
+{{#liquid-bind currentQuestion.text use="toLeft" as |text|}}
   <div class="container-fluid container-fixed-lg bg-white p-t-30 p-b-30">
     {{!-- <div class="panel panel-default"> --}}
       {{#if currentQuestionHasQuestionMark}}
@@ -9,12 +9,14 @@
         <div class="hint-text all-caps fs-10 font-montserrat" style="width: 80%; margin: 0 auto;">Question</div>
       {{/if}}
       {{!-- <div class="panel-body"> --}}
-        <h5 style="width: 80%; margin: 0 auto;">{{{currentQuestionText}}}</h5>
+        <h5 style="width: 80%; margin: 0 auto;">{{{text}}}</h5>
       {{!-- </div>
     </div> --}}
   </div>
 {{/liquid-bind}}
 
-<div class="p-t-20 p-b-20" style="background-color: #F7F7F7;">
-  {{component answerComponent answerObject=currentAnswerObject answer=(action 'answer')}}
-</div>
+{{#if answerComponent}}
+  <div class="p-t-20 p-b-20" style="background-color: #F7F7F7;">
+    {{component answerComponent answers=currentAnswer answer=(action 'answer')}}
+  </div>
+{{/if}}
