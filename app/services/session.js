@@ -3,27 +3,26 @@ import Ember from 'ember';
 import Session from 'ember-simple-auth/services/session';
 import Language from '../language';
 import moment from 'moment';
+import config from './../config/environment';
+
 
 export default Session.extend({
   store: Ember.inject.service(),
   routing: Ember.inject.service('-routing'),
+  alerting: Ember.inject.service(),
+  currentUser: Ember.inject.service(),
 
   sessionDuration: 15 * 60 * 1000, // 15 minutes
   sessionTimeout: null,
 
-  currentUser: Ember.Object.create(),
-
-  // currentUser: Ember.computed('session.authenticated', function() {
-  //   let currentUser = this.get('session.authenticated');
-  //   currentUser.humanRole = Language.roles[currentUser.role];
-  //   return currentUser;
-  // }),
 
   init() {
     this._super(...arguments);
     this._syncSessionExpiration();
+    console.log(config);
   },
 
+  // Methods
   logout() {
     // Setting session data var to inform the 'sessionInvalidated' that the reason for invalidation is requested logout from user
     this.set('data.reasonForInvalidation', 'logout');
@@ -36,8 +35,10 @@ export default Session.extend({
 
   _populateCurrentUser() {
     console.log(this.get('session.authenticated'));
-    const { email } = this.get('session.authenticated');
-    this.get('currentUser').set('content', email);
+    const { id } = this.get('session.authenticated');
+    return this.store.find('user', id)
+      .then(user => this.get('currentUser').set('content', user) && user);
+    }
     return Ember.RSVP.resolve();
   },
 
@@ -51,29 +52,32 @@ export default Session.extend({
     this.syncSessionExpirationTimeout = Ember.run.later(this, this._syncSessionExpiration, 500);
   },
 
+  alertCleanAndRedirect() {
+    if (this.get('data.reasonForInvalidation') === 'logout') {
+      this.get('alerting').notify("You've successfully logged out.", 'success', 'stand-alone');
+    } else {
+      this.get('alerting').notify('Your session has expired. Please log back in.', 'warning', 'stand-alone');
+    }
+    this.set('data.reasonForInvalidation', null);
+    // Unloading all stores to clean last session data
+    this.get('store').unloadAll();
+    this.get('routing').transitionTo('login');
+  },
+
+  // Events
   afterAuthentication() {
     this._populateCurrentUser().then( user => {
       if (this.get('attemptedTransition')) {
         this.get('attemptedTransition').retry();
+        this.set('session.attemptedTransition', null);
       } else {
-        this.get('routing').transitionTo('dashboard');
+        this.get('routing').transitionTo(config['ember-simple-auth'].routeAfterAuthentication);
       }
     });
   },
 
   afterInvalidation() {
     Ember.run.once(this, this.alertCleanAndRedirect);
-  },
-
-  alertCleanAndRedirect() {
-    if (this.get('data.reasonForInvalidation') === 'logout') {
-      console.log('You\'ve successfully logged out.', 4000);
-    } else {
-      console.log('Your session has expired. Please log back in.', 4000);
-    }
-    this.set('data.reasonForInvalidation', null);
-    // Unloading all stores to clean last session data
-    this.get('store').unloadAll();
-    this.get('routing').transitionTo('login');
   }
+
 });

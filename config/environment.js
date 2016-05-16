@@ -7,7 +7,8 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     'ember-simple-auth':  {
-      authenticationRoute: 'login'
+      authenticationRoute: 'login',
+      routeAfterAuthentication: 'dashboard'
     },
     EmberENV: {
       FEATURES: {

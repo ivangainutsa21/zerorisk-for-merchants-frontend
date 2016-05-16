@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  alert: Ember.inject.service(),
+  alerting: Ember.inject.service(),
 
   parseAndDisplay(response, target) {
     return this.display(this.parse(response), target);
@@ -49,7 +49,7 @@ export default Ember.Service.extend({
         errors.forEach((error, i, errors) => {
           errors[i] = error + '<br>';
         });
-        this.get('alert').notify(errors, 'error');
+        this.get('alerting').notify(errors, 'error', 'stand-alone');
       break;
       case 'box':
         return errors.join('<br>');
