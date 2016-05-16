@@ -49,17 +49,15 @@ export default Base.extend({
         type: "GET",
         url: 'logout',
       }).then(function(response) {
-        Ember.run(function() {           
+        Ember.run(function() {
           resolve(response);
         });
       }, function(xhr /*, status, error */) {
         Ember.run(function() {
           resolve(xhr.responseJSON || xhr.responseText);
+        });
       });
-    });      
-  });
-
-
+    });
 
   }
 

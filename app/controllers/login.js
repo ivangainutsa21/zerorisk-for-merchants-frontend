@@ -2,7 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service(),
+  errorParser: Ember.inject.service(),
+
   isLoading: false,
+
   actions: {
     authenticate: function() {
       this.set('isLoading', true);
@@ -12,11 +15,11 @@ export default Ember.Controller.extend({
         () => {
           this.set('error', null);
           this.set('isLoading', false);
-          this.transitionToRoute('dashboard');
+          this.get('session').afterAuthentication();
         },
-        () => {
+        response => {
           this.set('isLoading', false);
-          this.set('error', "Wrong username/password combination. Please try again.");          
+          this.get('errorParser').parseAndDisplay(response, 'notification');
         }
       );
     }

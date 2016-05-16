@@ -1,5 +1,6 @@
 import Ember from 'ember';
-const { computed, get, set, setProperties, isEmpty } = Ember;
+const { computed, get, set, isEmpty } = Ember;
+import {isAjaxError, isNotFoundError, isForbiddenError} from 'ember-ajax/errors';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
@@ -30,10 +31,7 @@ export default Ember.Component.extend({
   }),
 
   currentQuestionId: computed('questionIdsHistory.[]', function() {
-    console.log('recomputing bzz bzz');
     let questionIdsHistory = get(this, 'questionIdsHistory');
-    console.log(questionIdsHistory.get('lastObject'));
-    // return questionIdsHistory[questionIdsHistory-1];
     return questionIdsHistory.get('lastObject');
   }),
 
@@ -47,7 +45,7 @@ export default Ember.Component.extend({
   }),
 
   canGoBack: computed('currentQuestionId', 'previousQuestionId', function() {
-    return get(this, 'previousQuestionId') && (get(this, 'currentQuestionId') != get(this, 'previousQuestionId'));
+    return get(this, 'previousQuestionId') && (get(this, 'currentQuestionId') !== get(this, 'previousQuestionId'));
   }),
 
   // Hooks
@@ -59,15 +57,13 @@ export default Ember.Component.extend({
   startWizard() {
     //set(this, 'questionIdsHistory', Ember.A([]));
     this.get('ajax').post(`/Wizard/Create?wizardId=${get(this, 'wizardId')}`).then(response => {
-        console.log(response);
         this.setCurrentQuestionAndAnswer(response.result);
     });
   },
 
   goToQuestionId(questionId) {
     this.get('ajax').post(`/Wizard/InProgress?userAnswerId=${questionId}`).then(response => {
-        console.log(response);
-        if(questionId != 0) {
+        if(questionId !== 0) {
           this.setCurrentQuestionAndAnswer(response.result);
         } else {
           // End of the wizard

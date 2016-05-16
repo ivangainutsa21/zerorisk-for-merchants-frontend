@@ -1,9 +1,13 @@
-@import 'bootstrap-custom';
+@import "bootstrap-custom";
 @import "pages";
 
 // Load font-awesome from its own directory instead of /fonts root
 $fa-font-path: "../fonts/font-awesome";
 @import "font-awesome";
+
+// Components
+@import "components/dropdowns.scss";
+
 
 a {
   cursor: pointer;

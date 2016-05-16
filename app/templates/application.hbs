@@ -23,7 +23,7 @@
 	    <!-- END MOBILE CONTROLS -->
 	    <div class="pull-left sm-table">
 	      <div class="header-inner">
-	        <div class="brand inline p-l-50">
+	        <div href="{{href-to "dashboard"}}" class="brand inline p-l-50">
 	          <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo.png" height="28">
 	        </div>
 	        <!-- BEGIN NOTIFICATION DROPDOWN -->
@@ -67,7 +67,7 @@
 	            </div>
 	          </li>
 	        </ul>
- --}}	        <!-- END NOTIFICATION DROPDOWN -->          
+ --}}	        <!-- END NOTIFICATION DROPDOWN -->
 	      </div>
 	    </div>
 	    <div class="pull-right">
@@ -76,31 +76,30 @@
 	        <div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
 	          <span class="semi-bold">Test1</span> {{!-- <span class="text-master">Nest</span> --}}
 	        </div>
-	        <div class="dropdown pull-right">
-	          <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	            {{!-- <span class="thumbnail-wrapper d32 circular inline m-t-5"> --}}
-	            {{!-- <i class="fa fa-user"></i> --}}
-	            <span class="fa-stack fa-lg">
-	              <i class="fa fa-circle fa-stack-2x"></i>
-	              <i class="fa fa-user fa-stack-1x fa-inverse" style="top: -2px;"></i>
-	            {{!-- </span> --}}
-	            {{!-- <img src="assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="32" height="32"> --}}
-	        </span>
-	          </button>
-	          <ul class="dropdown-menu profile-dropdown" role="menu">
-	            <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
-	            </li>
-	            <li><a href="#"><i class="pg-outdent"></i> Feedback</a>
-	            </li>
-	            <li><a href="#"><i class="pg-signals"></i> Help</a>
-	            </li>
-	            <li class="bg-master-lighter">
-	              <a href="#" class="clearfix">
-	                <span class="pull-left">Logout</span>
-	                <span class="pull-right"><i class="pg-power"></i></span>
-	              </a>
-	            </li>
-	          </ul>
+	        <div class="pull-right">
+						{{#basic-dropdown horizontalPosition="right" as |dropdown|}}
+		          <ul role="menu" class="m-b-0" style="width: 150px;">
+		            <li><a href="#"><i class="pg-settings_small"></i> Settings</a>
+		            </li>
+		            <li><a href="#"><i class="pg-outdent"></i> Feedback</a>
+		            </li>
+		            <li><a href="#"><i class="pg-signals"></i> Help</a>
+		            </li>
+		            <li class="bg-master-lighter" style="padding: 5px 22px;">
+		              <a {{action "logout" target=session}}>
+		                <span class="pull-left">Logout</span>
+		                <span class="pull-right"><i class="pg-power"></i></span>
+		              </a>
+		            </li>
+		          </ul>
+						{{else}}
+							<button class="profile-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+								<span class="fa-stack fa-lg hint-text">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-user fa-stack-1x fa-inverse" style="top: -2px;"></i>
+								</span>
+							</button>
+						{{/basic-dropdown}}
 	        </div>
 	      </div>
 	      <!-- END User Info-->
