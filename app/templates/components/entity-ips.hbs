@@ -2,13 +2,13 @@
   <td colspan=5 style="padding: 0px; background: transparent; border: none;">
     <ul class="nav nav-tabs nav-tabs-linetriangle">
       <li class="active">
-        <a data-toggle="tab" href="#home"><span><span class="hint-text">Merchant</span> {{entity.companyName}}</span>                  
-        </a>              
+        <a data-toggle="tab" href="#home"><span><span class="hint-text">Merchant</span> {{entity.contactInfo.companyName}}</span>                  
+        </a>
       </li>
-    </ul>                      
+    </ul>
   </td>
 </tr>
-{{#each filteredAssetIps as |assetIp|}}    
+{{#each filteredAssetIps as |assetIp|}}
 	<tr>
 	  <td>{{assetIp.hostName}}</td>
 	  <td>{{assetIp.ipNumber}}</td>

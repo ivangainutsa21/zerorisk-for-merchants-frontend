@@ -1,19 +1,10 @@
 import Ember from 'ember';
-import { validator, buildValidations } from 'ember-cp-validations';
 
-const Validations = buildValidations({
-  email: [
-    validator('presence', true),
-    validator('format', { type: 'email' })
-  ]
-});
-
-export default Ember.Component.extend(Validations, {
+export default Ember.Component.extend({
+  errorParser: Ember.inject.service(),
   tagName: "form",
 
-	email: null,
-
-  cantSave: Ember.computed.alias('validations.isInvalid'),
+  cantSave: Ember.computed.alias('model.validations.isInvalid'),
 
   submit() {
     this.sendAction('save');
@@ -21,7 +12,13 @@ export default Ember.Component.extend(Validations, {
 
   actions: {
     save() {
-      this.get('onComplete')();
+      this.get('model').save().then(() => {
+        this.get('onComplete')();
+      }).catch((response, a) => {
+        console.log(response);
+        console.log(a);
+        this.get('errorParser').parseAndDisplay(response, 'notification');
+      });
     }
   }
 });

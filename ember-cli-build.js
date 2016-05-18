@@ -10,6 +10,10 @@ module.exports = function(defaults) {
     },
     'ember-cli-bootstrap-sassy': {
       'glyphicons': false
+    },
+    babel: {
+      // for ember-concurrency
+      includePolyfill: true,
     }
   });
 

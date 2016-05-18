@@ -9,12 +9,12 @@
   {{/pg-navbar}}
   <!-- START CONTAINER FLUID -->
   <div class="">
-    <div class="container-fluid container-fixed-lg p-l-35 sm-p-r-35 p-t-15 p-b-15" style="border-bottom: 1px solid #e6e6e6;">
+    <div class="p-l-35 p-r-35 p-t-15 p-b-15" style="border-bottom: 1px solid #F0F0F0; background-color: rgb(253, 253, 253);">
       <div class="row">
-        <div class="col-sm-6 col-sm-height col-middle pull-left hide-sm">         
+        <div class="col-sm-6 col-sm-height col-middle pull-left hide-sm">
           <span class="hint-text">You have <b>7</b> IPs, 5 of them are not PCI compliant</span>
         </div>
-        <div class="col-sm-6 col-sm-height col-middle pull-right"> 
+        <div class="col-sm-6 col-sm-height col-middle pull-right">
           <div class="full-width">
             <div class="input-group  p-l-0 transparent b-b b-transparent pull-right" style="border-color: rgba(0, 0, 0, 0.03);">
               {{!-- <input type="text" value={{searchQuery}} class="form-control bg-master no-border p-l-0 transparent" placeholder="Search IPs" style="background-color: transparent; "> --}}
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-  
+
     <!-- BEGIN PlACE PAGE CONTENT HERE -->
 
 
@@ -39,12 +39,14 @@
             <th class="sorting">Hostname</th>
             <th class="sorting">IP</th>
             <th class="sorting">Tag</th>
-            <th class="sorting">Status</th>   
-            <th></th>         
+            <th class="sorting">Status</th>
+            <th></th>
           </tr>
         </thead>
         {{#each model as |entity|}}
-          {{entity-ips tagName="tbody" entity=entity assetIps=entity.assetIps searchQuery=searchQuery}}
+          {{#if entity.assetIps}}
+            {{entity-ips tagName="tbody" entity=entity assetIps=entity.assetIps searchQuery=searchQuery}}
+          {{/if}}
         {{/each}}
       </table>
     </div>

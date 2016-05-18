@@ -1,0 +1,44 @@
+
+<div class="dropdown-menu notification-toggle" style="display: block; margin-top: 50px; margin-left: 50px;" role="menu" aria-labelledby="notification-center">
+  <div class="notification-panel">
+    <!-- START Notification Body-->
+    <div class="notification-body scrollable">
+      {{#each notifications as |notification|}}
+        <!-- START Notification Item-->
+        <div class="notification-item {{if notification.isUnread 'unread'}} clearfix">
+          <div class="heading" {{action 'readNotification' notification}}>
+            <a class="{{if notification.isWarning 'text-warning' 'text-complete'}}">
+              <i class="fa {{if notification.isWarning 'fa-exclamation-triangle' 'fa-circle'}} m-r-10"></i>
+              <span class="bold">{{notification.subject}}</span>
+              <span class="fs-12 m-l-10">...</span>
+            </a>
+            <span class="pull-right time">{{moment-from-now notification.created}}</span>
+            {{#if (eq notification.id expandedNotificationId)}}
+              <div class="more-details" style="display: block;">
+                <div class="more-details-inner">
+                  <h5 class="semi-bold fs-16">{{notification.body}}</h5>
+                  <p class="small hint-text">
+                    {{notification.notificationType}}
+                  </p>
+                </div>
+              </div>
+            {{/if}}
+          </div>
+          <div class="option">
+            <a href="#" class="mark"></a>
+          </div>
+        </div>
+        <!-- END Notification Item-->
+      {{/each}}
+    </div>
+    <!-- END Notification Body-->
+    <!-- START Notification Footer-->
+    <div class="notification-footer text-center">
+      <a href="#" class="">Read all notifications</a>
+      <a data-toggle="refresh" class="portlet-refresh text-black pull-right" href="#">
+        <i class="pg-refresh_new"></i>
+      </a>
+    </div>
+    <!-- END Notification Footer-->
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import AjaxService from 'ember-ajax/services/ajax';
-import {isAjaxError, isNotFoundError, isForbiddenError, isUnauthorizedError} from 'ember-ajax/errors';
+import {isForbiddenError, isUnauthorizedError} from 'ember-ajax/errors';
 
 const { Error: EmberError } = Ember;
 
@@ -10,7 +10,7 @@ export default AjaxService.extend({
   // isSuccess(status, headers, payload) {
   //   return payload.success;
   // }
-  handleResponse(status, headers, payload, requestData) {
+  handleResponse() {
     let handledResponse = this._super(...arguments);
 
     if(isForbiddenError(handledResponse)) {

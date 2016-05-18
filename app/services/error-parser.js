@@ -31,6 +31,7 @@ export default Ember.Service.extend({
       // even older ofrmat
       } else if (response.result && response.result.errors) {
         errors.push(response.result.errors[0].error);
+      // Encarta '97 format 
       } else if (response.error) {
         errors.push(response.error);
       } else {

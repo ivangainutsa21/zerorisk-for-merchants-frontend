@@ -1,48 +1,42 @@
 <p>Contact Information</p>
 <div class="form-group-attached">
-  {{validated-input value=email label="Email" placeholder="Your user email address" validations=validations.attrs.email errors=errors.email}}
+
+  {{validated-input field="email" label="Email" placeholder="Your user email address" model=model.contactInfo errors=model.errors.contactInfo/email}}
+  {{validated-input field="contactName" label="Full Name" model=model.contactInfo errors=model.errors.contactInfo/contactName}}
+  {{validated-input field="companyName" label="Company Name" model=model.contactInfo errors=model.errors.contactInfo/companyName}}
   <div class="row clearfix">
     <div class="col-sm-6">
-      {{validated-input label="First Name"}}
+      {{validated-input field="title" label="Title" placeholder="e.g CEO" model=model.contactInfo errors=model.errors.contactInfo/title}}
     </div>
     <div class="col-sm-6">
-      {{validated-input label="Last Name"}}
+      {{validated-input field="dba" label="DBA" placeholder="Doing Business As" model=model.contactInfo errors=model.errors.contactInfo/dba}}
     </div>
   </div>
-  {{validated-input label="Company Name"}}
-  <div class="row clearfix">
-    <div class="col-sm-6">
-      {{validated-input label="Title" placeholder="e.g CEO"}}
-    </div>
-    <div class="col-sm-6">
-      {{validated-input label="DBA" placeholder="Doing Business As"}}
-    </div>
-  </div>
-  {{validated-input label="Phone Number"}}
+  {{validated-input field="phone" label="Phone Number" model=model.contactInfo errors=model.errors.contactInfo/phone}}
 </div>
 
 <br />
 
 <p>Business Information</p>
 <div class="form-group-attached">
-  {{validated-input label="Address"}}
+  {{validated-input field="businessAddress" label="Address" model=model.contactInfo.address errors=model.errors.contactInfo/address/businessAddress}}
   <div class="row clearfix">
     <div class="col-sm-6">
-      {{validated-input label="Country"}}
+      {{validated-input field="country" label="Country" model=model.contactInfo.address errors=model.errors.contactInfo/address/country}}
     </div>
     <div class="col-sm-6">
-      {{validated-input label="City"}}
+      {{validated-input field="city" label="City" model=model.contactInfo.address errors=model.errors.contactInfo/address/city}}
     </div>
   </div>
   <div class="row clearfix">
     <div class="col-sm-9">
-      {{validated-input label="State / Province" placeholder="e.g NY"}}
+      {{validated-input field="stateProvince" label="State / Province" placeholder="e.g NY" model=model.contactInfo.address errors=model.errors.contactInfo/address/stateProvince}}
     </div>
     <div class="col-sm-3">
-      {{validated-input label="ZIP Code"}}
+      {{validated-input field="zipCode" label="ZIP Code" model=model.contactInfo.address errors=model.errors.contactInfo/address/zipCode}}
     </div>
   </div>
-  {{validated-input label="URL"}}
+  {{validated-input field="url" label="URL" model=model.contactInfo.address errors=model.errors.contactInfo/address/url}}
 </div>
 
 <p class="pull-right m-t-20">

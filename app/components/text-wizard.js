@@ -1,6 +1,5 @@
 import Ember from 'ember';
 const { computed, get, set, isEmpty } = Ember;
-import {isAjaxError, isNotFoundError, isForbiddenError} from 'ember-ajax/errors';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
