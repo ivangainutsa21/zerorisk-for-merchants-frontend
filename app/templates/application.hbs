@@ -28,18 +28,8 @@
 	          	<img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo.png" height="28">
 						</a>
 	        </div>
-	        <!-- BEGIN NOTIFICATION DROPDOWN -->
- 	        <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l no-style p-l-50 p-r-20">
-	          <li class="inline">
-	            <div class="dropdown">
-	              <a id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
-	                <span class="bubble"></span>
-	              </a>
-
-	            </div>
-	          </li>
-	        </ul>
-        <!-- END NOTIFICATION DROPDOWN -->
+	        {{notifications-dropdown notifications=model.notifications}}
+					{{log model.notifications}}
 	      </div>
 	    </div>
 	    <div class="pull-right">

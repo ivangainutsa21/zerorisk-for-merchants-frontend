@@ -5,9 +5,12 @@
 $fa-font-path: "../fonts/font-awesome";
 @import "font-awesome";
 
+// Patterns
+@import "patterns/dropdowns.scss";
+
 // Components
-@import "components/dropdowns.scss";
 @import "components/notifications.scss";
+@import "components/header.scss";
 
 a {
   cursor: pointer;
@@ -17,6 +20,10 @@ a {
 // Apply attr only to first .ember-view element inside body
 body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 	height: 100%;
+}
+
+.height-auto {
+  height: auto !important;
 }
 
 /* Utility */

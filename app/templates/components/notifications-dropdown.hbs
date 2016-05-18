@@ -1,0 +1,13 @@
+<li class="inline">
+  <div class="dropdown">
+    {{#basic-dropdown}}
+      {{notifications-list notifications=notifications}}
+    {{else}}
+      <a id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
+        {{#if limitedUnreadCount}}
+          <span class="bubble">{{limitedUnreadCount}}</span>
+        {{/if}}
+      </a>
+    {{/basic-dropdown}}
+  </div>
+</li>

@@ -3,10 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   expandedNotificationId: null,
 
-  unreadCount: Ember.computed('notifications.@each.notificationStatus', function() {
-    return this.get('notifications').filterBy('notificationStatus', 'NEW').length;
-  }),
-
   didInsertElement() {
     Ember.$.Pages.initScrollBarPlugin();
   },
