@@ -1,8 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  scan: DS.belongsTo('scan'),
-  vulnerabilities: DS.hasMany('vulnerability'),
+  scan: DS.belongsTo('scan'), 
+  vulnerabilities: DS.hasMany('vulnerability'), // embedded
   scanDate: DS.attr('date'),
   provaderStatus: DS.attr('string'),
   riskAverage: DS.attr('number'),
@@ -10,5 +10,5 @@ export default DS.Model.extend({
   totalVulnerabilities: DS.attr('number'),
   totalPCIVulnerabilities: DS.attr('number'),
   asvProviderAsString: DS.attr('string'),
-  asvProvider: DS.attr('string')  
+  asvProvider: DS.attr('string')
 });

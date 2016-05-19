@@ -25,7 +25,7 @@ export default Base.extend({
           password: options.password
         })
       }).done((response) => {
-        let result = JSON.parse(response).result;
+        let result = response.result; //JSON.parse(response).result;
         let resolved = {
               'userId': result.userId,
               'email': options.identification,
