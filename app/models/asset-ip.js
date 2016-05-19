@@ -24,7 +24,7 @@ export default DS.Model.extend({
       default:
         return "Unknown";
     }
-  }),
+  }).readOnly(),
   PCIStatus: DS.attr('string'),
   humanPCIStatus: Ember.computed('status', function() {
     switch (this.get('status')) {
@@ -37,6 +37,6 @@ export default DS.Model.extend({
       default:
         return "unknown";
     }
-  }),
+  }).readOnly(),
   isNotExpired: DS.attr('boolean')
 });

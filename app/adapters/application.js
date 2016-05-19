@@ -5,7 +5,7 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
 	authorizer: 'authorizer:cookie',
 	namespace: 'api/v2/merchant',
 
-	keyForRelationship: function(key) {
+	keyForRelationship: function(key) {		
 		return key + 'Id';
 	},
 
