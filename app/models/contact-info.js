@@ -35,5 +35,5 @@ export default DS.Model.extend(Validations, {
   title: DS.attr('string'),
   phone: DS.attr('string'),
   fax: DS.attr('string'),
-  address: DS.belongsTo('address')
+  address: DS.belongsTo('address') // embedded
 });

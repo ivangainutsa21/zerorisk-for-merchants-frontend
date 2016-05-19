@@ -2,8 +2,8 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  entityId: DS.belongsTo('entity'),
-  vulnerabilities: DS.hasMany('vulnerability'),
+  entity: DS.belongsTo('entity'), // async via id
+  vulnerabilities: DS.hasMany('vulnerability'), // embedded
   ipNumber: DS.attr('string'),
   hostName: DS.attr('string'),
   tag: DS.attr('string'),

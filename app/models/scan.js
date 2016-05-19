@@ -2,9 +2,9 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  entityId: DS.belongsTo('entity'),
-  scanReportId: DS.belongsTo('scan-report'),
-  scannedIps: DS.hasMany('scanned-ip'),
+  entity: DS.belongsTo('entity'), // async via id
+  scanReportId: DS.belongsTo('scan-report'), // async via id
+  scannedIps: DS.hasMany('scanned-ip'), // embedded
   scanStart: DS.attr('date'),
   scanEnd: DS.attr('date'),
   scanReference: DS.attr('string'),
