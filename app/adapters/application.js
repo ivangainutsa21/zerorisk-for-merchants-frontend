@@ -4,9 +4,10 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 export default DS.RESTAdapter.extend(DataAdapterMixin, {
 	authorizer: 'authorizer:cookie',
 	namespace: 'api/v2/merchant',
+	coalesceFindRequests: true,
 
-	// keyForRelationship: function(key) {		
-	// 	return key + 'Id';
+	// keyForRelationship: function(key) {
+	// 	return `${key}Id`;
 	// },
 
 	isSuccess(status, headers, payload) {

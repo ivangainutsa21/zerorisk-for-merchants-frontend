@@ -60,7 +60,7 @@ export default Session.extend({
   },
 
   _populateCurrentUser() {
-    console.log(this.get('session.authenticated'));
+    // console.log(this.get('session.authenticated'));
     let { userId } = this.get('session.authenticated');
     return this.get('store').find('user', userId).then(user => this.get('currentUser').set('content', user) && user);
   },

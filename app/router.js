@@ -9,6 +9,10 @@ Router.map(function() {
   this.route('login');
   this.route('dashboard');
 
+  this.route('saqs', { resetNamespace: true }, function() {
+    this.route('edit', { path: ':saq_id/edit' });
+  });
+
   this.route('scans', function() {
     this.route('new');
   });
@@ -26,6 +30,8 @@ Router.map(function() {
     this.route('user-details');
     this.route('saq-detection');
   });
+
+
 });
 
 export default Router;
