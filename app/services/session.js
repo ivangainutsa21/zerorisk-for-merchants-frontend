@@ -79,7 +79,7 @@ export default Session.extend({
   // Events
   beforeApplication() {
     if (this.get('isAuthenticated')) {
-      //this.get('notifications').startPolling();
+      // this.get('notifications').startPolling();
       return this._populateCurrentUser().then(user => this._forceEnrollment(user));
     }
   },
@@ -98,7 +98,7 @@ export default Session.extend({
   },
 
   afterInvalidation() {
-    //this.get('notifications').stopPolling();
+    // this.get('notifications').stopPolling();
     Ember.run.once(this, this._alertCleanAndRedirect);
   }
 
