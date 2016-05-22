@@ -57,6 +57,7 @@
     "ember-tooltips": "0.6.0",
     "ember-truth-helpers": "1.2.0",
     "liquid-fire": "0.23.1",
-    "loader.js": "^4.0.1"
+    "loader.js": "^4.0.1",
+    "node-sass": "3.4.2"
   }
 }
