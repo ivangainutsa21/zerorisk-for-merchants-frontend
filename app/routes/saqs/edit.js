@@ -12,10 +12,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   actions: {
     selectquestion(question) {
       question.belongsTo('answer').reload();
-      // question.get('answer').then(answer => {
-      //   answer.set('responseType', 'NO!');
-      //   answer.save();
-      // });
+      question.get('answer').then(answer => {
+        answer.set('responseType', 'NO!');
+        answer.save();
+      });
       // question.get('answer').save();
     }
   }

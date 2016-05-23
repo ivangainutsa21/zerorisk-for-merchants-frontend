@@ -1,17 +1,22 @@
-import DS from 'ember-data';
+import Ember from 'ember';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { belongsTo } from 'ember-data/relationships';
 import Language from '../language';
 
-export default DS.Model.extend({
-  entityId: DS.attr('number'),
-  email: DS.attr('string'),
-  firstName: DS.attr('string'),
-  lastName: DS.attr('string'),
-  enabled: DS.attr('boolean'),
-  role: DS.attr('string'),
-  fullName: Ember.computed('firstName', 'lastName', function() {
+const { computed } = Ember;
+
+export default Model.extend({
+  entity: belongsTo('entity'),
+  email: attr('string'),
+  firstName: attr('string'),
+  lastName: attr('string'),
+  enabled: attr('boolean'),
+  role: attr('string'),
+  fullName: computed('firstName', 'lastName', function() {
     return `${this.get('firstName')} ${this.get('lastName')}`;
   }).readOnly(),
-  humanRole: Ember.computed('role', function() {
+  humanRole: computed('role', function() {
     return Language.roles[this.get('role')];
   }).readOnly()
 });

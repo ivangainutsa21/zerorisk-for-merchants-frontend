@@ -23,6 +23,16 @@ export default function() {
   this.get('/api/v2/merchant/saqQuestions', 'saqQuestions', { coalesce: true });
 
   this.get('/api/v2/merchant/saqAnswers', 'saqAnswers', { coalesce: true });
+  this.get('/api/v2/merchant/saqAnswers/:id', 'saqAnswer');
+  //this.put('/api/v2/merchant/saqAnswers/:id', 'saqAnswers');
+  this.put('/api/v2/merchant/saqAnswers/:id', ({ saqAnswers }, request) => {
+    let id = request.params.id;    
+    let attrs = request.requestBody;
+    debugger;
+
+    return saqAnswers.find(id).update(attrs);
+  });
+  //this.post('/api/v2/merchant/saqAnswers/:id', 'saqAnswer');
 
 }
 

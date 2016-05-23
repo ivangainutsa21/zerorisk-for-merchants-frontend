@@ -1,19 +1,23 @@
-import DS from 'ember-data';
 import Ember from 'ember';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
-export default DS.Model.extend({
-  entity: DS.belongsTo('entity'), // async via id
-  scanReportId: DS.belongsTo('scan-report'), // async via id
-  scannedIps: DS.hasMany('scanned-ip'), // embedded
-  scanStart: DS.attr('date'),
-  scanEnd: DS.attr('date'),
-  scanReference: DS.attr('string'),
-  statusAsString: DS.attr('string'),
-  humanStatus: Ember.computed('statusAsString', function() {
+const { computed } = Ember;
+
+export default Model.extend({
+  entity: belongsTo('entity'), // async via id
+  scanReportId: belongsTo('scan-report'), // async via id
+  scannedIps: hasMany('scanned-ip'), // embedded
+  scanStart: attr('date'),
+  scanEnd: attr('date'),
+  scanReference: attr('string'),
+  statusAsString: attr('string'),
+  humanStatus: computed('statusAsString', function() {
     return this.get('statusAsString').toLowerCase();
   }),
-  riskAverage: DS.attr('number'),
-  riskCoverage: DS.attr('number'),
-  totalVulnerabilities: DS.attr('number'),
-  totalPCIVulnerabilities: DS.attr('number')
+  riskAverage: attr('number'),
+  riskCoverage: attr('number'),
+  totalVulnerabilities: attr('number'),
+  totalPCIVulnerabilities: attr('number')
 });

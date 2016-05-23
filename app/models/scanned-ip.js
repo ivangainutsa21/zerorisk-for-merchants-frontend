@@ -1,9 +1,12 @@
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { belongsTo } from 'ember-data/relationships';
 
-export default DS.Model.extend({
-	scan: DS.belongsTo('scan'),
-	ipNumber: DS.attr('string'),
-	hostName: DS.attr('string'),
-	tag: DS.attr('string'),
-	description: DS.attr('string')
+
+export default Model.extend({
+  scan: belongsTo('scan'),
+  ipNumber: attr('string'),
+  hostName: attr('string'),
+  tag: attr('string'),
+  description: attr('string')
 });

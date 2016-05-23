@@ -1,4 +1,6 @@
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { belongsTo } from 'ember-data/relationships';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
@@ -27,13 +29,13 @@ const Validations = buildValidations({
   'address': validator('belongs-to')
 });
 
-export default DS.Model.extend(Validations, {
-  email: DS.attr('string'),
-  companyName: DS.attr('string'),
-  contactName: DS.attr('string'),
-  dba: DS.attr('string'),
-  title: DS.attr('string'),
-  phone: DS.attr('string'),
-  fax: DS.attr('string'),
-  address: DS.belongsTo('address') // embedded
+export default Model.extend(Validations, {
+  email: attr('string'),
+  companyName: attr('string'),
+  contactName: attr('string'),
+  dba: attr('string'),
+  title: attr('string'),
+  phone: attr('string'),
+  fax: attr('string'),
+  address: belongsTo('address') // embedded
 });
