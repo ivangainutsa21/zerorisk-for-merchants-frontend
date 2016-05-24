@@ -28,8 +28,7 @@
 	          	<img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo.png" height="28">
 						</a>
 	        </div>
-	        {{notifications-dropdown notifications=model.notifications}}
-					{{log model.notifications}}
+	        {{notifications-dropdown notifications=model.notifications}}				
 	      </div>
 	    </div>
 	    <div class="pull-right">
@@ -68,11 +67,11 @@
 	  <!-- END PAGE HEADER WRAPPER -->
   {{/unless}}
   <!-- START PAGE CONTENT WRAPPER -->
-  <div class="page-content-wrapper">
+  <div class="page-content-wrapper full-height">
 
 		{{outlet}}
 
-		{{#unless isInFullPageRoute}}
+		{{#unless (or isInFullPageRoute isInSaqEditRoute)}}
 	    <!-- START FOOTER -->
 	    <div class="container-fluid container-fixed-lg footer">
 	      <div class="copyright sm-text-center">

@@ -2,7 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	session: Ember.inject.service(),
-	isInFullPageRoute: function() {
+
+	isInFullPageRoute: Ember.computed('currentRouteName', function() {
 		return this.get('currentRouteName') === "login";
-	}.property('currentRouteName'),
+	}),
+
+	isInSaqEditRoute: Ember.computed('currentRouteName', function() {
+		return this.get('currentRouteName') === "saqs.edit";
+	})
 });

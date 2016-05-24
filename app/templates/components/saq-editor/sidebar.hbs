@@ -1,0 +1,32 @@
+{{!-- <div class="list-group m-b-0">
+	{{#each (group-by 'section' saq.questions) as |grouping|}}
+		{{grouping.section}}		
+	  {{#each grouping.items as |question|}}	
+	  	<a {{action attrs.selectQuestion question}} class="list-group-item overflow-ellipsis {{if (eq question.id selectedQuestion.id) 'active'}}">
+	  		<span class="semi-bold">{{question.code}}</span>
+	  		<span class="text-overflow hint-text">{{truncate question.text 20}}</span>
+	  		<span class="label label-default label-pill pull-right">
+					{{question.answer.responseType}}
+				</span>
+	  	</a>
+	  {{/each}}  	  
+	 {{/each}}
+</div>
+ --}}
+
+ <div class="list-group m-b-0">
+ 	{{#if saq.questions}}
+	 	{{#each-in (group-by 'section' saq.questions) as |section questions|}}
+	 		{{section}}		
+	 	  {{#each questions as |question|}}	
+	 	  	<a {{action attrs.selectQuestion question}} class="list-group-item overflow-ellipsis {{if (eq question.id selectedQuestion.id) 'active'}}">
+	 	  		<span class="semi-bold">{{question.code}}</span>
+	 	  		<span class="text-overflow hint-text">{{truncate question.text 22}}</span>
+	 	  		<span class="label label-default label-pill pull-right">
+	 					{{question.answer.responseType}}
+	 				</span>
+	 	  	</a>
+	 	  {{/each}}  	  
+	 	 {{/each-in}}
+	 {{/if}}
+ </div>

@@ -16,7 +16,7 @@ export default Ember.Service.extend({
   }).restartable(),
 
   startPolling() {
-    this.get('updater').perform()
+    this.get('updater').perform();
     // this.notifications()
     //     .then(notifications => this.get('updaterInstance', this.get('updater').perform(notifications)))
     //     .catch(() => console.log("Couldn't start Notifications polling."));

@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
-import config from '../config/environment';
 
 export default Base.extend({
   authenticationRoute: 'login',
@@ -25,7 +24,13 @@ export default Base.extend({
           password: options.password
         })
       }).done((response) => {
-        let result = response.result; //JSON.parse(response).result;
+        let result;
+        if(typeof response === 'string') {
+          result = JSON.parse(response).result;
+        } else {
+          result = response.result; 
+        }        
+        
         let resolved = {
               'userId': result.userId,
               'email': options.identification,

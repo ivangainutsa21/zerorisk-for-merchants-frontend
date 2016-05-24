@@ -1,3 +1,5 @@
 {
-  "preset": "ember-suave"
+  "preset": "ember-suave",
+  "requireParenthesesAroundArrowParam": false,
+  "requireSpaceAfterKeywords": false
 }

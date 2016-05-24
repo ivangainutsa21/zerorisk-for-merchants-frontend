@@ -9,10 +9,10 @@ export default ApplicationAdapter.extend({
   },
 
   updateRecord(_, __, snapshot) {
-    return this.ajax('Notifications/Merchant/Update?notificationId=' + snapshot._internalModel.id, 'GET')
+    return this.ajax('Notifications/Merchant/Update?notificationId=' + snapshot._internalModel.id, 'GET');
   },
 
-  isSuccess(status, headers, payload) {
+  isSuccess(status) {
     return status === 200;
   },
 });

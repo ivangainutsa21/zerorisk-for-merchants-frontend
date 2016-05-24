@@ -13,6 +13,7 @@ export default Model.extend({
   lastName: attr('string'),
   enabled: attr('boolean'),
   role: attr('string'),
+  merchantStatus: attr('string'),
   fullName: computed('firstName', 'lastName', function() {
     return `${this.get('firstName')} ${this.get('lastName')}`;
   }).readOnly(),

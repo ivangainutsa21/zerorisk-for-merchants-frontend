@@ -10,6 +10,9 @@ module.exports = function(environment) {
       authenticationRoute: 'login',
       routeAfterAuthentication: 'dashboard'
     },
+    'ember-cli-mirage': {
+      enabled: true
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

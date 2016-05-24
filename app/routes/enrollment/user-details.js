@@ -5,7 +5,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	hasCompletedStep: false,
 
 	model() {
-		return this.store.find('entity', this.get('currentUser.entityId'));
+		return this.store.find('entity', this.get('currentUser.entity.id'));
 	}
 
 });

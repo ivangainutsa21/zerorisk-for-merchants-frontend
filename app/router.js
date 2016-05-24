@@ -31,7 +31,6 @@ Router.map(function() {
     this.route('saq-detection');
   });
 
-
 });
 
 export default Router;

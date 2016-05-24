@@ -61,13 +61,13 @@ export default Session.extend({
 
   _populateCurrentUser() {
     // console.log(this.get('session.authenticated'));
-    let { userId } = this.get('session.authenticated');
+    let { userId } = this.get('session.authenticated');    
     return this.get('store').find('user', userId).then(user => this.get('currentUser').set('content', user) && user);
   },
 
   _forceEnrollment(user) {
-    return new Ember.RSVP.Promise((resolve) => {
-      if (user.get('mustCompleteEnrollment')) {
+    return new Ember.RSVP.Promise((resolve) => {      
+      if (user.get('merchantStatus') === 'NotEnrolled') {
         this.get('routing').transitionTo('enrollment');
         resolve(true);
       } else {

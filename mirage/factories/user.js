@@ -5,5 +5,7 @@ export default Factory.extend({
   firstName() { return faker.name.firstName(); },
   lastName() { return faker.name.lastName(); },
   enabled: true,
-  role: 'ROLE_MERCHANT_ENTITY_ADMIN'
+  role: 'ROLE_MERCHANT_ENTITY_ADMIN',
+  merchantStatus: 'Enrolled',
+  merchantCustomizationId: 1
 });

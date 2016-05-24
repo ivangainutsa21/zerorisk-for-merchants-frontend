@@ -6,16 +6,15 @@ var nodeSass = require('node-sass');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     sassOptions: {
-      // Pages main sass file
+      // Pages main sass file + font-awesome
       includePaths: ['vendor/pages/scss', 'bower_components/font-awesome/scss'],
-      nodeSass: nodeSass
+      nodeSass: nodeSass // node-sass@3.4.2
     },
     'ember-cli-bootstrap-sassy': {
       'glyphicons': false
     },
-    babel: {
-      // for ember-concurrency
-      includePolyfill: true,
+    babel: {      
+      includePolyfill: true // for ember-concurrency
     }
   });
 

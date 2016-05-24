@@ -144,3 +144,7 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
     border-color: #FFFFFF transparent transparent transparent;
   }
 }
+
+.ps-container {
+	height: 100%; 
+}

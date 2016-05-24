@@ -2,8 +2,8 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
-  model() {
-    return this.store.find('saq', 1);
+  model(params) {
+    return this.store.find('saq', params.saq_id);
   },
   afterModel(saq) {
     saq.get('answers');
@@ -12,7 +12,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   actions: {
     selectquestion(question) {
       question.belongsTo('answer').reload();
-      question.get('answer').then(answer => {
+      question.get('answer').then((answer) => {
         answer.set('responseType', 'NO!');
         answer.save();
       });

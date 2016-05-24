@@ -1,0 +1,25 @@
+<div class="content full-height">
+  <div class="container-fluid full-height no-padding">
+    <div class="row full-height no-margin">
+      <div class="col-md-3 no-padding b-r b-grey sm-b-b full-height">
+        <div class="bg-white full-height scrollable">
+          {{#deferred-content saq.questions as |d|}}
+            {{#d.pending}}
+              <div class="progress-circle-indeterminate"></div>
+            {{/d.pending}}
+    
+            {{#d.settled}}
+              {{saq-editor/sidebar saq=saq selectedQuestion=selectedQuestion selectQuestion=(action 'selectQuestion')}}
+            {{/d.settled}}
+          {{/deferred-content}}
+          
+          
+        
+        </div>
+      </div>
+      <div class="col-md-9 no-padding full-height">
+        {{saq-editor/question question=selectedQuestion}}
+      </div>
+    </div>
+  </div>
+</div>

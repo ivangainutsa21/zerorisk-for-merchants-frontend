@@ -6,7 +6,7 @@ export default Model.extend({
   answer: belongsTo('saq-answer'),
   text: attr('string'),
   type: attr('string'),
-  section: attr('number'),
+  section: attr('string'),
   milestone: attr('string'),
   code: attr('string')
 });

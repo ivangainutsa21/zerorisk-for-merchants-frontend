@@ -14,7 +14,7 @@ export default Ember.Component.extend({
     save() {
       this.get('model').save().then(() => {
         this.get('onComplete')();
-      }).catch((response, a) => {
+      }).catch((response) => {
         this.get('errorParser').parseAndDisplay(response, 'notification');
       });
     }
