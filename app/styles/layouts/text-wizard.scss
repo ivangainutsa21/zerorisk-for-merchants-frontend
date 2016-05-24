@@ -1,0 +1,14 @@
+// text-wizard
+.text-wizard-question-container {
+  &:after {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 0;
+    height: 0;
+    margin-left: -15px;
+    border-style: solid;
+    border-width: 15px 15px 0 15px;
+    border-color: #FFFFFF transparent transparent transparent;
+  }
+}

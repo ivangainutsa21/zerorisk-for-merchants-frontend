@@ -21,7 +21,9 @@ export default function() {
   this.passthrough('/api/v2/shared/entities/**');
   this.passthrough('/Wizard/**');
 
-  this.get('/api/v2/shared/users/:id');
+  //this.get('/api/v2/shared/users/:id');
+  this.passthrough('/api/v2/shared/users/**');
+  this.passthrough('/api/v2/Wizard/**');
 
   this.get('/api/v2/merchant/saqs/:id');
 
@@ -39,6 +41,17 @@ export default function() {
     payload = payload.saqAnswer;
     schema.db.saqAnswers.update(request.params.id, payload);
     return schema.saqAnswers.find(request.params.id); 
+  });
+
+  this.post('/api/v2/merchant/saqAnswers', (schema, request) => {
+    let payload = JSON.parse(request.requestBody);
+    payload.saqAnswer.questionId = payload.saqAnswer.question;
+    payload.saqAnswer.saqId = payload.saqAnswer.saq;    
+    delete payload.saqAnswer.question;
+    delete payload.saqAnswer.saq;
+    payload = payload.saqAnswer;    
+    return schema.saqAnswers.create(payload);
+    // return schema.saqAnswers.find(request.params.id); 
   });
 
 }

@@ -4,6 +4,7 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   answer: belongsTo('saq-answer'),
+  saq: belongsTo('saq'),
   text: attr('string'),
   type: attr('string'),
   section: attr('string'),

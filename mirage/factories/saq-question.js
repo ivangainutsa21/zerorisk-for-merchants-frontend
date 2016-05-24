@@ -15,6 +15,6 @@ export default Factory.extend({
     if(this.section === 'Requirement 2: Do not use vendor-supplied defaults for system passwords and other security parameters')
       return `2.${i}`; 
     if(this.section === 'Requirement 3:  Protect stored cardholder data')
-      return `2.${i}`; 
+      return `3.${i}`; 
   }
 });

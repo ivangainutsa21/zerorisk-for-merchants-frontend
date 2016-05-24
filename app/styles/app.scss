@@ -12,6 +12,10 @@ $fa-font-path: "../fonts/font-awesome";
 @import "components/notifications.scss";
 @import "components/header.scss";
 
+// Layouts
+@import "layouts/text-wizard.scss";
+@import "layouts/saq-editor.scss";
+
 a {
   cursor: pointer;
 }
@@ -128,22 +132,6 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 //     color: rgba(98,98,98,0.7);
 //   }
 // }
-
-/* Components */
-// text-wizard
-.text-wizard-question-container {
-  &:after {
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    width: 0;
-    height: 0;
-    margin-left: -15px;
-    border-style: solid;
-    border-width: 15px 15px 0 15px;
-    border-color: #FFFFFF transparent transparent transparent;
-  }
-}
 
 .ps-container {
 	height: 100%; 
