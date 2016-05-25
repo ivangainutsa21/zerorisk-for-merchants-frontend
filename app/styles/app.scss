@@ -20,14 +20,22 @@ a {
   cursor: pointer;
 }
 
-
 // Apply attr only to first .ember-view element inside body
-body > .ember-view:first-child, :not(.ember-view) + .ember-view {
-	height: 100%;
-}
+// body > .ember-view:second-child, :not(.ember-view) + .ember-view {
+// 	height: 100%;
+// }
 
 .height-auto {
   height: auto !important;
+}
+.height-50 {
+	height: 50%;
+}
+
+.flex-center {
+	display: flex; 
+	align-items: center; 
+	justify-content: center;
 }
 
 /* Utility */
@@ -135,4 +143,9 @@ body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 
 .ps-container {
 	height: 100%; 
+}
+
+.tooltip-error {
+  background-color: #e37f7f;
+  color: #fff;
 }

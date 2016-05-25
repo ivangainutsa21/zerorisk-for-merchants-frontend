@@ -47,8 +47,11 @@
           </div>
         </div>
         <!-- END Form Control-->
-        {{input id="login-button" type="submit" class="btn btn-complete btn-cons m-t-10" value="Login" disabled=isLoading}}
-      </form>
+        <button {{action 'authenticate'}} class="btn btn-complete btn-cons m-t-10" type="submit" disabled={{isLoading}}>
+          {{{if isLoading '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> Logging in' 'Login'}}}
+        </button>
+{{!--         {{input id="login-button" type="submit" class="btn btn-complete btn-cons m-t-10" value=}}
+ --}}      </form>
       <!--END Login Form-->
     </div>
   </div>

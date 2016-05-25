@@ -1,2 +1,20 @@
+{{!-- // tooltip stuff
+tooltipContent: Ember.computed.alias('messages'),
+tooltipEffectClass: 'grow',
+tooltipPlace: 'top',
+tooltipTabIndex: -1,
+tooltipTypeClass: 'warning',
+tooltipVisibility: Ember.computed.alias('showMessages'),
+tooltipEvent: 'manual', --}}
+
+{{#tooltip-on-component effect='slide'
+												side='top'
+												event='none'
+												class='tooltip-warning'
+												tabindex='-1'
+												tooltipIsVisible=showMessages }}
+  {{{messages}}}
+{{/tooltip-on-component}}
+
 <label class={{if value 'fade'}}>{{label}}</label>
 {{input value=value type=type class="form-control" placeholder=placeholder disabled=disabled focus-out=(action 'setHasInteracted')}}

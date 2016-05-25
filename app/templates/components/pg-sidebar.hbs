@@ -16,21 +16,31 @@
   <!-- BEGIN SIDEBAR MENU -->
   <div class="sidebar-menu">
     <ul class="menu-items">
-	    <li class="m-t-15">
-	      <a class="detailed">
-	        <span class="title">Dashboard</span>
-	        <span class="details">Your Merchant home</span>
-	      </a>
-	      <span class="icon-thumbnail bg-info"><i class="pg-home"></i></span>
-	    </li>
-      <li>
+
+
+      {{#link-to 'dashboard' class="m-t-15" tagName="li"}}
+        <a class="detailed">
+          <span class="title">Dashboard</span>
+          <span class="details">Your Merchant home</span>
+        </a>
+        <span class="icon-thumbnail bg-info"><i class="pg-home"></i></span>
+      {{/link-to}}
+
+      {{#link-to 'saqs.edit' 1 tagName="li"}}
         <a class="detailed">
           <span class="title">SAQ</span>
           <span class="details">Manage your SAQs</span>
         </a>
         <span class="icon-thumbnail">Saq</span>
-      </li>
-      <li>
+      {{/link-to}}
+      {{!-- <li>
+        {{#link-to 'saqs.edit' 1 class="detailed"}}
+          <span class="title">SAQ</span>
+          <span class="details">Manage your SAQs</span>
+        {{/link-to}}
+        <span class="icon-thumbnail">Saq</span>
+      </li> --}}
+     {{!--  <li>
         <a class="detailed">
           <span class="title">Scans</span>
           <span class=" arrow"></span>
@@ -57,7 +67,7 @@
           <span class="arrow"></span>
         </a>
         <span class="icon-thumbnail">Usr</span>
-      </li>
+      </li> --}}
     </ul>
     <div class="clearfix"></div>
   </div>

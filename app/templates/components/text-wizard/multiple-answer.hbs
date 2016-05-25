@@ -3,7 +3,9 @@
     {{#each answers.multiples as |answer|}}
       <button {{action attrs.answer answer.bringsTo}} class="btn btn-default btn-lg btn-larger btn-block text-left" style="white-space: normal; border-radius: 0;">
         <div>{{answer.text}}</div>
-        <span class="hint-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque varius facilisis volutpat.</span>
+        {{#if answer.description}}
+        	<span class="hint-text">{{answer.description}}</span>
+        {{/if}}
       </button>
     {{/each}}
   {{/stagger-set}}

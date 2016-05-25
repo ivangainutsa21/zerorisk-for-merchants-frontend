@@ -1,19 +1,21 @@
-<div class="saq-editor-question-container container-fluid container-fixed-lg bg-white p-t-50 p-b-50" style="height: 50%;">
-    {{#if currentQuestionHasQuestionMark}}
-      <div class="hint-text all-caps fs-10 font-montserrat" style="width: 80%; margin: 0 auto;">Question</div>
-    {{/if}}
+  <div class="saq-editor-question-container container-fluid container-fixed-lg bg-white p-t-50 p-b-50 height-50 flex-center">  
+      
+      {{!-- {{#liquid-bind question.id class="flex-center" as |cq| }} --}}
+        <div style="width: 80%;">
+          <div class="hint-text all-caps fs-10 font-montserrat">Question</div>
+          <h5>{{{question.text}}}</h5>
+        </div>
+      {{!-- {{/liquid-bind}} --}}
 
-    <h5 style="width: 80%; margin: 0 auto;">{{{question.text}}}</h5>
+      {{#if canGoPrev}}
+        <a {{action 'goBack'}} class="hidden-xs" style="position: absolute; top: 42%;">
+          <i class="fa fa-angle-left fa-2x muted" aria-hidden="true"></i>
+        </a>
+      {{/if}}
 
-    {{#if canGoPrev}}
-      <a {{action 'goBack'}} class="hidden-xs" style="position: absolute; top: 42%;">
-        <i class="fa fa-angle-left fa-2x muted" aria-hidden="true"></i>
-      </a>
-    {{/if}}
-
-    {{#if canGoNext}}
-      <a {{action 'goBack'}} class="hidden-xs" style="position: absolute; top: 42%;">
-        <i class="fa fa-angle-right fa-2x muted" aria-hidden="true"></i>
-      </a>
-    {{/if}}
-</div>
+      {{#if canGoNext}}
+        <a {{action 'goBack'}} class="hidden-xs" style="position: absolute; top: 42%;">
+          <i class="fa fa-angle-right fa-2x muted" aria-hidden="true"></i>
+        </a>
+      {{/if}}
+  </div>

@@ -3,6 +3,7 @@ const { computed, get, set, isEmpty } = Ember;
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
+  routing: Ember.inject.service('-routing'),
 
   // Attrs
   wizardId: null,
@@ -66,7 +67,16 @@ export default Ember.Component.extend({
           this.setCurrentQuestionAndAnswer(response.result);
         } else {
           // End of the wizard
-          alert("End of the ride. What do you want me to do with this? " + response.result.wizardView.onGoalAction);
+          let onGoalAction = JSON.parse(response.result.wizardView.onGoalAction);
+          switch(onGoalAction.action) {
+            case 'OPEN_SAQ': 
+              // TODO: remove hardcoded '1' id in favor of onGoalAction.objectId
+              // TODO: use router public api when it becomes available
+              this.get('routing').transitionTo('saqs.edit', ['1']);
+              break; 
+            default:
+              alert("Work in Progress: unhandled action.")
+          }
         }
     });
   },

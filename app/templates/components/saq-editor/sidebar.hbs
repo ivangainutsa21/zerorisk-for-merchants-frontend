@@ -1,15 +1,15 @@
  <div class="list-group m-b-0">
  	{{#if saq.questions}}
 	 	{{#each-in (group-by 'section' saq.questions) as |section questions|}}
-	 		<div class="bg-master-lightest padding-20">
+	 		<div class="bg-master-lightest" style="padding: 16px;">
 	 			{{section}}		
 	 		</div>
 	 	  {{#each questions as |question|}}	
 	 	  	<a {{action attrs.selectQuestion question}} class="list-group-item overflow-ellipsis {{if (eq question.id selectedQuestion.id) 'active'}}" style="border-right: 0;">
 	 	  		<span class="semi-bold">{{question.code}}</span>
-	 	  		<span class="text-overflow hint-text">{{truncate question.text 22}}</span>
+	 	  		<span class="text-overflow hint-text">{{truncate question.text 28}}</span>
 	 	  		{{#if question.answer}}
-		 	  		<span class="label label-default label-pill pull-right">
+		 	  		<span class="label {{if (eq question.answer.shortResponseType 'Y') 'label-success' 'label-default'}} label-pill pull-right">
 		 					{{question.answer.shortResponseType}}
 		 				</span>
 		 			{{/if}}

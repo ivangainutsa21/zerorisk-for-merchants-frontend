@@ -1,23 +1,59 @@
 <div class="content full-height">
-  <div class="container-fluid full-height no-padding">
-    <div class="row full-height no-margin">
-      <div class="col-md-4 no-padding b-r b-grey sm-b-b full-height">
-        <div class="bg-white full-height scrollable">
-          {{#deferred-content saq.questions as |d|}}
+
+    <div class="row no-margin bg-white" style="height: 55px;">
+      <div class="col-xs-4 no-margin no-padding" style="height: 55px;; box-shadow: -1px 2px 1px #E2E2E2; z-index: 2;  border-right: 1px solid #F7F7F7;">
+        <div style="padding: 17px 30px 17px;">
+          <span class="saq-editor-title font-montserrat">{{saq.humanType}}</span>
+          <span class="fs-16 hint-text p-l-10 font-montserrat">{{saq.version}}</span>
+          <span class="fs-16 hint-text pull-right font-montserrat">{{globalCompleteness}}%</span>
+        </div>
+        <div class="progress progress-small" style="background-color: #E2E2E2;">
+            <div style="width: {{globalCompleteness}}%; transition: all 200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);" class="progress-bar progress-bar-success"></div>
+        </div>
+      </div>
+      <div class="col-xs-8">
+        <div class="btn-group m-t-10 m-b-10 m-r-15 pull-right" style="border-bottom: 1px solid whitesmoke;">
+          <button type="button" class="btn btn-default"><i class="fa fa-download"></i></button>
+          
+          {{#if saq.isSubmitted}}
+            <button class="btn btn-complete" disabled><i class="fa fa-check m-r-10"></i>Submitted</button>
+          {{else}}
+            <button {{action "submit"}} class="btn btn-complete" disabled={{if (or (not isCompleted) isSubmitting) 'true'}}>
+              {{{if isSubmitting '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> Submitting..' 'Submit SAQ'}}}
+            </button>            
+          {{/if}}
+        </div>        
+      </div>
+    </div>
+
+  <div style="height: calc(100% - 56px);">
+    <div class="container-fluid full-height no-padding">
+      <div class="row full-height no-margin">
+
+        <div class="col-md-4 hidden-xs no-padding b-r b-grey sm-b-b full-height">        
+          <div class="bg-white full-height scrollable">
+            {{#deferred-content saq.questions as |d|}} 
+              {{#d.settled}}
+                {{saq-editor/sidebar saq=saq selectedQuestion=selectedQuestion selectQuestion=(action 'selectQuestion')}}
+              {{/d.settled}}
+            {{/deferred-content}}          
+          </div>
+        </div>
+  
+        <div class="col-md-8 no-padding full-height">
+          {{#deferred-content saq.questions class="full-height" as |d|}}
             {{#d.pending}}
-              <div class="progress-circle-indeterminate m-t-40"></div>
+              <div class="progress-circle-indeterminate m-t-60"></div>
             {{/d.pending}}
-    
-            {{#d.settled}}
-              {{saq-editor/sidebar saq=saq selectedQuestion=selectedQuestion selectQuestion=(action 'selectQuestion')}}
+            {{#d.settled class="full-height"}}
+              {{saq-editor/question question=selectedQuestion}}
+              {{saq-editor/answer question=selectedQuestion onSaveAnswer=(action 'goNext')}}
             {{/d.settled}}
           {{/deferred-content}}          
         </div>
-      </div>
-      <div class="col-md-8 no-padding full-height">
-        {{saq-editor/question question=selectedQuestion}}
-        {{saq-editor/answer question=selectedQuestion}}
+
       </div>
     </div>
   </div>
+
 </div>

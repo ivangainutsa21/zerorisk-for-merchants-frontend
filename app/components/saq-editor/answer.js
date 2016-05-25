@@ -11,11 +11,11 @@ export default Ember.Component.extend({
 				if(!answer) {
 					let answer = this.get('store').createRecord('saqAnswer', { saq: this.get('question').get('saq'), question: this.get('question'), responseType: responseType });
 					answer.save();
-
 				} else {
 			  	answer.set('responseType', responseType);
-			  	answer.save();					
+			  	answer.save();
 				}
+				this.get('onSaveAnswer')();
 			});
 		}
 	}

@@ -26,6 +26,8 @@ export default function() {
   this.passthrough('/api/v2/Wizard/**');
 
   this.get('/api/v2/merchant/saqs/:id');
+  this.put('/api/v2/merchant/saqs/:id');
+
 
   this.get('/api/v2/merchant/saqQuestions', 'saqQuestions', { coalesce: true });
 

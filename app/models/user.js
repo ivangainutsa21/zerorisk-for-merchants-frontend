@@ -14,6 +14,7 @@ export default Model.extend({
   enabled: attr('boolean'),
   role: attr('string'),
   merchantStatus: attr('string'),
+  merchantCustomizationId: attr('number'),
   fullName: computed('firstName', 'lastName', function() {
     return `${this.get('firstName')} ${this.get('lastName')}`;
   }).readOnly(),
