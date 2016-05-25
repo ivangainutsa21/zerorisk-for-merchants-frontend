@@ -20,10 +20,17 @@ a {
   cursor: pointer;
 }
 
-// Apply attr only to first .ember-view element inside body
-// body > .ember-view:second-child, :not(.ember-view) + .ember-view {
+//Apply attr only to first .ember-view element inside body
+// 'body > .ember-view:first-child, :not(.ember-view) + .ember-view {
 // 	height: 100%;
+// }'
+// .ember-view {
+// 	height: inherit;
 // }
+
+.page-container .page-content-wrapper .content {
+	padding-bottom: 0px;
+}
 
 .height-auto {
   height: auto !important;
@@ -145,6 +152,9 @@ a {
 	height: 100%; 
 }
 
+.tooltip {
+	z-index: 900;
+}
 .tooltip-error {
   background-color: #e37f7f;
   color: #fff;

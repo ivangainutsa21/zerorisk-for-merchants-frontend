@@ -1,0 +1,17 @@
+<!-- START PAGE-CONTAINER -->
+{{!-- <div class="{{if navi.isInFullPageRoute 'full-page-wrapper' 'page-container'}}">
+	{{#unless navi.isInFullPageRoute}}
+		{{pg-header notifications=model.notifications}}
+  {{/unless}} --}}
+  <!-- START PAGE CONTENT WRAPPER -->
+  <div class="page-content-wrapper full-height">
+
+		{{yield}}
+
+{{!-- 		{{#unless (or navi.isInFullPageRoute navi.isInSaqEditRoute)}}
+			{{pg-footer}}
+	  {{/unless}} --}}
+  </div>
+  <!-- END PAGE CONTENT WRAPPER -->
+{{!-- </div>
+ --}}<!-- END PAGE CONTAINER -->

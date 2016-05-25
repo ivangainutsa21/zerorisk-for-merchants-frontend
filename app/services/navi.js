@@ -11,7 +11,7 @@ export default Ember.Service.extend({
 
 	currentRouteName: computed.alias('applicationController.currentRouteName'),
 
-	isInFullPageRoute: computed('currentRouteName', function() {
+	isInUnauthenticatedRoute: computed('currentRouteName', function() {
 		return this.get('currentRouteName') === "login";
 	}),
 	isInSaqEditRoute: computed('currentRouteName', function() {
