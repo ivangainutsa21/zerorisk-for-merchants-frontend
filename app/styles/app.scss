@@ -13,6 +13,8 @@ $fa-font-path: "../fonts/font-awesome";
 @import "components/header.scss";
 
 // Layouts
+@import "layouts/main.scss";
+@import "layouts/footer.scss";
 @import "layouts/text-wizard.scss";
 @import "layouts/saq-editor.scss";
 
@@ -27,10 +29,6 @@ a {
 // .ember-view {
 // 	height: inherit;
 // }
-
-.page-container .page-content-wrapper .content {
-	padding-bottom: 0px;
-}
 
 .height-auto {
   height: auto !important;
@@ -50,13 +48,7 @@ a {
   overflow: visible;
 }
 
-/* Layout */
-.full-page-wrapper {
-	@extend .login-wrapper;
-}
-.header {
-  border-bottom: 1px solid #F5F5F5;
-}
+
 
 /* Login */
 .login-wrapper {

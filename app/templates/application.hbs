@@ -10,12 +10,11 @@
 
 	{{#pg-main class="page-container"}}
 		{{pg-header notifications=model.notifications}}
-		{{outlet}}		
+		{{outlet}}
+		{{#unless navi.isInSaqEditRoute}}			
+			{{pg-footer}}
+		{{/unless}}
 	{{/pg-main}}
-	
-	{{!-- {{pg-footer}} --}}
-
-
 
 {{/if}}
 

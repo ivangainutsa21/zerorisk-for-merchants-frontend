@@ -17,6 +17,7 @@ export default function() {
   // });
 
   this.passthrough('/api/v1/users/sign_in');
+  this.passthrough('/logout');
 
   this.passthrough('/api/v2/shared/entities/**');
   this.passthrough('/Wizard/**');
