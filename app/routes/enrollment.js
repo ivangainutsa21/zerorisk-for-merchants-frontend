@@ -11,7 +11,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   actions: {
   	willTransition(transition) {
-  		console.log(transition);
   		if(transition.targetName.indexOf('enrollment') === -1) {
   			if(!this.get('currentUser').get('hasCompletedEnrollment')) {
   				transition.abort();

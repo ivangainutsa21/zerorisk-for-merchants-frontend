@@ -7,7 +7,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   beforeModel(transition) {
     if (!this.controllerFor('enrollment/user-details').get('hasCompletedStep')) {
       transition.abort();
-      this.get('alerting').notify('You must complete the user details step first!', 'info');
+      this.get('alerting').notify('Confirm your details first!', 'info');
     }
   }
 });

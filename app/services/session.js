@@ -55,8 +55,13 @@ export default Session.extend({
     this.set('data.reasonForInvalidation', null);
 
     // Unloading all stores to clean last session data
-    this.get('store').unloadAll();
-    this.get('routing').transitionTo('login');
+    if (config['ember-cli-mirage'].enabled) {
+      window.location.replace(config.baseURL);
+    } else {
+      this.get('store').unloadAll();
+      this.get('routing').transitionTo('login');  
+    }
+    
   },
 
   _populateCurrentUser() {
