@@ -32,9 +32,8 @@
         <div class="pull-right">
 					{{#basic-dropdown horizontalPosition="right" as |dropdown|}}
 						<ul role="menu" class="m-b-0" style="width: 150px;">
-						  <li><a href="#"><i class="pg-settings_small"></i> Settings</a></li>
-						  <li><a href="#"><i class="pg-outdent"></i> Feedback</a></li>
-						  <li><a href="#"><i class="pg-signals"></i> Help</a></li>
+						  <li class="disabled"><a href="#"><i class="pg-settings_small"></i> Settings</a></li>
+						  <li class="disabled"><a href="#"><i class="pg-outdent"></i> Feedback</a></li>						
 						  <li class="bg-master-lighter" style="padding: 5px 22px;">
 						    <a {{action "logout" target=session}}>
 						      <span class="pull-left">Logout</span>

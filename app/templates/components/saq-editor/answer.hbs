@@ -1,4 +1,4 @@
-<div class="bg-master-light" style="height: 50%; display: flex; align-items: center; justify-content: center; overflow: auto; box-shadow: inset 0px 0px 4px #C1C1C1;">
+<div class="bg-master-light" style="height: 50%; display: flex; align-items: top; justify-content: center; overflow: auto; box-shadow: inset 0px 0px 4px #C1C1C1; padding: 30px 0;">
   <div style="width: 50%; text-align: center; margin: 0 auto;">
     {{#stagger-set inDirection="up" outDirection="left" inEffect="slideAndFade"}}
         <button {{action 'answer' 'YES'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'YES') 'btn-success' 'btn-default'}}" 
@@ -11,16 +11,20 @@
           <div>No</div>
         </button>
 
-        <button {{action 'answer' 'NOT_APPLICABLE'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'NOT_APPLICABLE') 'btn-success' 'btn-default'}}" 
+        <button id="n-a" {{action 'answer' 'NOT_APPLICABLE'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'NOT_APPLICABLE') 'btn-success' 'btn-default'}}" 
                 style="white-space: normal; border-radius: 0;">
           <div>Not Applicable</div>
-          <span class="hint-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque varius facilisis volutpat.</span>
+          {{#tooltip-on-element target="#n-a" side='top' event='hover' effect='slide' duration=5500}}
+            If this is question is not applicable to your business, please select this option and provides us with a legit justification.
+          {{/tooltip-on-element}}          
         </button>
 
-        <button {{action 'answer' 'COMPENSATING_CONTROLS'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'COMPENSATING_CONTROLS') 'btn-success' 'btn-default'}}"   
+        <button id="c-c" {{action 'answer' 'COMPENSATING_CONTROLS'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'COMPENSATING_CONTROLS') 'btn-success' 'btn-default'}}"   
                 style="white-space: normal; border-radius: 0;">
-          <div>Compensating Controls</div>
-          <span class="hint-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque varius facilisis volutpat.</span>
+          <div>Compensating Controls</div>  
+          {{#tooltip-on-element target="#c-c" side='top' event='hover' effect='slide' duration=5500}}
+            Should you be in a position not to comply with this specific requirement you might instead be compensating the risk with additional "compensating" activities. Choose this option to initiate a Compensating Control Wizard.
+          {{/tooltip-on-element}}                  
         </button>
     {{/stagger-set}}
   </div>

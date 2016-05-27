@@ -1,19 +1,19 @@
 {{#if hasCompletedPreFlight}}
   <div class="row bg-master-lightest">
     <div class="col-md-12">
-      {{text-wizard wizardId=3}}
+      {{text-wizard wizardId=3 onWizardComplete=(action 'unlockApplication')}}
     </div>
   </div>
 {{else}}
   <div class="row bg-white">
     <div class="col-md-12">
-        <div class="p-t-10 p-r-40 p-l-40 p-b-30">
+        <div class="p-t-20 p-r-40 p-l-40 p-b-30">
           <h3>Next up</h3>
-          <p>In order to achieve PCI compliance, every merchant has to complete a Self Assessment Questionnaire (SAQ).</p>
-          <p>There are currently 8 types of SAQs, and understanding which one is the right for you is no easy task.</p>
-          <p>This is where ZeroRisk comes to the rescue, by clicking <b>Start</b> we'll ask you
-             some questions that will help you and us understand what is the SAQ you're supposed to complete.</p>
-          <p class="small hint-text">Sed tempor efficitur eleifend. Donec sodales neque orci, ut vehicula velit fermentum a.</p>
+
+          <p>Please take a few minutes to proceed the rest of this enrollment wizard, we will guide you with simple questions in order to identify the correct SAQ that matches your company. We will also be able to answer a few questions on your behalf!</p>
+          <p>Once a SAQ type has been identified and assigned, your status will become "Enrolled" and you will just a few steps far from the PCI DSS Compliance!</p>
+
+          <p class="small hint-text">Your current status is "Not Enrolled", which means we still have to assign a Self Assessment Questionnaire to your organisation by correctly identifying your business scenario and the way your organisation processes, transmit or store cardholder data on behalf of your customers.</p>
         </div>
         <p class="pull-right p-r-30 p-b-30">
           <button {{action 'completePreFlight'}} class="btn btn-success btn-cons">Start</button>

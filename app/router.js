@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
-  this.route('dashboard');
+  this.route('dashboard', { path: '/' });
 
   this.route('saqs', { resetNamespace: true }, function() {
     this.route('edit', { path: ':saq_id/edit' });

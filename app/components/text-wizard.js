@@ -72,6 +72,7 @@ export default Ember.Component.extend({
             case 'OPEN_SAQ': 
               // TODO: remove hardcoded '1' id in favor of onGoalAction.objectId
               // TODO: use router public api when it becomes available
+              this.get('onWizardComplete')();
               this.get('routing').transitionTo('saqs.edit', ['1']);
               break; 
             default:

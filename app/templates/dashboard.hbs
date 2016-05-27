@@ -1,3 +1,96 @@
-<div class="content">
-  fancy_dashboard.png
+<div class="content sm-gutter">
+	<div class="container-fluid padding-25 sm-padding-10">
+
+		<div class="row">
+			<div class="col-md-6 col-xlg-5">
+				<div class="row">
+					<div class="col-md-12 m-b-10">
+						<div class="ar-3-2">
+							<div class="panel no-border no-margin 
+							{{if (eq currentUser.merchantStatus 'Enrolled') 'bg-complete'}}
+							{{if (eq currentUser.merchantStatus 'NotEnrolled') 'bg-warning'}}
+							{{if (eq currentUser.merchantStatus 'Compliant') 'bg-success'}}
+							{{if (eq currentUser.merchantStatus 'NotCompliant') 'bg-danger'}}
+							">
+								<div class="panel-body">
+									<div class="pull-bottom bottom-left bottom-right " style="padding: 0 49px 56px 42px;">
+										<span class="label font-montserrat fs-11">STATUS</span>
+										<br>
+										<h1 class="text-white">{{currentUser.humanMerchantStatus}}</h1>
+										<p class="text-white hint-text"><i class="pg-italic m-r-5"></i>Learn more about your status</p>									
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 col-xlg-5">
+				<div class="row">
+					<div class="col-md-12 m-b-10">
+						<div class="ar-2-1">
+							<div class="panel no-border no-margin bg-white">
+								<div class="panel-body">
+									<div style="padding: 0 20px 56px 20px;">																				
+										<h2>Next up</h2>
+										<p class="hint-text">Actions needed to achieve PCI Compliance</p>			
+										<div class="m-t-20">						
+											{{#link-to "saqs.edit" 1}}
+												<button class="btn btn-default btn-block btn-rounded m-r-20 m-b-10"><i class="pg-theme m-r-10"></i>Complete your SAQ</button>
+											{{/link-to}}										
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-6 m-b-10">
+						<div class="ar-2-1">				 
+							<div class="panel no-border no-margin">
+								<div class="container-sm-height full-height">
+									<div class="row-sm-height">
+										<div class="col-sm-height col-middle">
+											<div class="panel no-border no-margin">
+												<div class="panel-body text-center">
+													<div class="muted font-montserrat">Work in progress</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 m-b-10">
+						<div class="ar-2-1">				 
+							<div class="panel no-border no-margin">
+								<div class="container-sm-height full-height">
+									<div class="row-sm-height">
+										<div class="col-sm-height col-middle">
+											<div class="panel no-border no-margin">
+												<div class="panel-body text-center">
+													<div class="muted font-montserrat">Work in progress</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				
+
+
+			</div>
+		</div>
+
+	</div>
 </div>

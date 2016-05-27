@@ -10,10 +10,14 @@ export default Ember.Component.extend({
 			this.get('question').get('answer').then((answer) => {
 				if(!answer) {
 					let answer = this.get('store').createRecord('saqAnswer', { saq: this.get('question').get('saq'), question: this.get('question'), responseType: responseType });
-					answer.save();
+					answer.save().catch(() => {
+						answer.unloadRecord();
+					});
 				} else {
 			  	answer.set('responseType', responseType);
-			  	answer.save();
+			  	answer.save().catch(() => {
+						answer.unloadRecord();
+					});
 				}
 				this.get('onSaveAnswer')();
 			});

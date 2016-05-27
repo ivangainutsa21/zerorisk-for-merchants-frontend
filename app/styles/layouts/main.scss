@@ -30,6 +30,9 @@ body, .main-wrapper, .page-container {
 	-webkit-flex: 1 0 auto;
 	-ms-flex: 1 0 auto;
 	flex: 1 0 auto;
+	@media (max-width: $screen-xs-max) {
+		padding-top: 48px;
+	}
 }
 
 // .page-container .page-content-wrapper .content {

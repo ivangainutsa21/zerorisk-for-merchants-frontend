@@ -20,5 +20,16 @@ export default Model.extend({
   }).readOnly(),
   humanRole: computed('role', function() {
     return Language.roles[this.get('role')];
+  }).readOnly(),
+  humanMerchantStatus: computed('merchantStatus', function() {
+    let merchantStatus = this.get('merchantStatus');
+    switch(merchantStatus) {
+      case 'NotEnrolled': 
+        return 'Not Enrolled';
+      case 'NotCompliant':
+        return 'Not Compliant';
+      default:
+        return merchantStatus;
+    }
   }).readOnly()
 });
