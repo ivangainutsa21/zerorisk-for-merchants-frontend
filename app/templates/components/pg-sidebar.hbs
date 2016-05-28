@@ -1,15 +1,14 @@
-{{!-- <div class="page-sidebar" data-pages="sidebar"> --}}
-  <div id="appMenu" class="sidebar-overlay-slide from-top">
-  </div>
+ {{!--  <div id="appMenu" class="sidebar-overlay-slide from-top">
+  </div> --}}
 
   <div class="sidebar-header">
     <img src="assets/img/logo_square.png" alt="logo" class="brand m-l-5" data-src="assets/img/logo_square.png" data-src-retina="assets/img/logo_square.png" height="22">
-    <div class="sidebar-header-controls">
+{{!--     <div class="sidebar-header-controls">
       <button data-pages-toggle="#appMenu" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" style="margin-top: 2px;" type="button"><i class="fa fa-angle-down fs-16"></i>
       </button>
       <button data-toggle-pin="sidebar" class="btn btn-link visible-lg-inline" type="button"><i class="fa fs-12"></i>
       </button>
-    </div>
+    </div> --}}
   </div>
 
   <div class="sidebar-menu">
@@ -19,7 +18,7 @@
           <span class="title">Dashboard</span>
           <span class="details">Your Merchant home</span>
         </a>
-        <span class="icon-thumbnail bg-info"><i class="pg-home"></i></span>
+        <span class="icon-thumbnail"><i class="pg-home"></i></span>
       {{/link-to}}
 
       {{#link-to 'saqs.edit' 1 tagName="li"}}
@@ -67,5 +66,3 @@
     </ul>
     <div class="clearfix"></div>
   </div>
-
-{{!-- </div> --}}
