@@ -13,16 +13,10 @@ body, .main-wrapper, .page-container {
 	height: 100%;
 }
 
-// .main-wrapper {
-// 	flex: 1;
-// 	height: 100%;
-// }
-// .page-container {
-// 	-webkit-box-flex: 1;
-// 	-webkit-flex: 1 0 auto;
-// 	-ms-flex: 1 0 auto;
-// 	flex: 1 0 auto;
-// }
+// Windows fix
+body.sidebar-open .page-container {
+		overflow: inherit !important;	
+}
 
 .content {
 	padding-top: 60px;
@@ -34,10 +28,6 @@ body, .main-wrapper, .page-container {
 		padding-top: 48px;
 	}
 }
-
-// .page-container .page-content-wrapper .content {
-// 	padding-bottom: 0px;
-// }
 
 .footer {
 	-webkit-box-flex: 0;

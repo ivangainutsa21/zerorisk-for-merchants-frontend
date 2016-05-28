@@ -15,9 +15,9 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     });
   },
 
-  sessionAuthenticated() {
-    this.get('session').afterAuthentication();
-  },
+  // sessionAuthenticated() {
+  //   this.get('session').afterAuthentication();
+  // },
 
   // Overwriting 'sessionInvalidated' with a custom function to prevent location reloading and giving user custom messages
   sessionInvalidated() {

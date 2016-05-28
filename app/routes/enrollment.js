@@ -5,8 +5,14 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	currentUser: Ember.inject.service(),
 	alerting: Ember.inject.service(),
 
-  beforeModel() {
-    this.transitionTo('enrollment.welcome');
+  beforeModel(transition) {
+    if(this.get('currentUser.merchantStatus') !== 'NotEnrolled') {
+      transition.abort();
+      this.get('alerting').notify('You have already completed the enrollment!', 'info');
+      this.transitionTo('dashboard');
+    } else {
+      this.transitionTo('enrollment.welcome');          
+    }    
   },
 
   actions: {

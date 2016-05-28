@@ -11,6 +11,7 @@ module.exports = function(environment) {
       routeAfterAuthentication: 'dashboard'
     },
     'ember-cli-mirage': {
+      // TODO: disable me when not needed in demo/prod anymore
       enabled: true
     },
     EmberENV: {

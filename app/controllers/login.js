@@ -15,6 +15,7 @@ export default Ember.Controller.extend({
         () => {
           this.set('error', null);
           this.set('isLoading', false);
+          this.get('session').afterAuthentication();
         },
         response => {
           this.set('isLoading', false);

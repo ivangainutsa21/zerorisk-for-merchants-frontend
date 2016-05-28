@@ -89,10 +89,11 @@ export default Session.extend({
     }
   },
 
-  afterAuthentication() {
+  afterAuthentication() {    
     this._populateCurrentUser().then(user => this._forceEnrollment(user)).then((mustCompleteEnrollment) => {
       if (!mustCompleteEnrollment) {
-        if (this.get('attemptedTransition')) {
+        debugger;
+        if (this.get('attemptedTransition') && this.get('attemptedTransition').targetName !== "login") {
           this.get('attemptedTransition').retry();
           this.set('session.attemptedTransition', null);
         } else {
