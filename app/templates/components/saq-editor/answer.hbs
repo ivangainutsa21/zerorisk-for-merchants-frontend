@@ -1,31 +1,79 @@
-<div class="bg-master-light" style="height: 50%; display: flex; align-items: top; justify-content: center; overflow: auto; box-shadow: inset 0px 0px 4px #C1C1C1; padding: 30px 0;">
-  <div style="width: 50%; text-align: center; margin: 0 auto;">
-    {{#stagger-set inDirection="up" outDirection="left" inEffect="slideAndFade"}}
-        <button {{action 'answer' 'YES'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'YES') 'btn-success' 'btn-default'}}" 
-                style="white-space: normal; border-radius: 0;">
-          <div>Yes</div>
-        </button>
+{{#if isEditingNotApplicable}}
 
-        <button {{action 'answer' 'NO'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'NO') 'btn-success' 'btn-default'}}" 
-                style="white-space: normal; border-radius: 0;">
-          <div>No</div>
-        </button>
+  {{input value=question.answer.notApplicable}}
+  <button {{action 'answer' 'NOT_APPLICABLE'}}>Save</button>
 
-        <button id="n-a" {{action 'answer' 'NOT_APPLICABLE'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'NOT_APPLICABLE') 'btn-success' 'btn-default'}}" 
-                style="white-space: normal; border-radius: 0;">
-          <div>Not Applicable</div>
-          {{#tooltip-on-element target="#n-a" side='top' event='hover' effect='slide' duration=5500}}
-            If this is question is not applicable to your business, please select this option and provides us with a legit justification.
-          {{/tooltip-on-element}}          
-        </button>
+{{else if isEditingCompensatingControls}}
 
-        <button id="c-c" {{action 'answer' 'COMPENSATING_CONTROLS'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'COMPENSATING_CONTROLS') 'btn-success' 'btn-default'}}"   
-                style="white-space: normal; border-radius: 0;">
-          <div>Compensating Controls</div>  
-          {{#tooltip-on-element target="#c-c" side='top' event='hover' effect='slide' duration=5500}}
-            Should you be in a position not to comply with this specific requirement you might instead be compensating the risk with additional "compensating" activities. Choose this option to initiate a Compensating Control Wizard.
-          {{/tooltip-on-element}}                  
-        </button>
-    {{/stagger-set}}
+  {{input value=question.answer.constraints}}
+  {{input value=question.answer.definition}}
+  {{input value=question.answer.maintenance}}
+  {{input value=question.answer.objective}}
+  {{input value=question.answer.risks}}
+  {{input value=question.answer.validation}}
+
+  <button {{action 'answer' 'COMPENSATING_CONTROLS'}}>Save</button>
+
+{{else}}
+
+  <div class="bg-master-lighter" style="height: 50%; display: flex; align-items: top; justify-content: center; overflow: auto; box-shadow: inset 0px 0px 4px #C1C1C1; padding: 30px 0;">
+    <div style="width: 50%; text-align: center; margin: 0 auto;">
+      {{#stagger-set inDirection="up" outDirection="left" inEffect="slideAndFade"}}
+          <button {{action 'answer' 'YES'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'YES') 'btn-success' 'btn-default'}}" 
+                  style="white-space: normal; border-radius: 0;">
+            <div>Yes</div>
+          </button>
+
+          <button {{action 'answer' 'NO'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'NO') 'btn-success' 'btn-default'}}" 
+                  style="white-space: normal; border-radius: 0;">
+            <div>No</div>
+          </button>
+          
+          <div class="btn-group  btn-group-justified m-t-10">
+            <div class="btn-group" role="group" style="width: 2%;">
+              <button id="n-a" {{action 'startEditingNotApplicable'}}class="btn btn-lg btn-larger text-left {{if (eq question.answer.responseType 'NOT_APPLICABLE') 'btn-success' 'btn-default'}}" 
+                      style="white-space: normal; border-radius: 0;">
+                Not Applicable
+                {{#tooltip-on-element target="#n-a" side='top' event='hover' effect='slide'}}
+                  If this is question is not applicable to your business, please select this option and provides us with a legit justification.
+                {{/tooltip-on-element}}          
+              </button>
+            </div>
+            {{#if (eq question.answer.responseType 'NOT_APPLICABLE')}}
+              <div class="btn-group" role="group">
+                <button {{action 'startEditingNotApplicable'}} class="btn btn-lg btn-larger btn-white">
+                  <div class="overflow-ellipsis"><i class="fa fa-edit m-r-5"></i>View & Edit</div>
+                  {{#tooltip-on-element side='top' event='hover' effect='slide'}}
+                    View provided justification for this Not Applicable answer.
+                  {{/tooltip-on-element}} 
+                </button>
+              </div>
+            {{/if}}
+          </div>
+          
+          <div class="btn-group  btn-group-justified m-t-10">
+            <div class="btn-group" role="group" style="width: 2%;">
+              <button id="c-c" {{action 'startEditingCompensatingControls'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'COMPENSATING_CONTROLS') 'btn-success' 'btn-default'}}"   
+                      style="white-space: normal; border-radius: 0;">
+                Compensating Controls
+                {{#tooltip-on-element target="#c-c" side='top' event='hover' effect='slide'}}
+                  Should you be in a position not to comply with this specific requirement you might instead be compensating the risk with additional "compensating" activities. Choose this option to initiate a Compensating Control Wizard.
+                {{/tooltip-on-element}}                  
+              </button>
+            </div>
+            {{#if (eq question.answer.responseType 'COMPENSATING_CONTROLS')}}
+              <div class="btn-group" role="group">
+              <button {{action 'startEditingCompensatingControls'}} class="btn btn-lg btn-larger btn-white">
+                <div class="overflow-ellipsis"><i class="fa fa-edit m-r-5"></i>View & Edit</div>
+                {{#tooltip-on-element side='top' event='hover' effect='slide'}}
+                  View provided Compensating Controls for this answer.
+                {{/tooltip-on-element}} 
+                </button>
+              </div>
+            {{/if}}
+          </div>
+      {{/stagger-set}}
+    </div>
   </div>
-</div>
+
+{{/if}}

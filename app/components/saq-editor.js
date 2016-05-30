@@ -42,13 +42,17 @@ export default Ember.Component.extend({
 		});
 	},
 
-	isCompleted: Ember.computed('saq.questions.[]', 'saq.answers.[]', function() {
+	savedAnswers: Ember.computed('saq.answers.[]', function() {
+		return this.get('saq.answers').filterBy('isNew', false);
+	}),
+
+	isCompleted: Ember.computed('saq.questions.[]', 'savedAnswers.[]', function() {
 		return this.get('saq.questions.length') === this.get('saq.answers.length');
 	}),
 
-	globalCompleteness: Ember.computed('saq.questions.[]', 'saq.answers.[]', function() {
-		if(this.get('saq.answers.length') > 0) {
-			let completeness = Math.floor((this.get('saq.answers.length') / this.get('saq.questions.length')) * 100);
+	globalCompleteness: Ember.computed('saq.questions.[]', 'savedAnswers.[]', function() {
+		if(this.get('savedAnswers.length') > 0) {
+			let completeness = Math.floor((this.get('savedAnswers.length') / this.get('saq.questions.length')) * 100);
 			if(completeness > 100) {
 				return 100;
 			} else {
@@ -71,15 +75,26 @@ export default Ember.Component.extend({
 
 	actions: {
 		selectQuestion(question) {
-			this._setSelectedQuestion(question);
+			this.get('selectedQuestion').get('answer').then((answer) => {			
+				console.log(answer);
+				if(answer && answer.get('hasDirtyAttributes')) {					
+					var c = confirm('confirm leaving? you have unsaved changes');
+					if(c == true) {
+						answer.rollbackAttributes();
+						this._setSelectedQuestion(question);
+					} 
+				} else {
+					this._setSelectedQuestion(question);
+				}
+			});
 		},
 
 		goNext() {			
 		  let nextQuestion = this.get('saq.questions').nextObject(this.get('selectedQuestion.id'));
 		  if(nextQuestion) {
-		  	Ember.run.later(this, () => {
+		  	// Ember.run.later(this, () => {
 		  		this._setSelectedQuestion(nextQuestion);
-		  	}, 100);		  	
+		  	// }, 100);		  	
 		  }
 		},
 
