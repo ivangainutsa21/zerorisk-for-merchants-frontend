@@ -91,8 +91,7 @@ export default Session.extend({
 
   afterAuthentication() {    
     this._populateCurrentUser().then(user => this._forceEnrollment(user)).then((mustCompleteEnrollment) => {
-      if (!mustCompleteEnrollment) {
-        debugger;
+      if (!mustCompleteEnrollment) {        
         if (this.get('attemptedTransition') && this.get('attemptedTransition').targetName !== "login") {
           this.get('attemptedTransition').retry();
           this.set('session.attemptedTransition', null);

@@ -8,7 +8,8 @@ module.exports = function(environment) {
     locationType: 'auto',
     'ember-simple-auth':  {
       authenticationRoute: 'login',
-      routeAfterAuthentication: 'dashboard'
+      routeAfterAuthentication: 'dashboard',
+      routeIfAlreadyAuthenticated: 'dashboard'
     },
     'ember-cli-mirage': {
       // TODO: disable me when not needed in demo/prod anymore

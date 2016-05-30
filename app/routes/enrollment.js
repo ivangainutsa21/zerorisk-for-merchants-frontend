@@ -18,7 +18,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   actions: {
   	willTransition(transition) {
   		if(transition.targetName.indexOf('enrollment') === -1) {
-  			if(!this.get('currentUser').get('hasCompletedEnrollment')) {
+        // test this.get('currentUser.merchantStatus') !== 'NotEnrolled'
+  			if(this.get('currentUser.merchantStatus') === 'NotEnrolled') {
   				transition.abort();
   				this.get('alerting').notify('You must complete the enrollment wizard before using the application.', 'info');
   			}
