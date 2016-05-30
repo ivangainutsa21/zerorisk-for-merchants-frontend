@@ -106,5 +106,4 @@ export default Session.extend({
     // this.get('notifications').stopPolling();
     Ember.run.once(this, this._alertCleanAndRedirect);
   }
-
 });

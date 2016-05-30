@@ -7,30 +7,30 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
+
   this.route('dashboard', { path: '/' });
 
   this.route('saqs', { resetNamespace: true }, function() {
     this.route('edit', { path: ':saq_id/edit' });
   });
 
-  this.route('scans', function() {
+  this.route('scans', { resetNamespace: true }, function() {
     this.route('new');
   });
 
-  this.route('ips', function() {
+  this.route('ips', { resetNamespace: true }, function() {
     this.route('new');
   });
 
-  this.route('scan', function() {
+  this.route('scan', { resetNamespace: true }, function() {
     this.route('results');
   });
 
-  this.route('enrollment', function() {
+  this.route('enrollment', { resetNamespace: true }, function() {
     this.route('welcome');
     this.route('user-details');
     this.route('saq-detection');
   });
-
 });
 
 export default Router;
