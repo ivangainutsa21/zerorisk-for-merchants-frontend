@@ -1,37 +1,110 @@
 {{#if isEditingNotApplicable}}
 
-  {{input value=question.answer.notApplicable}}
-  <button {{action 'answer' 'NOT_APPLICABLE'}}>Save</button>
+  <div class="padding-20" style="height: 50%;">
+    <div class="alert alert-default m-b-0" role="alert">
+      <b>Explanation of Non-Applicability</b><br>
+      Explain why the related requirement is not applicable to your organization.
+      <a {{action 'stopEditingNotApplicable'}}><i class="pg-close_line pull-right" style="font-size: 24px; line-height: 3px;"></i></a>
+    </div>
+    {{textarea value=question.answer.notApplicable class="saq-editor-not-applicable-textarea form-control" placeholder="e.g. Cardholder data is never stored electronically"}}
+      
+    <button class="btn btn-lg btn-complete btn-larger pull-right m-t-10" {{action 'answer' 'NOT_APPLICABLE'}}>Save</button>
+    <button class="btn btn-lg btn-default btn-larger pull-right m-t-10 m-r-5" {{action 'stopEditingNotApplicable'}}>Cancel</button>
+  </div>
 
 {{else if isEditingCompensatingControls}}
 
-  {{input value=question.answer.constraints}}
-  {{input value=question.answer.definition}}
-  {{input value=question.answer.maintenance}}
-  {{input value=question.answer.objective}}
-  {{input value=question.answer.risks}}
-  {{input value=question.answer.validation}}
+  <div class="padding-20" style="height: 50%;">
+    <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator nav-stack-sm" data-init-reponsive-tabs="collapse">
+      <li class={{if (eq activeCompensatingControlPoint 'constraints') 'active'}}>
+        <a onclick={{action (mut activeCompensatingControlPoint) 'constraints'}}><span>Constraints</span></a>
+      </li>
+      <li class={{if (eq activeCompensatingControlPoint 'objective') 'active'}}>
+        <a onclick={{action (mut activeCompensatingControlPoint) 'objective'}}><span>Objective</span></a>
+      </li>
+      <li class={{if (eq activeCompensatingControlPoint 'risks') 'active'}}>
+        <a onclick={{action (mut activeCompensatingControlPoint) 'risks'}}><span>Risks</span></a>
+      </li>
+      <li class={{if (eq activeCompensatingControlPoint 'definition') 'active'}}>
+        <a onclick={{action (mut activeCompensatingControlPoint) 'definition'}}><span>Definition</span></a>
+      </li>
+      <li class={{if (eq activeCompensatingControlPoint 'validation') 'active'}}>
+        <a onclick={{action (mut activeCompensatingControlPoint) 'validation'}}><span>Validation</span></a>
+      </li>
+      <li class={{if (eq activeCompensatingControlPoint 'maintenance') 'active'}}>
+        <a onclick={{action (mut activeCompensatingControlPoint) 'maintenance'}}><span>Maintenance</span></a>
+      </li>
+    </ul>
 
-  <button {{action 'answer' 'COMPENSATING_CONTROLS'}}>Save</button>
+    <div class="tab-content padding-0 saq-editor-compensating-controls-tabs-content">
+      <div class="tab-pane active saq-editor-compensating-controls-tabs-pane">
+        {{#if (eq activeCompensatingControlPoint 'constraints')}}
+          <div class="alert alert-default m-b-0" role="alert">
+            Please list all constraints precluding compliance with the original requirement. Refer to the following example of constraints forcing the submission of a Compensating Control            
+          </div>
+          {{textarea value=question.answer.constraints class="saq-editor-compensating-controls-textarea form-control" placeholder="e.g. Company XYZ employs stand-alone Unix Servers without LDAP. As such, they each require a “root” login. It is not possible for Company XYZ to manage the “root” login nor is it feasible to log all “root” activity by each user."}}
+        {{/if}}
+
+        {{#if (eq activeCompensatingControlPoint 'objective')}}
+          <div class="alert alert-default m-b-0" role="alert">
+            Please define the objective of the original control linked to this requirement, in order to confirm the compensating control is acceptable and consistent with the original intent.
+          </div>
+          {{textarea value=question.answer.objective class="saq-editor-compensating-controls-textarea form-control" placeholder="e.g. The objective of requiring unique logins is twofold. First, it is not considered acceptable from a security perspective to share login credentials. Secondly, having shared logins makes it impossible to state definitively that a person is responsible for a particular action."}}
+        {{/if}}
+
+        {{#if (eq activeCompensatingControlPoint 'risks')}}
+          <div class="alert alert-default m-b-0" role="alert">
+            Please include any additional risk posed by the lack of the original control, if any available. This is needed to also confirm the intent of this requirement is fully understood.
+          </div>
+          {{textarea value=question.answer.risks class="saq-editor-compensating-controls-textarea form-control" placeholder="e.g. Additional risk is introduced to the access control system by not ensuring all users have a unique ID and are able to be tracked."}}
+        {{/if}}
+
+        {{#if (eq activeCompensatingControlPoint 'definition')}}
+          <div class="alert alert-default m-b-0" role="alert">
+            Please define the compensating controls and explain how they address the objectives of the original control and the increased risk, if any. This is needed to verify the compensating controls are eliminating the risk residue generated by the lack of compliance against the original requirement.
+          </div>
+          {{textarea value=question.answer.definition class="saq-editor-compensating-controls-textarea form-control" placeholder="e.g. Company XYZ is going to require all users to log into the servers from their desktops using the SU command. SU allows a user to access the “root” account and perform actions under the “root” account but is able to be logged in the SU-log directory. In this way, each user’s actions can be tracked through the SU account."}}
+        {{/if}}
+
+        {{#if (eq activeCompensatingControlPoint 'validation')}}
+          <div class="alert alert-default m-b-0" role="alert">
+            Please define how the described compensating controls were validated and tested to confirm they are a valid countermeasure to the lack of compliance against the original requirement.
+          </div>
+          {{textarea value=question.answer.validation class="saq-editor-compensating-controls-textarea form-control" placeholder="e.g. Company XYZ demonstrates to assessor that the SU command being executed and that those individuals utilizing the command are logged to identify that the individual is performing actions under root privileges."}}
+        {{/if}}
+
+        {{#if (eq activeCompensatingControlPoint 'maintenance')}}
+          <div class="alert alert-default m-b-0" role="alert">
+            Please define all process and controls in place to maintain compensating controls once implemented.
+          </div>
+          {{textarea value=question.answer.maintenance class="saq-editor-compensating-controls-textarea form-control" placeholder="e.g. Company XYZ documents processes and procedures to ensure SU configurations are not changed, altered, or removed to allow individual users to execute root commands without being individually tracked or logged."}}
+        {{/if}}
+
+      </div>
+    </div>
+    
+    <button class="btn btn-lg btn-complete btn-larger pull-right m-t-10" {{action 'answer' 'COMPENSATING_CONTROLS'}}>Save</button>
+    <button class="btn btn-lg btn-default btn-larger pull-right m-t-10 m-r-5" {{action 'stopEditingCompensatingControls'}}>Cancel</button>
+  </div>
 
 {{else}}
 
   <div class="bg-master-lighter" style="height: 50%; display: flex; align-items: top; justify-content: center; overflow: auto; box-shadow: inset 0px 0px 4px #C1C1C1; padding: 30px 0;">
-    <div style="width: 50%; text-align: center; margin: 0 auto;">
+    <div style="width: 50%; text-align: center; margin: auto;">
       {{#stagger-set inDirection="up" outDirection="left" inEffect="slideAndFade"}}
-          <button {{action 'answer' 'YES'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'YES') 'btn-success' 'btn-default'}}" 
+          <button {{action 'answer' 'YES'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.type 'YES') 'btn-success' 'btn-default'}}" 
                   style="white-space: normal; border-radius: 0;">
             <div>Yes</div>
           </button>
 
-          <button {{action 'answer' 'NO'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'NO') 'btn-success' 'btn-default'}}" 
+          <button {{action 'answer' 'NO'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.type 'NO') 'btn-success' 'btn-default'}}" 
                   style="white-space: normal; border-radius: 0;">
             <div>No</div>
           </button>
           
           <div class="btn-group  btn-group-justified m-t-10">
             <div class="btn-group" role="group" style="width: 2%;">
-              <button id="n-a" {{action 'startEditingNotApplicable'}}class="btn btn-lg btn-larger text-left {{if (eq question.answer.responseType 'NOT_APPLICABLE') 'btn-success' 'btn-default'}}" 
+              <button id="n-a" {{action 'startEditingNotApplicable'}}class="btn btn-lg btn-larger text-left {{if (eq question.answer.type 'NOT_APPLICABLE') 'btn-success' 'btn-default'}}" 
                       style="white-space: normal; border-radius: 0;">
                 Not Applicable
                 {{#tooltip-on-element target="#n-a" side='top' event='hover' effect='slide'}}
@@ -39,7 +112,7 @@
                 {{/tooltip-on-element}}          
               </button>
             </div>
-            {{#if (eq question.answer.responseType 'NOT_APPLICABLE')}}
+            {{#if (eq question.answer.type 'NOT_APPLICABLE')}}
               <div class="btn-group" role="group">
                 <button {{action 'startEditingNotApplicable'}} class="btn btn-lg btn-larger btn-white">
                   <div class="overflow-ellipsis"><i class="fa fa-edit m-r-5"></i>View & Edit</div>
@@ -53,7 +126,7 @@
           
           <div class="btn-group  btn-group-justified m-t-10">
             <div class="btn-group" role="group" style="width: 2%;">
-              <button id="c-c" {{action 'startEditingCompensatingControls'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.responseType 'COMPENSATING_CONTROLS') 'btn-success' 'btn-default'}}"   
+              <button id="c-c" {{action 'startEditingCompensatingControls'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.type 'COMPENSATING_CONTROLS') 'btn-success' 'btn-default'}}"   
                       style="white-space: normal; border-radius: 0;">
                 Compensating Controls
                 {{#tooltip-on-element target="#c-c" side='top' event='hover' effect='slide'}}
@@ -61,7 +134,7 @@
                 {{/tooltip-on-element}}                  
               </button>
             </div>
-            {{#if (eq question.answer.responseType 'COMPENSATING_CONTROLS')}}
+            {{#if (eq question.answer.type 'COMPENSATING_CONTROLS')}}
               <div class="btn-group" role="group">
               <button {{action 'startEditingCompensatingControls'}} class="btn btn-lg btn-larger btn-white">
                 <div class="overflow-ellipsis"><i class="fa fa-edit m-r-5"></i>View & Edit</div>

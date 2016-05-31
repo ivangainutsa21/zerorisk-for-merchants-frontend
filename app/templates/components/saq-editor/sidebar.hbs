@@ -15,8 +15,8 @@
 						</div>
 		 	  		{{#if question.answer}}
 							<div class="col-xs-2">
-			 	  			<span class="label {{if (eq question.answer.shortResponseType 'Y') 'label-success' 'label-default'}} label-pill pull-right">
-			 						{{question.answer.shortResponseType}}
+			 	  			<span class="label {{if (eq question.answer.shortType 'Y') 'label-success' 'label-default'}} label-pill pull-right">
+			 						{{question.answer.shortType}}
 			 					</span>
 							</div>
 			 			{{/if}}

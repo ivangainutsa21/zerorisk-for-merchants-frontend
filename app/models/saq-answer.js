@@ -7,7 +7,7 @@ const { computed } = Ember;
 export default Model.extend({
   saq: belongsTo('saq'),
   question: belongsTo('saq-question'),
-  responseType: attr('string'),
+  type: attr('string'),
   notApplicable: attr('string'),
   code: attr('string'),
   constraints: attr('string'),
@@ -16,9 +16,9 @@ export default Model.extend({
   objective: attr('string'),
   risks: attr('string'),
   validation: attr('string'),
-  shortResponseType: computed('responseType', function() {
-    let responseType = this.get('responseType');
-    switch(responseType) {
+  shortType: computed('type', function() {
+    let type = this.get('type');
+    switch(type) {
       case 'YES':
         return 'Y';
       case 'NO':
@@ -28,7 +28,7 @@ export default Model.extend({
       case 'COMPENSATING_CONTROLS':
         return 'CC'
       default: 
-        return responseType;
+        return type;
     }
   })
 });

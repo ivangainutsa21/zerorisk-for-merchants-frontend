@@ -8,9 +8,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   afterModel(saq) {
     saq.get('answers');
-    saq.get('questions')
-    // .then(questions => {            
-    //   this.store.createRecord('saqAnswer', { saq: saq, question: questions.get('firstObject'), responseType: 'NO' } );
-    // });
+    saq.get('questions');
   }
 });

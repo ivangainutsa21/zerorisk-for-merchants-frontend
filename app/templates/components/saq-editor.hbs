@@ -52,7 +52,7 @@
             {{/d.pending}}
             {{#d.settled class="full-height"}}
               {{saq-editor/question question=selectedQuestion}}
-              {{saq-editor/answer question=selectedQuestion onSaveAnswer=(action 'goNext')}}
+              {{saq-editor/answer question=selectedQuestion onSaveAnswer=(action 'goNext') okToLeaveSelectedQuestion=(action 'okToLeaveSelectedQuestion')}}
             {{/d.settled}}
           {{/deferred-content}}          
         </div>

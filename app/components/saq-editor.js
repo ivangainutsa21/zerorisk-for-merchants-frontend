@@ -73,28 +73,39 @@ export default Ember.Component.extend({
 		});		
 	},
 
+	_okToLeaveSelectedQuestion() {
+		return this.get('selectedQuestion').get('answer').then((answer) => {										
+			if(answer && answer.get('hasDirtyAttributes')) {					
+				let c = confirm('confirm leaving? you have unsaved changes');
+				if(c === true) {					
+					answer.rollbackAttributes();					
+					return true;
+				} else {
+					return false;
+				} 
+			} else {
+				return true;
+			}
+		});
+	},
+
 	actions: {
 		selectQuestion(question) {
-			this.get('selectedQuestion').get('answer').then((answer) => {			
-				console.log(answer);
-				if(answer && answer.get('hasDirtyAttributes')) {					
-					var c = confirm('confirm leaving? you have unsaved changes');
-					if(c == true) {
-						answer.rollbackAttributes();
-						this._setSelectedQuestion(question);
-					} 
-				} else {
+			this._okToLeaveSelectedQuestion().then(ok => {
+				if (ok) {
 					this._setSelectedQuestion(question);
 				}
 			});
 		},
 
+		okToLeaveSelectedQuestion() {
+			return this._okToLeaveSelectedQuestion();
+		},
+
 		goNext() {			
 		  let nextQuestion = this.get('saq.questions').nextObject(this.get('selectedQuestion.id'));
 		  if(nextQuestion) {
-		  	// Ember.run.later(this, () => {
-		  		this._setSelectedQuestion(nextQuestion);
-		  	// }, 100);		  	
+	  		this._setSelectedQuestion(nextQuestion);
 		  }
 		},
 

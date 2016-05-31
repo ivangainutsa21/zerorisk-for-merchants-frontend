@@ -7,22 +7,18 @@ export default Ember.Component.extend({
 
 	isEditingNotApplicable: false,
 	isEditingCompensatingControls: false,
+	activeCompensatingControlPoint: 'constraints',
 
 	// Hooks
 	didUpdateAttrs() {
-		if (this.get('isEditingNotApplicable')) {
-			this.stopEditingNotApplicable();		
-		}
-
-		if (this.get('isEditingCompensatingControls')) {
-			this.stopEditingCompensatingControls();		
-		}		
+		this.stopEditingNotApplicableAndCompensatingControlsIfEditing();
 	},
 
 	// Methoods
-	saveAnswer(answer, responseType) {
-  	answer.set('responseType', responseType);
+	saveAnswer(answer, answerType) {
+  	answer.set('type', answerType);
   	answer.save().then(() => {
+  		this.stopEditingNotApplicableAndCompensatingControlsIfEditing();
   		this.get('onSaveAnswer')();
   	})
   	.catch(() => {
@@ -30,40 +26,43 @@ export default Ember.Component.extend({
 		});			
 	},
 
-	createAnswerIfDoesntExist(responseType) {
+	createAnswerIfDoesntExist(answerType) {
 		return this.get('question').get('answer').then((answer) => {
 			if (!answer) {
-				return this.get('store').createRecord('saqAnswer', { saq: this.get('question').get('saq'), question: this.get('question'), responseType: responseType });		
+				return this.get('store').createRecord('saqAnswer', { saq: this.get('question').get('saq'), question: this.get('question'), type: answerType });		
 			} else {
 				return answer;
 			}
 		});	
 	},
 
-	stopEditingNotApplicable() {
-		// check if unsaved changes
-		this.set('isEditingNotApplicable', false);
-		// this.get('question').get('answer').then((answer) => {
-		// 	if(answer && answer.get('hasDirtyAttributes')) {
-		// 		var c = confirm('confirm leaving? you have unsaved changes');
-		// 		if(c == true) {
-		// 			this.set('isEditingNotApplicable', false);
-		// 		}
-		// 	}
-		// });
+	stopEditingNotApplicableAndCompensatingControlsIfEditing() {
+		if (this.get('isEditingNotApplicable')) {
+			this._stopEditingNotApplicable();		
+		}
+
+		if (this.get('isEditingCompensatingControls')) {
+			this._stopEditingCompensatingControls();		
+		}		
 	},
 
-	stopEditingCompensatingControls() {
+	_stopEditingNotApplicable() {
+		this.get('okToLeaveSelectedQuestion')().then(ok => {
+			if (ok) {
+				this.set('isEditingNotApplicable', false);
+			}		
+		});
+	},
+
+	_stopEditingCompensatingControls() {
 		// check if unsaved changes
 		this.set('isEditingCompensatingControls', false);
+		this.set('activeCompensatingControlPoint', 'constraints');
 	},
 
 	actions: {
-		answer(responseType) {
-			this.createAnswerIfDoesntExist(responseType).then(answer => this.saveAnswer(answer, responseType));
-			// if (responseType === 'YES' || responseType === 'NO') {
-			// } else (responseType === 'NOT_APPLICABLE') {
-			// }
+		answer(answerType) {
+			this.createAnswerIfDoesntExist(answerType).then(answer => this.saveAnswer(answer, answerType));
 		},
 
 		startEditingNotApplicable() {
@@ -74,6 +73,14 @@ export default Ember.Component.extend({
 		startEditingCompensatingControls() {
 			this.set('isEditingCompensatingControls', true);
 			this.createAnswerIfDoesntExist('COMPENSATING_CONTROLS');
+		},
+
+		stopEditingNotApplicable() {
+			this._stopEditingNotApplicable();
+		},
+
+		stopEditingCompensatingControls() {
+			this._stopEditingCompensatingControls();
 		}
 	}
 });
