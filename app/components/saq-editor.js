@@ -1,4 +1,6 @@
+/*global jQuery*/
 import Ember from 'ember';
+import { EKMixin, keyDown } from 'ember-keyboard';
 
 function isElementInViewport (el) {
     //special bonus for those using jQuery
@@ -16,7 +18,7 @@ function isElementInViewport (el) {
     );
 }
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(EKMixin, {
 	tagName: '',
 
 	selectedQuestion: null,
@@ -30,24 +32,27 @@ export default Ember.Component.extend({
 		// select first question.
 		this.get('saq.questions').then(questions => {
 			this.get('saq.answers').then(() => {
+
+				this.set('keyboardActivated', true);
+
 				let unansweredQuestions = questions.filter((question) => {
 					return question.belongsTo('answer').value() === null;
 				});				
 				if(!Ember.isEmpty(unansweredQuestions)) {
-					this._setSelectedQuestion(unansweredQuestions.get('firstObject'))					
+					this._setSelectedQuestion(unansweredQuestions.get('firstObject'));
 				} else {
-					this._setSelectedQuestion(questions.get('firstObject'))
+					this._setSelectedQuestion(questions.get('firstObject'));
 				}
 			});
 		});
 	},
 
-	savedAnswers: Ember.computed('saq.answers.[]', function() {
-		return this.get('saq.answers').filterBy('isNew', false);
+	savedAnswers: Ember.computed('saq.answers.[]', 'saq.answers.@each.type', function() {
+		return this.get('saq.answers').filterBy('isNew', false).rejectBy('type', 'NO');
 	}),
 
 	isCompleted: Ember.computed('saq.questions.[]', 'savedAnswers.[]', function() {
-		return this.get('saq.questions.length') === this.get('saq.answers.length');
+		return this.get('saq.questions.length') === this.get('savedAnswers.length');
 	}),
 
 	globalCompleteness: Ember.computed('saq.questions.[]', 'savedAnswers.[]', function() {
@@ -73,10 +78,28 @@ export default Ember.Component.extend({
 		});		
 	},
 
+	_goNext() {
+	  let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));		
+	  let nextQuestion = this.get('saq.questions').objectAt(currentQuestionIndex+1);
+
+	  if(nextQuestion) {
+			this._setSelectedQuestion(nextQuestion);
+	  }
+	},
+
+	_goPrev() {			
+	  let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));		
+	  let prevQuestion = this.get('saq.questions').objectAt(currentQuestionIndex-1);
+
+	  if(prevQuestion) {
+  		this._setSelectedQuestion(prevQuestion);
+	  }
+	},
+
 	_okToLeaveSelectedQuestion() {
 		return this.get('selectedQuestion').get('answer').then((answer) => {										
 			if(answer && answer.get('hasDirtyAttributes')) {					
-				let c = confirm('confirm leaving? you have unsaved changes');
+				let c = confirm('Confirm leaving? You have unsaved changes.');
 				if(c === true) {					
 					answer.rollbackAttributes();					
 					return true;
@@ -88,6 +111,15 @@ export default Ember.Component.extend({
 			}
 		});
 	},
+
+	// Keyboard events
+	kGoNext: Ember.on(keyDown('ArrowDown'), keyDown('ArrowRight'), function() {
+		this._goNext();
+	}),
+
+	kGoPrev: Ember.on(keyDown('ArrowUp'), keyDown('ArrowLeft'), function() {
+		this._goPrev();
+	}),
 
 	actions: {
 		selectQuestion(question) {
@@ -102,17 +134,18 @@ export default Ember.Component.extend({
 			return this._okToLeaveSelectedQuestion();
 		},
 
-		goNext() {			
-		  let nextQuestion = this.get('saq.questions').nextObject(this.get('selectedQuestion.id'));
-		  if(nextQuestion) {
-	  		this._setSelectedQuestion(nextQuestion);
-		  }
+		goNext() {
+			this._goNext();
+		},
+
+		goPrev() {
+			this._goPrev();
 		},
 
 		submit() {
 			let saq = this.get('saq');
 			this.set('isSubmitting', true);
-			saq.set('status', 'submitted');
+			saq.set('status', 'SUBMITTED');
 			saq.save().then(() => {
 				this.set('isSubmitting', false);
 				this.set('downloadSaqTooltipIsShowing', true);
@@ -120,7 +153,8 @@ export default Ember.Component.extend({
 		},
 
 		download() {
-			window.location = "assets/Self-Assessment_Questionnaire_A_and_Attestation_of_Compliance.docx"
+			this.get('saq').download();
+			// window.location = "assets/Self-Assessment_Questionnaire_A_and_Attestation_of_Compliance.docx";
 		}
 	}
 });

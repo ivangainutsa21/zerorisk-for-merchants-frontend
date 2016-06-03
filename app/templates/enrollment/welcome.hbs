@@ -11,10 +11,32 @@
   <div class="col-md-8">
   <h3 class="semi-bold">Let's start</h3>
     <p>You're here because you need to demonstrate your PCI DSS compliance to the cards industry.</p>
-    <p>By clicking next you will start an enrollment procedure based on <b>3 simple steps</b> that will allow your organisation to identify and sumbit the correct PCI DSS Self Assessment Questionnaire.</p>
-    <p>Please take a few minutes to complete the journey and <i>fasten your seat belts!</i>.</p>    
+    <p>By clicking Start you will start an enrollment procedure based on <b>3 simple steps</b> that will allow your organisation to identify and sumbit the correct PCI DSS Self Assessment Questionnaire.</p>
+    <p>Please take a few minutes to complete the journey and <i>fasten your seat belts!</i></p>    
     <p class="pull-right p-t-30 p-b-30 p-r-30">
       {{#link-to "enrollment.user-details" tagName="button" class="btn btn-success btn-cons" type="button"}}Start{{/link-to}}
     </p>
   </div>
+</div>
+
+<div class="row no-margin">
+  {{ivy-videojs src=enrollmentVideoSrc fluid=true ready="ready" controls=true}}
+
+{{!--   <div class="embed-responsive  embed-responsive-16by9">
+    <video id="enrollment-video" class="embed-responsive-item" controls preload="auto" width="740" height="417"
+           data-setup=''>
+
+    <!--     poster="http://video-js.zencoder.com/oceans-clip.png" -->
+
+        <source src="https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.mp4" type='video/mp4' />
+        <source src="https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.wemb" type='video/webm' />
+        <!-- <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' /> -->
+
+      <!--<track kind="chapters" src="test/upc-video-subtitles-en.vtt" srclang="en" label="English" default></track>-->
+
+
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+
+    </video>
+  </div> --}}
 </div>

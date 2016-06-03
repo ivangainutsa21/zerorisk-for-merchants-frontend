@@ -1,7 +1,6 @@
 /*jshint node:true*/
 /* global require, module */
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
-var nodeSass = require('node-sass');
+var EmberApp = require('ember-cli/lib/broccoli/ember-app'); 
 var deployTarget = process.env.DEPLOY_TARGET;
 var fingerprintUrl;    
 
@@ -18,8 +17,7 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     sassOptions: {
       // Pages main sass file + font-awesome
-      includePaths: ['vendor/pages/scss', 'bower_components/font-awesome/scss'],
-      nodeSass: nodeSass // node-sass@3.4.2
+      includePaths: ['vendor/pages/scss', 'bower_components/font-awesome/scss']
     },
     'ember-cli-bootstrap-sassy': {
       'glyphicons': false
@@ -34,6 +32,8 @@ module.exports = function(defaults) {
 
   // Pages
   app.import('vendor/pages/js/pages.js');
+  app.import('vendor/pages/js/ui/sidebar.js');
+  app.import('vendor/pages/js/ui/notification.js');
   // Pages icon css + font
   app.import('vendor/pages/css/pages-icons.css');
   app.import('vendor/pages/fonts/pages-icon/Pages-icon.woff', { destDir: 'fonts/pages-icon' });

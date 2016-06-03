@@ -69,14 +69,13 @@ export default Ember.Component.extend({
           // End of the wizard
           let onGoalAction = JSON.parse(response.result.wizardView.onGoalAction);
           switch(onGoalAction.action) {
-            case 'OPEN_SAQ': 
-              // TODO: remove hardcoded '1' id in favor of onGoalAction.objectId
+            case 'OPEN_SAQ':               
               // TODO: use router public api when it becomes available
               this.get('onWizardComplete')();
-              this.get('routing').transitionTo('saqs.edit', ['1']);
+              this.get('routing').transitionTo('saqs.edit', [onGoalAction.objectId]);
               break; 
             default:
-              alert("Work in Progress: unhandled action.")
+              alert("Work in Progress: unhandled action.");
           }
         }
     });

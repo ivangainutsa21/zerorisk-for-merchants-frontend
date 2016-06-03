@@ -1,10 +1,22 @@
+import Ember from 'ember';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
+import { validator, buildValidations } from 'ember-cp-validations';
 
 const { computed } = Ember;
 
-export default Model.extend({
+const Validations = buildValidations({
+  notApplicable: validator('presence', true),
+  constraints: validator('presence', true),
+  definition: validator('presence', true),
+  maintenance: validator('presence', true),
+  objective: validator('presence', true),
+  risks: validator('presence', true),
+  validation: validator('presence', true)
+});
+
+export default Model.extend(Validations, {
   saq: belongsTo('saq'),
   question: belongsTo('saq-question'),
   type: attr('string'),
@@ -25,8 +37,8 @@ export default Model.extend({
         return 'N';
       case 'NOT_APPLICABLE':
         return 'N/A';
-      case 'COMPENSATING_CONTROLS':
-        return 'CC'
+      case 'COMPENSATING':
+        return 'CC';
       default: 
         return type;
     }

@@ -41,7 +41,7 @@
                 padding:20px;
                 font-size: 13.5px;
                 .btn-tag {
-                    background:fade-out($color-master-dark, .3);
+                    background:fade-out($color-master-dark, .93);
                     display: inline-block;
                     margin: 5px;
                     border-radius: 4px;
@@ -185,7 +185,6 @@
 /* Data-tables 
 ------------------------------------
 */
-
 .table.dataTable.no-footer{
     border: none;
 }
@@ -213,7 +212,7 @@
 
 }
 .dataTables_wrapper .dataTables_paginate{
-    float: right;
+    float:right;
 }
 .dataTables_wrapper .dataTables_paginate ul > li.disabled a{
     opacity: .5;
@@ -244,7 +243,7 @@
 }
 .dataTables_paginate.paging_bootstrap.pagination{
     padding-top: 0;
-    padding-right: 20px;
+    padding-right:20px;
 }
 .dataTables_wrapper .dataTables_info{
      clear: none;
@@ -255,20 +254,18 @@
 }
 .dataTables_wrapper .dataTables_paginate ul > li {
     display: inline-block;
-    padding-left: 0;
+    padding-left:0;
     font-size: 11px;
 }
 .dataTables_scrollHeadInner{
-    padding-right: 0 !important;
+    padding-right:0 !important;
 }
 .export-options-container{
     position: relative;
 }
 .dataTables_wrapper .dataTables_paginate ul > li.active > a{
     font-weight: bold;
-    color: #fff;
-    background: $color-master;
-    border-color: $color-master;
+    color: $color-master;
     opacity: 1;
 }
 .export-options-container a{

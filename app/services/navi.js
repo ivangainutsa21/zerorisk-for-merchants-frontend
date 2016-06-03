@@ -1,5 +1,5 @@
 import Ember from 'ember';
-const { getOwner, computed, observer } = Ember;
+const { getOwner, computed } = Ember;
 
 export default Ember.Service.extend({
 	routing: Ember.inject.service('-routing'),

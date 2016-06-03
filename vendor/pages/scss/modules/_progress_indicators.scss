@@ -3,7 +3,7 @@
 */
 .progress {
     height: 4px;
-    background-color: fade($color-master, 20%);
+    background-color: fade-out($color-master, .8);
     background-image: none;
     box-shadow: none;
     border-radius: 0;
@@ -214,7 +214,7 @@
         }
     }
     .shadow {
-            border: $border solid fade(#000, 10%);
+            border: $border solid fade-out(#000, .9);
             border-radius: 50%;
             height: 100%;
             width: 100%;

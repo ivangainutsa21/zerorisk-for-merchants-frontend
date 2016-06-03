@@ -1,22 +1,36 @@
 // saq-editor
 .saq-editor-question-container {
-  &:after {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 0;
-    height: 0;
-    margin-left: -15px;
-    border-style: solid;
-    border-width: 15px 15px 0 15px;
-    border-color: #FFFFFF transparent transparent transparent;
-  }
+    &:after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 0;
+        height: 0;
+        margin-left: -15px;
+        border-style: solid;
+        border-width: 15px 15px 0 15px;
+        border-color: #FFFFFF transparent transparent transparent;
+    }
 }
 
 .saq-editor-title {
     font-weight: 600;
     color: #0090d9;
     font-size: 16px !important;
+}
+
+.saq-editor-answer-container {
+    ul.nav-tabs-linetriangle {
+        overflow-y: visible !important;
+        white-space: nowrap;
+        li {
+            float: none;
+            display: inline-block;
+            a {
+                padding: 15px 12px;
+            }                
+        }
+    }
 }
 
 .saq-editor-not-applicable-textarea {
@@ -54,4 +68,8 @@
     flex: 1;
     border-left: none;
     border-right: none;
+}
+
+.saq-editor-compensating-controls-alert {
+    padding: 20px 15px;
 }

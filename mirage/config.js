@@ -29,33 +29,37 @@ export default function() {
   this.get('/api/v2/merchant/saqs/:id');
   this.put('/api/v2/merchant/saqs/:id');
 
+  this.passthrough('/api/v2/merchant/saqs/**');
+  this.passthrough('/api/v2/merchant/saqQuestions/**');
+  this.passthrough('/api/v2/merchant/saqAnswers/**');
 
-  this.get('/api/v2/merchant/saqQuestions', 'saqQuestions', { coalesce: true });
 
-  this.get('/api/v2/merchant/saqAnswers', 'saqAnswers', { coalesce: true });
-  this.get('/api/v2/merchant/saqAnswers/:id', 'saqAnswer');
+  // this.get('/api/v2/merchant/saqQuestions', 'saqQuestions', { coalesce: true });
 
-  this.put('/api/v2/merchant/saqAnswers/:id', (schema, request) => {
-    let payload = JSON.parse(request.requestBody);
-    payload.saqAnswer.questionId = payload.saqAnswer.question;
-    payload.saqAnswer.saqId = payload.saqAnswer.saq;    
-    delete payload.saqAnswer.question;
-    delete payload.saqAnswer.saq;
-    payload = payload.saqAnswer;
-    schema.db.saqAnswers.update(request.params.id, payload);
-    return schema.saqAnswers.find(request.params.id); 
-  });
+  // this.get('/api/v2/merchant/saqAnswers', 'saqAnswers', { coalesce: true });
+  // this.get('/api/v2/merchant/saqAnswers/:id', 'saqAnswer');
 
-  this.post('/api/v2/merchant/saqAnswers', (schema, request) => {
-    let payload = JSON.parse(request.requestBody);
-    payload.saqAnswer.questionId = payload.saqAnswer.question;
-    payload.saqAnswer.saqId = payload.saqAnswer.saq;    
-    delete payload.saqAnswer.question;
-    delete payload.saqAnswer.saq;
-    payload = payload.saqAnswer;    
-    return schema.saqAnswers.create(payload);
-    // return schema.saqAnswers.find(request.params.id); 
-  });
+  // this.put('/api/v2/merchant/saqAnswers/:id', (schema, request) => {
+  //   let payload = JSON.parse(request.requestBody);
+  //   payload.saqAnswer.questionId = payload.saqAnswer.question;
+  //   payload.saqAnswer.saqId = payload.saqAnswer.saq;    
+  //   delete payload.saqAnswer.question;
+  //   delete payload.saqAnswer.saq;
+  //   payload = payload.saqAnswer;
+  //   schema.db.saqAnswers.update(request.params.id, payload);
+  //   return schema.saqAnswers.find(request.params.id); 
+  // });
+
+  // this.post('/api/v2/merchant/saqAnswers', (schema, request) => {
+  //   let payload = JSON.parse(request.requestBody);
+  //   payload.saqAnswer.questionId = payload.saqAnswer.question;
+  //   payload.saqAnswer.saqId = payload.saqAnswer.saq;    
+  //   delete payload.saqAnswer.question;
+  //   delete payload.saqAnswer.saq;
+  //   payload = payload.saqAnswer;    
+  //   return schema.saqAnswers.create(payload);
+  //   // return schema.saqAnswers.find(request.params.id); 
+  // });
 
 }
 

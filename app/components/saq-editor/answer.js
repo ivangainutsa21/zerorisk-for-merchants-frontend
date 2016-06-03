@@ -55,9 +55,12 @@ export default Ember.Component.extend({
 	},
 
 	_stopEditingCompensatingControls() {
-		// check if unsaved changes
-		this.set('isEditingCompensatingControls', false);
-		this.set('activeCompensatingControlPoint', 'constraints');
+		this.get('okToLeaveSelectedQuestion')().then(ok => {
+			if (ok) {
+				this.set('isEditingCompensatingControls', false);
+				this.set('activeCompensatingControlPoint', 'constraints');
+			}
+		});
 	},
 
 	actions: {
@@ -72,7 +75,7 @@ export default Ember.Component.extend({
 
 		startEditingCompensatingControls() {
 			this.set('isEditingCompensatingControls', true);
-			this.createAnswerIfDoesntExist('COMPENSATING_CONTROLS');
+			this.createAnswerIfDoesntExist('COMPENSATING');
 		},
 
 		stopEditingNotApplicable() {

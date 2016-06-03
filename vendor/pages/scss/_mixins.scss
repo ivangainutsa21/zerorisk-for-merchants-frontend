@@ -88,6 +88,49 @@
 @mixin invisible() {
   visibility:hidden;
 }
+
+//Padding Helper Classes
+@mixin generate-paddings-options-sm($n, $j: 0) {
+  @if $j <= $n {
+    @for $i from $j through $n {
+      $step : $i*5;  
+      .sm-p-t-#{$step} {
+        margin-top: ($step*1px) !important;
+      }
+      .sm-p-r-#{$step} {
+        margin-right: ($step*1px) !important;
+      }
+        .sm-p-l-#{$step} {
+        margin-left: ($step*1px) !important;
+      }
+       .sm-p-b-#{$step} {
+        margin-bottom: ($step*1px) !important;
+      }
+      //@include generate-margin-options($n, ($i + 1));
+    }
+  }
+}
+//Margins Helper Classes
+@mixin generate-margin-options-sm($n, $j: 0) {
+  @if $j <= $n {
+    @for $i from $j through $n {
+      $step : $i*5;  
+      .sm-m-t-#{$step} {
+        margin-top: ($step*1px) !important;
+      }
+      .sm-m-r-#{$step} {
+        margin-right: ($step*1px) !important;
+      }
+        .sm-m-l-#{$step} {
+        margin-left: ($step*1px) !important;
+      }
+       .sm-m-b-#{$step} {
+        margin-bottom: ($step*1px) !important;
+      }
+      //@include generate-margin-options($n, ($i + 1));
+    }
+  }
+}
 // CSS3 PROPERTIES
 // --------------------------------------------------
 

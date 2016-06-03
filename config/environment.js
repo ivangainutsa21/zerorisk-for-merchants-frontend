@@ -13,7 +13,7 @@ module.exports = function(environment) {
     },
     'ember-cli-mirage': {
       // TODO: disable me when not needed in demo/prod anymore
-      enabled: true
+      enabled: false
     },
     EmberENV: {
       FEATURES: {

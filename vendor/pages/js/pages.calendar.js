@@ -1,4 +1,4 @@
-//Pages Calendar - Version 2.1.3
+//Pages Calendar - Version 2.1.4
 
 (function($) {
     var PagesCalendar = function(element, options) {
@@ -100,7 +100,7 @@
             */
             byDateRange: function(startDate,endDate){
                 var start = moment(startDate).format("YYYY-MM-DD");
-                var end   = moment(endDate).format("YYYY-MM-DD");
+                var end   = moment(endDate).add(24, 'hours').format("YYYY-MM-DD");
                 var range = moment.range(start, end);
 
                 //Get Disable Dates in Range
@@ -805,6 +805,7 @@
                         days = 0;
                         event.target.classList.remove('dragging');
                         $this._drawEvent();
+                        plugin.settings.onEventDragComplete(eventO);
                     }
                   })                
                 .resizable({
@@ -852,7 +853,8 @@
                     duration = 0;
                     days = 0;
                     Calendar.settings.events[eventData.index] = eventO;
-                    $this._drawEvent();               
+                    $this._drawEvent();  
+                    plugin.settings.onEventDragComplete(eventO);             
                   });       
         },
 
@@ -1297,7 +1299,8 @@
                 eventO.start = moment(eventO.start).set('date', moment(drop.attr("data-date")).get('date')).format();
                 eventO.end = moment(eventO.start).set('date', moment(drop.attr("data-date")).get('date')).format();
                 Calendar.settings.events[eventData.index] = eventO;  
-                $this._drawEvent();          
+                $this._drawEvent();    
+                plugin.settings.onEventDragComplete(eventO);      
             });
         },
 
@@ -1978,13 +1981,14 @@
                     },
                     eventBubble: true,
                     startOfTheWeek: '0',
-                    endOfTheWeek:'6'
+                    endOfTheWeek:'6',
+                    visible:true
                 },
                 //Week view Grid Options
                 grid: {
                     dateFormat: 'D dddd',
                     timeFormat: 'h A',
-                    eventBubble: false,
+                    eventBubble: true,
                 }
             },
             eventObj: {
@@ -2101,8 +2105,8 @@ function DateRange(start, end) {
     }
   }
 
-  this.start = moment(s);
-  this.end   = moment(e);
+  this.start = (s === null) ? moment(-8640000000000000) : moment(s);
+  this.end   = (e === null) ? moment(8640000000000000) : moment(e);
 }
 
 /**
@@ -2225,6 +2229,25 @@ DateRange.prototype.subtract = function(other) {
   else if ((start < other.start) && (other.start < end) && (other.end < end)) {
     return [new DateRange(start, other.start), new DateRange(other.start, end)];
   }
+};
+
+/**
+ * Build a n array of dates.
+ *
+ * @param {(!DateRange|String)} range Date range to be used for iteration or
+ *                                    shorthand string (shorthands:
+ *                                    http://momentjs.com/docs/#/manipulating/add/)
+ * @param {!boolean} exclusive Indicate that the end of the range should not
+ *                             be included in the iter.
+ *
+ * @return {!Array}
+ */
+DateRange.prototype.toArray = function(by, exclusive) {
+  var acc = [];
+  this.by(by, function(unit) {
+    acc.push(unit);
+  }, exclusive);
+  return acc;
 };
 
 /**
