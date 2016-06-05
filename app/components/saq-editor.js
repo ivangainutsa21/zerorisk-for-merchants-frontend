@@ -51,9 +51,13 @@ export default Ember.Component.extend(EKMixin, {
 		return this.get('saq.answers').filterBy('isNew', false).rejectBy('type', 'NO');
 	}),
 
-	isCompleted: Ember.computed('saq.questions.[]', 'savedAnswers.[]', function() {
-		return this.get('saq.questions.length') === this.get('savedAnswers.length');
-	}),
+	// isCompleted: Ember.computed('globalCompleteness', function() {
+	// 	//return this.get('saq.questions.length') === this.get('savedAnswers.length');
+	// 	return this.get('globalCompleteness') === 100;
+	// }),
+	isCompleted: Ember.computed.equal('globalCompleteness', 100),
+
+	submitSaqTooltipIsShowing: Ember.computed.oneWay('isCompleted'),
 
 	globalCompleteness: Ember.computed('saq.questions.[]', 'savedAnswers.[]', function() {
 		if(this.get('savedAnswers.length') > 0) {
