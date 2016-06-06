@@ -1,0 +1,6 @@
+Entity {{parent.id}}
+	<ul class="rows">	
+	  {{#each children as |child|}}
+	    {{entity-tree parent=child children=child.children tagName="li"}}	 
+	  {{/each}}
+	</ul>

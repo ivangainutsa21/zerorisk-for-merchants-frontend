@@ -60,12 +60,10 @@ export default Session.extend({
     } else {
       this.get('store').unloadAll();
       this.get('routing').transitionTo('login');  
-    }
-    
+    }    
   },
 
   _populateCurrentUser() {
-    // console.log(this.get('session.authenticated'));
     let { userId } = this.get('session.authenticated');    
     return this.get('store').find('user', userId).then(user => this.get('currentUser').set('content', user) && user);
   },

@@ -1,17 +1,33 @@
 export default function(server) {
 
   // This data will not be loaded in your tests.
-  let entity = server.create('entity', { id: 2 });
+  // Entity tree: 
+  /*
+      2
+      |- 3 
+         |- 5
+         |- 6
+         |- 7
+            | - 8
+            | - 9
+      | - 4
+          | - 10
+  */
+  let entity2 = server.create('entity', { id: 2, childrenId: [ 3, 4 ] });
+    let entity3 = server.create('entity', { id: 3, parentId: entity2.id, childrenId: [ 5, 6, 7 ] });
+      let entity5 = server.create('entity', { id: 5, parentId: entity3.id });
+      let entity6 = server.create('entity', { id: 6, parentId: entity3.id });
+      let entity7 = server.create('entity', { id: 7, parentId: entity3.id, childrenId: [ 8, 9 ] });
+        let entity8 = server.create('entity', { id: 8, parentId: entity7.id });
+        let entity9 = server.create('entity', { id: 9, parentId: entity7.id });
+    let entity4 = server.create('entity', { id: 4, parentId: entity2.id, childrenId: [ 10 ] });
+      let entity10 = server.create('entity', { id: 10, parentId: entity4.id });
 
-  server.createList('user', 10, { entityId: entity.id });
+  let user1 = server.create('user', { entityId: entity7.id });
+  let user2 = server.create('user', { entityId: entity2.id });
 
-  let saqA = server.create('saq', { entityId: entity.id, type: 'SAQ_A', version: '3.1', status: 'draft' });
-  // let questions = server.createList('saq-question', 6, { saqId: saqs[0].id, section: 'Requirement 1:  Install and maintain a firewall configuration to protect data'});
-  // let questions2 = server.createList('saq-question', 6, { saqId: saqs[0].id, section: 'Requirement 2: Do not use vendor-supplied defaults for system passwords and other security parameters'});
-  // let questions3 = server.createList('saq-question', 6, { saqId: saqs[0].id, section: 'Requirement 3:  Protect stored cardholder data'});
-  // questions.forEach(q => server.create('saq-answer', { saqId: saqs[0].id, questionId: q.id }) );
-  // questions2.forEach(q => server.create('saq-answer', { saqId: saqs[0].id, questionId: q.id }) );
-  // questions3.forEach(q => server.create('saq-answer', { saqId: saqs[0].id, questionId: q.id }) );
+  let saqA = server.create('saq', { entityId: entity2.id, type: 'SAQ_A', version: '3.1', status: 'draft' });
+
   let section9 = 'Requirement 9:  Restrict physical access to cardholder data';
   let q95 = server.create('saq-question', { saqId: saqA.id, section: section9, code: '9.5', text: "Are all media physically secured (including but not limited to computers, removable electronic media, paper receipts, paper reports, and faxes)? <br>For purposes of Requirement 9, <b>media</b> refers to all paper and electronic media containing cardholder data."});
   server.create('saq-answer', { saqId: saqA.id, questionId: q95.id, type: 'NOT_APPLICABLE' });

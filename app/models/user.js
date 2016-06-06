@@ -17,10 +17,10 @@ export default Model.extend({
   merchantCustomizationId: attr('number'),
   fullName: computed('firstName', 'lastName', function() {
     return `${this.get('firstName')} ${this.get('lastName')}`;
-  }).readOnly(),
+  }),
   humanRole: computed('role', function() {
     return Language.roles[this.get('role')];
-  }).readOnly(),
+  }),
   humanMerchantStatus: computed('merchantStatus', function() {
     let merchantStatus = this.get('merchantStatus');
     switch(merchantStatus) {
@@ -31,5 +31,5 @@ export default Model.extend({
       default:
         return merchantStatus;
     }
-  }).readOnly()
+  })
 });
