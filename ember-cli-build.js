@@ -5,6 +5,9 @@ var deployTarget = process.env.DEPLOY_TARGET;
 var fingerprintUrl;    
 
 switch(deployTarget) {
+  case 'production':
+    fingerprintUrl = "https://d3y8urx7pl70.cloudfront.net/";
+    break;
   case 'demo':
     fingerprintUrl = "https://d34uw3u0sbeeqo.cloudfront.net/";
     break;

@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"sett",
+				"Setting"
+			],
+			[
+				"get",
+				"getOwner"
+			],
+			[
+				"globa",
+				"globalCompleteness"
+			],
+			[
+				"wiz",
+				"wizardView"
+			],
+			[
+				"NO",
+				"NOT_APPLICABLE"
+			],
+			[
+				"crea",
+				"createAnswerIfDoesntExist"
+			],
+			[
+				"isEd",
+				"isEditingNotApplicable"
+			],
+			[
+				"not",
+				"notApplicableJustification"
+			],
+			[
 				"is",
 				"isAuthenticated"
 			],
@@ -99,14 +131,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "validated-input.hbs",
-			"settings":
-			{
-				"buffer_size": 291,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -115,20 +139,32 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 42.0,
+		"height": 84.0,
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"remove",
 				"Package Control: Remove Package"
 			]
 		],
-		"width": 467.0
+		"width": 449.0
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 206.0,
 		"history":
 		[
 		]
@@ -144,10 +180,72 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/ldx/Documents/zerorisk-for-merchants"
+		"/Users/ldx/Documents/zerorisk-for-merchants",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app",
+		"/Users/ldx/Documents/zerorisk-for-merchants/mirage",
+		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/factories",
+		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/models",
+		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/scenarios"
 	],
 	"file_history":
 	[
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/dashboard.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/user.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/dashboard.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/config/environment.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/index.html",
+		"/Users/ldx/Downloads/optimised.svg",
+		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/config.js",
+		"/Users/ldx/Desktop/Logo_horizontal_CMYK_ARROWS_LOADING ANIMATION_02.svg",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/application.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/router.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/entity-tree.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/scenarios/default.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/session.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/answer.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/saq-editor.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/enrollment.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/serializers/saq.js",
+		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/saq.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment/welcome.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/question.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/enrollment/welcome.js",
+		"/Users/ldx/Documents/workspace-sts/Testing/MerchantPortal/scripts/1.0.0/01-init_database.sql",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/saqs/index.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/pg-sidebar.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/saq-editor/answer.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/entity.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/models/entity.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/text-wizard.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/pg-header.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/ember-cli-build.js",
+		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/dashboard.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/pg-sidebar.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/adapters/saq.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/bower.json",
+		"/Users/ldx/Documents/zerorisk-for-merchants/package.json",
+		"/Users/ldx/Documents/zerorisk-for-merchants/node_modules/ember-cli-sass/node_modules/broccoli-sass-source-maps/index.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/serializers/saq-answer.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/saq-answer.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/styles/layouts/saq-editor.scss",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/styles/app.scss",
+		"/Users/ldx/Downloads/pages-master-2/core/scss/modules/_typography.scss",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/saq-question.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/zr.sublime-project",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/sidebar.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/navi.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/saqs/edit.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/vendor/pages/css/pages.css",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/text-wizard/multiple-answer.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/login.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/application.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/login.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/validated-input.hbs",
 		"/Users/ldx/Documents/ember-basic-dropdown/addon/components/basic-dropdown/content.js",
 		"/Users/ldx/Documents/pinpoint-manager/app/services/session.js",
 		"/Users/ldx/Documents/pinpoint-manager/app/styles/app.scss",
@@ -215,77 +313,28 @@
 		"/Users/ldx/Documents/pinpoint-manager/app/components/rate-cards.js",
 		"/Users/ldx/Documents/pinpoint-manager/.gitignore",
 		"/Users/ldx/Documents/pinpoint-manager/pinpoint.sublime-project",
-		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/ldx/Documents/pinpoint-manager/app/templates/application.hbs",
 		"/Users/ldx/Documents/pinpoint-manager/app/routes/index.js",
 		"/Users/ldx/Documents/pinpoint-manager/app/index.html",
-		"/Users/ldx/Documents/pinpoint-manager/node_modules/ember-materialize-shim/index.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/services/error-parser.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/controllers/devices/edit.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/application-stores/application.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/routes/devices/index.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/error-box.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/modals/enable-user.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/registration.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/device-card.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/routes/audit/view/photos.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/routes/audit/view/survey.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/routes/audit/new.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/devices/index.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/index.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/login.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/audit/new.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/app.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/device/edit.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/services/navigation.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/pp-main.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/pp-app.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/pp-app.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/modals/base.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/styles/patterns/labels.scss",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/users-table.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/fullscreen-modal.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/fullscreen-modal.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/material-dialog.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/base-modal.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/base-modal.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/controllers/login.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/material-dialog.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/location-switcher.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/device-card.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/serializers/device-model.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/modals/quick-audit.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/pinpoint-video.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/quick-audit.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/compliance-quickview.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/add-manager.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/add-auditor.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/modal-dialog.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/serializers/user.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/sub-navbar.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/config/deploy.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/audit/view.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/users-table.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/audit/view/survey-loading.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/audit/view/inspection-loading.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/audit/view/photos-loading.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/-navigation.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/controllers/device/edit.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/routes/device/new.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/controllers/device/new.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/device/new.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/routes/device/edit.js",
-		"/Users/ldx/Documents/pinpoint-manager/node_modules/ember-power-select/addon/templates/components/power-select/before-options.hbs"
+		"/Users/ldx/Documents/pinpoint-manager/node_modules/ember-materialize-shim/index.js"
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 70.0
 	},
 	"find_in_files":
 	{
 		"height": 105.0,
 		"where_history":
 		[
+			"app/*",
+			"vendor/*",
+			"app/*",
+			"*",
+			"vendor/*",
+			"app/*",
+			"vendor/*",
+			"app/*",
 			"app/",
 			"app/*",
 			"*",
@@ -300,6 +349,38 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"hash",
+			"isCompleted",
+			"Requirement 2:  Do not use vendor-supplied defaults for system passwords and other security parameters",
+			"Requirement 1: Install and maintain a firewall configuration to protect data','Build and Maintain a Secure Network",
+			"Requirement 2:  Do not use vendor-supplied defaults for system passwords and other security parameters",
+			"Requirement 1:  Install and maintain a firewall configuration to protect data",
+			"draft",
+			"submitted",
+			"SUBMITTED",
+			"postMessage",
+			"COMPENSATING_CONTROLS",
+			"assets/",
+			"postMessage",
+			"tooltip",
+			"ember-tooltip",
+			"ember-cli-tool",
+			"tooltip",
+			"confirm le",
+			"console.log",
+			"responseType",
+			"text-overflow",
+			"button-gro",
+			"button gro",
+			"button-g",
+			"button-group",
+			"stag",
+			"swagger",
+			"images",
+			"debugger",
+			"favicon",
+			"debugger",
+			"favicon",
 			"{{input",
 			"config",
 			"$",
@@ -395,39 +476,7 @@
 			"teth",
 			"tour",
 			"navbar",
-			"please note",
-			"Ember.inject",
-			"Ember.inject.controller",
-			"controllerFOr",
-			"needs",
-			"adapterFor",
-			"namespace",
-			"getNam",
-			"'POST'",
-			"you have",
-			"indicator",
-			"top",
-			"repea",
-			"repeat audit",
-			"openModal",
-			"extra",
-			"extramodel",
-			"extraclass",
-			"label",
-			"mut",
-			"super",
-			"hide-on",
-			"col s3",
-			"col s4",
-			"afterAu",
-			"super",
-			"this.super",
-			"super",
-			"this.supe",
-			"Ember.obs",
-			"/*",
-			"newloca",
-			"willtrans"
+			"please note"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -435,6 +484,12 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Requirement 1:  Install and maintain a firewall configuration to protect data','Build and Maintain a Secure Network",
+			"Requirement 2:	Do not use vendor-supplied defaults for system passwords and other security parameters",
+			"Requirement 1: Install and maintain a firewall configuration to protect data",
+			"type",
+			"export",
+			"img",
 			"cyan-text",
 			"fonts/roboto",
 			"",
@@ -451,37 +506,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "validated-input.hbs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 291,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								73,
-								73
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -524,7 +550,7 @@
 	"project": "zr.sublime-project",
 	"replace":
 	{
-		"height": 56.0
+		"height": 114.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -533,6 +559,154 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"app",
+				"app/templates/application.hbs"
+			],
+			[
+				"index",
+				"app/index.html"
+			],
+			[
+				"dash",
+				"app/templates/dashboard.hbs"
+			],
+			[
+				"applica",
+				"app/templates/application.hbs"
+			],
+			[
+				"env",
+				"config/environment.js"
+			],
+			[
+				"entity-tr",
+				"app/templates/components/entity-tree.hbs"
+			],
+			[
+				"dashbo",
+				"app/templates/dashboard.hbs"
+			],
+			[
+				"defa",
+				"mirage/scenarios/default.js"
+			],
+			[
+				"saqed",
+				"app/templates/components/saq-editor.hbs"
+			],
+			[
+				"ques",
+				"app/templates/components/saq-editor/question.hbs"
+			],
+			[
+				"welco",
+				"app/templates/enrollment/welcome.hbs"
+			],
+			[
+				"saqedi",
+				"app/components/saq-editor.js"
+			],
+			[
+				"das",
+				"app/templates/dashboard.hbs"
+			],
+			[
+				"pgside",
+				"app/templates/components/pg-sidebar.hbs"
+			],
+			[
+				"answ",
+				"app/components/saq-editor/answer.js"
+			],
+			[
+				"text-wi",
+				"app/components/text-wizard.js"
+			],
+			[
+				"default",
+				"mirage/scenarios/default.js"
+			],
+			[
+				"header",
+				"app/templates/components/pg-header.hbs"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"clibui",
+				"ember-cli-build.js"
+			],
+			[
+				"bowe",
+				"bower.json"
+			],
+			[
+				"navi",
+				"app/services/navi.js"
+			],
+			[
+				"saq",
+				"app/models/saq.js"
+			],
+			[
+				"modelsaq",
+				"app/models/saq-answer.js"
+			],
+			[
+				"textiw",
+				"app/components/text-wizard.js"
+			],
+			[
+				"saqans",
+				"app/models/saq-answer.js"
+			],
+			[
+				"enroll",
+				"app/templates/enrollment.hbs"
+			],
+			[
+				"saq-ed",
+				"app/styles/layouts/saq-editor.scss"
+			],
+			[
+				"answe",
+				"app/templates/components/saq-editor/answer.hbs"
+			],
+			[
+				"saq-edi",
+				"app/components/saq-editor.js"
+			],
+			[
+				"answer",
+				"app/components/saq-editor/answer.js"
+			],
+			[
+				"route",
+				"app/router.js"
+			],
+			[
+				"sideba",
+				"app/templates/components/pg-sidebar.hbs"
+			],
+			[
+				"config",
+				"mirage/config.js"
+			],
+			[
+				"envi",
+				"config/environment.js"
+			],
+			[
+				"routeappl",
+				"app/routes/application.js"
+			],
+			[
+				"dashro",
+				"app/routes/dashboard.js"
+			],
 			[
 				"valida",
 				"app/templates/components/validated-input.hbs"
@@ -550,10 +724,6 @@
 				"app/transitions.js"
 			],
 			[
-				"route",
-				"app/router.js"
-			],
-			[
 				"role",
 				"app/roles.js"
 			],
@@ -566,20 +736,12 @@
 				"app/templates/components/users-manager.hbs"
 			],
 			[
-				"pack",
-				"package.json"
-			],
-			[
 				"build",
 				"ember-cli-build.js"
 			],
 			[
 				"sess",
 				"app/services/session.js"
-			],
-			[
-				"app",
-				"app/styles/app.scss"
 			],
 			[
 				"loca",
@@ -670,16 +832,8 @@
 				"ember-cli-build.js"
 			],
 			[
-				"index",
-				"app/index.html"
-			],
-			[
 				"appli",
 				"app/adapters/application.js"
-			],
-			[
-				"applica",
-				"app/templates/application.hbs"
 			],
 			[
 				"ember-cl",
@@ -710,10 +864,6 @@
 				"app/styles/components/modals.scss"
 			],
 			[
-				"routeappl",
-				"app/routes/application.js"
-			],
-			[
 				"modal-",
 				"app/templates/components/modal-dialog.hbs"
 			],
@@ -732,10 +882,6 @@
 			[
 				"cookie",
 				"app/authenticators/cookie.js"
-			],
-			[
-				"bowe",
-				"bower.json"
 			],
 			[
 				"quick",
@@ -870,10 +1016,6 @@
 				"testem.json"
 			],
 			[
-				"envi",
-				"config/environment.js"
-			],
-			[
 				"app.",
 				"app/styles/app.scss"
 			],
@@ -928,22 +1070,6 @@
 			[
 				"add-aud",
 				"app/controllers/add-auditor.js"
-			],
-			[
-				"lan",
-				"app/language.js"
-			],
-			[
-				"device",
-				"app/templates/components/device-list.hbs"
-			],
-			[
-				"index.hbs",
-				"app/templates/devices/index.hbs"
-			],
-			[
-				"app.j",
-				"app/app.js"
 			]
 		],
 		"width": 0.0
