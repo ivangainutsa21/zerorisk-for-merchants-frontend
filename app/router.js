@@ -36,7 +36,11 @@ Router.map(function() {
 
   this.route('ips', { resetNamespace: true }, function() {
     this.route('new');
-  });  
+  });
+
+  this.route('auth', function() {
+    this.route('login-url', { path: 'login-url/:token' });
+  });
 });
 
 export default Router;

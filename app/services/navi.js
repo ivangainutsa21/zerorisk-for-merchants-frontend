@@ -12,7 +12,7 @@ export default Ember.Service.extend({
 	currentRouteName: computed.alias('applicationController.currentRouteName'),
 
 	isInUnauthenticatedRoute: computed('currentRouteName', function() {
-		return this.get('currentRouteName') === "login";
+		return this.get('currentRouteName') === "login" || this.get('currentRouteName') === "auth.login-url" ;
 	}),
 	isInSaqEditRoute: computed('currentRouteName', function() {
 		return this.get('currentRouteName') === "saqs.edit";

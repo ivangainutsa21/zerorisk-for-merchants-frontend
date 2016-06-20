@@ -6,7 +6,7 @@ export default Base.extend({
 
   restore(data) {
     return new Ember.RSVP.Promise((resolve, reject) => {
-      if (!Ember.isEmpty(data.email)) {
+      if (!Ember.isEmpty(data.userId)) {
         resolve(data);
       } else {
         reject();
@@ -16,14 +16,19 @@ export default Base.extend({
 
   authenticate(options) {
     return new Ember.RSVP.Promise((resolve, reject) => {
-      Ember.$.ajax({
+      let ajaxSettings = options.token ? {
+        type: 'GET',
+        url: `api/v1/users/sign_in?token=${options.token}`
+      } : {
         type: 'POST',
         url: 'api/v1/users/sign_in',
         data: JSON.stringify({
           username: options.identification,
           password: options.password
         })
-      }).done((response) => {
+      };
+
+      Ember.$.ajax(ajaxSettings).done((response) => {
         let result;
         if(typeof response === 'string') {
           result = JSON.parse(response).result;
