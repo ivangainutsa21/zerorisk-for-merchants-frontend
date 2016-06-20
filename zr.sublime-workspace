@@ -131,6 +131,39 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "import Ember from 'ember';\nimport config from './config/environment';\n\nlet _rootURL;\nconst host = window.location.host;\nif(host === \"urltest.zerori.sk\" || host === \"ifsboarding.com\") {\n  _rootURL = \"/saq/\";\n  config.DS.namespace = \"\"\n} else {\n  _rootURL = \"/\";\n}\n\nconst Router = Ember.Router.extend({\n  location: config.locationType,\n  rootURL: _rootURL\n});\n\nRouter.map(function() {\n  this.route('login');\n\n  this.route('enrollment', { resetNamespace: true }, function() {\n    this.route('welcome');\n    this.route('user-details');\n    this.route('saq-detection');\n  });\n\n  this.route('dashboard', { path: '/' });\n\n  this.route('saqs', { resetNamespace: true }, function() {\n    this.route('edit', { path: ':saq_id/edit' });\n  });\n\n  this.route('scans', { resetNamespace: true }, function() {\n    this.route('new');\n    this.route('results', { path: ':scan_id/results' });\n  });\n\n  this.route('ips', { resetNamespace: true }, function() {\n    this.route('new');\n  });  \n});\n\nexport default Router;\n",
+			"file": "app/router.js",
+			"file_size": 972,
+			"file_write_time": 131104612970000000,
+			"settings":
+			{
+				"buffer_size": 998,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "import Ember from 'ember';\nimport Base from 'ember-simple-auth/authenticators/base';\nimport config from '../config/environment';\n\nexport default Base.extend({\n  authenticationRoute: 'login',\n\n  restore(data) {\n    return new Ember.RSVP.Promise((resolve, reject) => {\n      if (!Ember.isEmpty(data.email)) {\n        resolve(data);\n      } else {\n        reject();\n      }\n    });\n  },\n\n  authenticate(options) {\n    return new Ember.RSVP.Promise((resolve, reject) => {\n      Ember.$.ajax({\n        type: 'POST',\n        url: 'api/v1/users/sign_in',\n        data: JSON.stringify({\n          username: options.identification,\n          password: options.password\n        })\n      }).done((response) => {\n        let result;\n        if(typeof response === 'string') {\n          result = JSON.parse(response).result;\n        } else {\n          result = response.result; \n        }        \n        \n        let resolved = {\n              'userId': result.userId,\n              'email': options.identification,\n              'firstName': result.firstName,\n              'lastName': result.lastName,\n              'role': result.role,\n              'token': result.token\n            };\n\n        // console.log(result.role);\n        // if (result.role != 'ROLE_MERCHANT_ADMIN' || result.role != 'ROLE_MERCHANT_USER' || result.role != 'ROLE_MERCHANT_ENTITY_ADMIN' || result.role != 'ROLE_ADMIN') {\n        //   //this.get('alerting').notify('You are not allowed to use this application.', 'warning', 'bottom-right-toast');\n        //   reject({'error': 'You are not allowed to use this application.'});\n        // }\n\n        Ember.run(() => {\n          resolve(resolved);\n        });\n      }).fail((xhr) => {\n        Ember.run(() => {\n          reject(xhr.responseJSON || xhr.responseText);\n        });\n      });\n    });\n  },\n\n  invalidate() {\n    return new Ember.RSVP.Promise((resolve/*, reject*/) => {\n      Ember.$.ajax({\n        type: 'GET',\n        url: 'logout'\n      }).then((response) => {\n        Ember.run(() => {\n          resolve(response);\n        });\n      }, (xhr) => {\n        Ember.run(() => {\n          resolve(xhr.responseJSON || xhr.responseText);\n        });\n      });\n    });\n  }\n});\n",
+			"file": "app/authenticators/cookie.js",
+			"file_size": 2153,
+			"file_write_time": 131085714230000000,
+			"settings":
+			{
+				"buffer_size": 2197,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "/* jshint node: true */\n\nmodule.exports = function(environment) {\n  var ENV = {\n    modulePrefix: 'zerorisk-for-merchants',\n    environment: environment,\n    baseURL: '/',\n    locationType: 'auto',\n    'ember-simple-auth':  {\n      authenticationRoute: 'login',\n      routeAfterAuthentication: 'dashboard',\n      routeIfAlreadyAuthenticated: 'dashboard'\n    },\n    'ember-cli-mirage': {\n      // TODO: disable me when not needed in demo/prod anymore\n      enabled: false\n    },\n    EmberENV: {\n      FEATURES: {\n        // Here you can enable experimental features on an ember canary build\n        // e.g. 'with-controller': true\n      }\n    },\n    APP: {\n      // Here you can pass flags/options to your application instance\n      // when it is created\n    }\n  };\n\n  if (environment === 'development') {\n    // ENV.APP.LOG_RESOLVER = true;\n    // ENV.APP.LOG_ACTIVE_GENERATION = true;\n    // ENV.APP.LOG_TRANSITIONS = true;\n    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;\n    // ENV.APP.LOG_VIEW_LOOKUPS = true;\n  }\n\n  if (environment === 'test') {\n    // Testem prefers this...\n    ENV.baseURL = '/';\n    ENV.locationType = 'none';\n\n    // keep test console output quieter\n    ENV.APP.LOG_ACTIVE_GENERATION = false;\n    ENV.APP.LOG_VIEW_LOOKUPS = false;\n\n    ENV.APP.rootElement = '#ember-testing';\n  }\n\n  if (environment === 'production') {\n    ENV.DS.customizationPrefix = 'saq';\n  }\n\n  return ENV;\n};\n",
+			"file": "config/environment.js",
+			"file_size": 1367,
+			"file_write_time": 131097050310000000,
+			"settings":
+			{
+				"buffer_size": 1406,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -182,10 +215,8 @@
 	[
 		"/Users/ldx/Documents/zerorisk-for-merchants",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app",
-		"/Users/ldx/Documents/zerorisk-for-merchants/mirage",
-		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/factories",
-		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/models",
-		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/scenarios"
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/authenticators",
+		"/Users/ldx/Documents/zerorisk-for-merchants/config"
 	],
 	"file_history":
 	[
@@ -506,8 +537,99 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/router.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 998,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								260,
+								260
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/authenticators/cookie.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2197,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								410,
+								410
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "config/environment.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1406,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								544,
+								544
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

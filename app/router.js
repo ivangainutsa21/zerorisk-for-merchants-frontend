@@ -1,8 +1,17 @@
 import Ember from 'ember';
 import config from './config/environment';
 
+let _rootURL;
+const host = window.location.host;
+if(host === "urltest.zerori.sk" || host === "ifsboarding.com") {
+  _rootURL = "/saq/";
+} else {
+  _rootURL = "/";
+}
+
 const Router = Ember.Router.extend({
-  location: config.locationType
+  location: config.locationType,
+  rootURL: _rootURL
 });
 
 Router.map(function() {
