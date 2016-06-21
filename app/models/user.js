@@ -13,6 +13,8 @@ export default Model.extend({
   lastName: attr('string'),
   enabled: attr('boolean'),
   role: attr('string'),
+  title: attr('string'),
+  tcAccepted: attr('boolean'),
   merchantStatus: attr('string'),
   merchantCustomizationId: attr('number'),
   fullName: computed('firstName', 'lastName', function() {
