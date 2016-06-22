@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
+import paths from 'zerorisk-for-merchants/utils/paths';
 
 export default Base.extend({
   authenticationRoute: 'login',
@@ -18,10 +19,10 @@ export default Base.extend({
     return new Ember.RSVP.Promise((resolve, reject) => {
       let ajaxSettings = options.token ? {
         type: 'GET',
-        url: `api/v1/users/sign_in?token=${options.token}`
+        url: `${paths().host()}/${paths().namespace}/users/sign_in?token=${options.token}`
       } : {
         type: 'POST',
-        url: 'api/v1/users/sign_in',
+        url: `${paths().host()}/${paths().namespace}/users/sign_in`,
         data: JSON.stringify({
           username: options.identification,
           password: options.password
@@ -37,13 +38,13 @@ export default Base.extend({
         }        
         
         let resolved = {
-              'userId': result.userId,
-              'email': options.identification,
-              'firstName': result.firstName,
-              'lastName': result.lastName,
-              'role': result.role,
-              'token': result.token
-            };
+          'userId': result.userId,
+          'email': options.identification,
+          'firstName': result.firstName,
+          'lastName': result.lastName,
+          'role': result.role,
+          'token': result.token
+        };
 
         // console.log(result.role);
         // if (result.role != 'ROLE_MERCHANT_ADMIN' || result.role != 'ROLE_MERCHANT_USER' || result.role != 'ROLE_MERCHANT_ENTITY_ADMIN' || result.role != 'ROLE_ADMIN') {
@@ -66,7 +67,7 @@ export default Base.extend({
     return new Ember.RSVP.Promise((resolve/*, reject*/) => {
       Ember.$.ajax({
         type: 'GET',
-        url: 'logout'
+        url: `${paths().host()}/logout`
       }).then((response) => {
         Ember.run(() => {
           resolve(response);

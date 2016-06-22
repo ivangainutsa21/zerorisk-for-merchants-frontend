@@ -25,6 +25,10 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     }
+    // DS: {
+    //   host: '',//'http://localhost:8080', // default for development 
+    //   namespace: 'api/v2' // default for every target
+    // }
   };
 
   if (environment === 'development') {
@@ -37,18 +41,23 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
-    ENV.locationType = 'none';
+    // ENV.baseURL = '/';
+    // ENV.locationType = 'none';
 
-    // keep test console output quieter
-    ENV.APP.LOG_ACTIVE_GENERATION = false;
-    ENV.APP.LOG_VIEW_LOOKUPS = false;
+    // // keep test console output quieter
+    // ENV.APP.LOG_ACTIVE_GENERATION = false;
+    // ENV.APP.LOG_VIEW_LOOKUPS = false;
 
-    ENV.APP.rootElement = '#ember-testing';
+    // ENV.APP.rootElement = '#ember-testing';
+    //ENV.DS.host = 'https://test.merchant.pinpoint.zerorisk.io/';
+  }
+
+  if (environment === 'demo') {
+    //ENV.DS.host = 'https://demo.merchant.zerorisk.io/';
   }
 
   if (environment === 'production') {
-
+    //ENV.DS.host = 'https://merchant.zerorisk.io/';
   }
 
   return ENV;
