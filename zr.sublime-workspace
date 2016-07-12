@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"inj",
+				"injectService"
+			],
+			[
 				"sett",
 				"Setting"
 			],
@@ -132,35 +136,18 @@
 	"buffers":
 	[
 		{
-			"contents": "import Ember from 'ember';\nimport config from './config/environment';\n\nlet _rootURL;\nconst host = window.location.host;\nif(host === \"urltest.zerori.sk\" || host === \"ifsboarding.com\") {\n  _rootURL = \"/saq/\";\n  config.DS.namespace = \"\"\n} else {\n  _rootURL = \"/\";\n}\n\nconst Router = Ember.Router.extend({\n  location: config.locationType,\n  rootURL: _rootURL\n});\n\nRouter.map(function() {\n  this.route('login');\n\n  this.route('enrollment', { resetNamespace: true }, function() {\n    this.route('welcome');\n    this.route('user-details');\n    this.route('saq-detection');\n  });\n\n  this.route('dashboard', { path: '/' });\n\n  this.route('saqs', { resetNamespace: true }, function() {\n    this.route('edit', { path: ':saq_id/edit' });\n  });\n\n  this.route('scans', { resetNamespace: true }, function() {\n    this.route('new');\n    this.route('results', { path: ':scan_id/results' });\n  });\n\n  this.route('ips', { resetNamespace: true }, function() {\n    this.route('new');\n  });  \n});\n\nexport default Router;\n",
-			"file": "app/router.js",
-			"file_size": 972,
-			"file_write_time": 131104612970000000,
+			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 998,
+				"buffer_size": 2059,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "import Ember from 'ember';\nimport Base from 'ember-simple-auth/authenticators/base';\nimport config from '../config/environment';\n\nexport default Base.extend({\n  authenticationRoute: 'login',\n\n  restore(data) {\n    return new Ember.RSVP.Promise((resolve, reject) => {\n      if (!Ember.isEmpty(data.email)) {\n        resolve(data);\n      } else {\n        reject();\n      }\n    });\n  },\n\n  authenticate(options) {\n    return new Ember.RSVP.Promise((resolve, reject) => {\n      Ember.$.ajax({\n        type: 'POST',\n        url: 'api/v1/users/sign_in',\n        data: JSON.stringify({\n          username: options.identification,\n          password: options.password\n        })\n      }).done((response) => {\n        let result;\n        if(typeof response === 'string') {\n          result = JSON.parse(response).result;\n        } else {\n          result = response.result; \n        }        \n        \n        let resolved = {\n              'userId': result.userId,\n              'email': options.identification,\n              'firstName': result.firstName,\n              'lastName': result.lastName,\n              'role': result.role,\n              'token': result.token\n            };\n\n        // console.log(result.role);\n        // if (result.role != 'ROLE_MERCHANT_ADMIN' || result.role != 'ROLE_MERCHANT_USER' || result.role != 'ROLE_MERCHANT_ENTITY_ADMIN' || result.role != 'ROLE_ADMIN') {\n        //   //this.get('alerting').notify('You are not allowed to use this application.', 'warning', 'bottom-right-toast');\n        //   reject({'error': 'You are not allowed to use this application.'});\n        // }\n\n        Ember.run(() => {\n          resolve(resolved);\n        });\n      }).fail((xhr) => {\n        Ember.run(() => {\n          reject(xhr.responseJSON || xhr.responseText);\n        });\n      });\n    });\n  },\n\n  invalidate() {\n    return new Ember.RSVP.Promise((resolve/*, reject*/) => {\n      Ember.$.ajax({\n        type: 'GET',\n        url: 'logout'\n      }).then((response) => {\n        Ember.run(() => {\n          resolve(response);\n        });\n      }, (xhr) => {\n        Ember.run(() => {\n          resolve(xhr.responseJSON || xhr.responseText);\n        });\n      });\n    });\n  }\n});\n",
-			"file": "app/authenticators/cookie.js",
-			"file_size": 2153,
-			"file_write_time": 131085714230000000,
+			"file": "app/routes/dashboard.js",
 			"settings":
 			{
-				"buffer_size": 2197,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "/* jshint node: true */\n\nmodule.exports = function(environment) {\n  var ENV = {\n    modulePrefix: 'zerorisk-for-merchants',\n    environment: environment,\n    baseURL: '/',\n    locationType: 'auto',\n    'ember-simple-auth':  {\n      authenticationRoute: 'login',\n      routeAfterAuthentication: 'dashboard',\n      routeIfAlreadyAuthenticated: 'dashboard'\n    },\n    'ember-cli-mirage': {\n      // TODO: disable me when not needed in demo/prod anymore\n      enabled: false\n    },\n    EmberENV: {\n      FEATURES: {\n        // Here you can enable experimental features on an ember canary build\n        // e.g. 'with-controller': true\n      }\n    },\n    APP: {\n      // Here you can pass flags/options to your application instance\n      // when it is created\n    }\n  };\n\n  if (environment === 'development') {\n    // ENV.APP.LOG_RESOLVER = true;\n    // ENV.APP.LOG_ACTIVE_GENERATION = true;\n    // ENV.APP.LOG_TRANSITIONS = true;\n    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;\n    // ENV.APP.LOG_VIEW_LOOKUPS = true;\n  }\n\n  if (environment === 'test') {\n    // Testem prefers this...\n    ENV.baseURL = '/';\n    ENV.locationType = 'none';\n\n    // keep test console output quieter\n    ENV.APP.LOG_ACTIVE_GENERATION = false;\n    ENV.APP.LOG_VIEW_LOOKUPS = false;\n\n    ENV.APP.rootElement = '#ember-testing';\n  }\n\n  if (environment === 'production') {\n    ENV.DS.customizationPrefix = 'saq';\n  }\n\n  return ENV;\n};\n",
-			"file": "config/environment.js",
-			"file_size": 1367,
-			"file_write_time": 131097050310000000,
-			"settings":
-			{
-				"buffer_size": 1406,
+				"buffer_size": 384,
 				"line_ending": "Unix"
 			}
 		}
@@ -215,34 +202,57 @@
 	[
 		"/Users/ldx/Documents/zerorisk-for-merchants",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/authenticators",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/adapters",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes",
 		"/Users/ldx/Documents/zerorisk-for-merchants/config"
 	],
 	"file_history":
 	[
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/dashboard.hbs",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/user.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/dashboard.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/package.json",
 		"/Users/ldx/Documents/zerorisk-for-merchants/config/environment.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/authenticators/cookie.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/router.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/serializers/entity.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/adapters/application.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/scans/new.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/index.html",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/utils/paths.js",
+		"/Users/ldx/Desktop/test.html",
+		"/Users/ldx/Documents/zerorisk-for-merchants/config/deploy.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/user.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/initializers/host-customizer.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/app.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/modals/terms-and-conditions.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/styles/app.scss",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/styles/components/modals.scss",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/enrollment/welcome.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment/welcome.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/enrollment/welcome.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/dashboard.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/terms.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/navi.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/auth/login-url.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/auth/login-url.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/login.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/login.hbs",
+		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/alerting.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/enrollment.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/dashboard.hbs",
 		"/Users/ldx/Downloads/optimised.svg",
 		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/config.js",
 		"/Users/ldx/Desktop/Logo_horizontal_CMYK_ARROWS_LOADING ANIMATION_02.svg",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/application.hbs",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/router.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/entity-tree.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/scenarios/default.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/session.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/answer.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/saq-editor.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/enrollment.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/serializers/saq.js",
-		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/saq.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment/welcome.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/question.hbs",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/enrollment/welcome.js",
 		"/Users/ldx/Documents/workspace-sts/Testing/MerchantPortal/scripts/1.0.0/01-init_database.sql",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/saqs/index.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/pg-sidebar.hbs",
@@ -258,22 +268,17 @@
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/pg-sidebar.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/adapters/saq.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/bower.json",
-		"/Users/ldx/Documents/zerorisk-for-merchants/package.json",
 		"/Users/ldx/Documents/zerorisk-for-merchants/node_modules/ember-cli-sass/node_modules/broccoli-sass-source-maps/index.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/serializers/saq-answer.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/saq-answer.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/styles/layouts/saq-editor.scss",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/styles/app.scss",
 		"/Users/ldx/Downloads/pages-master-2/core/scss/modules/_typography.scss",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/saq-question.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/zr.sublime-project",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/sidebar.hbs",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment.hbs",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/navi.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/saqs/edit.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/vendor/pages/css/pages.css",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/text-wizard/multiple-answer.hbs",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/login.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/application.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/login.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/validated-input.hbs",
@@ -330,24 +335,7 @@
 		"/Users/ldx/Documents/pinpoint-manager/app/templates/devices/edit.hbs",
 		"/Users/ldx/Documents/pinpoint-manager/app/components/pp-dropdown.js",
 		"/Users/ldx/Documents/pinpoint-manager/app/session-stores/application.js",
-		"/Users/ldx/Documents/pinpoint-manager/.gitlab-ci.yml",
-		"/Users/ldx/Documents/pinpoint-manager/app/styles/patterns/buttons.scss",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/user/new.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/user/recover/request.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/modals/disable-user.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/user/recover/reset.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/bower.json",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/rate-cards.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/config/environment.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/modals/custom-manu-model-creation.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/registration/plans.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/rate-cards.js",
-		"/Users/ldx/Documents/pinpoint-manager/.gitignore",
-		"/Users/ldx/Documents/pinpoint-manager/pinpoint.sublime-project",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/application.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/routes/index.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/index.html",
-		"/Users/ldx/Documents/pinpoint-manager/node_modules/ember-materialize-shim/index.js"
+		"/Users/ldx/Documents/pinpoint-manager/.gitlab-ci.yml"
 	],
 	"find":
 	{
@@ -380,6 +368,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"(mut",
+			"attrs.",
+			"attr.",
+			"mapBy",
+			"$.ajax",
+			"import",
+			"config",
+			"language",
+			"config",
+			"hidden",
+			"hide-",
+			"currentu",
+			"prefe",
+			"checkb",
+			"error-bo",
+			"alerting",
+			"injectService",
 			"hash",
 			"isCompleted",
 			"Requirement 2:  Do not use vendor-supplied defaults for system passwords and other security parameters",
@@ -490,24 +495,7 @@
 			"logo-icon",
 			"landing-vi",
 			"reee",
-			"manufacturersAndModels",
-			"logout",
-			"logou",
-			"perform",
-			"perform aud",
-			"perform",
-			"searchbar",
-			".navbar-searchbar .input-fiel",
-			"z-ind",
-			"font/roboto",
-			"ember-cli",
-			"drop",
-			"tether",
-			"drop",
-			"teth",
-			"tour",
-			"navbar",
-			"please note"
+			"manufacturersAndModels"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -537,59 +525,29 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/router.js",
+					"file": "package.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 998,
+						"buffer_size": 2059,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								260,
-								260
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/authenticators/cookie.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2197,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								410,
-								410
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -601,27 +559,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "config/environment.js",
-					"semi_transient": false,
+					"buffer": 1,
+					"file": "app/routes/dashboard.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1406,
+						"buffer_size": 384,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								544,
-								544
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -682,12 +638,44 @@
 		"selected_items":
 		[
 			[
-				"app",
-				"app/templates/application.hbs"
+				"pack",
+				"package.json"
+			],
+			[
+				"envi",
+				"config/environment.js"
 			],
 			[
 				"index",
 				"app/index.html"
+			],
+			[
+				"inde",
+				"app/index.html"
+			],
+			[
+				"enrol",
+				"app/templates/enrollment.hbs"
+			],
+			[
+				"user",
+				"app/models/user.js"
+			],
+			[
+				"terms",
+				"app/templates/components/modals/terms-and-conditions.hbs"
+			],
+			[
+				"term",
+				"app/templates/terms.hbs"
+			],
+			[
+				"alerti",
+				"app/services/alerting.js"
+			],
+			[
+				"app",
+				"app/templates/application.hbs"
 			],
 			[
 				"dash",
@@ -754,10 +742,6 @@
 				"app/templates/components/pg-header.hbs"
 			],
 			[
-				"pack",
-				"package.json"
-			],
-			[
 				"clibui",
 				"ember-cli-build.js"
 			],
@@ -818,10 +802,6 @@
 				"mirage/config.js"
 			],
 			[
-				"envi",
-				"config/environment.js"
-			],
-			[
 				"routeappl",
 				"app/routes/application.js"
 			],
@@ -852,10 +832,6 @@
 			[
 				"flo",
 				"app/flows.js"
-			],
-			[
-				"user",
-				"app/templates/components/users-manager.hbs"
 			],
 			[
 				"build",
@@ -1090,10 +1066,6 @@
 				"app/templates/devices/index.hbs"
 			],
 			[
-				"inde",
-				"app/index.html"
-			],
-			[
 				"devnewhb",
 				"app/templates/device/new.hbs"
 			],
@@ -1176,22 +1148,6 @@
 			[
 				"quickaudi",
 				"app/templates/quick-audit.hbs"
-			],
-			[
-				"locationhbs",
-				"app/templates/locations.hbs"
-			],
-			[
-				"quck-a",
-				"app/components/quick-audit.js"
-			],
-			[
-				"addmana",
-				"app/controllers/add-manager.js"
-			],
-			[
-				"add-aud",
-				"app/controllers/add-auditor.js"
 			]
 		],
 		"width": 0.0

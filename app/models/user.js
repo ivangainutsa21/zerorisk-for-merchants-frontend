@@ -33,5 +33,10 @@ export default Model.extend({
       default:
         return merchantStatus;
     }
+  }),
+
+  // Customizations
+  isIngenico: computed('merchantCustomizationId', function() {
+    return this.get('merchantCustomizationId') === 2;
   })
 });

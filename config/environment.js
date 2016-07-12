@@ -49,7 +49,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     // ENV.APP.rootElement = '#ember-testing';
-    //ENV.DS.host = 'https://test.merchant.pinpoint.zerorisk.io/';
+    //ENV.DS.host = 'https://test.merchant.zerorisk.io/';
   }
 
   if (environment === 'demo') {

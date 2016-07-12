@@ -26,6 +26,7 @@ export default Ember.Controller.extend({
 		},
 		launchScan() {
 			this.set('isLaunching', true);
+			// TODO: why not ember-data??
 			$.ajax({
 			  type: "POST",
 			  url: this.store.adapterFor('application').namespace + '/asv/scans',
