@@ -20,7 +20,7 @@ module.exports = function(deployTarget) {
   }
 
   if (deployTarget === 'test') {
-    ENV.build.environment = 'test';
+    ENV.build.environment = 'production';
     ENV['s3'].bucket = 'merchants-app-test';
     ENV['s3-index'].bucket = 'merchants-app-test';    
     ENV.pipeline = {
@@ -29,7 +29,7 @@ module.exports = function(deployTarget) {
   }
 
   if (deployTarget === 'demo') {
-    ENV.build.environment = 'demo';
+    ENV.build.environment = 'production';
     ENV['s3'].bucket = 'merchants-app-demo';
     ENV['s3-index'].bucket = 'merchants-app-demo';
     ENV.pipeline = {

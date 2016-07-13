@@ -53,11 +53,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'demo') {
-    //ENV.DS.host = 'https://demo.merchant.zerorisk.io/';
+    // ENV.DS.host = 'https://demo.merchant.zerorisk.io/';
   }
 
   if (environment === 'production') {
-    //ENV.DS.host = 'https://merchant.zerorisk.io/';
+    // ENV.DS.host = 'https://merchant.zerorisk.io/';
   }
 
   return ENV;
