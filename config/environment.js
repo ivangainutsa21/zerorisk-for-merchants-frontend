@@ -15,6 +15,9 @@ module.exports = function(environment) {
       // TODO: disable me when not needed in demo/prod anymore
       enabled: false
     },
+    i18n: {
+      defaultLocale: 'en'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

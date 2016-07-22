@@ -1,23 +1,28 @@
+<a {{action (action (mut statsMode) "aggregated")}}>to aggregated</a>
+{{stats.ips.total}}<br>
+{{stats.ips.total}}
+
 <div class="content sm-gutter">
 	<div class="container-fluid padding-25 sm-padding-10">
 
 		<div class="row">
-			<div class="col-md-6 col-xlg-5">
+			<div class="col-md-6 col-xlg-6">
 				<div class="row">
 					<div class="col-md-12 m-b-10">
 						<div class="ar-3-2">
 							<div class="panel no-border no-margin 
-							{{if (eq currentUser.merchantStatus 'Enrolled') 'bg-complete'}}
-							{{if (eq currentUser.merchantStatus 'NotEnrolled') 'bg-warning'}}
-							{{if (eq currentUser.merchantStatus 'Compliant') 'bg-success'}}
-							{{if (eq currentUser.merchantStatus 'NotCompliant') 'bg-danger'}}
+							{{if (eq stats.status.merchantStatus 'Enrolled') 'bg-complete'}}
+							{{if (eq stats.status.merchantStatus 'NotEnrolled') 'bg-warning'}}
+							{{if (eq stats.status.merchantStatus 'Compliant') 'bg-success'}}
+							{{if (eq stats.status.merchantStatus 'NotCompliant') 'bg-danger'}}
 							" style="transition: background-color 0.5s ease;">
 								<div class="panel-body">
 									<div class="pull-bottom bottom-left bottom-right " style="padding: 0 49px 56px 42px;">
-										<span class="label font-montserrat fs-11">STATUS</span>
+										{{!-- <span class="label font-montserrat fs-11">STATUS</span> --}}
+										<span class="font-montserrat fs-11 all-caps text-white">Your merchant status</span>
 										<br>
-										<h1 class="text-white">{{currentUser.humanMerchantStatus}}</h1>
-										<p class="text-white hint-text"><i class="pg-italic m-r-5"></i>Learn more about your status</p>									
+										<h1 class="text-white">{{humanMerchantStatus}}</h1>
+										<p class="text-white hint-text"><i class="pg-italic m-r-5"></i>Learn more</p>
 									</div>
 								</div>
 							</div>
@@ -26,7 +31,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6 col-xlg-5">
+			<div class="col-md-6 col-xlg-6">
 				<div class="row">
 					<div class="col-md-12 m-b-10">
 						<div class="ar-2-1">
@@ -36,9 +41,24 @@
 										<h2>Next up</h2>
 										<p class="hint-text">Actions needed to achieve PCI Compliance</p>			
 										<div class="m-t-20">						
-											{{#link-to "saqs"}}
-												<button class="btn btn-default btn-block btn-rounded m-r-20 m-b-10"><i class="pg-theme m-r-10"></i>Complete your SAQ</button>
-											{{/link-to}}										
+											
+											{{#if availableActions}}		
+												{{#each availableActions as |action|}}
+
+													{{#if (eq action.name "COMPLETE_SAQ")}}
+														<a href="{{href-to "saqs.edit" action.resourceId}}" class="text-master"><button class="btn btn-default btn-block m-r-20 m-b-10"><i class="pg-theme m-r-10"></i>Complete your SAQ</button></a>
+													{{/if}}
+
+													{{#if (eq action.name "SUBMIT_SAQ")}}
+														<a href="{{href-to "saqs.edit" action.resourceId}}" class="text-master"><button class="btn btn-default btn-block m-r-20 m-b-10"><i class="fa fa-send m-r-10"></i>Submit your SAQ</button></a>
+													{{/if}}
+
+													{{#if (eq action.name "CREATE_SAQ")}}
+														<button class="btn btn-default btn-block m-r-20 m-b-10" disabled><i class="pg-plus_circle m-r-10"></i>Create a SAQ</button>	
+													{{/if}}
+
+												{{/each}}
+											{{/if}}
 										</div>
 									</div>
 								</div>
@@ -51,35 +71,94 @@
 
 					<div class="col-sm-6 m-b-10">
 						<div class="ar-2-1">				 
-							<div class="panel no-border no-margin">
-								<div class="container-sm-height full-height">
-									<div class="row-sm-height">
-										<div class="col-sm-height col-middle">
-											<div class="panel no-border no-margin">
-												<div class="panel-body text-center">
-													<div class="muted font-montserrat">Work in progress</div>
+							<div class="widget-9 panel no-border bg-white no-margin">
+								<div class="container-xs-height full-height">
+
+									<div class="row-xs-height">
+										<div class="col-xs-height col-top">
+											<div class="panel-heading  top-left top-right">
+												<div class="panel-title text-black">
+													<span class="font-montserrat fs-11 all-caps">SAQ Completeness
+													</span>
 												</div>
 											</div>
 										</div>
 									</div>
+
+									<div class="row-xs-height">
+										<div class="col-xs-height col-top">
+											<div class="p-l-20 p-t-15">
+												<h1 class="no-margin p-b-5 text-black">{{saqsCompleteness}}%</h1>
+
+
+												<span class="small hint-text">{{stats.saqs.pending}} pending, </span>    
+												<span class="small hint-text">{{stats.saqs.completed}} completed, </span>
+												<span class="small hint-text">{{stats.saqs.submitted}} submitted</span>
+
+											</div>
+										</div>
+									</div>
+
+									<div class="row-xs-height">
+										<div class="col-xs-height col-bottom">
+											<div class="progress progress-small m-b-20">				
+												<div class="progress-bar progress-bar-black" style="width:{{saqsCompleteness}}%;"></div>				 
+											</div>
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<div class="col-sm-6 m-b-10">
-						<div class="ar-2-1">				 
-							<div class="panel no-border no-margin">
-								<div class="container-sm-height full-height">
-									<div class="row-sm-height">
-										<div class="col-sm-height col-middle">
-											<div class="panel no-border no-margin">
-												<div class="panel-body text-center">
-													<div class="muted font-montserrat">Work in progress</div>																										
+						<div class="ar-2-1">				 						
+							<div class="widget-9 panel no-border no-margin {{if stats.status.pciPassed 'bg-success' 'bg-danger'}}">
+								<div class="container-xs-height full-height">
+
+									<div class="row-xs-height">
+										<div class="col-xs-height col-top">
+											<div class="panel-heading  top-left top-right">
+												<div class="panel-title text-black">
+													<span class="font-montserrat fs-11 all-caps text-master-light">ASV Status
+													</span>
 												</div>
 											</div>
 										</div>
 									</div>
+
+									<div class="row-xs-height">
+										<div class="col-xs-height col-top">
+											<div class="p-l-20 p-t-15">
+												<h1 class="no-margin p-b-5 text-white">{{humanAsvStatus}}</h1>												
+												{{#if stats.status.pciPassed}}
+													<span class="small text-white">{{pluralize stats.ips.total "IP"}}, all PCI passing</span>
+												{{else}}
+													{{#if (eq stats.ips.total 0)}}
+														<span class="small text-white">You don't have any IP registered</span>
+													{{else if (eq stats.ips.total stats.ips.notScanned)}}
+														<span class="small text-white">You have {{pluralize stats.ips.total "IP"}} but never launched a scan on them</span>
+													{{else if (gt stats.ips.total 0)}}
+														<span class="small text-white">{{pluralize stats.ips.fail "IP"}} on {{stats.ips.total}} {{pluralize stats.ips.fail "was" "were"}} scanned and found PCI failing</span>
+														{{#if (gt stats.ips.notScanned 0)}}
+															<span class="small text-white">{{pluralize stats.ips.notScanned "IP has" "IPs have"}} never been scanned</span>
+														{{/if}}
+													{{/if}}
+													
+
+													
+												{{/if}}
+											</div>
+										</div>
+									</div>
+
+									<div class="row-xs-height">
+										<div class="col-xs-height col-bottom">
+
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</div>

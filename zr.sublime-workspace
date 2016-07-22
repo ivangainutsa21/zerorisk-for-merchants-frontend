@@ -136,18 +136,10 @@
 	"buffers":
 	[
 		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 2059,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/routes/dashboard.js",
 			"settings":
 			{
-				"buffer_size": 384,
+				"buffer_size": 238,
 				"line_ending": "Unix"
 			}
 		}
@@ -201,33 +193,41 @@
 	"expanded_folders":
 	[
 		"/Users/ldx/Documents/zerorisk-for-merchants",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/adapters",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes",
-		"/Users/ldx/Documents/zerorisk-for-merchants/config"
+		"/Users/ldx/Documents/zerorisk-for-merchants/app"
 	],
 	"file_history":
 	[
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/locales/en/translations.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/ember-cli-build.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/pg-sidebar.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/package.json",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment/welcome.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/config/environment.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/authenticators/cookie.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/scans/new.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/ips/new.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/login.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/user.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/config/deploy.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/sidebar.hbs",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/pg-header.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/router.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/authorizers/cookie.js",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/session.js",
+		"/Users/ldx/Desktop/index.html",
+		"/Users/ldx/Documents/zerorisk-for-merchants/app/authenticators/cookie.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/serializers/entity.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/adapters/application.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/scans/new.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/index.html",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/utils/paths.js",
 		"/Users/ldx/Desktop/test.html",
-		"/Users/ldx/Documents/zerorisk-for-merchants/config/deploy.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/user.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/initializers/host-customizer.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/app.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/modals/terms-and-conditions.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/styles/app.scss",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/styles/components/modals.scss",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/enrollment/welcome.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment.hbs",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/enrollment/welcome.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/enrollment/welcome.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/dashboard.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/terms.hbs",
@@ -235,7 +235,6 @@
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/auth/login-url.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/auth/login-url.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/login.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/login.hbs",
 		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/alerting.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/enrollment.js",
@@ -246,7 +245,6 @@
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/application.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/entity-tree.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/scenarios/default.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/services/session.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/answer.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/saq-editor.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor.hbs",
@@ -255,13 +253,10 @@
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/question.hbs",
 		"/Users/ldx/Documents/workspace-sts/Testing/MerchantPortal/scripts/1.0.0/01-init_database.sql",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/saqs/index.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/pg-sidebar.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/saq-editor/answer.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/entity.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/mirage/models/entity.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/components/text-wizard.js",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/pg-header.hbs",
-		"/Users/ldx/Documents/zerorisk-for-merchants/ember-cli-build.js",
 		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
 		"/Users/ldx/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/controllers/dashboard.js",
@@ -275,7 +270,6 @@
 		"/Users/ldx/Downloads/pages-master-2/core/scss/modules/_typography.scss",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/models/saq-question.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/zr.sublime-project",
-		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/saq-editor/sidebar.hbs",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/routes/saqs/edit.js",
 		"/Users/ldx/Documents/zerorisk-for-merchants/vendor/pages/css/pages.css",
 		"/Users/ldx/Documents/zerorisk-for-merchants/app/templates/components/text-wizard/multiple-answer.hbs",
@@ -330,16 +324,11 @@
 		"/Users/ldx/Documents/pinpoint-manager/app/styles/components/dropdowns.scss",
 		"/Users/ldx/Documents/pinpoint-manager/app/templates/devices/new.hbs",
 		"/Users/ldx/Documents/pinpoint-manager/app/templates/components/pp-navbar.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/services/search.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/pp-navbar.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/templates/devices/edit.hbs",
-		"/Users/ldx/Documents/pinpoint-manager/app/components/pp-dropdown.js",
-		"/Users/ldx/Documents/pinpoint-manager/app/session-stores/application.js",
-		"/Users/ldx/Documents/pinpoint-manager/.gitlab-ci.yml"
+		"/Users/ldx/Documents/pinpoint-manager/app/services/search.js"
 	],
 	"find":
 	{
-		"height": 70.0
+		"height": 30.0
 	},
 	"find_in_files":
 	{
@@ -368,6 +357,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ZeroRisk",
+			"tooltip",
+			"logo",
+			"height",
+			"setTimeOfLastAPIActivity",
+			"reset",
 			"(mut",
 			"attrs.",
 			"attr.",
@@ -489,13 +484,7 @@
 			"node-sass",
 			"gz",
 			"landing-vi",
-			"landing",
-			"menu",
-			"gz",
-			"logo-icon",
-			"landing-vi",
-			"reee",
-			"manufacturersAndModels"
+			"landing"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -525,54 +514,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "package.json",
+					"file": "app/routes/dashboard.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2059,
+						"buffer_size": 238,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/routes/dashboard.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 384,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								238,
+								238
 							]
 						],
 						"settings":
@@ -628,7 +587,7 @@
 	"project": "zr.sublime-project",
 	"replace":
 	{
-		"height": 114.0
+		"height": 56.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -638,8 +597,48 @@
 		"selected_items":
 		[
 			[
+				"routdas",
+				"app/routes/dashboard.js"
+			],
+			[
+				"user",
+				"app/models/user.js"
+			],
+			[
+				"env",
+				"config/environment.js"
+			],
+			[
+				"side",
+				"app/templates/components/pg-sidebar.hbs"
+			],
+			[
+				"bui",
+				"ember-cli-build.js"
+			],
+			[
 				"pack",
 				"package.json"
+			],
+			[
+				"e",
+				"ember-cli-build.js"
+			],
+			[
+				"deploy",
+				"config/deploy.js"
+			],
+			[
+				"head",
+				"app/templates/components/pg-header.hbs"
+			],
+			[
+				"route",
+				"app/router.js"
+			],
+			[
+				"sess",
+				"app/services/session.js"
 			],
 			[
 				"envi",
@@ -656,10 +655,6 @@
 			[
 				"enrol",
 				"app/templates/enrollment.hbs"
-			],
-			[
-				"user",
-				"app/models/user.js"
 			],
 			[
 				"terms",
@@ -684,10 +679,6 @@
 			[
 				"applica",
 				"app/templates/application.hbs"
-			],
-			[
-				"env",
-				"config/environment.js"
 			],
 			[
 				"entity-tr",
@@ -790,10 +781,6 @@
 				"app/components/saq-editor/answer.js"
 			],
 			[
-				"route",
-				"app/router.js"
-			],
-			[
 				"sideba",
 				"app/templates/components/pg-sidebar.hbs"
 			],
@@ -836,10 +823,6 @@
 			[
 				"build",
 				"ember-cli-build.js"
-			],
-			[
-				"sess",
-				"app/services/session.js"
 			],
 			[
 				"loca",
@@ -1038,10 +1021,6 @@
 				"app/templates/components/-navigation.hbs"
 			],
 			[
-				"deploy",
-				"config/deploy.js"
-			],
-			[
 				"enviro",
 				"config/environment.js"
 			],
@@ -1128,26 +1107,6 @@
 			[
 				"error",
 				"app/services/error-parser.js"
-			],
-			[
-				"devicesindex",
-				"app/templates/devices/index.hbs"
-			],
-			[
-				"device-ca",
-				"app/templates/components/device-card.hbs"
-			],
-			[
-				"ember-c",
-				"ember-cli-build.js"
-			],
-			[
-				"auditnew",
-				"app/templates/audit/new.hbs"
-			],
-			[
-				"quickaudi",
-				"app/templates/quick-audit.hbs"
 			]
 		],
 		"width": 0.0

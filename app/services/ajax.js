@@ -1,12 +1,16 @@
 import Ember from 'ember';
 import AjaxService from 'ember-ajax/services/ajax';
 import {isForbiddenError, isUnauthorizedError} from 'ember-ajax/errors';
+import paths from 'zerorisk-for-merchants/utils/paths';
 
 const { Error: EmberError } = Ember;
 
 export default AjaxService.extend({
   session: Ember.inject.service(),
-  // namespace: '/api/v1',
+
+  host: paths().host(),
+  namespace: `${paths().namespace}`,
+
   // isSuccess(status, headers, payload) {
   //   return payload.success;
   // }

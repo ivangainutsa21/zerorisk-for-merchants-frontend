@@ -56,13 +56,13 @@ export default Ember.Component.extend({
   // Methods
   startWizard() {
     //set(this, 'questionIdsHistory', Ember.A([]));
-    this.get('ajax').post(`/api/v2/Wizard/Create?wizardId=${get(this, 'wizardId')}`).then(response => {
+    this.get('ajax').post(`/Wizard/Create?wizardId=${get(this, 'wizardId')}`).then(response => {
         this.setCurrentQuestionAndAnswer(response.result);
     });
   },
 
   goToQuestionId(questionId) {
-    this.get('ajax').post(`/api/v2/Wizard/InProgress?userAnswerId=${questionId}`).then(response => {
+    this.get('ajax').post(`/Wizard/InProgress?userAnswerId=${questionId}`).then(response => {
         if(questionId !== 0) {
           this.setCurrentQuestionAndAnswer(response.result);
         } else {

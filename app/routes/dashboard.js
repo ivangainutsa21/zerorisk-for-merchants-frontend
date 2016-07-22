@@ -1,14 +1,17 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import injectService from 'ember-service/inject';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
-	currentUser: Ember.inject.service(),
+	ajax: injectService(),
 
-	// TEST
 	model() {
-		return Ember.RSVP.hash({
-			user: this.store.find('user', this.get('currentUser.id')),
-			// entities: this.store.findAll('entity')
+		return this.get('ajax').request('/merchant/dashboard').then(payload => payload.result.dashboard);
+	},
+
+	activate() {
+		Ember.run.scheduleOnce('afterRender', function() {
+			$.Pages.initProgressBars();		
 		});
 	}
 });

@@ -18,8 +18,13 @@
   <!-- START Login Right Container-->
   <div class="login-container bg-white">
     <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
-      <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo.png" height="40">
-      <p class="p-t-35 hint-text">Sign into your ZeroRisk for Merchants account</p>
+      {{#if currentUser.isIngenico}}
+        <img src="assets/img/ingenico_logo.png" alt="logo" data-src="assets/img/ingenico_logo.png" data-src-retina="assets/img/ingenico_logo.png" height="40">
+      {{else}}
+        <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo.png" height="40">
+      {{/if}}
+
+      <p class="p-t-35 hint-text">Sign into your {{if currentUser.isIngenico (t 'app.unbranded_full_name') (t 'app.full_name')}} account</p>
 
       {{error-box errors=error class="m-b-0 m-t-20"}}
 

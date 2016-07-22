@@ -23,7 +23,7 @@
           {{else}}
             <button {{action "submit"}} class="btn btn-complete" disabled={{if (or (not isCompleted) isSubmitting) 'true'}}>
               {{#tooltip-on-element side='left' event='none' effect='slide' tooltipIsVisible=submitSaqTooltipIsShowing duration=5500}}
-                Congratulations! <br> You have completed the SAQ and you can now submit it.
+                You have completed the SAQ and you can now submit it.
               {{/tooltip-on-element}}
               {{{if isSubmitting '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> Submitting..' 'Submit SAQ'}}}
             </button>            

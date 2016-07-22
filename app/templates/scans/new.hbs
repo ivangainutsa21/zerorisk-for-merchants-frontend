@@ -32,9 +32,9 @@
 					</div>
 				</div>
 
-				<p class="pull-left hint-text p-l-5">
-				I agree to the <a href="#">ZeroRisk Terms</a> and <a href="#">Privacy</a>.
-				</p>
+				{{!-- <p class="pull-left hint-text p-l-5">
+					I agree to the <a href="#">ZeroRisk Terms</a> and <a href="#">Privacy</a>.
+				</p> --}}
 
 				<div class="clearfix"></div>
 				<button {{action "launchScan"}} class="btn btn-complete pull-right" type="submit" disabled={{isLaunching}}>{{{if isLaunching '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> Launching, please wait' 'Launch scan'}}}</button>

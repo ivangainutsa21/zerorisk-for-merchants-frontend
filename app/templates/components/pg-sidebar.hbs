@@ -2,7 +2,9 @@
   </div> --}}
 
   <div class="sidebar-header">
-    <img src="assets/img/logo_square.png" alt="logo" class="brand m-l-5" data-src="assets/img/logo_square.png" data-src-retina="assets/img/logo_square.png" height="22">
+    {{#unless currentUser.isIngenico}}
+      <img src="assets/img/logo_square.png" alt="logo" class="brand m-l-5" data-src="assets/img/logo_square.png" data-src-retina="assets/img/logo_square.png" height="22">
+    {{/unless}}
 {{!--     <div class="sidebar-header-controls">
       <button data-pages-toggle="#appMenu" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" style="margin-top: 2px;" type="button"><i class="fa fa-angle-down fs-16"></i>
       </button>
