@@ -28,8 +28,7 @@ export default Ember.Component.extend(EKMixin, {
 	init() {
 		this._super(...arguments);
 		// Select first unaswered question
-		// if no questions are answered or all of them are, 
-		// select first question.
+		// if no questions are answered or all of them are, select first question.
 		this.get('saq.questions').then(questions => {
 			this.get('saq.answers').then(() => {
 

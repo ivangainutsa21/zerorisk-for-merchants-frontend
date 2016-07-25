@@ -1,9 +1,17 @@
-<a {{action (action (mut statsMode) "aggregated")}}>to aggregated</a>
-{{stats.ips.total}}<br>
-{{stats.ips.total}}
-
 <div class="content sm-gutter">
 	<div class="container-fluid padding-25 sm-padding-10">
+		
+		{{#if model.merchants}}
+			<div class="row p-b-10">
+				<div class="col-xs-12">
+					<div class="pull-right">
+						<span class="hint-text p-r-5">Show statistics for</span>
+						<button class="btn btn-rounded {{if (eq statsMode "individual") "btn-complete" "btn-transparent"}}" {{action (action (mut statsMode) "individual")}}>Just me</button>						
+						<button class="btn btn-rounded {{if (eq statsMode "aggregated") "btn-complete" "btn-transparent"}}" {{action (action (mut statsMode) "aggregated")}}>All Merchants</button>						
+					</div>
+				</div>
+			</div>
+		{{/if}}
 
 		<div class="row">
 			<div class="col-md-6 col-xlg-6">
@@ -18,33 +26,63 @@
 							" style="transition: background-color 0.5s ease;">
 								<div class="panel-body">
 									<div class="pull-bottom bottom-left bottom-right " style="padding: 0 49px 56px 42px;">
-										{{!-- <span class="label font-montserrat fs-11">STATUS</span> --}}
-										<span class="font-montserrat fs-11 all-caps text-white">Your merchant status</span>
+										<span class="font-montserrat fs-11 all-caps text-white">Your {{if (eq statsMode "individual") "merchant status" "overall merchants status"}}</span>
 										<br>
-										<h1 class="text-white">{{humanMerchantStatus}}</h1>
-										<p class="text-white hint-text"><i class="pg-italic m-r-5"></i>Learn more</p>
+										<h1 class="text-white">{{humanMerchantStatus}} {{#if (eq statsMode "aggregated")}}<i class="pg-italic m-l-5 fs-15 hint-text"></i>{{/if}} </h1>
+										{{#if (eq statsMode "aggregated")}}
+											{{#if model.merchants}}
+												<p class="text-white hint-text">
+													There are {{model.merchants.total}} merchants in your heirarchy,
+													{{#if (not-eq model.merchants.compliant 0)}}
+														{{#if (eq model.merchants.compliant model.merchants.total)}}
+															all of them are <b>Compliant</b>
+														{{else}}
+															<b>{{model.merchants.compliant}}</b> of them {{pluralize model.merchants.compliant "is" "are"}} <b>Compliant</b>
+														{{/if}}													
+													{{else}}
+														<b>none of them</b> is <b>Compliant</b>
+													{{/if}}
+												</p>
+											{{/if}}
+										{{else}}
+											<p class="text-white hint-text"><i class="pg-italic m-r-5"></i>Learn more</p>
+										{{/if}}
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+{{!-- 				<div class="row">
+					<div class="col-md-12 m-b-10">
+						<div class="ar-3-2">
+							<div class="panel no-border no-margin">
+								<div class="panel-body">
+									asdasdasd
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> --}}
 			</div>
-
+						
 			<div class="col-md-6 col-xlg-6">
 				<div class="row">
 					<div class="col-md-12 m-b-10">
 						<div class="ar-2-1">
 							<div class="panel no-border no-margin bg-white">
 								<div class="panel-body">
-									<div style="padding: 0 20px 56px 20px;">																				
-										<h2>Next up</h2>
-										<p class="hint-text">Actions needed to achieve PCI Compliance</p>			
-										<div class="m-t-20">						
-											
+									<div style="padding: 0 20px 56px 20px;">			
+										{{#if (eq stats.status.merchantStatus 'Compliant')}}
+											<h2>Great news</h2>
+											<p class="hint-text">You are Compliant! Here's some actions you might find useful</p>																				
+										{{else}}
+											<h2>Next up</h2>
+											<p class="hint-text">Actions needed to become Compliant</p>			
+										{{/if}}
+										<div class="m-t-20">																	
 											{{#if availableActions}}		
 												{{#each availableActions as |action|}}
-
 													{{#if (eq action.name "COMPLETE_SAQ")}}
 														<a href="{{href-to "saqs.edit" action.resourceId}}" class="text-master"><button class="btn btn-default btn-block m-r-20 m-b-10"><i class="pg-theme m-r-10"></i>Complete your SAQ</button></a>
 													{{/if}}
@@ -56,7 +94,10 @@
 													{{#if (eq action.name "CREATE_SAQ")}}
 														<button class="btn btn-default btn-block m-r-20 m-b-10" disabled><i class="pg-plus_circle m-r-10"></i>Create a SAQ</button>	
 													{{/if}}
-
+													
+													{{#if (eq action.name "DOWNLOAD_SAQ")}}
+														<button {{action "downloadSAQ" action.resourceId}} class="btn btn-default btn-block m-r-20 m-b-10" disabled><i class="pg-download m-r-10"></i>Download SAQ #{{action.resourceId}} report</button>	
+													{{/if}}
 												{{/each}}
 											{{/if}}
 										</div>
@@ -68,12 +109,10 @@
 				</div>
 
 				<div class="row">
-
 					<div class="col-sm-6 m-b-10">
 						<div class="ar-2-1">				 
 							<div class="widget-9 panel no-border bg-white no-margin">
 								<div class="container-xs-height full-height">
-
 									<div class="row-xs-height">
 										<div class="col-xs-height col-top">
 											<div class="panel-heading  top-left top-right">
@@ -84,21 +123,16 @@
 											</div>
 										</div>
 									</div>
-
 									<div class="row-xs-height">
 										<div class="col-xs-height col-top">
 											<div class="p-l-20 p-t-15">
-												<h1 class="no-margin p-b-5 text-black">{{saqsCompleteness}}%</h1>
-
-
+												<h2 class="no-margin p-b-5 text-black">{{saqsCompleteness}}%</h2>
 												<span class="small hint-text">{{stats.saqs.pending}} pending, </span>    
 												<span class="small hint-text">{{stats.saqs.completed}} completed, </span>
 												<span class="small hint-text">{{stats.saqs.submitted}} submitted</span>
-
 											</div>
 										</div>
 									</div>
-
 									<div class="row-xs-height">
 										<div class="col-xs-height col-bottom">
 											<div class="progress progress-small m-b-20">				
@@ -106,32 +140,29 @@
 											</div>
 										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-sm-6 m-b-10">
+{{!-- 					<div class="col-sm-6 m-b-10">
 						<div class="ar-2-1">				 						
 							<div class="widget-9 panel no-border no-margin {{if stats.status.pciPassed 'bg-success' 'bg-danger'}}">
 								<div class="container-xs-height full-height">
-
 									<div class="row-xs-height">
 										<div class="col-xs-height col-top">
 											<div class="panel-heading  top-left top-right">
 												<div class="panel-title text-black">
-													<span class="font-montserrat fs-11 all-caps text-master-light">ASV Status
+													<span class="font-montserrat fs-11 all-caps" style="color: #f9f9f9;">ASV Status
 													</span>
 												</div>
 											</div>
 										</div>
 									</div>
-
 									<div class="row-xs-height">
 										<div class="col-xs-height col-top">
 											<div class="p-l-20 p-t-15">
-												<h1 class="no-margin p-b-5 text-white">{{humanAsvStatus}}</h1>												
+												<h2 class="no-margin p-b-5 text-white">{{humanAsvStatus}}</h2>												
 												{{#if stats.status.pciPassed}}
 													<span class="small text-white">{{pluralize stats.ips.total "IP"}}, all PCI passing</span>
 												{{else}}
@@ -144,26 +175,19 @@
 														{{#if (gt stats.ips.notScanned 0)}}
 															<span class="small text-white">{{pluralize stats.ips.notScanned "IP has" "IPs have"}} never been scanned</span>
 														{{/if}}
-													{{/if}}
-													
-
-													
+													{{/if}}																						
 												{{/if}}
 											</div>
 										</div>
 									</div>
-
 									<div class="row-xs-height">
 										<div class="col-xs-height col-bottom">
-
 										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
-					</div>
-
+					</div> --}}
 				</div>
 				
 

@@ -12,13 +12,12 @@ export default Ember.Controller.extend({
 	  { src: 'https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.wemb', type: 'video/webm' }
 	],
 
-	// onTcAcceptedChange: Ember.observer('currentUser.tcAccepted', function() {
-	// 	console.log('onTcAcceptedChange');
-	// 	let currentUser = this.get('currentUser');
-	// 	if(currentUser.get('tcAccepted')) {
-	// 		currentUser.get('content').save();
-	// 	}
-	// }),
+	saveTc() {
+		let currentUser = this.get('currentUser');
+		if(currentUser.get('tcAccepted')) {
+			return currentUser.get('content').save();
+		}				
+	},
 
 	actions: {
 		ready(player) {
@@ -29,21 +28,12 @@ export default Ember.Controller.extend({
 			this.get('remodal').open('terms-and-conditions');
 		},
 
-		updateTcAccepted(value) {
-			console.log(value);
-			console.log(this.get('currentUser'));
-		},
-
 		goNext() {
-			let currentUser = this.get('currentUser');
-			if(currentUser.get('tcAccepted')) {
-				currentUser.get('content').save()
-				.then(() => {
-					this.transitionToRoute('enrollment.user-details');
-				}).catch(() => {
-					alert("Error accepting Terms and Conditions. Try again.");
-				});
-			}
-		}
+			this.saveTc().then( () => {
+				this.transitionToRoute('enrollment.user-details');
+			}).catch(() => {
+				alert("Error accepting Terms and Conditions.");
+			});
+		}		
 	}
 });

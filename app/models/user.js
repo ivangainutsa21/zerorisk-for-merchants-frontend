@@ -36,6 +36,10 @@ export default Model.extend({
   }),
 
   // Customizations
+  isUnbranded: computed('merchantCustomizationId', function() {
+    return this.get('isIngenico');
+  }),
+
   hasCustomization: computed('merchantCustomizationId', function() {
     return this.get('merchantCustomizationId') !== 1;
   }),

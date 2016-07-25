@@ -30,5 +30,11 @@ export default Ember.Controller.extend({
 		} else {
 			return Math.floor( (this.get('stats.saqs.submitted') / total) * 100 );
 		}		
-	})
+	}),
+
+	actions: {
+		downloadSAQ(saqId) {
+			this.store.find('saq', saqId).then(saq => saq.download());
+		}
+	}
 });

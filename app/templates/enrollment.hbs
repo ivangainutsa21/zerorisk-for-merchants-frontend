@@ -6,7 +6,7 @@
         {{#link-to "enrollment.welcome" tagName="li"}}
           <a><i class="fa fa-rocket tab-icon"></i>
             <span>            
-              {{if currentUser.isIngenico 'Welcome' (concat 'Welcome to' (t 'app.family_name'))}}
+              {{if currentUser.isUnbranded 'Welcome' (concat 'Welcome to ' (t 'app.family_name'))}}
             </span>
           </a>
           <i class="pg-arrow_right fs-10 hidden-xs" style="position: absolute; top: 20px; float: right; right: -4px;"></i>
