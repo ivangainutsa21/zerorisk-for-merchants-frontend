@@ -1,0 +1,23 @@
+.news-reader-image {
+	position: absolute; 
+	z-index: 1;
+	width: 100%;
+	opacity: .4;
+	transition: opacity 0.2s linear;
+}
+
+.news-reader-backdrop {
+	&:before {
+		background-image: url("../img/linear_gradient.png");
+		background-repeat: repeat-x;
+		content: " ";
+		left: 0;
+		right: 0;
+		height: 325px;
+		bottom: 0;
+		position: absolute;
+		z-index: 1;
+		-webkit-transition: background-image 0.5s linear;
+		transition: background-image 0.5s linear;
+	}
+}
