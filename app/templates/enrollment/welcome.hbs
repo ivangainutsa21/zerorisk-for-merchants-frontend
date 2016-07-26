@@ -11,10 +11,10 @@
   <div class="col-md-8">
   <h3 class="semi-bold">Let's start</h3>
     <p>You're here because you need to demonstrate your PCI DSS compliance to the cards industry.</p>
-    <p>By clicking Start you will start an enrollment procedure based on <b>3 simple steps</b> that will allow your organisation to identify and sumbit the correct PCI DSS Self Assessment Questionnaire.</p>
-    <p>Please take a few minutes to complete the journey and <i>fasten your seat belts!</i></p>    
+    <p>By clicking <b>Start</b> you will initiate the enrollment procedure based on <b>3 simple steps</b>. This will allow your organisation to identify the correct PCI DSS <b>S</b>elf <b>A</b>ssessment <b>Q</b>uestionnaire (SAQ) and complete it.</p>
+    <p>Please take a few minutes to complete the journey and <i>fasten your seatbelts!</i></p>    
     <p class="pull-left p-t-35 p-b-30 p-r-30">
-      {{input type="checkbox" checked=currentUser.tcAccepted}}<span class="p-l-10">I agree to the <a {{action 'openTermsModal'}}>Terms and Conditions</a></span>  
+      {{input type="checkbox" checked=currentUser.tcAccepted}}<span class="p-l-10">I accept the <a {{action 'openTermsModal'}}>Terms and Conditions</a></span>  
     </p>
     <p class="pull-right p-t-30 p-b-30 p-r-30">      
       <button {{action 'goNext'}} class="btn btn-success btn-cons" disabled={{if (not hasCompletedStep) 'disabled'}}>Start</button>
