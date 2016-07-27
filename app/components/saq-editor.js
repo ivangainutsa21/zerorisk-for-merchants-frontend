@@ -71,6 +71,16 @@ export default Ember.Component.extend(EKMixin, {
 		}
 	}),
 
+	previousQuestion: Ember.computed('selectedQuestion', 'saq.questions.[]', function() {
+		let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));		
+		return this.get('saq.questions').objectAt(currentQuestionIndex-1);
+	}),
+
+	nextQuestion: Ember.computed('selectedQuestion', 'saq.questions.[]', function() {
+		let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));		
+		return this.get('saq.questions').objectAt(currentQuestionIndex+1);
+	}),
+
 	_setSelectedQuestion(question) {
 		this.set('selectedQuestion', question);
 		Ember.run.scheduleOnce('afterRender', function() {
@@ -82,20 +92,16 @@ export default Ember.Component.extend(EKMixin, {
 	},
 
 	_goNext() {
-	  let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));		
-	  let nextQuestion = this.get('saq.questions').objectAt(currentQuestionIndex+1);
-
+		let nextQuestion = this.get('nextQuestion');
 	  if(nextQuestion) {
 			this._setSelectedQuestion(nextQuestion);
 	  }
 	},
 
 	_goPrev() {			
-	  let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));		
-	  let prevQuestion = this.get('saq.questions').objectAt(currentQuestionIndex-1);
-
-	  if(prevQuestion) {
-  		this._setSelectedQuestion(prevQuestion);
+  	let previousQuestion = this.get('previousQuestion');
+    if(previousQuestion) {
+  		this._setSelectedQuestion(previousQuestion);
 	  }
 	},
 

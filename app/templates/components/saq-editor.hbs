@@ -51,8 +51,25 @@
               <div class="progress-circle-indeterminate m-t-60"></div>
             {{/d.pending}}
             {{#d.settled class="full-height"}}
+            
               {{saq-editor/question question=selectedQuestion}}
+              
+              {{!-- Prev/Next Controls --}}
+              {{#if previousQuestion}}
+                <a {{action 'goPrev'}} style="position: absolute; top: 25%; left: 5%;">
+                  <i class="fa fa-angle-left fa-2x text-master" aria-hidden="true"></i>
+                </a>
+              {{/if}}
+              
+              {{#if nextQuestion}}
+                <a {{action 'goNext'}} style="position: absolute; top: 25%; right: 5%;">
+                  <i class="fa fa-angle-right fa-2x text-master" aria-hidden="true"></i>
+                </a>
+              {{/if}}
+              {{!-- / Prev/Next Controls --}}
+
               {{saq-editor/answer question=selectedQuestion onSaveAnswer=(action 'goNext') okToLeaveSelectedQuestion=(action 'okToLeaveSelectedQuestion')}}
+            
             {{/d.settled}}
           {{/deferred-content}}          
         </div>
