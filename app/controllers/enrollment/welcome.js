@@ -7,10 +7,18 @@ export default Ember.Controller.extend({
 	remodal: injectService(),
 	currentUser: injectService(),
 
-	enrollmentVideoSrc: [
-	  { src: 'https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.mp4', type: 'video/mp4' },
-	  { src: 'https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.wemb', type: 'video/webm' }
-	],
+	// enrollmentVideoSrc: [
+	//   { src: 'https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.mp4', type: 'video/mp4' },
+	//   { src: 'https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.wemb', type: 'video/webm' }
+	// ],
+
+	enrollmentVideoSrc: Ember.computed('currentUser.isUnbranded', function() {
+		let fileName = this.get('currentUser.isUnbranded') ? 'merchants-welcome-unbranded' : 'merchants-welcome';
+		return [
+	  	{ src: `https://s3-eu-west-1.amazonaws.com/wizardvideos/${fileName}.mp4`, type: 'video/mp4' },
+	  	{ src: `https://s3-eu-west-1.amazonaws.com/wizardvideos/${fileName}.wemb`, type: 'video/webm' }
+		];
+	}),
 
 	saveTc() {
 		let currentUser = this.get('currentUser');
