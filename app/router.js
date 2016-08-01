@@ -34,6 +34,11 @@ Router.map(function() {
   this.route('auth', function() {
     this.route('login-url', { path: 'login-url/:token' });
   });
+
+  this.route('legal', function() {
+    this.route('terms-of-use');
+    this.route('privacy-policy');
+  });
 });
 
 export default Router;

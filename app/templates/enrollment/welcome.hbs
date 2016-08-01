@@ -26,4 +26,4 @@
   {{ivy-videojs src=enrollmentVideoSrc fluid=true ready="ready" controls=true}}
 </div>
 
-{{modals/terms-and-conditions}}
+{{modals/terms-and-conditions onAgree=(action (mut currentUser.tcAccepted) true)}}

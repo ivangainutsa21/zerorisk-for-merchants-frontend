@@ -49,9 +49,12 @@ body.sidebar-open .page-container {
 	flex: none
 }
 
-.full-page-wrapper {
-	@extend .login-wrapper;
+.full-page-wrapper {	
+	//@extend .login-wrapper;	
+	height: 100%;
+	background-color: #fff;
 }
+
 
 .header {
   border-bottom: 1px solid #F5F5F5;

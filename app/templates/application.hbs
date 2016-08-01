@@ -2,7 +2,7 @@
 
 {{#if navi.isInUnauthenticatedRoute}}
 
-	{{#pg-main class="full-page-wrapper"}}
+	{{#pg-main class=(if navi.isInLoginRoute 'full-page-wrapper login-wrapper' 'full-page-wrapper') }}
 		{{outlet}}
 	{{/pg-main}}
 
