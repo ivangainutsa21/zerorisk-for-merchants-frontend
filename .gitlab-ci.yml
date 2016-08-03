@@ -1,0 +1,32 @@
+stages:
+  - build-and-deploy
+
+build-and-deploy:demo:
+  stage: build-and-deploy
+  script:
+  - npm config set spin false    
+  - npm install
+  - bower install --allow-root
+  - ember deploy demo --verbose
+  tags:
+  - ember-cli
+  only:
+  - release
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    untracked: true
+    paths:
+    - node_modules/
+    - bower_components/
+
+build-and-deploy:prod:
+  stage: build-and-deploy
+  script:
+  - npm config set spin false
+  - npm install
+  - bower install --allow-root
+  - ember deploy production --verbose
+  tags:
+  - ember-cli
+  only:
+  - /^v.*$/  
