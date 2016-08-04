@@ -46,5 +46,23 @@ export default Model.extend({
 
   isIngenico: computed('merchantCustomizationId', function() {
     return this.get('merchantCustomizationId') === 2;
+  }),
+
+  isBancaSella: computed('merchantCustomizationId', function() {
+    return this.get('merchantCustomizationId') === 3;
+  }),
+
+  isGenericDemo: computed('merchantCustomizationId', function() {
+    return this.get('merchantCustomizationId') === 4;
+  }),
+
+  // Wizard
+  enrollmentWizardId: computed('isIngenico', 'isBancaSella', function() {
+    if(this.get('isIngenico')) {
+      return 3;
+    } else if(this.get('isBancaSella')) {
+      return 4;
+    }
+    return 5;
   })
 });
