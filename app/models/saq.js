@@ -3,6 +3,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 import config from '../config/environment';
+import paths from 'zerorisk-for-merchants/utils/paths';
 
 const { computed } = Ember;
 
@@ -27,7 +28,7 @@ export default Model.extend({
     return this.get('type').replace('_', ' ');
   }),
   download() {
-    let url = config.environment === 'development' ? `http://localhost:8080/api/v2/merchant/saqs/${this.get('id')}/download` : `api/v2/merchant/saqs/${this.get('id')}/download`;
+    let url = config.environment === 'development' ? `http://localhost:8080/${paths().namespace}/merchant/saqs/${this.get('id')}/download` : `${paths().host()}/${paths().namespace}/merchant/saqs/${this.get('id')}/download`;
     return Ember.$('<iframe>', { src: url }).hide().appendTo('body');
   }
 });
