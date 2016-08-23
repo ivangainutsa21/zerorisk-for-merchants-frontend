@@ -15,7 +15,7 @@
         <div class="btn-group m-t-10 m-b-10 m-r-15 pull-right" style="border-bottom: 1px solid whitesmoke;">
           
           {{#if saq.isSubmitted}}
-            <button {{action "download"}} type="button" class="btn btn-default"><i class="fa fa-download"></i></button>
+            <button {{action "download"}} type="button" class="btn btn-default"><i class="fa fa-download m-r-10"></i>Download</button>
             {{#tooltip-on-element side='left' event='none' effect='slide' tooltipIsVisible=downloadSaqTooltipIsShowing duration=5500}}
               You can download a copy of your SAQ by clicking here.
             {{/tooltip-on-element}}

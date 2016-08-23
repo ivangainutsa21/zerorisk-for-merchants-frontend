@@ -29,6 +29,7 @@ export default Model.extend({
   }),
   download() {
     let url = config.environment === 'development' ? `http://localhost:8080/${paths().namespace}/merchant/saqs/${this.get('id')}/download` : `${paths().host()}/${paths().namespace}/merchant/saqs/${this.get('id')}/download`;
-    return Ember.$('<iframe>', { src: url }).hide().appendTo('body');
+    return window.location.assign(url);
+    //return Ember.$('<iframe>', { src: url }).hide().appendTo('body');
   }
 });
