@@ -19,6 +19,7 @@ export default AjaxService.extend({
 
     if(isForbiddenError(handledResponse)) {
       console.log("You're not authorized to perform this operation.");
+      this.get('session').invalidate();
     }
 
     if(isUnauthorizedError(handledResponse)) {

@@ -1,7 +1,7 @@
 <div class="content sm-gutter">
 	<div class="container-fluid padding-25 sm-padding-10">
 		
-		{{#if model.merchants}}
+		{{#if (gt model.merchants.total 1)}}
 			<div class="row p-b-10">
 				<div class="col-xs-12">
 					<div class="pull-right">
