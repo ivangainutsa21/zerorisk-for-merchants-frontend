@@ -67,7 +67,7 @@ export default Base.extend({
     return new Ember.RSVP.Promise((resolve/*, reject*/) => {
       Ember.$.ajax({
         type: 'GET',
-        url: `${paths().host()}/logout`
+        url: `${paths().host()}/api/v1/users/sign_out`
       }).then((response) => {
         Ember.run(() => {
           resolve(response);
