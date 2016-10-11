@@ -11,9 +11,16 @@ export default AjaxService.extend({
   host: paths().host(),
   namespace: `${paths().namespace}`,
 
+  headers: Ember.computed(function() {
+    return {
+      "X-CSRF-TOKEN": decodeURIComponent(Ember.get(document.cookie.match(/X-\CSRF\-TOKEN\=([^;]*)/), "1"))
+    }
+  }).volatile(),
+
   // isSuccess(status, headers, payload) {
   //   return payload.success;
   // }
+  
   handleResponse() {
     let handledResponse = this._super(...arguments);
 
