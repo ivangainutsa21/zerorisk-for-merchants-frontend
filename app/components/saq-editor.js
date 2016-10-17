@@ -155,6 +155,7 @@ export default Ember.Component.extend(EKMixin, {
 			let saq = this.get('saq');
 			this.set('isSubmitting', true);
 			saq.set('status', 'SUBMITTED');
+			//TODO handle fail
 			saq.save().then(() => {
 				this.set('isSubmitting', false);
 				this.set('downloadSaqTooltipIsShowing', true);
@@ -163,7 +164,6 @@ export default Ember.Component.extend(EKMixin, {
 
 		download() {
 			this.get('saq').download();
-			// window.location = "assets/Self-Assessment_Questionnaire_A_and_Attestation_of_Compliance.docx";
 		}
 	}
 });
