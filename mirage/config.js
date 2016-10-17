@@ -5,6 +5,10 @@ export default function() {
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
   this.post('/api/v1/users/sign_in', function() {
+    let now = new Date();
+    let cookieExpiration = new Date(now.getTime() + (24 * 3600 * 1000));
+    document.cookie = `JSESSIONID=DF3ED2FD7496A15FF0FACF1F70D61FF4; domain=localhost; path=/; expires=${cookieExpiration.toUTCString()};`;
+
     return {
       result: {
         "token": 'DF3ED2FD7496A15FF0FACF1F70D61FF4',
