@@ -17,7 +17,7 @@
       {{input type="checkbox" checked=currentUser.tcAccepted}}<span class="p-l-10">I accept the <a {{action 'openTermsModal'}}>Terms and Conditions</a></span>  
     </p>
     <p class="pull-right p-t-30 p-b-30 p-r-30">      
-      <button {{action 'goNext'}} class="btn btn-success btn-cons" disabled={{if (not hasCompletedStep) 'disabled'}}>Start</button>
+      <button {{action 'goNext'}} class="btn btn-success btn-cons" disabled={{if (or (not hasCompletedStep) isLoading) 'disabled'}}>{{{if isLoading '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> Starting' 'Start'}}}</button>
     </p>
   </div>
 </div>

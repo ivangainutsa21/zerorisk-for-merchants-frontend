@@ -46,11 +46,11 @@
           </div>
         </div>
         <!-- START Form Control-->
-        <div class="row">
+        {{!--<div class="row">
           <div class="col-md-12 text-right ">
 	          <a href="#" class="text-info small">Forgot password?</a>
           </div>
-        </div>
+        </div>--}}
         <!-- END Form Control-->
         <button {{action 'authenticate'}} class="btn btn-complete btn-cons m-t-10" type="submit" disabled={{isLoading}}>
           {{{if isLoading '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> Logging in' 'Login'}}}

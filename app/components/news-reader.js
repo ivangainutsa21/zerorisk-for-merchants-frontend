@@ -39,19 +39,20 @@ export default Ember.Component.extend({
 		let content = this.get('feed.entries.firstObject.content');
 		
 		Ember.run.scheduleOnce('afterRender', function() {
-			$(".news-reader-panel-body").css('height', $(".news-reader-panel").height() - 37);
+			Ember.$(".news-reader-panel-body").css('height', Ember.$(".news-reader-panel").height() - 37);
 			Ember.$.Pages.initScrollBarPlugin();
-			$(".news-reader-leading-entry").css('padding-top', $(".news-reader-panel").height() - $(".news-reader-leading-entry").height() - 68);
+			Ember.$(".news-reader-leading-entry").css('padding-top', Ember.$(".news-reader-panel").height() - Ember.$(".news-reader-leading-entry").height() - 68);
 		});
 
 		this.set('showBackdrop', false);
 
 		if(content) {
-			var tmp = document.createElement('div');
+			let tmp = document.createElement('div');
 			tmp.innerHTML = content;		
-			var img = tmp.querySelector('img');
+			let img = tmp.querySelector('img');
+      let src = null;
 			if(img) {
-				var src = img.getAttribute('src');
+				let src = img.getAttribute('src');
 			}
 
 			if(img && src) {

@@ -19,7 +19,7 @@ export default Ember.Route.extend(UnauthenticatedRouteMixin, {
 		  () => {		  			    
 		    this.get('alerting').notify('Successfully authenticated.', 'success', 'bottom-right-toast');
 		  },
-		  response => {
+      () => {
 		  	this.controllerFor('auth.login-url').set('error', "The login URL you just tried to use is either expired or incorrect. Please try again.");
 		    //this.set('error', this.get('errorParser').parseAndDisplay(response, 'notification'));
 		  }

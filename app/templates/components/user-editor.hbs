@@ -40,5 +40,5 @@
 </div>
 
 <p class="pull-right m-t-20">
-  <button {{action "save"}} class="btn btn-success btn-cons" type="submit" disabled={{cantSave}}>{{saveText}}</button>
+  <button {{action "save"}} class="btn btn-success btn-cons" type="submit" disabled={{if (or cantSave isLoading) 'true'}}>{{{if isLoading (concat '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> ' saveText) saveText}}}</button>
 </p>

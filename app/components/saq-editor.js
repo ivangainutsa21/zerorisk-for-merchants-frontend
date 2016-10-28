@@ -1,6 +1,7 @@
 /*global jQuery*/
 import Ember from 'ember';
 import { EKMixin, keyDown } from 'ember-keyboard';
+import injectService from 'ember-service/inject';
 
 function isElementInViewport (el) {
     //special bonus for those using jQuery
@@ -19,6 +20,8 @@ function isElementInViewport (el) {
 }
 
 export default Ember.Component.extend(EKMixin, {
+  errorParser: injectService(),
+
 	tagName: '',
 
 	selectedQuestion: null,
@@ -85,9 +88,9 @@ export default Ember.Component.extend(EKMixin, {
 		this.set('selectedQuestion', question);
 		Ember.run.scheduleOnce('afterRender', function() {
 			let el = document.getElementById(`question-${question.get('id')}`);
-			if(!isElementInViewport(el)) {
-				document.getElementById(`question-${question.get('id')}`).scrollIntoView();	
-			}			
+			// if(!isElementInViewport(el)) {
+			// 	document.getElementById(`question-${question.get('id')}`).scrollIntoView();	
+			// }			
 		});		
 	},
 
@@ -159,7 +162,11 @@ export default Ember.Component.extend(EKMixin, {
 			saq.save().then(() => {
 				this.set('isSubmitting', false);
 				this.set('downloadSaqTooltipIsShowing', true);
-			});
+			}).catch((response) => {
+        this.set('isSubmitting', false);
+        saq.rollbackAttributes();
+        this.get('errorParser').parseAndDisplay(response, 'notification');
+      });
 		},
 
 		download() {
