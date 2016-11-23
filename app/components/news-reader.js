@@ -38,6 +38,7 @@ export default Ember.Component.extend({
 	backgroundImg: Ember.computed('feed.entries', 'currentFeed', function() {
 		let content = this.get('feed.entries.firstObject.content');
 		
+    // TODO: why is this here?
 		Ember.run.scheduleOnce('afterRender', function() {
 			Ember.$(".news-reader-panel-body").css('height', Ember.$(".news-reader-panel").height() - 37);
 			Ember.$.Pages.initScrollBarPlugin();
@@ -74,6 +75,7 @@ export default Ember.Component.extend({
 			promise: this.get('ajax').request(`/News/rss?feedUrl=${currentFeedUrl}`).then(payload => {
 				this.set('ajax.namespace', temporaryHack);
 				this.trigger('feedLoadComplete');
+        // TODO: cache feeds
 				return payload.responseData.feed;
 			})
 		}); 

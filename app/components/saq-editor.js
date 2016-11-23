@@ -86,12 +86,13 @@ export default Ember.Component.extend(EKMixin, {
 
 	_setSelectedQuestion(question) {
 		this.set('selectedQuestion', question);
-		Ember.run.scheduleOnce('afterRender', function() {
-			let el = document.getElementById(`question-${question.get('id')}`);
-			// if(!isElementInViewport(el)) {
-			// 	document.getElementById(`question-${question.get('id')}`).scrollIntoView();	
-			// }			
-		});		
+		// Ember.run.scheduleOnce('afterRender', function() {
+		// 	let el = document.getElementById(`question-${question.get('id')}`);
+		// 	if(!isElementInViewport(el)) {
+		// 		document.getElementById(`question-${question.get('id')}`).scrollIntoView();	
+		// 	}			
+		// });		
+    console.timeEnd('changeQuestion');
 	},
 
 	_goNext() {
@@ -147,6 +148,7 @@ export default Ember.Component.extend(EKMixin, {
 		},
 
 		goNext() {
+      console.time('changeQuestion');
 			this._goNext();
 		},
 
