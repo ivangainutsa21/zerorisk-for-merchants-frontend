@@ -14,7 +14,9 @@ export default Ember.Controller.extend({
       this.get('session').authenticate('authenticator:cookie', credentials).then(
         () => {
           this.set('error', null);
-          this.set('isLoading', false);
+          Ember.run.later(this, () => {
+            this.set('isLoading', false);
+          }, 1000);          
           //this.get('session').afterAuthentication();
         },
         response => {

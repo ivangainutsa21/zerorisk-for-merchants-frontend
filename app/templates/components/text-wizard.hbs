@@ -1,14 +1,17 @@
-{{!-- currentQuestionId: {{currentQuestionId}}<br>
-previousQuestionId: {{previousQuestionId}}<br>
-questionIdsHistory: {{#each questionIdsHistory as |a|}}{{a}},{{/each}} --}}
-
 {{#liquid-bind currentQuestion.id class="overflow-visible" as |cq| }}
   <div class="text-wizard-question-container container-fluid container-fixed-lg bg-white p-t-50 p-b-50">
       {{#if currentQuestionHasQuestionMark}}
         <div class="hint-text all-caps fs-10 font-montserrat" style="width: 80%; margin: 0 auto;">Question</div>
       {{/if}}
-
-      <h5 style="width: 80%; margin: 0 auto;">{{{currentQuestion.text}}}</h5>
+      
+      {{#if currentQuestion.text}}
+        <h5 style="width: 80%; margin: 0 auto;">{{{currentQuestion.text}}}</h5>
+      {{else}}
+        {{!--Loading placeholders!--}}
+        <div class="bg-master-lightest" style="width 100%;height 35px;margin-bottom 20px;width: 20%;transform: translateX(-74%);height: 12px;margin: auto;"></div>
+        <div class="bg-master-lightest" style="width 100%;height 35px;margin-bottom 20px;width: 50%;height: 15px;margin: auto;margin-top: 10px;"></div>
+        <div class="bg-master-lightest" style="width 100%;height 35px;margin-bottom 20px;width: 43%;height: 15px;margin: auto;margin-top: 5px;transform: translateX(-8%);"></div>
+      {{/if}}
 
       {{#if canGoBack}}
         <a {{action 'goBack'}} class="hidden-xs" style="position: absolute; top: 42%;">
@@ -18,8 +21,15 @@ questionIdsHistory: {{#each questionIdsHistory as |a|}}{{a}},{{/each}} --}}
   </div>
 {{/liquid-bind}}
 
-{{#if answerComponent}}
+{{#if isLoading}}
   <div class="p-t-40 p-b-40" style="background-color: #F7F7F7;">
-    {{component answerComponent answers=currentAnswer answer=(action 'answer')}}
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw text-master-light" style="margin: auto; display: block;"></i>
+    {{!--<div class="text-master hint-text center-text">{{endWizardloadingText}}</div>--}}
   </div>
+{{else}}
+  {{#if answerComponent}}
+    <div class="p-t-40 p-b-40" style="background-color: #F7F7F7;">
+      {{component answerComponent answers=currentAnswer answer=(action 'answer')}}
+    </div>
+  {{/if}}
 {{/if}}

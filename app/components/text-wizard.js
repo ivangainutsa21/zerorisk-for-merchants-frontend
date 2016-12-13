@@ -1,9 +1,12 @@
 import Ember from 'ember';
 const { computed, get, set, isEmpty } = Ember;
+import injectService from 'ember-service/inject';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
   routing: Ember.inject.service('-routing'),
+  alerting: injectService(),
+  errorParser: injectService(),
 
   // Attrs
   wizardId: null,
@@ -12,10 +15,11 @@ export default Ember.Component.extend({
   questionIdsHistory: [],
   currentQuestion: Ember.Object.create(),
   currentAnswer: Ember.Object.create(),
+  isLoading: false,
 
   // CPs
   answerComponent: computed('currentAnswer.type', function() {
-    if(!isEmpty(get(this, 'currentAnswer.type'))) {
+    if (!isEmpty(get(this, 'currentAnswer.type'))) {
       return `text-wizard/${get(this, 'currentAnswer.type')}`;
     } else {
       return false;
@@ -23,7 +27,7 @@ export default Ember.Component.extend({
   }),
 
   currentQuestionHasQuestionMark: computed('currentQuestion.text', function() {
-    if(!isEmpty(get(this, 'currentQuestion.text'))) {
+    if (!isEmpty(get(this, 'currentQuestion.text'))) {
       return get(this, 'currentQuestion.text').indexOf('?') !== -1;
     } else {
       return false;
@@ -37,8 +41,8 @@ export default Ember.Component.extend({
 
   previousQuestionId: computed('questionIdsHistory.[]', function() {
     let questionIdsHistory = get(this, 'questionIdsHistory');
-    if(questionIdsHistory && questionIdsHistory.get('length') >= 2) {
-      return questionIdsHistory.objectAt(questionIdsHistory.get('length')-2);
+    if (questionIdsHistory && questionIdsHistory.get('length') >= 2) {
+      return questionIdsHistory.objectAt(questionIdsHistory.get('length') - 2);
     } else {
       return false;
     }
@@ -56,29 +60,42 @@ export default Ember.Component.extend({
   // Methods
   startWizard() {
     //set(this, 'questionIdsHistory', Ember.A([]));
+    this.set('isLoading', true);
     this.get('ajax').post(`/Wizard/Create?wizardId=${get(this, 'wizardId')}`).then(response => {
-        this.setCurrentQuestionAndAnswer(response.result);
+      this.set('isLoading', false);
+      this.setCurrentQuestionAndAnswer(response.result);
+    }).catch(response => {
+      this.set('isLoading', false); 
+      this.get('errorParser').parseAndDisplay(response, 'notification')
     });
   },
 
   goToQuestionId(questionId) {
-    this.get('ajax').post(`/Wizard/InProgress?userAnswerId=${questionId}`).then(response => {
-        if(questionId !== 0) {
+    this.set('isLoading', true);
+    this.get('ajax').post(`/Wizard/InProgress?userAnswerId=${questionId}`)
+      .then(response => {
+        this.set('isLoading', false);
+        if (questionId !== 0) {
           this.setCurrentQuestionAndAnswer(response.result);
         } else {
           // End of the wizard
           let onGoalAction = JSON.parse(response.result.wizardView.onGoalAction);
-          switch(onGoalAction.action) {
-            case 'OPEN_SAQ':               
-              // TODO: use router public api when it becomes available
+          switch (onGoalAction.action) {
+            case 'OPEN_SAQ':                            
+              this.get('alerting').notify("Opening SAQ..", 'success', 'bottom-right-toast');
               this.get('onWizardComplete')();
+              // TODO: use router public api when it becomes available
               this.get('routing').transitionTo('saqs.edit', [onGoalAction.objectId]);
-              break; 
+              break;
             default:
               alert("Work in Progress: unhandled action.");
           }
         }
-    });
+      })
+      .catch(response => {
+        this.set('isLoading', false);
+        this.get('errorParser').parseAndDisplay(response, 'notification')
+      });
   },
 
   setCurrentQuestionAndAnswer(hash) {
@@ -86,15 +103,15 @@ export default Ember.Component.extend({
     // if we are agoing to the first id in questionIdsHistory,
     // that means that we are resetting the wizard and going back to the first question of it,
     // so we'll reset its history
-    if(hash.wizardActualQuestion === get(this, 'questionIdsHistory').get('firstObject')) {
-        get(this, 'questionIdsHistory').clear();
+    if (hash.wizardActualQuestion === get(this, 'questionIdsHistory').get('firstObject')) {
+      get(this, 'questionIdsHistory').clear();
     }
     get(this, 'questionIdsHistory').addObject(hash.wizardActualQuestion);
     set(this, 'currentQuestion.text', hash.wizardView.text);
     set(this, 'currentQuestion.id', hash.wizardActualQuestion);
 
     // Answer
-    if(hash.wizardView.answerType === "YES_NO") {
+    if (hash.wizardView.answerType === "YES_NO") {
       set(this, 'currentAnswer.type', 'yes-no-answer');
       set(this, 'currentAnswer.yesBringsTo', hash.wizardView.yesBringsTo);
       set(this, 'currentAnswer.noBringsTo', hash.wizardView.noBringsTo);

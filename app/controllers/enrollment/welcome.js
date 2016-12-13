@@ -2,15 +2,14 @@ import Ember from 'ember';
 import injectService from 'ember-service/inject';
 
 export default Ember.Controller.extend({
-	hasCompletedStep: Ember.computed.oneWay('currentUser.tcAccepted'),
-
 	remodal: injectService(),
 	currentUser: injectService(),
+  errorParser: injectService(),
 
-	// enrollmentVideoSrc: [
-	//   { src: 'https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.mp4', type: 'video/mp4' },
-	//   { src: 'https://s3-eu-west-1.amazonaws.com/wizardvideos/merchants-welcome.wemb', type: 'video/webm' }
-	// ],
+
+  isLoading: false,
+
+  hasCompletedStep: Ember.computed.oneWay('currentUser.tcAccepted'),
 
 	enrollmentVideoSrc: Ember.computed('currentUser.isUnbranded', function() {
 		let fileName = this.get('currentUser.isUnbranded') ? 'merchants-welcome-unbranded' : 'merchants-welcome';
@@ -37,10 +36,13 @@ export default Ember.Controller.extend({
 		},
 
 		goNext() {
-			this.saveTc().then( () => {
+      this.set('isLoading', true);
+			this.saveTc().then( () => {        
 				this.transitionToRoute('enrollment.user-details');
-			}).catch(() => {
-				alert("Error accepting Terms and Conditions.");
+        Ember.run.later(this, () => this.set('isLoading', false), 500);        
+			}).catch(response => {
+        this.set('isLoading', false);				
+        this.get('errorParser').parseAndDisplay(response, 'notification')
 			});
 		}		
 	}

@@ -1,89 +1,106 @@
 import Ember from 'ember';
+import injectService from 'ember-service/inject';
 
 export default Ember.Component.extend({
-	tagName: '',
-	
-	store: Ember.inject.service(),
+  errorParser: injectService(),
 
-	isEditingNotApplicable: false,
-	isEditingCompensatingControls: false,
-	activeCompensatingControlPoint: 'constraints',
+  tagName: '',
 
-	// Hooks
-	didUpdateAttrs() {
-		this.stopEditingNotApplicableAndCompensatingControlsIfEditing();
-	},
+  store: Ember.inject.service(),
 
-	// Methoods
-	saveAnswer(answer, answerType) {
-  	answer.set('type', answerType);
-  	answer.save().then(() => {
-  		this.stopEditingNotApplicableAndCompensatingControlsIfEditing();
-  		this.get('onSaveAnswer')();
-  	})
-  	.catch(() => {
-			answer.unloadRecord();
-		});			
-	},
+  isEditingNotApplicable: false,
+  isEditingCompensatingControls: false,
+  activeCompensatingControlPoint: 'constraints',
 
-	createAnswerIfDoesntExist(answerType) {
-		return this.get('question').get('answer').then((answer) => {
-			if (!answer) {
-				return this.get('store').createRecord('saqAnswer', { saq: this.get('question').get('saq'), question: this.get('question'), type: answerType });		
-			} else {
-				return answer;
-			}
-		});	
-	},
+  // Hooks
+  didUpdateAttrs() {
+    this.stopEditingNotApplicableAndCompensatingControlsIfEditing();
+  },
 
-	stopEditingNotApplicableAndCompensatingControlsIfEditing() {
-		if (this.get('isEditingNotApplicable')) {
-			this._stopEditingNotApplicable();		
-		}
+  // Methoods
+  saveAnswer(answer, answerType) {
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      answer.set('type', answerType);
+      answer.save()
+        .then(() => {
+          this.stopEditingNotApplicableAndCompensatingControlsIfEditing();
+          this.get('onSaveAnswer')();
+          resolve();
+        })
+        .catch((response) => {
+          this.get('errorParser').parseAndDisplay(response, 'notification');
+          answer.rollbackAttributes();
+          reject();
+        });
+    });
+  },
 
-		if (this.get('isEditingCompensatingControls')) {
-			this._stopEditingCompensatingControls();		
-		}		
-	},
+  createAnswerIfDoesntExist(answerType) {
+    return this.get('question').get('answer').then((answer) => {
+      if (!answer) {
+        console.time('saqAnwering');
+        let created = this.get('store').createRecord('saqAnswer', { saq: this.get('question').get('saq'), question: this.get('question'), type: answerType });
+        console.timeEnd('saqAnwering');
+        return created;
+      } else {
+        return answer;
+      }
+    });
+  },
 
-	_stopEditingNotApplicable() {
-		this.get('okToLeaveSelectedQuestion')().then(ok => {
-			if (ok) {
-				this.set('isEditingNotApplicable', false);
-			}		
-		});
-	},
+  stopEditingNotApplicableAndCompensatingControlsIfEditing() {
+    if (this.get('isEditingNotApplicable')) {
+      this._stopEditingNotApplicable();
+    }
 
-	_stopEditingCompensatingControls() {
-		this.get('okToLeaveSelectedQuestion')().then(ok => {
-			if (ok) {
-				this.set('isEditingCompensatingControls', false);
-				this.set('activeCompensatingControlPoint', 'constraints');
-			}
-		});
-	},
+    if (this.get('isEditingCompensatingControls')) {
+      this._stopEditingCompensatingControls();
+    }
+  },
 
-	actions: {
-		answer(answerType) {
-			this.createAnswerIfDoesntExist(answerType).then(answer => this.saveAnswer(answer, answerType));
-		},
+  _stopEditingNotApplicable() {
+    this.get('okToLeaveSelectedQuestion')().then(ok => {
+      if (ok) {
+        this.set('isEditingNotApplicable', false);
+      }
+    });
+  },
 
-		startEditingNotApplicable() {
-			this.set('isEditingNotApplicable', true);
-			this.createAnswerIfDoesntExist('NOT_APPLICABLE');
-		},
+  _stopEditingCompensatingControls() {
+    this.get('okToLeaveSelectedQuestion')().then(ok => {
+      if (ok) {
+        this.set('isEditingCompensatingControls', false);
+        this.set('activeCompensatingControlPoint', 'constraints');
+      }
+    });
+  },
 
-		startEditingCompensatingControls() {
-			this.set('isEditingCompensatingControls', true);
-			this.createAnswerIfDoesntExist('COMPENSATING');
-		},
+  actions: {
+    answer(answerType) {
+      this.set('isLoading', true);
+      this.createAnswerIfDoesntExist(answerType).then(answer => {
+        this.saveAnswer(answer, answerType)
+        .then(() => this.set('isLoading', false))
+        .catch(() => this.set('isLoading', false));
+      });
+    },
 
-		stopEditingNotApplicable() {
-			this._stopEditingNotApplicable();
-		},
+    startEditingNotApplicable() {
+      this.set('isEditingNotApplicable', true);
+      this.createAnswerIfDoesntExist('NOT_APPLICABLE');
+    },
 
-		stopEditingCompensatingControls() {
-			this._stopEditingCompensatingControls();
-		}
-	}
+    startEditingCompensatingControls() {
+      this.set('isEditingCompensatingControls', true);
+      this.createAnswerIfDoesntExist('COMPENSATING');
+    },
+
+    stopEditingNotApplicable() {
+      this._stopEditingNotApplicable();
+    },
+
+    stopEditingCompensatingControls() {
+      this._stopEditingCompensatingControls();
+    }
+  }
 });

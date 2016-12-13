@@ -14,13 +14,15 @@ export default Ember.Service.extend({
       if (Ember.isArray(response.errors)) {
         response.errors.forEach((error) => {
           // JSON API error format
-          if (error.source.pointer) {
+          if (error.source && typeof error.source.pointer !== undefined && error.source.pointer) {
             let pointer = error.source.pointer.substr(error.source.pointer.lastIndexOf('/') + 1);
             if (pointer.indexOf('.')) {
               pointer = pointer.substr(pointer.lastIndexOf('.') + 1);
             }
             pointer = Ember.String.capitalize(pointer).replace(/id/i, '').replace(/([a-z])([A-Z])/g, '$1 $2');
             errors.push(pointer + ' ' + error.detail);
+          } else if (error.status && error.status == 0) {
+            errors.push("Can't contact the server. Your browser probably lost connection.");              
           } else if (error.detail) {
             errors.push(error.detail);
             // old format

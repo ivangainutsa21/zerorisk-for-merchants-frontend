@@ -16,13 +16,13 @@
           
           {{#if saq.isSubmitted}}
             <button {{action "download"}} type="button" class="btn btn-default"><i class="fa fa-download m-r-10"></i>Download</button>
-            {{#tooltip-on-element side='left' event='none' effect='slide' tooltipIsVisible=downloadSaqTooltipIsShowing duration=5500}}
+            {{#tooltip-on-element side='left' event='none' effect='slide' isShown=downloadSaqTooltipIsShowing duration=5500}}
               You can download a copy of your SAQ by clicking here.
             {{/tooltip-on-element}}
             <button class="btn btn-complete" disabled><i class="fa fa-check m-r-10"></i>Submitted</button>
           {{else}}
             <button {{action "submit"}} class="btn btn-complete" disabled={{if (or (not isCompleted) isSubmitting) 'true'}}>
-              {{#tooltip-on-element side='left' event='none' effect='slide' tooltipIsVisible=submitSaqTooltipIsShowing duration=5500}}
+              {{#tooltip-on-element side='left' event='none' effect='slide' isShown=submitSaqTooltipIsShowing duration=5500}}
                 You have completed the SAQ and you can now submit it.
               {{/tooltip-on-element}}
               {{{if isSubmitting '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> Submitting..' 'Submit SAQ'}}}

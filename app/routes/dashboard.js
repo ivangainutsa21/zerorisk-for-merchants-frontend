@@ -6,12 +6,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	ajax: injectService(),
 
 	model() {
+    if((this.get('ajax').namespace))
+      console.log(this.get('ajax').namespace);
+    else 
+      debugger;
+      
 		return this.get('ajax').request('/merchant/dashboard').then(payload => payload.result.dashboard);
 	},
 
 	activate() {
 		Ember.run.scheduleOnce('afterRender', function() {
-			$.Pages.initProgressBars();		
+			Ember.$.Pages.initProgressBars();		
 		});
 	}
 });
