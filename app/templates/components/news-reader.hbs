@@ -7,7 +7,7 @@
 	<div class="font-montserrat fs-11 all-caps text-white" style="position: relative; z-index: 2; padding: 20px 20px 7px 20px;">
 		<span class="m-r-5">News from</span>
 		{{#each feedSources as |source|}}
-			<a {{action (pipe  (action (mut currentFeed) source.name)  (cancelAll rotateFeedSource) )}} class="m-r-5 text-white {{if (not-eq currentFeed source.name) "hint-text"}}">{{source.title}}</a>
+			<a {{action (pipe  (action (mut currentFeed) source.name)  (cancel_all rotateFeedSource) )}} class="m-r-5 text-white {{if (not-eq currentFeed source.name) "hint-text"}}">{{source.title}}</a>
 		{{/each}}		
 	</div>										
 
@@ -15,7 +15,7 @@
 		{{#deferred-content feed as |d|}}			
 		  {{#d.settled}}
 		  	<ul style="list-style: none; padding: 0;">
-		    {{#each feed.entries as |entry index|}}
+		    {{#each feed.item as |entry index|}}
 		    	
 		    	{{#if (eq index 0)}}
 		    		<li class="news-reader-leading-entry">
