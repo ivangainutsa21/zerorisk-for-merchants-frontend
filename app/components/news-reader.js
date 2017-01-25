@@ -12,8 +12,8 @@ export default Ember.Component.extend({
 	feedSources: Ember.A([
 		{"id": 1, "name": "ntt-security", "title": "NTT Sec", "url": "http://blog.ntt-security.com/rss.xml", "bgClass": "bg-info"},
 		{"id": 2, "name": "pci-dss", "title": "PCI", "url": "https://www.pcisecuritystandards.org/news_events/rss.php?type=media", "bgClass": "bg-info"},
-		{"id": 3, "name": "visa-europe", "title": "Visa", "url": "http://www.visaeurope.com/en/newsroom/rss_feeds/visa_europe_rss_feed.aspx", "bgClass": "bg-success"},
-		{"id": 4, "name": "mastercard-corporate", "title": "Mastercard", "url": "http://investor.mastercard.com/rss/PressRelease.aspx", "bgClass": "bg-complete"}		
+		{"id": 3, "name": "visa-europe", "title": "Visa", "url": "https://www.visaeurope.com/newsroom/rss-feeds", "bgClass": "bg-success"},
+		{"id": 4, "name": "mastercard-corporate", "title": "Mastercard", "url": "http://newsroom.mastercard.com/feed/?post_type=press-releases", "bgClass": "bg-complete"}		
 	]),
 
 	rotateFeedSource: task(function * () {
@@ -75,8 +75,8 @@ export default Ember.Component.extend({
 			promise: this.get('ajax').request(`/News/rss?feedUrl=${currentFeedUrl}`).then(payload => {
 				this.set('ajax.namespace', temporaryHack);
 				this.trigger('feedLoadComplete');
-        // TODO: cache feeds
-				return payload.responseData.feed;
+        		// TODO: cache feeds
+				return payload;
 			})
 		}); 
 	})
