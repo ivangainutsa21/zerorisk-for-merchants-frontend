@@ -3,6 +3,7 @@ import DS from 'ember-data';
 
 export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
 	attrs: {
-	  contactInfo: { embedded: 'always' }
+	  contactInfo: { embedded: 'always' },
+		users: { serialize: false }
 	}
 });
