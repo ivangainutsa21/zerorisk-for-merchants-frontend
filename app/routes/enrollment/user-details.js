@@ -21,7 +21,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	  }
 	},
 
-	model() {
-		return this.store.find('entity', this.get('currentUser.entity.id'));
+	model() {		
+		// TODO: change this when currentEntityId is a thing
+		return this.store.find('entity', this.get('currentUser.content').hasMany('entities').ids()[0]);
 	}
 });
