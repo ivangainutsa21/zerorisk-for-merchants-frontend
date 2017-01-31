@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import AjaxServiceSupport from 'ember-ajax/mixins/ajax-support';
 import paths from 'zerorisk-for-merchants/utils/paths';
 
-export default DS.RESTAdapter.extend(DataAdapterMixin, {
+export default DS.RESTAdapter.extend(DataAdapterMixin, AjaxServiceSupport, {
   host: paths().host(),
   namespace: `${paths().namespace}/merchant`,
 
@@ -19,11 +20,11 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
     }
   }).volatile(),
 
-  isSuccess(status, headers, payload) {
-    return payload.success;
-  },
+  // isSuccess(status, headers, payload) {
+  //   return payload.success;
+  // },
 
-  isInvalid(status) {
-    return status === 400 || status === 422;
-  }
+  // isInvalid(status) {
+  //   return status === 400 || status === 422;
+  // }
 });

@@ -4,8 +4,7 @@ stages:
 build-and-deploy:demo:
   stage: build-and-deploy
   script:
-  - npm config set spin false    
-  - npm install
+  - yarn
   - bower install --allow-root
   - ember deploy demo --verbose
   tags:
@@ -22,8 +21,7 @@ build-and-deploy:demo:
 build-and-deploy:prod:
   stage: build-and-deploy
   script:
-  - npm config set spin false
-  - npm install
+  - yarn
   - bower install --allow-root
   - ember deploy production --verbose
   tags:

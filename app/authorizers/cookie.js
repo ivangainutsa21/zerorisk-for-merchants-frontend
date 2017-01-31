@@ -11,6 +11,7 @@ export default Base.extend({
     requestOptions.xhrFields = {
       withCredentials: true
     };
-    this.get('session').setTimeOfLastAPIActivity();
+    // this.get('session').setTimeOfLastAPIActivity();
+    // Ember.Logger.debug('cookie.authorize: setTimeOfLastAPIActivity()');
   }
 });

@@ -19,3 +19,4 @@ testem.log
 
 # editors
 zr.sublime-workspace
+.DS_Store
