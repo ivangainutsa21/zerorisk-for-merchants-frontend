@@ -29,7 +29,8 @@ module.exports = function(defaults) {
       includePolyfill: true // for ember-concurrency
     },
     fingerprint: {
-      prepend: fingerprintUrl
+      prepend: fingerprintUrl,
+      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg']
     }
   });
 

@@ -32,12 +32,14 @@ export default AjaxService.extend({
       this.get('session').invalidate();
     }
 
-    if (isUnauthorizedError(handledResponse)) {
+    if (isUnauthorizedError(handledResponse) && this.get('session.isAuthenticated')) {
       this.get('session').invalidate();
+      Ember.Logger.debug('isUnauthorizedError');      
     }
 
     if (!(handledResponse instanceof EmberError)) {
       this.get('session').setTimeOfLastAPIActivity();
+      Ember.Logger.debug('ajax.handleResponse: setTimeOfLastAPIActivity()');      
     }
 
     return handledResponse;

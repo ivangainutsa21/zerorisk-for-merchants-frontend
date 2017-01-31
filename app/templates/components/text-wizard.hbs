@@ -28,6 +28,10 @@
   </div>
 {{else}}
   {{#if answerComponent}}
+    {{log answerComponent}}
+    <div class="bg-pic hidden-sm hidden-xs" style="position: absolute; {{if (eq answerComponent 'text-wizard/multiple-answer') ' bottom: 5px;'}}">
+      <img src="/assets/img/backgrounds/zerorisk-welcoming-guy.svg" style="opacity: 0.3; height: 200px; top: 5px; position: relative; left: -30px;" />
+    </div>
     <div class="p-t-40 p-b-40" style="background-color: #F7F7F7;">
       {{component answerComponent answers=currentAnswer answer=(action 'answer')}}
     </div>

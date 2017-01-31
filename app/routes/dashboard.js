@@ -5,12 +5,7 @@ import injectService from 'ember-service/inject';
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	ajax: injectService(),
 
-	model() {
-    if((this.get('ajax').namespace))
-      console.log(this.get('ajax').namespace);
-    else 
-      debugger;
-      
+	model() {      
 		return this.get('ajax').request('/merchant/dashboard').then(payload => payload.result.dashboard);
 	},
 
