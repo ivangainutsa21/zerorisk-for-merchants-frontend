@@ -1,14 +1,12 @@
+/*global Materialize*/
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  alerting: Ember.inject.service(),
-
   parseAndDisplay(response, target) {
     return this.display(this.parse(response), target);
   },
 
   parse(response) {
-    // Enter a world of madness
     let errors = [];
     try {
       if (Ember.isArray(response.errors)) {
@@ -21,22 +19,27 @@ export default Ember.Service.extend({
             }
             pointer = Ember.String.capitalize(pointer).replace(/id/i, '').replace(/([a-z])([A-Z])/g, '$1 $2');
             errors.push(pointer + ' ' + error.detail);
-          } else if (error.status && error.status == 0) {
-            errors.push("Can't contact the server. Your browser probably lost connection.");              
           } else if (error.detail) {
-            errors.push(error.detail);
+            if(error.detail.error) {
+              errors.push(error.detail.error);
+            } else {
+              errors.push(error.detail);
+            }
             // old format
-          } else {
+          } else if (error.error) {
             errors.push(error.error);
           }
         });
       // even older ofrmat
       } else if (response.result && response.result.errors) {
         errors.push(response.result.errors[0].error);
-      // Encarta '97 format 
       } else if (response.error) {
         errors.push(response.error);
+      // EmberError instances
+      } else if (response.message) {
+        errors.push(response.message);              
       } else {
+        Ember.Logger.debug(response);
         errors.push('Unable to perform action: unexpected error.');
       }
     } catch(e) {
@@ -50,9 +53,9 @@ export default Ember.Service.extend({
     switch (target) {
       case 'notification':
         errors.forEach((error, i, errors) => {
-          errors[i] = error + '<br>';
+          errors[i] = '<i class="material-icons left white-text text-darken1" style="font-size: 22px;">warning</i>' + error + '<br>';
         });
-        this.get('alerting').notify(errors, 'error', 'stand-alone');
+        Materialize.toast(errors, 4000);
       break;
       case 'box':
         return errors.join('<br>');
