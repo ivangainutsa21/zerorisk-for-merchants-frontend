@@ -6,7 +6,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
   beforeModel() {
     this._super(...arguments);
-    return this.get('session').beforeApplication();
+    return this.get('session').beforeApplication(arguments[0]);
   },
 
   model() {

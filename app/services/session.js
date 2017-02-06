@@ -59,17 +59,17 @@ export default Session.extend({
       window.location.replace(config.baseURL);
     } else {
       this.get('store').unloadAll();
-      this.get('routing').transitionTo('login');  
-    }    
+      this.get('routing').transitionTo('login');
+    }
   },
 
   _populateCurrentUser() {
-    let { userId } = this.get('session.authenticated');    
+    let { userId } = this.get('session.authenticated');
     return this.get('store').find('user', userId).then(user => this.get('currentUser').set('content', user) && user);
   },
 
   _forceEnrollment(user) {
-    return new Ember.RSVP.Promise((resolve) => {      
+    return new Ember.RSVP.Promise((resolve) => {
       if (user.get('merchantStatus') === 'NotEnrolled') {
         this.get('routing').transitionTo('enrollment');
         resolve(true);
@@ -80,16 +80,21 @@ export default Session.extend({
   },
 
   // Events
-  beforeApplication() {
+  beforeApplication(transition) {
     if (this.get('isAuthenticated')) {
       // this.get('notifications').startPolling();
-      return this._populateCurrentUser().then(user => this._forceEnrollment(user));
+      return this._populateCurrentUser()
+        .then(user => this._forceEnrollment(user))
+        .catch((error) => {
+          transition.abort();
+          this.invalidate();
+        });
     }
   },
 
-  afterAuthentication() {    
+  afterAuthentication() {
     this._populateCurrentUser().then(user => this._forceEnrollment(user)).then((mustCompleteEnrollment) => {
-      if (!mustCompleteEnrollment) {        
+      if (!mustCompleteEnrollment) {
         if (this.get('attemptedTransition') && this.get('attemptedTransition').targetName !== "login") {
           this.get('attemptedTransition').retry();
           this.set('session.attemptedTransition', null);
