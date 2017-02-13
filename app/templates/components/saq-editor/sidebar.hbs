@@ -1,8 +1,8 @@
  <div class="list-group m-b-0">
  	{{#if saq.questions}}
-	 	{{#each-in (group-by 'section' saq.questions) as |section questions|}}
-	 		<div class="bg-master-lightest" style="padding: 16px;">
-	 			{{section}}		
+	 	{{#each-in (group-by 'sectionNumber' saq.questions) as |section questions|}}
+	 		<div class="bg-master-lightest" style="padding: 16px;">	 			
+	 			Section {{section}}	 			
 	 		</div>
 	 	  {{#each questions as |question|}}	
 	 	  	<a id={{concat 'question-' question.id}} {{action attrs.selectQuestion question}} class="list-group-item {{if (eq question.id selectedQuestion.id) 'active'}}" style="border-right: 0;">
