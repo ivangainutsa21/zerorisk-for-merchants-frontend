@@ -57,7 +57,7 @@ export default {
       'saq_detection_part5': "Once a category of SAQ has been identified and assigned to your organisation, your status will become \"Enrolled\" and you will be just a few steps far from the PCI DSS Compliance!",
       'saq_detection_part6': "The application dashboard will present your status at any given point in time. Please note your goal is to become \"Compliant\". When being compliant, you will be able to download and submit your SAQ."
     }
-  }
+  },
   'saq_editor': {
       'button_yes': "Yes",
       'button_no': "No",
