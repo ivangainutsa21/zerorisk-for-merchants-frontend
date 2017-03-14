@@ -4,6 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	currentUser: Ember.inject.service(),
 	alerting: Ember.inject.service(),
+  i18n: Ember.inject.service(),
 
   beforeModel(transition) {
     if(this.get('currentUser.merchantStatus') !== 'NotEnrolled') {
@@ -20,7 +21,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   		if(transition.targetName.indexOf('enrollment') === -1 && transition.targetName.indexOf('login') === -1) {
   			if(this.get('currentUser.merchantStatus') === 'NotEnrolled') {
   				transition.abort();
-  				this.get('alerting').notify('You must complete the enrollment wizard before using the application.', 'info');
+  				this.get('alerting').notify(this.get('i18n').t('messages.complete_wizard'), 'info');
   			}
   		}
   	}
