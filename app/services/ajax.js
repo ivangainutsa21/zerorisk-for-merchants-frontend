@@ -7,17 +7,25 @@ const { Error: EmberError } = Ember;
 
 export default AjaxService.extend({
   session: Ember.inject.service(),
+  i18n: Ember.inject.service(),
 
   host: paths().host(),
   namespace: `${paths().namespace}`,
 
   headers: Ember.computed(function() {
-    let csrfCookie = document.cookie.match(/X-\CSRF\-TOKEN\=([^;]*)/);
+    let csrfCookie = document.cookie.match(/X-\CSRF\-TOKEN\=([^;]*)/),
+        locale = this.get('i18n.locale'),
+        headers = {};
+
     if (csrfCookie) {
-      return {
-        "X-CSRF-TOKEN": decodeURIComponent(Ember.get(csrfCookie, "1"))
-      };
+      headers["X-CSRF-TOKEN"] = decodeURIComponent(Ember.get(csrfCookie, "1"));        
     }
+
+    if (locale) {
+      headers.locale = locale;
+    }
+
+    return headers;    
   }).volatile(),
 
   // isSuccess(status, headers, payload) {
