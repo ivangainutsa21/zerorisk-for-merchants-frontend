@@ -26,9 +26,9 @@
 							" style="transition: background-color 0.5s ease;">
 								<div class="panel-body">
 									<div class="pull-bottom bottom-left bottom-right padding-20">
-										<span class="font-montserrat fs-11 all-caps text-white">Your {{if (eq statsMode "individual") "merchant status" "overall merchants status"}}</span>
+										<span class="font-montserrat fs-11 all-caps text-white">{{if (eq statsMode "individual") (t 'dashboard.leftup_merchant_status') "Your overall merchants status"}}</span>
 										<br>
-										<h1 class="text-white">{{humanMerchantStatus}} {{#if (eq statsMode "aggregated")}}<i class="pg-italic m-l-5 fs-15 hint-text"></i>{{/if}} </h1>
+										<h1 class="text-white">{{currentUser.humanMerchantStatus}} {{#if (eq statsMode "aggregated")}}<i class="pg-italic m-l-5 fs-15 hint-text"></i>{{/if}} </h1>
 										{{#if (eq statsMode "aggregated")}}
 											{{#if model.merchants}}
 												<p class="text-white hint-text">
@@ -72,8 +72,8 @@
 								<div class="panel-body">
 									<div>			
 										{{#if (eq stats.status.merchantStatus 'Compliant')}}
-											<h2 class="m-t-0">Great news</h2>
-											<p class="hint-text">You are Compliant! Here's some actions you might find useful</p>																				
+											<h2 class="m-t-0">{{t 'dashboard.rightup_greatnews_title'}}</h2>
+											<p class="hint-text">{{t 'dashboard.rightup_greatnews_subtitle'}}</p>																	
 										{{else}}
 											<h2 class="m-t-0"> {{!-- <i class="fa  fa-circle-thin text-master m-r-10 fs-20"></i> --}}Next up</h2>
 											<p class="hint-text">{{t 'dashboard.rightup_message'}}</p>			
@@ -94,7 +94,7 @@
 													{{/if}}
 													
 													{{#if (eq action.name "DOWNLOAD_SAQ")}}
-														<button {{action "downloadSAQ" action.resourceId}} class="btn btn-default btn-block m-r-20 m-b-10"><i class="pg-download m-r-10"></i>(t 'dashboard.rightup_message_saq_download') #{{action.resourceId}}</button>	
+														<button {{action "downloadSAQ" action.resourceId}} class="btn btn-default btn-block m-r-20 m-b-10"><i class="pg-download m-r-10"></i>{{t 'dashboard.rightup_message_saq_download'}} #{{action.resourceId}}</button>	
 													{{/if}}
 												{{/each}}
 											{{/if}}
