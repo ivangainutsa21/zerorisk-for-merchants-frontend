@@ -24,6 +24,9 @@ export default Model.extend({
   isSubmitted: computed('status', function () {
     return this.get('status') === 'SUBMITTED';
   }),
+  isExpired: computed('status', function () {
+    return this.get('status') === 'EXPIRED';
+  }),
   humanType: computed('type', function() {
     return this.get('type').replace('_', ' ');
   }),

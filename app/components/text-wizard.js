@@ -3,8 +3,8 @@ const { computed, get, set, isEmpty } = Ember;
 import injectService from 'ember-service/inject';
 
 export default Ember.Component.extend({
-  ajax: Ember.inject.service(),
-  routing: Ember.inject.service('-routing'),
+  ajax: injectService(),
+  routing: injectService('-routing'),
   alerting: injectService(),
   errorParser: injectService(),
 

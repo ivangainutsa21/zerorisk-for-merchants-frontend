@@ -1,7 +1,9 @@
-/*global Materialize*/
 import Ember from 'ember';
+import injectService from 'ember-service/inject';
 
 export default Ember.Service.extend({
+  alerting: injectService(),
+
   parseAndDisplay(response, target) {
     return this.display(this.parse(response), target);
   },
@@ -53,10 +55,10 @@ export default Ember.Service.extend({
     switch (target) {
       case 'notification':
         errors.forEach((error, i, errors) => {
-          errors[i] = '<i class="material-icons left white-text text-darken1" style="font-size: 22px;">warning</i>' + error + '<br>';
+          errors[i] = error + '<br>';
         });
-        Materialize.toast(errors, 4000);
-      break;
+        this.get('alerting').notify(errors, 'error', 'stand-alone');
+        break;
       case 'box':
         return errors.join('<br>');
     }

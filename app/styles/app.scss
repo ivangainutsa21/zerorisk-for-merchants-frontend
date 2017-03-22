@@ -5,19 +5,6 @@
 $fa-font-path: "../fonts/font-awesome";
 @import "font-awesome";
 
-// @font-face {
-//   font-family: 'Montserrat';
-//   font-style: normal;
-//   font-weight: 400;
-//   src: local('Montserrat-Regular'), url('../fonts/montserrat/Montserrat-Regular.ttf') format('truetype');
-// }
-// @font-face {
-//   font-family: 'Montserrat';
-//   font-style: normal;
-//   font-weight: 700;
-//   src: local('Montserrat-Bold'), url('../fonts/montserrat/Montserrat-Bold.ttf') format('truetype');
-// }
-
 // Patterns
 @import "patterns/dropdowns.scss";
 @import "patterns/buttons.scss";
@@ -34,9 +21,6 @@ $fa-font-path: "../fonts/font-awesome";
 @import "layouts/saq-editor.scss";
 @import "layouts/dashboard.scss";
 
-a {
-  cursor: pointer;
-}
 
 //Apply attr only to first .ember-view element inside body
 // 'body > .ember-view:first-child, :not(.ember-view) + .ember-view {

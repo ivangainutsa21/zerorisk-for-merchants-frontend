@@ -20,12 +20,15 @@ export default Ember.Service.extend({
 					 (!this.get('session.isAuthenticated') && this.get('currentRouteName') === "legal.privacy-policy");
 
 	}),
+	
 	isInLoginRoute: computed('currentRouteName', function() {
 		return this.get('currentRouteName') === "login";
 	}),
+
 	isInSaqEditRoute: computed('currentRouteName', function() {
 		return this.get('currentRouteName') === "saqs.edit";
 	}),
+	
 	isInEnrollmentRoute: computed('currentRouteName', function() {
 		return this.get('currentRouteName').indexOf("enrollment") !== -1;
 	})
