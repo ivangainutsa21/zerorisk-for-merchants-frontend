@@ -9,9 +9,9 @@ export default Ember.Controller.extend({
 		return this.get(`model.${this.get('statsMode')}`);
 	}),
 
-	humanMerchantStatus: Ember.computed('stats', function() {		
+	/*humanMerchantStatus: Ember.computed('stats', function() {		
 		return this.get('i18n').t(`status.${this.get('stats.status.merchantStatus')}`);
-	}),
+	}),*/
 
 	humanAsvStatus: Ember.computed('stats', function() {		
 		if(this.get('stats.status.pciPassed')) {

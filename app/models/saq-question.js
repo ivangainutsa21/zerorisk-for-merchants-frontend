@@ -8,6 +8,10 @@ export default Model.extend({
   text: attr('string'),
   type: attr('string'),
   section: attr('string'),
+  sectionNumber: Ember.computed('code', function() {
+  	const code = this.get('code');
+  	return code.substr(0, code.indexOf('.')); 
+  }),
   milestone: attr('string'),
   code: attr('string')
 });

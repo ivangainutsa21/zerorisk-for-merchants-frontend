@@ -1,4 +1,4 @@
-<p>Contact Information</p>
+<p>{{t 'enrollment.user_details.form_part_1'}}</p>
 <div class="form-group-attached">
 
   {{validated-input field="email" label="Email" placeholder="Your user email address" model=model.contactInfo errors=model.errors.contactInfo/email}}
@@ -17,7 +17,7 @@
 
 <br />
 
-<p>Business Information</p>
+<p>{{t 'enrollment.user_details.form_part_2'}}</p>
 <div class="form-group-attached">
   {{validated-input field="businessAddress" label="Address" model=model.contactInfo.address errors=model.errors.contactInfo/address/businessAddress}}
   <div class="row clearfix">
