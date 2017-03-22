@@ -13,5 +13,7 @@ export default Model.extend({
   	return code.substr(0, code.indexOf('.')); 
   }),
   milestone: attr('string'),
-  code: attr('string')
+  code: attr('string'),
+  testing: attr('string'),
+  info: attr('string')
 });

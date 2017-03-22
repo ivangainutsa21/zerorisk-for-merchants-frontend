@@ -1,8 +1,18 @@
   <div class="saq-editor-question-container container-fluid bg-white height-50 flex-center" style="overflow: auto;">        
       {{!-- {{#liquid-bind question.id class="flex-center" as |cq| }} --}}
         <div style="width: 80%; margin: auto; padding: 30px 0px;">
-          <div class="hint-text all-caps fs-10 font-montserrat">Question</div>
-          <h5>{{{question.text}}}</h5>
+          <div class="hint-text all-caps fs-11 font-montserrat">Question</div>
+          <h5 class="normal">{{{question.text}}}</h5>
+          
+          {{#if question.info}}
+            <div class="m-t-30 hint-text all-caps fs-10 font-montserrat">Info</div>
+            <h6 class="saq-editor-question-info"> {{{question.info}}} </h6>
+          {{/if}}
+          
+           {{#if question.testing}}
+            <div class="m-t-30 hint-text all-caps fs-10 font-montserrat">How to answer</div>
+            <h6 class="saq-editor-question-testing normal"> {{{question.testing}}} </h6>
+          {{/if}}
         </div>
       {{!-- {{/liquid-bind}} --}}
   </div>
