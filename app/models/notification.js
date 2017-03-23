@@ -10,9 +10,12 @@ export default Model.extend({
   notificationType: attr('string'),
   notificationStatus: attr('string'),
   notificationStatusCode: attr('string'),
-  created: attr('date'),
+  created: attr('date'),  
   isUnread: computed('notificationStatus', function() {
     return this.get('notificationStatus') === 'NEW';
+  }).readOnly(),
+  isMessageReceived: computed('notificationType', function () {
+    return this.get('notificationType') === 'MESSAGE_RECEIVED';
   }).readOnly(),
   isWarning: computed('notificationType', function() {
     return this.get('notificationType') === 'SAQ_EXPIRATION_YEAR' ||

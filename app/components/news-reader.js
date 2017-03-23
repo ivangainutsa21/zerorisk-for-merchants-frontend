@@ -66,16 +66,13 @@ export default Ember.Component.extend({
 		}	
 	}),
 
-	feed: Ember.computed('currentFeed', function() {
-		let temporaryHack = this.get('ajax.namespace');
-		this.set('ajax.namespace', null);
-		let currentFeedUrl = this.get('feedSources').findBy('name', this.get('currentFeed')).url;
+	feed: Ember.computed('currentFeed', function() {		
+		const currentFeedUrl = this.get('feedSources').findBy('name', this.get('currentFeed')).url;
 
 		return DS.PromiseObject.create({
-			promise: this.get('ajax').request(`/News/rss?feedUrl=${currentFeedUrl}`).then(payload => {
-				this.set('ajax.namespace', temporaryHack);
+			promise: this.get('ajax').request(`/shared/rss?feedUrl=${currentFeedUrl}`).then(payload => {				
 				this.trigger('feedLoadComplete');
-        		// TODO: cache feeds
+        // TODO: cache feeds
 				return payload;
 			})
 		}); 
