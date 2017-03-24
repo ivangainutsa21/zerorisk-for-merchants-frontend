@@ -7,24 +7,25 @@ const { computed } = Ember;
 export default Model.extend({
   subject: attr('string'),
   body: attr('string'),
-  notificationType: attr('string'),
-  notificationStatus: attr('string'),
-  notificationStatusCode: attr('string'),
+  type: attr('string'),
+  status: attr('string'),
+  code: attr('string'),
   created: attr('date'),  
-  isUnread: computed('notificationStatus', function() {
-    return this.get('notificationStatus') === 'NEW';
+  action: attr(),
+  isUnread: computed('status', function() {
+    return this.get('status') === 'NEW';
   }).readOnly(),
-  isMessageReceived: computed('notificationType', function () {
-    return this.get('notificationType') === 'MESSAGE_RECEIVED';
+  isMessageReceived: computed('type', function () {
+    return this.get('type') === 'MESSAGE_RECEIVED';
   }).readOnly(),
-  isWarning: computed('notificationType', function() {
-    return this.get('notificationType') === 'SAQ_EXPIRATION_YEAR' ||
-					 this.get('notificationType') === 'SAQ_EXPIRATION_EARLY' ||
-					 this.get('notificationType') === 'SCAN_FAILED' ||
-					 this.get('notificationType') === 'ASSET_IP_EXPIRATION_EARLY' ||
-					 this.get('notificationType') === 'ASSET_IP_EXPIRATION_FINAL' ||
-					 this.get('notificationType') === 'USER_PASSWORD_EXPIRATION_EARLY' ||
-					 this.get('notificationType') === 'USER_PASSWORD_EXPIRATION_FINAL' ||
-					 this.get('notificationType') === 'PINPOINT_QUICK_AUDIT_FAIL';
+  isWarning: computed('type', function() {
+    return this.get('type') === 'SAQ_EXPIRATION_YEAR' ||
+      this.get('type') === 'SAQ_EXPIRATION_EARLY' ||
+      this.get('type') === 'SCAN_FAILED' ||
+      this.get('type') === 'ASSET_IP_EXPIRATION_EARLY' ||
+      this.get('type') === 'ASSET_IP_EXPIRATION_FINAL' ||
+      this.get('type') === 'USER_PASSWORD_EXPIRATION_EARLY' ||
+      this.get('type') === 'USER_PASSWORD_EXPIRATION_FINAL' ||
+      this.get('type') === 'PINPOINT_QUICK_AUDIT_FAIL';
   }).readOnly()
 });

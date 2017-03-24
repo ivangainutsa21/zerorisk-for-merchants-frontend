@@ -32,7 +32,7 @@ export default AjaxService.extend({
   //   return payload.success;
   // }
 
-  handleResponse() {
+  handleResponse(status, headers, payload, requestData) {
     let handledResponse = this._super(...arguments);
 
     if (isForbiddenError(handledResponse)) {
@@ -46,8 +46,11 @@ export default AjaxService.extend({
     }
 
     if (!(handledResponse instanceof EmberError)) {
-      this.get('session').setTimeOfLastAPIActivity();
-      Ember.Logger.debug('ajax.handleResponse: setTimeOfLastAPIActivity()');      
+      // TODO: exclude only GET /notifications
+      if (requestData.url.indexOf("notifications") == -1) {
+        this.get('session').setTimeOfLastAPIActivity();
+        Ember.Logger.debug('ajax.handleResponse: setTimeOfLastAPIActivity()');      
+      }      
     }
 
     return handledResponse;

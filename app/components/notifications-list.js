@@ -1,6 +1,9 @@
 import Ember from 'ember';
+import injectService from 'ember-service/inject';
 
 export default Ember.Component.extend({
+  routing: injectService('-routing'),
+
   expandedNotificationId: null,
 
   didInsertElement() {
@@ -19,6 +22,15 @@ export default Ember.Component.extend({
         notification.set('status', 'READ');
         notification.save();
       }
+    },
+
+    closeDropdown() {      
+      this.get('dropdown').actions.close();      
+    },
+
+    goToMessage(messageId) {
+      // TODO: use router public api when it becomes available
+      this.get('routing').transitionTo('messages.view', [messageId]);
     }
   }
 });

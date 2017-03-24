@@ -1,7 +1,7 @@
 <li class="inline">
   <div class="dropdown">
-    {{#basic-dropdown}}
-      {{notifications-list notifications=notifications}}
+    {{#basic-dropdown as |dd|}}
+      {{notifications-list notifications=notifications dropdown=dd}}
     {{else}}
       <a id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
         {{#if limitedUnreadCount}}

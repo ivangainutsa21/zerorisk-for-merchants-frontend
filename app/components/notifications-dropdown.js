@@ -4,8 +4,8 @@ export default Ember.Component.extend({
   tagName: 'ul',
   classNames: 'notification-list no-margin hidden-sm hidden-xs b-grey b-l no-style p-l-50 p-r-20 height-auto',
 
-  unreadCount: Ember.computed('notifications.@each.notificationStatus', function() {
-    return this.get('notifications').filterBy('notificationStatus', 'NEW').length;
+  unreadCount: Ember.computed('notifications.@each.status', function() {
+    return this.get('notifications').filterBy('status', 'NEW').length;
   }),
 
   limitedUnreadCount: Ember.computed('unreadCount', function() {

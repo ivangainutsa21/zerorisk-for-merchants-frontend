@@ -39,6 +39,10 @@ Router.map(function() {
     this.route('terms-of-use');
     this.route('privacy-policy');
   });
+
+  this.route('messages', function() {
+    this.route('view', { path: ':message_id/view' });
+  });
 });
 
 export default Router;

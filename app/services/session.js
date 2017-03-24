@@ -82,7 +82,7 @@ export default Session.extend({
   // Events
   beforeApplication(transition) {
     if (this.get('isAuthenticated')) {
-      // this.get('notifications').startPolling();
+      this.get('notifications').startPolling();
       return this._populateCurrentUser()
         .then(user => this._forceEnrollment(user))
         .catch((error) => {
@@ -101,12 +101,13 @@ export default Session.extend({
         } else {
           this.get('routing').transitionTo(config['ember-simple-auth'].routeAfterAuthentication);
         }
+        this.get('notifications').startPolling();
       }
     });
   },
 
   afterInvalidation() {
-    // this.get('notifications').stopPolling();
+    this.get('notifications').stopPolling();
     Ember.run.once(this, this._alertCleanAndRedirect);
   }
 });

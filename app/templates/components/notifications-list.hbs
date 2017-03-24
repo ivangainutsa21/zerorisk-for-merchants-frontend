@@ -4,13 +4,13 @@
     <!-- START Notification Body-->
     <div class="notification-body scrollable">
       {{#if notifications}}
-        {{#each notifications as |notification|}}
+        {{#each (sort-by "created:desc" notifications) as |notification|}}
           <!-- START Notification Item-->
           <div class="notification-item {{if notification.isUnread 'unread'}} clearfix">
             <div class="heading" {{action 'readNotification' notification}}>
               <a class="{{if notification.isWarning 'text-warning' 'text-complete'}}">
                 <i class="fa {{if notification.isWarning 'fa-exclamation-triangle' 'fa-circle'}} m-r-10"></i>
-                <span class="bold">{{notification.subject}}</span>
+                <span class="bold ">{{notification.subject}}</span>
                 <span class="fs-12 m-l-10">...</span>
               </a>
               <span class="pull-right time">{{moment-from-now notification.created}}</span>
@@ -18,6 +18,13 @@
                 <div class="more-details" style="display: block;">
                   <div class="more-details-inner">
                     <h5 class="semi-bold fs-16">{{notification.body}}</h5>
+                    {{#if notification.action}}
+                      {{#if (eq notification.action.type "READ_MESSAGE") }}
+                        <div class="notifications-action text-right m-r-10">
+                          <button class="btn btn-complete" {{action (pipe (action "goToMessage" notification.action.resourceId) (action "closeDropdown"))}}>View message</button>
+                        </div>
+                      {{/if}}
+                    {{/if}}
                     <p class="small hint-text">
                       {{notification.notificationType}}
                     </p>

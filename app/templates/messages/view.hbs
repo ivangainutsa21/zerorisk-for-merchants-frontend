@@ -1,0 +1,21 @@
+<div class="content" style="height: calc(100% - 116px);">
+  {{pg-navbar}}
+
+  <div class="container container-fixed-lg p">
+
+    <div class="panel panel-featured m-t-30" style="width: 100%;">
+      <div class="panel-content">
+        <div class="sender inline p-l-20">
+          <h2>{{model.subject}}</h2>
+          <p class="datetime no-margin">Sent on {{moment-format model.created 'MMMM Do YYYY, h:mm'}} ({{moment-from-now model.created}})</p>
+        </div>
+        <hr>
+        <div class="email-content-body m-t-20 p-l-20">
+          <p>{{{model.body}}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
