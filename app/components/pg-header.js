@@ -1,7 +1,15 @@
 import Ember from 'ember';
+import injectService from 'ember-service/inject';
 
 export default Ember.Component.extend({
-	session: Ember.inject.service(),
+	session: injectService(),
+	remodal: injectService(),
 	
-	tagName: ''
+	tagName: '',
+
+	actions: {
+		openLanguageSelector() {
+			this.get('remodal').open('language-selector');
+		}
+	}
 });

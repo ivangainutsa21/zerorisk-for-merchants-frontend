@@ -9,6 +9,7 @@ export default Ember.Service.extend({
 	init(...args) {
 	  this._super(args);
 	  this.set('applicationController', getOwner(this).lookup('controller:application'));
+		this.set('applicationRoute', getOwner(this).lookup('route:application'));
 	},
 
 	currentRouteName: computed.alias('applicationController.currentRouteName'),

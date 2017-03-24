@@ -1,14 +1,15 @@
 export default {
   name: 'i18n',
   initialize: function({ container }) {
-    let i18n = container.lookup('service:i18n');
+    let i18n = container.lookup('service:i18n'),
+        preferences = container.lookup('service:preferences');
     
-    i18n.set('locale', calculateLocale(i18n.get('locales')));
+    i18n.set('locale', calculateLocale(i18n.get('locales'), preferences));
   }
 }
 
-function calculateLocale(locales) {
-  let language = navigator.languages[0] || navigator.language || navigator.userLanguage;
+function calculateLocale(locales, preferences) {
+  let language = preferences.get('locale') || (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage;
 
   if(language == "en-GB" || language == "en-US" || language == "en-EN" || language == "en-EN") {
   	language = "en";

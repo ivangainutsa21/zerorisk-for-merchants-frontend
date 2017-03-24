@@ -9,6 +9,7 @@ export default Ember.Service.extend({
   },
 
   parse(response) {
+    console.log(JSON.stringify(response));
     let errors = [];
     try {
       if (Ember.isArray(response.errors)) {

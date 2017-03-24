@@ -4,6 +4,12 @@ export default {
     'family_name': 'ZeroRisk',
     'unbranded_full_name': 'PCI DSS-Plattform'
   },
+  'locales': {
+    'en': 'Englisch',
+    'fr': 'Französisch',
+    'de': 'Deutsch',
+    'nl': ' Niederländisch'
+  },
   'status': {
   	'Compliant': 'Compliance erreicht',
   	'NotCompliant': 'Compliance nicht erreicht',

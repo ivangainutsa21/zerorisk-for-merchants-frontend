@@ -92,7 +92,6 @@ export default Ember.Component.extend(EKMixin, {
 		// 		document.getElementById(`question-${question.get('id')}`).scrollIntoView();	
 		// 	}			
 		// });		
-    console.timeEnd('changeQuestion');
 	},
 
 	_goNext() {
@@ -148,7 +147,6 @@ export default Ember.Component.extend(EKMixin, {
 		},
 
 		goNext() {
-      console.time('changeQuestion');
 			this._goNext();
 		},
 

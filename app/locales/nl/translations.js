@@ -4,6 +4,12 @@ export default {
     'family_name': 'ZeroRisk',
     'unbranded_full_name': 'PCI DSS platform'
   },
+  'locales': {
+    'en': 'Engels',
+    'fr': 'Frans',
+    'de': 'Duits',
+    'nl': 'Nederlands'
+  },
   'status': {
   	'Compliant': 'Naleving',
   	'NotCompliant': 'Geen Naleving',

@@ -47,10 +47,12 @@ export default AjaxService.extend({
 
     if (!(handledResponse instanceof EmberError)) {
       // TODO: exclude only GET /notifications
-      if (requestData.url.indexOf("notifications") == -1) {
+      if (requestData.url.indexOf("notifications") == -1 && requestData.url.indexOf("rss") == -1) {
         this.get('session').setTimeOfLastAPIActivity();
         Ember.Logger.debug('ajax.handleResponse: setTimeOfLastAPIActivity()');      
-      }      
+      } else {
+        Ember.Logger.debug('ajax.handleResponse: ignoring setTimeOfLastAPIActivity()');      
+      }
     }
 
     return handledResponse;

@@ -38,9 +38,7 @@ export default Ember.Component.extend({
   createAnswerIfDoesntExist(answerType) {
     return this.get('question').get('answer').then((answer) => {
       if (!answer) {
-        console.time('saqAnwering');
         let created = this.get('store').createRecord('saqAnswer', { saq: this.get('question').get('saq'), question: this.get('question'), type: answerType });
-        console.timeEnd('saqAnwering');
         return created;
       } else {
         return answer;

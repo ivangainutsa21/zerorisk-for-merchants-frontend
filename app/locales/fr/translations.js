@@ -4,6 +4,12 @@ export default {
     'family_name': 'ZeroRisk',
     'unbranded_full_name': 'Plateforme PCI DSS'
   },
+  'locales': {
+    'en': 'Anglais',
+    'fr': 'Français',
+    'de': 'Allemand',
+    'nl': 'Néerlandais'
+ },
   'status': {
   	'Compliant': 'Conforme',
   	'NotCompliant': 'Non Conforme',

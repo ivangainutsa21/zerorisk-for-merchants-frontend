@@ -1,26 +1,22 @@
   <div class="header">
-
     
     <div class="pull-left full-height visible-sm visible-xs">
-      
-        <div class="sm-action-bar">
+        <div class="sm-action-bar">      
           <a href="#" class="btn-link toggle-sidebar needsclick padding-0 p-l-10" data-toggle="sidebar">
             <span class="icon-set menu-hambuger"></span>
           </a>
         </div>
-
     </div>
-    
-
+  
     
     <div class="pull-left sm-table">
       <div class="header-inner">
         <div class="brand inline p-l-50">
 					<a href="{{href-to 'dashboard'}}">
             {{#if currentUser.isIngenico}}
-              <img src="/assets/img/ingenico_logo.png" alt="logo" data-src="/assets/img/ingenico_logo.png" data-src-retina="/assets/img/ingenico_logo.png" height="28">
+              <img src="/assets/img/ingenico_logo.png" alt="logo" data-src="/assets/img/ingenico_logo.png" data-src-retina="/assets/img/ingenico_logo.png" height="28" width="130">
             {{else}}
-          	  <img src="/assets/img/logo.png" alt="logo" data-src="/assets/img/logo.png" data-src-retina="/assets/img/logo.png" height="28">
+          	  <img src="/assets/img/logo.png" alt="logo" data-src="/assets/img/logo.png" data-src-retina="/assets/img/logo.png" height="28" width="130">
             {{/if}}
 					</a>
         </div>
@@ -36,8 +32,13 @@
         <div class="pull-right">
 					{{#basic-dropdown horizontalPosition="right" as |dropdown|}}
 						<ul role="menu" class="m-b-0" style="width: 150px;">
-{{!-- 						  <li class="disabled"><a href="#"><i class="pg-settings_small"></i> Settings</a></li>
-						  <li class="disabled"><a href="#"><i class="pg-outdent"></i> Feedback</a></li>		 --}}				
+ 						  {{!--<li class="disabled"><a href="#"><i class="pg-settings_small"></i> Settings</a></li>--}}
+						  <li {{action "openLanguageSelector"}} class="p-b-5"><a href="#"><i class="fa fa-globe m-r-5"></i> Language</a></li>
+              {{!--<li class="p-l-5">
+                <a {{action "openLanguageSelector"}}>
+						      <span class="pull-left">Change language</span>
+						    </a>
+              </li>--}}
 						  <li class="bg-master-lighter" style="padding: 5px 22px;">
 						    <a {{action "logout" target=session}}>
 						      <span class="pull-left">Logout</span>

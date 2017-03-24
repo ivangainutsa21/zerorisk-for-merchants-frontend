@@ -18,7 +18,9 @@ export default Ember.Service.extend({
     }
 
     Ember.run.scheduleOnce('afterRender', () => {
-        Ember.$('body').pgNotification(options).show();
+      //console.log(options);
+      //console.log(JSON.stringify(foobarObject));
+      Ember.$('body').pgNotification(options).show();
     });
   }
 });

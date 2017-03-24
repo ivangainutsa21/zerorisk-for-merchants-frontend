@@ -1,0 +1,19 @@
+{{#ember-remodal forService=true name='language-selector' as |modal|}}
+  <header class="modal-header">
+    <h1><i class="fa fa-globe m-r-5"></i> Language</h1>
+  </header>
+
+  <div class="modal-body padding-0">
+    <div class="list-group fs-15 text-center">
+    {{#each locales as |locale|}}
+      <a {{action "setLocale" locale.id}} class="list-group-item {{if (eq activeLocale locale.id) 'active'}}">{{locale.text}}</a>
+    {{/each}}
+    </div>
+  </div>
+
+  <div class="modal-footer">  
+    {{#modal.cancel}}
+      <button class="btn transparent no-depth no-border">Close</button>
+    {{/modal.cancel}}
+  </div>
+{{/ember-remodal}}
