@@ -1,11 +1,15 @@
 {{#liquid-bind currentQuestion.id class="overflow-visible" as |cq| }}
   <div class="text-wizard-question-container container-fluid container-fixed-lg bg-white p-t-50 p-b-50">
       {{#if currentQuestionHasQuestionMark}}
-        <div class="hint-text all-caps fs-10 font-montserrat" style="width: 80%; margin: 0 auto;">Question</div>
+        <div class="hint-text all-caps fs-12 font-montserrat" style="width: 80%; margin: 0 auto; margin-bottom: 3px;">Question</div>
       {{/if}}
       
       {{#if currentQuestion.text}}
-        <h5 style="width: 80%; margin: 0 auto;">{{{currentQuestion.text}}}</h5>
+        <h5 class="normal" style="width: 80%; margin: 0 auto;">{{{currentQuestion.text}}}</h5>
+        {{#if currentQuestion.info}}
+          <div class="hint-text all-caps fs-10 font-montserrat" style="width: 80%; margin: 0 auto; margin-top: 15px; margin-bottom: 3px;">Info</div>
+          <div class="fs-13" style="width: 80%; margin: 0 auto;">{{{currentQuestion.info}}}</div>
+        {{/if}}
       {{else}}
         {{!--Loading placeholders!--}}
         <div class="bg-master-lightest" style="width 100%;height 35px;margin-bottom 20px;width: 20%;transform: translateX(-74%);height: 12px;margin: auto;"></div>

@@ -13,6 +13,15 @@
         <div class="email-content-body m-t-20 p-l-20">
           <p>{{{model.body}}}</p>
         </div>
+        {{#if model.attachments}}
+          <div class="padding-20">
+            {{#each model.attachments as |attachment|}}
+              <div {{action "downloadAttachment" model attachment.filename}} class="btn-attachment padding-10 p-l-15 p-r-15 bg-master-lightest m-r-5 m-t-5" style="display: inline-block;">              
+                <i class="fa fa-file-o m-r-10"></i>{{attachment.filename}}<i class="icon-download fa fa-cloud-download m-l-10"></i>
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
       </div>
     </div>
 

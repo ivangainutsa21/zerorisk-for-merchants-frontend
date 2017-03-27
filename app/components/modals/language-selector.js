@@ -21,7 +21,10 @@ export default Ember.Component.extend({
       this.set('i18n.locale', locale);
       this.set('preferences.locale', locale);      
       
-      this.get('navi.applicationRoute').modelFor(this.get('navi.currentRouteName')).reload();
+      const currentRouteModel = this.get('navi.applicationRoute').modelFor(this.get('navi.currentRouteName'));
+      if (currentRouteModel && typeof currentRouteModel.reload === "function") {
+        currentRouteModel.reload();
+      }
     }
   }
 });
