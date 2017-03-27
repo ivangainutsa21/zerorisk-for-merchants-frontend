@@ -1,14 +1,15 @@
 import Ember from 'ember';
 import Session from 'ember-simple-auth/services/session';
+import injectService from 'ember-service/inject';
 import moment from 'moment';
 import config from './../config/environment';
 
 export default Session.extend({
-  store: Ember.inject.service(),
-  routing: Ember.inject.service('-routing'),
-  alerting: Ember.inject.service(),
-  currentUser: Ember.inject.service(),
-  notifications: Ember.inject.service(),
+  store: injectService(),
+  routing: injectService('-routing'),
+  alerting: injectService(),
+  currentUser: injectService(),
+  notifications: injectService(),
 
   // Parameters
   sessionDuration: 15 * 60 * 1000, // 15 minutes

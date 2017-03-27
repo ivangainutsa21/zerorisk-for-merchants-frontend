@@ -60,9 +60,12 @@ export default Ember.Component.extend({
 
   // Methods
   startWizard() {
-    //set(this, 'questionIdsHistory', Ember.A([]));
     this.set('isLoading', true);
-    this.get('ajax').post(`/Wizard/Create?wizardId=${get(this, 'wizardId')}`).then(response => {
+    this.get('ajax').post('merchant/wizard', { 
+        contentType: 'application/json',
+        data: JSON.stringify({ wizardId: get(this, 'wizardId')})
+    })
+    .then(response => {
       this.set('isLoading', false);
       this.setCurrentQuestionAndAnswer(response.result);
     }).catch(response => {
@@ -73,35 +76,38 @@ export default Ember.Component.extend({
 
   goToQuestionId(questionId) {
     this.set('isLoading', true);
-    this.get('ajax').post(`/Wizard/InProgress?userAnswerId=${questionId}`)
-      .then(response => {
-        this.set('isLoading', false);
-        if (questionId !== 0) {
-          this.setCurrentQuestionAndAnswer(response.result);
-        } else {
-          // End of the wizard
-          let onGoalAction = JSON.parse(response.result.wizardView.onGoalAction);
-          switch (onGoalAction.action) {
-            case 'OPEN_DASHBOARD':
-              this.get('onWizardComplete')();
-              // TODO: use router public api when it becomes available
-              this.get('routing').transitionTo('dashboard');
-              break;
-            case 'OPEN_SAQ':                            
-              this.get('alerting').notify("Opening SAQ..", 'success', 'bottom-right-toast');
-              this.get('onWizardComplete')();
-              // TODO: use router public api when it becomes available
-              this.get('routing').transitionTo('saqs.edit', [onGoalAction.objectId]);
-              break;
-            default:
-              alert("Work in Progress: unhandled action.");
-          }
+    this.get('ajax').post('merchant/wizard/next', { 
+      contentType: 'application/json',
+      data: JSON.stringify({ userAnswerId: questionId, wizardResult: JSON.stringify(get(this, 'answersHistory')) })
+    })
+    .then(response => {
+      this.set('isLoading', false);
+      if (questionId !== 0) {
+        this.setCurrentQuestionAndAnswer(response.result);
+      } else {
+        // End of the wizard
+        let onGoalAction = JSON.parse(response.result.wizardView.onGoalAction);
+        switch (onGoalAction.action) {
+          case 'OPEN_DASHBOARD':
+            this.get('onWizardComplete')();
+            // TODO: use router public api when it becomes available
+            this.get('routing').transitionTo('dashboard');
+            break;
+          case 'OPEN_SAQ':                            
+            this.get('alerting').notify("Opening SAQ..", 'success', 'bottom-right-toast');
+            this.get('onWizardComplete')();
+            // TODO: use router public api when it becomes available
+            this.get('routing').transitionTo('saqs.edit', [onGoalAction.objectId]);
+            break;
+          default:
+            alert("Work in Progress: unhandled action.");
         }
-      })
-      .catch(response => {
-        this.set('isLoading', false);
-        this.get('errorParser').parseAndDisplay(response, 'notification')
-      });
+      }
+    })
+    .catch(response => {
+      this.set('isLoading', false);
+      this.get('errorParser').parseAndDisplay(response, 'notification')
+    });
   },
 
   setCurrentQuestionAndAnswer(hash) {
@@ -139,6 +145,8 @@ export default Ember.Component.extend({
       } else if (get(this, 'currentAnswer.type') == "multiple-answer") { 
         get(this, 'answersHistory').push({ questionId: currentQuestionId, answerId: null, choiceId: choiceId });
       }
+
+      console.log(get(this, 'answersHistory'));
 
       this.goToQuestionId(destinationQuestionId);
     },

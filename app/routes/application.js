@@ -1,8 +1,9 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import injectService from 'ember-service/inject';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
-  session: Ember.inject.service(),
+  session: injectService(),
 
   beforeModel() {
     this._super(...arguments);
