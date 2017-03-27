@@ -59,6 +59,10 @@ body.sidebar-open .page-container {
   border-bottom: 1px solid #F5F5F5;
 }
 
-a {
-  cursor: pointer;
+a, [data-ember-action] {
+	cursor: pointer;
+	&[disabled] {
+		opacity: .5 !important;
+		cursor: default;
+	}  
 }
