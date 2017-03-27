@@ -13,6 +13,7 @@ export default Ember.Component.extend({
   // currentQuestionId: null,
   // previousQuestionId: null,
   questionIdsHistory: [],
+  answersHistory: [],
   currentQuestion: Ember.Object.create(),
   currentAnswer: Ember.Object.create(),
   isLoading: false,
@@ -81,6 +82,11 @@ export default Ember.Component.extend({
           // End of the wizard
           let onGoalAction = JSON.parse(response.result.wizardView.onGoalAction);
           switch (onGoalAction.action) {
+            case 'OPEN_DASHBOARD':
+              this.get('onWizardComplete')();
+              // TODO: use router public api when it becomes available
+              this.get('routing').transitionTo('dashboard');
+              break;
             case 'OPEN_SAQ':                            
               this.get('alerting').notify("Opening SAQ..", 'success', 'bottom-right-toast');
               this.get('onWizardComplete')();
@@ -108,6 +114,7 @@ export default Ember.Component.extend({
     }
     get(this, 'questionIdsHistory').addObject(hash.wizardActualQuestion);
     set(this, 'currentQuestion.text', hash.wizardView.text);
+    set(this, 'currentQuestion.info', hash.wizardView.info);
     set(this, 'currentQuestion.id', hash.wizardActualQuestion);
 
     // Answer
@@ -124,7 +131,15 @@ export default Ember.Component.extend({
 
   // Actions
   actions: {
-    answer(destinationQuestionId) {
+    answer(destinationQuestionId, choiceId) {      
+      // Build answer history
+      const currentQuestionId = get(this, 'currentQuestion.id');
+      if (get(this, 'currentAnswer.type') == "yes-no-answer") {
+        get(this, 'answersHistory').push({ questionId: currentQuestionId, answerId: destinationQuestionId, choiceId: null});
+      } else if (get(this, 'currentAnswer.type') == "multiple-answer") { 
+        get(this, 'answersHistory').push({ questionId: currentQuestionId, answerId: null, choiceId: choiceId });
+      }
+
       this.goToQuestionId(destinationQuestionId);
     },
 
