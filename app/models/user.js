@@ -63,6 +63,6 @@ export default Model.extend({
     } else if(this.get('isBancaSella')) {
       return 4;
     }
-    return 5;
+    return 1;
   })
 });
