@@ -10,8 +10,6 @@ export default Ember.Component.extend({
 
   // Attrs
   wizardId: null,
-  // currentQuestionId: null,
-  // previousQuestionId: null,
   questionIdsHistory: [],
   answersHistory: [],
   currentQuestion: Ember.Object.create(),
@@ -56,6 +54,17 @@ export default Ember.Component.extend({
   // Hooks
   didInsertElement() {
     this.startWizard();
+  },
+
+  willDestroyElement() {
+    this.setProperties({
+      wizardId: null,
+      questionIdsHistory: [],
+      answersHistory: [],
+      currentQuestion: Ember.Object.create(),
+      currentAnswer: Ember.Object.create(),
+      isLoading: false
+    });
   },
 
   // Methods
