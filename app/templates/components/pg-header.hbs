@@ -30,30 +30,33 @@
           <span class="text-master">{{currentUser.fullName}}</span> {{!-- <span class="text-master">Nest</span> --}}
         </div>
         <div class="pull-right">
-					{{#basic-dropdown horizontalPosition="right" as |dropdown|}}
-						<ul role="menu" class="m-b-0" style="width: 150px;">
- 						  {{!--<li class="disabled"><a href="#"><i class="pg-settings_small"></i> Settings</a></li>--}}
-						  <li {{action "openLanguageSelector"}} class="p-b-5"><a href="#"><i class="fa fa-globe m-r-5"></i> Language</a></li>
-              {{!--<li class="p-l-5">
-                <a {{action "openLanguageSelector"}}>
-						      <span class="pull-left">Change language</span>
-						    </a>
-              </li>--}}
-						  <li class="bg-master-lighter" style="padding: 5px 22px;">
-						    <a {{action "logout" target=session}}>
-						      <span class="pull-left">Logout</span>
-						      <span class="pull-right"><i class="pg-power"></i></span>
-						    </a>
-						  </li>
-						</ul>
-					{{else}}
-						<button class="profile-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-							<span class="fa-stack fa-lg hint-text">
-								<i class="fa fa-circle fa-stack-2x" style="line-height: 36px; color: #353535; font-size: 33px;"></i>
-								<i class="fa fa-user fa-stack-1x fa-inverse" style="font-size: 15px; line-height: 33px;"></i>
-							</span>
-						</button>
-					{{/basic-dropdown}}
+					{{#basic-dropdown horizontalPosition="right" as |dd|}}
+            {{#dd.content}}
+              <ul role="menu" class="m-b-0" style="width: 150px;">
+                {{!--<li class="disabled"><a href="#"><i class="pg-settings_small"></i> Settings</a></li>--}}
+                <li {{action "openLanguageSelector"}} class="p-b-5"><a href="#"><i class="fa fa-globe m-r-5"></i> Language</a></li>
+                {{!--<li class="p-l-5">
+                  <a {{action "openLanguageSelector"}}>
+                    <span class="pull-left">Change language</span>
+                  </a>
+                </li>--}}
+                <li class="bg-master-lighter" style="padding: 5px 22px;">
+                  <a {{action "logout" target=session}}>
+                    <span class="pull-left">Logout</span>
+                    <span class="pull-right"><i class="pg-power"></i></span>
+                  </a>
+                </li>
+              </ul>
+            {{/dd.content}}
+            {{#dd.trigger}}
+              <button class="profile-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+                <span class="fa-stack fa-lg hint-text">
+                  <i class="fa fa-circle fa-stack-2x" style="line-height: 36px; color: #353535; font-size: 33px;"></i>
+                  <i class="fa fa-user fa-stack-1x fa-inverse" style="font-size: 15px; line-height: 33px;"></i>
+                </span>
+              </button>
+					  {{/dd.trigger}}
+          {{/basic-dropdown}}
         </div>
       </div>
       

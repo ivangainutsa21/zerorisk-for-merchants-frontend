@@ -37,6 +37,41 @@
     </div>
   </div>
   {{validated-input field="url" label="URL" model=model.contactInfo.address errors=model.errors.contactInfo/address/url}}
+
+
+  <div class="row clearfix">
+    <div class="col-sm-9">
+      <div class="form-group form-group-default form-group-select">
+        <label class="{{if model.merchant.level 'fade'}}">Level</label>
+        {{let levels=(List (array (hash name="Level 1 Service Provider" value="LEVEL1") (hash name="Level 2 Service Provider" value="LEVEL2") (hash name="Level 3 Service Provider" value="LEVEL3") (hash name="Level 4 Service Provider" value="LEVEL4")))}}
+        {{#power-select
+          searchEnabled=false
+          options=levels
+          selected=(find-by 'value' model.merchant.level levels)       
+          onchange=(action (mut model.merchant.level) value="value")
+          as |level|
+        }}
+          {{level.name}}          
+        {{/power-select}}
+      </div>
+    </div>
+    <div class="col-sm-3">
+      {{validated-input field="mid" label="Merchant ID" model=model.merchant errors=model.errors.merchant/mid}}
+    </div>
+  </div>
+  <div class="form-group form-group-default form-group-select">
+    <label class="{{if model.merchant.businessChannel 'fade'}}">Business Channel</label>
+    {{let businessChannels=(List (array (hash name="e-Commerce" value="E_COMMERCE") (hash name="MOTO (Mail and Telephone order)" value="MOTO") (hash name="F2F (Face to Face: store, retail..)" value="F2F") (hash name="Other" value="OTHER")))}}
+    {{#power-select
+      searchEnabled=false
+      options=businessChannels
+      selected=(find-by 'value' model.merchant.businessChannel businessChannels)       
+      onchange=(action (mut model.merchant.businessChannel) value="value")
+      as |businessChannel|
+    }}
+      {{businessChannel.name}}          
+    {{/power-select}}
+</div>
 </div>
 
 <p class="pull-right m-t-20">

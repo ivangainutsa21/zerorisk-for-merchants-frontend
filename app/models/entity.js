@@ -15,5 +15,5 @@ export default Model.extend(Validations, {
   // children: hasMany('entity', { inverse: 'parent', async: true }),
   // parent: belongsTo('entity', { inverse: 'children', async: true }),
   contactInfo: belongsTo('contact-info', { async: false }), // embedded
-  merchant: attr() // nested and readOnly
+  merchant: belongsTo('merchant') // nested and readOnly
 });

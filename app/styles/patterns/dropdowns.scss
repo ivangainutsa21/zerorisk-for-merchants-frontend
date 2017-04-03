@@ -70,3 +70,128 @@
     }
   }
 }
+
+// ember-power-select
+.ember-power-select-trigger {
+  border: 0!important;
+  height: 52px;
+  border: 0!important;
+  padding: 2px 9px !important;
+  padding-top: 21px !important;
+  line-height: 28px !important;
+  &[aria-expanded="true"] {
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    background: #f0f0f0;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+  }
+  .ember-power-select-selected-item,
+  .ember-power-select-placeholder {
+    color: #bdbdbd;
+    font-size: 14px;
+    margin-left: 0px !important;
+    padding: 0;
+    padding-left: 3px !important;
+    padding-top: 1px;
+    line-height: 28px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ember-power-select-selected-item {
+    color: #444;
+  }
+  .ember-power-select-status-icon {
+    top: 21px;
+    bottom: 5px;
+    right: 15px!important;
+    left: auto;
+    background: transparent; // border-left: 0px;
+    // height: 26px;
+    // width: 20px;
+    position: absolute;
+  }
+  .description {
+    display: none;
+  }
+}
+
+.ember-power-select-dropdown {
+  border-top: none !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+  border-bottom-right-radius: 2px !important;
+  border-bottom-left-radius: 2px !important;
+  padding-top: 5px !important;
+  z-index: 790 !important;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15) !important;
+  .ember-power-select-search {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    input {
+      background: #ffffff!important;
+      vertical-align: baseline;
+      line-height: 28px;
+      border-radius: 2px;
+      padding: 4px;
+      border: none;
+      font-size: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.07)!important;
+    }
+  }
+  .ember-power-select-options {
+    margin: 3px 8px 5px 8px !important;
+    li {
+      //color: #626262;
+      color: #333;
+    }
+    .ember-power-select-option {
+      padding: 6px;
+      padding-left: 1em;
+      &[aria-current="true"] {
+        background-color: #f0f0f0!important;
+        border-radius: 3px; //color: #626262!important;
+      }
+      &[aria-selected="true"] {
+        border-radius: 3px;
+        background-color: transparent;
+      }
+      .description {
+        display: block;
+        line-height: 15px;
+        opacity: .6;
+      }
+    }
+    .ember-power-select-group {
+      padding: 0px;
+      padding-top: 4px;
+      .ember-power-select-group-name {
+        color: #2c2c2c;
+        padding: 6px;
+        padding-left: 1em;
+        font-weight: 700;
+        font-size: 12px;
+        font-family: 'Montserrat';
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+// ember-basic-dropdown 
+.ember-basic-dropdown-content {
+  -webkit-box-shadow: 0px 0px 5px rgba(98, 98, 98, 0.2);
+  box-shadow: 0px 0px 5px rgba(98, 98, 98, 0.2);
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  margin: 0;
+  background: #fafafa;
+  min-width: 50px; //z-index: 700 !important;
+}
+

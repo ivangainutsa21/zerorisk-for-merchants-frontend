@@ -4,10 +4,13 @@
 // Load font-awesome from its own directory instead of /fonts root
 $fa-font-path: "../fonts/font-awesome";
 @import "font-awesome";
+@import "ember-power-select";
+
 
 // Patterns
 @import "patterns/dropdowns.scss";
 @import "patterns/buttons.scss";
+@import "patterns/forms.scss";
 
 // Components
 @import "components/notifications.scss";

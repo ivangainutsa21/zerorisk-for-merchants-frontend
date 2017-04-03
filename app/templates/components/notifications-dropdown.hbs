@@ -1,13 +1,16 @@
 <li class="inline">
   <div class="dropdown">
     {{#basic-dropdown as |dd|}}
-      {{notifications-list notifications=notifications dropdown=dd}}
-    {{else}}
-      <a id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
-        {{#if limitedUnreadCount}}
-          <span class="bubble">{{limitedUnreadCount}}</span>
-        {{/if}}
-      </a>
+      {{#dd.content}}
+        {{notifications-list notifications=notifications dropdown=dd}}
+      {{/dd.content}}
+      {{#dd.trigger}}
+        <a id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
+          {{#if limitedUnreadCount}}
+            <span class="bubble">{{limitedUnreadCount}}</span>
+          {{/if}}
+        </a>
+      {{/dd.trigger}}
     {{/basic-dropdown}}
   </div>
 </li>
