@@ -2710,6 +2710,13 @@ ember-lazy-image@0.0.15:
     ember-in-viewport "^2.0.4"
     ember-local-storage "0.0.5"
 
+ember-let@0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/ember-let/-/ember-let-0.5.4.tgz#4a5bb0a280db396e45f359c428823610c8c41c8e"
+  dependencies:
+    ember-cli-babel "^5.1.6"
+    ember-cli-version-checker "^1.1.6"
+
 ember-load-initializers@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/ember-load-initializers/-/ember-load-initializers-0.5.1.tgz#76e3db23c111dbdcd3ae6f687036bf0b56be0cbe"
@@ -2744,6 +2751,12 @@ ember-maybe-import-regenerator@^0.1.4:
     broccoli-merge-trees "^1.0.0"
     ember-cli-babel "^6.0.0-beta.4"
     regenerator-runtime "^0.9.5"
+
+ember-microstates@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ember-microstates/-/ember-microstates-0.3.0.tgz#6614f97d12b99fff31ef15570111918bc734bc9e"
+  dependencies:
+    ember-cli-babel "^5.1.6"
 
 ember-moment@6.1.0:
   version "6.1.0"

@@ -128,12 +128,12 @@
         {{!--{{#stagger-set inDirection="up" outDirection="left" inEffect="slideAndFade"}}--}}
             <button {{action 'answer' 'YES'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.type 'YES') 'btn-success' 'btn-default'}}" 
                     style="white-space: normal; border-radius: 0;">
-              <div>{{t 'saq_editor.button_yes'}}</div>
+              <div>{{t 'app.button_yes'}}</div>
             </button>
 
             <button {{action 'answer' 'NO'}} class="btn btn-lg btn-larger btn-block text-left {{if (eq question.answer.type 'NO') 'btn-success' 'btn-default'}}" 
                     style="white-space: normal; border-radius: 0;">
-              <div>{{t 'saq_editor.button_no'}}</div>
+              <div>{{t 'app.button_no'}}</div>
             </button>
             
             <div class="btn-group  btn-group-justified m-t-10">

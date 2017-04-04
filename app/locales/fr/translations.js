@@ -2,7 +2,11 @@ export default {
   'app': {
     'full_name': 'ZeroRisk pour Marchands',
     'family_name': 'ZeroRisk',
-    'unbranded_full_name': 'Plateforme PCI DSS'
+    'unbranded_full_name': 'Plateforme PCI DSS',
+    'button_yes': "Oui",
+    'button_no': "Non",
+    'button_start': "Commencer",
+    'button_next': "Suivant"
   },
   'locales': {
     'en': 'Anglais',
@@ -52,7 +56,19 @@ export default {
       'user_details_part_4': "Le conseil PCI et les systèmes de cartes demandent à ce que les marchands éligibles remplissent le Questionnaire d'Auto-Evaluation (ou SAQ) chaque année. <br> En fait, une importante section de ce document est représentée par l'Attestation de Conformité (ou AOC) qui comprend des informations détaillées sur l'entreprise, comme les contacts légaux et le type d'entreprise (càd, e-Commerce ou MOTO).",
       'user_details_part_5': "Remplir un Questionnaire d'Auto-Evaluation représente une prise de responsabilité envers le secteur des systèmes de cartes, vos institutions financières et vos partenaires commerciaux connectés.",
       'form_part_1': "Informations du Contact",
-      'form_part_2': "Informations de l'Entreprise"  
+      'form_part_2': "Informations de l'Entreprise",
+      'company_name': "Nom de l'Entreprise",
+      'full_name': "Nom complet (Nom Prénom)",
+      'email': "e-mail",
+      'person_title': "Business Titre",
+      'dba': "Faisant affaire sous la raison sociale (Doing Business As/DBA)",
+      'address': "Adresse",
+      'country': "Pays",
+      'city': "Ville",
+      'state_province': "État / Province",
+      'zip': "Code Postal",
+      'url': "Website URL",
+      'phone': "Numéro de téléphone" 
     },
     'saq_detection': {
       'title': "Détection du SAQ",
@@ -65,13 +81,12 @@ export default {
     }
   },
   'saq_editor': {
-      'button_yes': "Oui",
-      'button_no': "Non",
       'button_notapplicable': "Non Applicable",
       'button_compenstatingcontrol': "Contrôle Compensatoire",
       'button_submit': "Soumettre le SAQ",
       'button_submitted': "Soumis",
       'button_download': "Télécharger",
+      'how_to_answer': "Comment répondre?",
       'button_submit_submittable': "Vous avez terminé le SAQ et vous pouvez maintenant le soumettre.",
       'button_submit_downloadable': "Vous pouvez télécharger une copie de votre SAQ en cliquant ici.",
       'hover_notapplicable': "Si cette question n'est pas applicable à votre entreprise, veuillez sélectionner cette option et fournir une explication claire sur l'écran suivant.",
@@ -121,7 +136,7 @@ export default {
       'rightbottom_saq_completeness': "Complétude du SAQ",
       'rightup_title': "Prochainement",
       'rightup_greatnews_title': "Bonne nouvelle",
-      'rightup_greatnews_subtitle': "You are Compliant! Here's some actions you might find useful",
+      'rightup_greatnews_subtitle': "Vous êtes Conforme! Voici quelques options qui pourront vous être utiles",
       'rightup_message': "Actions nécessaires pour devenir Conforme",
       'rightup_message_saq_submit': "Soumettez votre SAQ",
       'rightup_message_saq_complete': "Terminer votre SAQ",

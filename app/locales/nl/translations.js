@@ -2,7 +2,11 @@ export default {
   'app': {
     'full_name': 'ZeroRisk voor Verkopers',
     'family_name': 'ZeroRisk',
-    'unbranded_full_name': 'PCI DSS platform'
+    'unbranded_full_name': 'PCI DSS platform',
+    'button_yes': "Ja",
+    'button_no': "Nee",
+    'button_start': "Start",
+    'button_next': "Volgende"
   },
   'locales': {
     'en': 'Engels',
@@ -52,7 +56,19 @@ export default {
       'user_details_part_4': "De PCI Raad en de kaartenregelingen vereisen dat in aanmerking komende verkopers voldoen aan de zogenaamde Zelfevaluatievragenlijst (of SAQ) op jaarlijke basis. <br> Sterker nog, een belangrijke sectie van een dergelijk document is vertegenwoordigd door de Attestation of Compliance (of AOC) welke bedrijfsinformatie bevat zoals juridische contaten en bedrijfssoort (bijvoorbeeld e-Commerce of MOTO (Mail Order Telephone Order)).",
       'user_details_part_5': "Het voltooien van een Zelfevaluatievragenlijst vertegenwoordigt een aanname van verantwoordelijkheid naar de kaartenregelingen van de industrie, uw financiële instellingen en uw betrokken zakenpartners.",
       'form_part_1': "Contactinformatie",
-      'form_part_2': "Bedrijfsinformatie"  
+      'form_part_2': "Bedrijfsinformatie",
+      'company_name': "CBedrijfsnaam",
+      'full_name': "Volledige naam (Naam Achternaam)",
+      'email': "e-mail",
+      'person_title': "Business Titel",
+      'dba': "DZA (Doet Zaken Als)/ DBA (Doing Business As)",
+      'address': "Adres",
+      'country': "Land",
+      'city': "Stad",
+      'state_province': "Provincie",
+      'zip': "Postcode",
+      'url': "Website URL",
+      'phone': "Telefoonnummer"
     },
     'saq_detection': {
       'title': "saq detectie",
@@ -65,13 +81,12 @@ export default {
     }
   },
   'saq_editor': {
-      'button_yes': "Ja",
-      'button_no': "Nee",
       'button_notapplicable': "Niet Toepasbaar",
       'button_compenstatingcontrol': "Compenserende Controle",
       'button_submit': "Zelfevaluatievragenlijst (SAQ) indienen",
       'button_submitted': "Ingediend",
       'button_download': "Download",
+      'how_to_answer': "Hoe om te antwoorden?",
       'button_submit_submittable': "U heeft de Zelfevaluatievragenlijst (SAQ) voltooid en kunt deze nu indienen.",
       'button_submit_downloadable': "U kunt een kopie van uw Zelfevaluatievragenlijst (SAQ) downloaden door hier te klikken.",
       'hover_notapplicable': "Indien deze vraag niet toepasbaar is voor uw bedrijf, selecteer dan deze optie en geef een duidelijke uitleg in het volgende scherm.",
@@ -121,8 +136,8 @@ export default {
       'leftup_merchant_status': "Uw verkoperstatus",
       'rightbottom_saq_completeness': "Zelfevaluatievragenlijst (SAQ) Voltooidheid",
       'rightup_title': "Volgende",
-      'rightup_greatnews_title': "Geweldig nieuws",
-      'rightup_greatnews_subtitle': "You are Compliant! Here's some actions you might find useful",
+      'rightup_greatnews_title': "Goed nieuws",
+      'rightup_greatnews_subtitle': "U voldoet aan de eisen! Hier zijn een paar handelingen die u wellicht nuttig kunt vinden",
       'rightup_message': "Benodigde handelingen om Naleving te bereiken",
       'rightup_message_saq_submit': "Dien uw Zelfevaluatievragenlijst (SAQ) in",
       'rightup_message_saq_complete': "Voltooi je SAQ",

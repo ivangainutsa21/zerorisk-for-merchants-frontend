@@ -2,7 +2,11 @@ export default {
   'app': {
     'full_name': 'ZeroRisk for Merchants',
     'family_name': 'ZeroRisk',
-    'unbranded_full_name': 'PCI DSS platform'
+    'unbranded_full_name': 'PCI DSS platform',
+    'button_yes': "Yes",
+    'button_no': "No",
+    'button_start': "Start",
+    'button_next': "Next"
   },
   'locales': {
     'en': 'English',
@@ -52,7 +56,19 @@ export default {
       'user_details_part_4': "The PCI council and the cards schemes require eligible merchants to fulfill the so-called Self Assessment Questionnaire (or SAQ) on a yearly basis. <br> In fact, an important section of such document is represented by the Attestation of Compliance (or AOC) which includes business details information, such as legal contacts and business type (i.e. eCommerce or MOTO).",
       'user_details_part_5': "Completing a Self Assessment Questionnaire represents an assumption of responsibility towards the industry cards schemes, your financial institutions and your connected business partners.",
       'form_part_1': "Contact Information",
-      'form_part_2': "Business Information"  
+      'form_part_2': "Business Information",
+      'company_name': "Company Name",
+      'full_name': "Full Name (First name and Last name)",
+      'email': "e-mail",
+      'person_title': "Business Title",
+      'dba': "DBA (Doing Business As)",
+      'address': "Address",
+      'country': "Country",
+      'city': "City",
+      'state_province': "State Province",
+      'zip': "ZIP Code",
+      'url': "Company Website URL",
+      'phone': "Phone Number"
     },
     'saq_detection': {
       'title': "saq detection",
@@ -65,13 +81,12 @@ export default {
     }
   },
   'saq_editor': {
-      'button_yes': "Yes",
-      'button_no': "No",
       'button_notapplicable': "Not Applicable",
       'button_compenstatingcontrol': "Compensating Control",
       'button_submit': "Submit SAQ",
       'button_submitted': "Submitted",
       'button_download': "Download",
+      'how_to_answer': "How to answer",
       'button_submit_submittable': "You have completed the SAQ and you can now submit it.",
       'button_submit_downloadable': "You can download a copy of your SAQ by clicking here.",
       'hover_notapplicable': "Should this question not be applicable to your business, please select this option and provide a clear explanation in the following screen.",
@@ -119,7 +134,7 @@ export default {
   'dashboard': {
       'leftup_merchant_status': "Your merchant status",
       'rightbottom_saq_completeness': "Saq Completeness",
-      'rightup_newtup_title': "Next up",
+      'rightup_nextup_title': "Next up",
       'rightup_greatnews_title': "Great news",
       'rightup_greatnews_subtitle': "You are Compliant! Here's some actions you might find useful",
       'rightup_message': "Actions needed to become Compliant",
