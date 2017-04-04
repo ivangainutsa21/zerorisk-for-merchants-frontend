@@ -58,7 +58,6 @@ export default Ember.Component.extend({
 
   willDestroyElement() {
     this.setProperties({
-      wizardId: null,
       questionIdsHistory: [],
       answersHistory: [],
       currentQuestion: Ember.Object.create(),
