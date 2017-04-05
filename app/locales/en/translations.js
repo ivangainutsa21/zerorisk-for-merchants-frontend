@@ -134,7 +134,7 @@ export default {
   'dashboard': {
       'leftup_merchant_status': "Your merchant status",
       'rightbottom_saq_completeness': "Saq Completeness",
-      'rightup_nextup_title': "Next up",
+      'rightup_title': "Next up",
       'rightup_greatnews_title': "Great news",
       'rightup_greatnews_subtitle': "You are Compliant! Here's some actions you might find useful",
       'rightup_message': "Actions needed to become Compliant",
