@@ -12,16 +12,14 @@ export default Model.extend({
   firstName: attr('string'),
   lastName: attr('string'),
   enabled: attr('boolean'),
-  role: attr('string'),
+  roles: attr(),
+  privileges: attr(),
   title: attr('string'),
   tcAccepted: attr('boolean'),
   merchantStatus: attr('string'),
   merchantCustomizationId: attr('number'),
   fullName: computed('firstName', 'lastName', function() {
     return `${this.get('firstName')} ${this.get('lastName')}`;
-  }),
-  humanRole: computed('role', function() {
-    return Language.roles[this.get('role')];
   }),
   humanMerchantStatus: computed('merchantStatus', function() {
     let merchantStatus = this.get('merchantStatus');

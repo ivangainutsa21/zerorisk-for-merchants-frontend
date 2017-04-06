@@ -25,6 +25,8 @@ export default AjaxService.extend({
       headers.locale = locale;
     }
 
+    headers.App = "merchant";
+
     return headers;    
   }).volatile(),
 

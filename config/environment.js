@@ -12,7 +12,6 @@ module.exports = function(environment) {
       routeIfAlreadyAuthenticated: 'dashboard'
     },
     'ember-cli-mirage': {
-      // TODO: disable me when not needed in demo/prod anymore
       enabled: false
     },
     i18n: {

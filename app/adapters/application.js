@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import AjaxServiceSupport from 'ember-ajax/mixins/ajax-support';
@@ -10,15 +9,6 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, AjaxServiceSupport, {
 
   authorizer: 'authorizer:cookie',
   coalesceFindRequests: true,
-
-  headers: Ember.computed(function() {
-    let csrfCookie = document.cookie.match(/X-\CSRF\-TOKEN\=([^;]*)/);
-    if (csrfCookie) {
-      return {
-        "X-CSRF-TOKEN": decodeURIComponent(Ember.get(csrfCookie, "1"))
-      };
-    }
-  }).volatile(),
 
   // isSuccess(status, headers, payload) {
   //   return payload.success;
