@@ -2,7 +2,11 @@ export default {
   'app': {
     'full_name': 'ZeroRisk für Händler',
     'family_name': 'ZeroRisk',
-    'unbranded_full_name': 'PCI DSS-Plattform'
+    'unbranded_full_name': 'PCI DSS-Plattform',
+    'button_yes': "Ja",
+    'button_no': "Nein",
+    'button_start': "Start",
+    'button_next': "Weiter"
   },
   'locales': {
     'en': 'Englisch',
@@ -52,7 +56,19 @@ export default {
       'user_details_part_4': "Das PCI-Gremium und die Kartenrichtlinien halten die entsprechenden Händler dazu an, auf Jahresbasis den sogenannten Self Assessment Questionnaire (kurz: SAQ) auszufüllen. <br> Ein wesentlicher Abschnitt des Dokuments ist speziell die Attestation of Compliance (kurz: AOC), die detaillierte Angaben wie etwa die Art des Business (d.h., eCommerce oder MOTO) und den/die Ansprechpartner in Rechtsangelegenheiten beinhalten.",
       'user_details_part_5': "Das Ausfüllen des Self Assessment Questionnaires trägt Ihrer Verantwortlichkeit gegenüber den Kartenrichtlinien der Branche, den Finanzinstituten und ggf. involvierten Business-Partnern Rechnung.",
       'form_part_1': "Kontaktdaten",
-      'form_part_2': "Angaben zum Business"  
+      'form_part_2': "Angaben zum Business",
+      'company_name': "Firmenname",
+      'full_name': "Voller Name (Vor- und Nachname)",
+      'email': "e-mail",
+      'person_title': "Business Titel",
+      'dba': "DBA (Doing Business As) (Geschäftstätigkeit als)",
+      'address': "Anschrift",
+      'country': "Land (Nation)",
+      'city': "Ort",
+      'state_province': "Bundesland/-staat",
+      'zip': "PLZ (ZIP-Code)",
+      'url': "Website URL",
+      'phone': "Telefonnummer"
     },
     'saq_detection': {
       'title': "SAQ-Ermittlung",
@@ -65,13 +81,12 @@ export default {
     }
   },
   'saq_editor': {
-      'button_yes': "Ja",
-      'button_no': "Nein",
       'button_notapplicable': "Entfällt",
       'button_compenstatingcontrol': "Kompensierende Kontrolle",
       'button_submit': "SAQ einreichen",
       'button_submitted': "Eingereicht",
       'button_download': "Herunterladen",
+      'how_to_answer': "Wie antworten?",
       'button_submit_submittable': "Sie haben den SAQ-Fragebogen ausgefüllt und können ihn nun einreichen.",
       'button_submit_downloadable': "Sie können eine Ausfertigung Ihres SAQ-Fragebogens herunterladen, indem Sie hier klicken.",
       'hover_notapplicable': "Sollte diese Frage bei Ihrem Business entfallen, so wählen Sie bitte diese Option, um auf dem nächsten Schirm eine Erläuterung dazu abzugeben.",
@@ -121,8 +136,8 @@ export default {
       'leftup_merchant_status': "Ihr Händler-Status",
       'rightbottom_saq_completeness': "SAQ-Vollständigkeit",
       'rightup_title': "Es folgt",
-      'rightup_greatnews_title': "Großartige Neuigkeiten",
-      'rightup_greatnews_subtitle': "You are Compliant! Here's some actions you might find useful",
+      'rightup_greatnews_title': "Neuigkeiten!",
+      'rightup_greatnews_subtitle': "Sie haben die Compliance erreicht! Hier ein paar Tipps, die Ihnen von Nutzen sein könnten",
       'rightup_message': "Zum Erreichen der Compliance erforderliche Aktionen",
       'rightup_message_saq_submit': "Reichen Sie Ihren SAQ-Fragebogen ein",
       'rightup_message_saq_complete': "Vervollständige deinen SAQ",
