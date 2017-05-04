@@ -38,7 +38,7 @@ export default AjaxService.extend({
     let handledResponse = this._super(...arguments);
 
     if (isForbiddenError(handledResponse)) {
-      console.log("You're not authorized to perform this operation.");
+      Ember.Logger.debug("Not authorized to perform this operation.");
       this.get('session').invalidate();
     }
 
