@@ -5,7 +5,8 @@
         {{notifications-list notifications=notifications dropdown=dd}}
       {{/dd.content}}
       {{#dd.trigger}}
-        <a id="notification-center" class="icon-set globe-fill" data-toggle="dropdown">
+      
+        <a id="notification-center" class="fa {{if limitedUnreadCount 'fa-bell' 'fa-bell-o'}}" style="font-size: 15px;" data-toggle="dropdown">
           {{#if limitedUnreadCount}}
             <span class="bubble">{{limitedUnreadCount}}</span>
           {{/if}}
@@ -14,3 +15,4 @@
     {{/basic-dropdown}}
   </div>
 </li>
+
