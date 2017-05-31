@@ -2,7 +2,7 @@ export default {
   'app': {
     'full_name': 'ZeroRisk for Merchants',
     'family_name': 'ZeroRisk',
-    'unbranded_full_name': 'PCI DSS platform',
+    'unbranded_full_name': 'PCI DSS Platform',
     'button_yes': "Yes",
     'button_no': "No",
     'button_start': "Start",

@@ -59,6 +59,7 @@
     "ember-load-initializers": "^0.5.1",
     "ember-microstates": "0.3.0",
     "ember-moment": "6.1.0",
+    "ember-page-title": "3.1.6",
     "ember-perf-timeline": "1.2.0",
     "ember-power-select": "1.6.0",
     "ember-preferences": "1.2.1",
