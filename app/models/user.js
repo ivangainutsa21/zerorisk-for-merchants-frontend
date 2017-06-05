@@ -21,17 +21,17 @@ export default Model.extend({
   fullName: computed('firstName', 'lastName', function() {
     return `${this.get('firstName')} ${this.get('lastName')}`;
   }),
-  humanMerchantStatus: computed('merchantStatus', function() {
-    let merchantStatus = this.get('merchantStatus');
-    switch(merchantStatus) {
-      case 'NotEnrolled': 
-        return 'Not Enrolled';
-      case 'NotCompliant':
-        return 'Not Compliant';
-      default:
-        return merchantStatus;
-    }
-  }),
+  // humanMerchantStatus: computed('merchantStatus', function() {
+  //   let merchantStatus = this.get('merchantStatus');
+  //   switch(merchantStatus) {
+  //     case 'NotEnrolled': 
+  //       return 'Not Enrolled';
+  //     case 'NotCompliant':
+  //       return 'Not Compliant';
+  //     default:
+  //       return merchantStatus;
+  //   }
+  // }),
 
   // Customizations
   isUnbranded: computed('merchantCustomizationId', function() {

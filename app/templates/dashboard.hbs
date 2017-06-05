@@ -28,7 +28,7 @@
 									<div class="pull-bottom bottom-left bottom-right padding-20">
 										<span class="font-montserrat fs-11 all-caps text-white">{{if (eq statsMode "individual") (t 'dashboard.leftup_merchant_status') "Your overall merchants status"}}</span>
 										<br>
-										<h1 class="text-white">{{currentUser.humanMerchantStatus}} {{#if (eq statsMode "aggregated")}}<i class="pg-italic m-l-5 fs-15 hint-text"></i>{{/if}} </h1>
+										<h1 class="text-white">{{statuses stats.status.merchantStatus 'friendly'}} {{#if (eq statsMode "aggregated")}}<i class="pg-italic m-l-5 fs-15 hint-text"></i>{{/if}} </h1>
 										{{#if (eq statsMode "aggregated")}}
 											{{#if model.merchants}}
 												<p class="text-white hint-text">
