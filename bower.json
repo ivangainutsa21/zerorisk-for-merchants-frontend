@@ -1,8 +1,6 @@
 {
   "name": "zerorisk-for-merchants",
-  "dependencies": {
-    "ember": "~2.9.0",
-    "ember-cli-shims": "0.1.3",
+  "dependencies": { 
     "bootstrap-sass": "^3.3.7",
     "jquery.scrollbar": "~0.2.10",
     "font-awesome": "~4.5.0",    

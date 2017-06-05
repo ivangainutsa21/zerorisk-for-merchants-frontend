@@ -1,25 +1,25 @@
 <p>{{t 'enrollment.user_details.form_part_1'}}</p>
 <div class="form-group-attached">
 
-  {{validated-input field="email" label=(t 'enrollment.user_details.email') placeholder="Your user email address" model=model.contactInfo errors=model.errors.contactInfo/email}}
-  {{validated-input field="contactName" label=(t 'enrollment.user_details.full_name') model=model.contactInfo errors=model.errors.contactInfo/contactName}}
-  {{validated-input field="companyName" label="Company Name" model=model.contactInfo errors=model.errors.contactInfo/companyName}}
+  {{validated-input field="email" label=(t 'enrollment.user_details.email') placeholder="Your user email address" model=model.contactInfo errors=model.errors.contactInfo.email}}
+  {{validated-input field="contactName" label=(t 'enrollment.user_details.full_name') model=model.contactInfo errors=model.errors.contactInfo.contactName}}
+  {{validated-input field="companyName" label="Company Name" model=model.contactInfo errors=model.errors.contactInfo.companyName}}
   <div class="row clearfix">
     <div class="col-sm-6">
-      {{validated-input field="title" label=(t 'enrollment.user_details.person_title') placeholder="e.g CEO" model=model.contactInfo errors=model.errors.contactInfo/title}}
+      {{validated-input field="title" label=(t 'enrollment.user_details.person_title') placeholder="e.g CEO" model=model.contactInfo errors=model.errors.contactInfo.title}}
     </div>
     <div class="col-sm-6">
-      {{validated-input field="dba" label=(t 'enrollment.user_details.dba') placeholder="Doing Business As" model=model.contactInfo errors=model.errors.contactInfo/dba}}
+      {{validated-input field="dba" label=(t 'enrollment.user_details.dba') placeholder="Doing Business As" model=model.contactInfo errors=model.errors.contactInfo.dba}}
     </div>
   </div>
-  {{validated-input field=(t 'enrollment.user_details.phone') label="Phone Number" model=model.contactInfo errors=model.errors.contactInfo/phone}}
+  {{validated-input field=(t 'enrollment.user_details.phone') label="Phone Number" model=model.contactInfo errors=model.errors.contactInfo.phone}}
 </div>
 
 <br />
 
-<p>{{t 'enrollment.user_details.form_part_2'}}</p>
+{{!--<p>{{t 'enrollment.user_details.form_part_2'}}</p>
 <div class="form-group-attached">
-  {{validated-input field="businessAddress" label=(t 'enrollment.user_details.address') model=model.contactInfo.address errors=model.errors.contactInfo/address/businessAddress}}
+  {{validated-input field="businessAddress" label=(t 'enrollment.user_details.address') model=model.contactInfo.address errors=model.errors.contactInfo.address.businessAddress}}
   <div class="row clearfix">
     <div class="col-sm-6">
       {{validated-input field="country" label=(t 'enrollment.user_details.country') model=model.contactInfo.address errors=model.errors.contactInfo/address/country}}
@@ -76,4 +76,4 @@
 
 <p class="pull-right m-t-20">
   <button {{action "save"}} class="btn btn-success btn-cons" type="submit" disabled={{if (or cantSave isLoading) 'true'}}>{{{if isLoading (concat '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> ' saveText) saveText}}}</button>
-</p>
+</p>--}}

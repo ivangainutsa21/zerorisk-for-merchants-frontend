@@ -1,4 +1,4 @@
-/*jshint node:true*/
+/* eslint-env node */
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app'); 
 var deployTarget = process.env.DEPLOY_TARGET;
