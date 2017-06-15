@@ -88,7 +88,7 @@ export default {
       'button_download': "Télécharger",
       'how_to_answer': "Comment répondre?",
       'button_submit_submittable': "Vous avez terminé le SAQ et vous pouvez maintenant le soumettre.",
-      'button_submit_downloadable': "Vous pouvez télécharger une copie de votre SAQ en cliquant ici.",
+      'button_submit_downloadable': "Vous pouvez télécharger une copie de votre SAQ en cliquant ici. Note: Jusqu'à le conseil PCI publie des versions officielles, le rapport (SAQ & AoC) sera généré en Anglais.",
       'hover_notapplicable': "Si cette question n'est pas applicable à votre entreprise, veuillez sélectionner cette option et fournir une explication claire sur l'écran suivant.",
       'hover_notapplicable_edit': "Voir la justification fournie pour cette réponse Non Applicable.",
       'hover_compensatingcontrol': "Si un contrôle compensatoire est nécessaire pour cette exigence, veuillez sélectionner cette option pour fournir toutes les informations nécessaires.",

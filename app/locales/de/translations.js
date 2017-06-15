@@ -88,7 +88,7 @@ export default {
       'button_download': "Herunterladen",
       'how_to_answer': "Wie antworten?",
       'button_submit_submittable': "Sie haben den SAQ-Fragebogen ausgefüllt und können ihn nun einreichen.",
-      'button_submit_downloadable': "Sie können eine Ausfertigung Ihres SAQ-Fragebogens herunterladen, indem Sie hier klicken.",
+      'button_submit_downloadable': "Hinweis: Bis das PCI-Gremium veröffentlicht offizielle Versionen, der Rapport/Prüfbericht (SAQ & AoC) wird in Englisch generiert.",
       'hover_notapplicable': "Sollte diese Frage bei Ihrem Business entfallen, so wählen Sie bitte diese Option, um auf dem nächsten Schirm eine Erläuterung dazu abzugeben.",
       'hover_notapplicable_edit': "Die Erläuterung für das Entfallen dieser Frage anschauen.",
       'hover_compensatingcontrol': "Sollte für diese Anforderung eine kompensierende Kontrolle nötig sein, so wählen Sie bitte diese Option, um alle erforderlichen Angaben zu machen.",

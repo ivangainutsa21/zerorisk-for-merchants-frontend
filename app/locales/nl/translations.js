@@ -88,7 +88,7 @@ export default {
       'button_download': "Download",
       'how_to_answer': "Hoe om te antwoorden?",
       'button_submit_submittable': "U heeft de Zelfevaluatievragenlijst (SAQ) voltooid en kunt deze nu indienen.",
-      'button_submit_downloadable': "U kunt een kopie van uw Zelfevaluatievragenlijst (SAQ) downloaden door hier te klikken.",
+      'button_submit_downloadable': "U kunt een kopie van uw Zelfevaluatievragenlijst (SAQ) downloaden door hier te klikken. Opmerking: Tot aan de PCI-Raad publiceert officieel versies, Rapport (SAQ & AoC) wordt gegenereerd in Engels.",
       'hover_notapplicable': "Indien deze vraag niet toepasbaar is voor uw bedrijf, selecteer dan deze optie en geef een duidelijke uitleg in het volgende scherm.",
       'hover_notapplicable_edit': "Toon geleverde rechtvaardiging van dit Niet Toepasbare antwoord.",
       'hover_compensatingcontrol': "Indien een compenserende controle benodigd is voor deze voorwaarde, selecteer dan deze optie om alle benodigde informatie te leveren.",
