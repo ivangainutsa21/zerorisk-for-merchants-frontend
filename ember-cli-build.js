@@ -27,8 +27,8 @@ module.exports = function(defaults) {
     'ember-cli-bootstrap-sassy': {
       'glyphicons': false
     },
-    babel: {      
-      includePolyfill: true // for ember-concurrency
+    'ember-cli-babel': {      
+      includePolyfill: true // for ember-concurrency and async/await
     },
     fingerprint: {
       prepend: fingerprintUrl,

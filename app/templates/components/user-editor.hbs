@@ -17,26 +17,26 @@
 
 <br />
 
-{{!--<p>{{t 'enrollment.user_details.form_part_2'}}</p>
+<p>{{t 'enrollment.user_details.form_part_2'}}</p>
 <div class="form-group-attached">
   {{validated-input field="businessAddress" label=(t 'enrollment.user_details.address') model=model.contactInfo.address errors=model.errors.contactInfo.address.businessAddress}}
   <div class="row clearfix">
     <div class="col-sm-6">
-      {{validated-input field="country" label=(t 'enrollment.user_details.country') model=model.contactInfo.address errors=model.errors.contactInfo/address/country}}
+      {{validated-input field="country" label=(t 'enrollment.user_details.country') model=model.contactInfo.address errors=model.errors.contactInfo.address.country}}
     </div>
     <div class="col-sm-6">
-      {{validated-input field="city" label=(t 'enrollment.user_details.city') model=model.contactInfo.address errors=model.errors.contactInfo/address/city}}
+      {{validated-input field="city" label=(t 'enrollment.user_details.city') model=model.contactInfo.address errors=model.errors.contactInfo.address.city}}
     </div>
   </div>
   <div class="row clearfix">
     <div class="col-sm-9">
-      {{validated-input field="stateProvince" label=(t 'enrollment.user_details.state_province') placeholder="e.g NY" model=model.contactInfo.address errors=model.errors.contactInfo/address/stateProvince}}
+      {{validated-input field="stateProvince" label=(t 'enrollment.user_details.state_province') placeholder="e.g NY" model=model.contactInfo.address errors=model.errors.contactInfo.address.stateProvince}}
     </div>
     <div class="col-sm-3">
-      {{validated-input field="zipCode" label=(t 'enrollment.user_details.zip') model=model.contactInfo.address errors=model.errors.contactInfo/address/zipCode}}
+      {{validated-input field="zipCode" label=(t 'enrollment.user_details.zip') model=model.contactInfo.address errors=model.errors.contactInfo.address.zipCode}}
     </div>
   </div>
-  {{validated-input field="url" label=(t 'enrollment.user_details.zip') model=model.contactInfo.address errors=model.errors.contactInfo/address/url}}
+  {{validated-input field="url" label=(t 'enrollment.user_details.zip') model=model.contactInfo.address errors=model.errors.contactInfo.address.url}}
 
 
   <div class="row clearfix">
@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="col-sm-3">
-      {{validated-input field="mid" label="Merchant ID (MID)" model=model.merchant errors=model.errors.merchant/mid}}
+      {{validated-input field="mid" label="Merchant ID (MID)" model=model.merchant errors=model.errors.merchant.mid}}
     </div>
   </div>
   <div class="form-group form-group-default form-group-select">
@@ -76,4 +76,4 @@
 
 <p class="pull-right m-t-20">
   <button {{action "save"}} class="btn btn-success btn-cons" type="submit" disabled={{if (or cantSave isLoading) 'true'}}>{{{if isLoading (concat '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> ' saveText) saveText}}}</button>
-</p>--}}
+</p>
