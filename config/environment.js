@@ -1,9 +1,9 @@
 /* eslint-env node */
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'zerorisk-for-merchants',
-    environment: environment,
+    environment,
     rootURL: '/',
     locationType: 'auto',
     'ember-simple-auth':  {
