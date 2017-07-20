@@ -1,6 +1,8 @@
-/*jshint node:true*/
+/* eslint-env node */
 /* global require, module */
-var EmberApp = require('ember-cli/lib/broccoli/ember-app'); 
+'use strict';
+
+const EmberApp = require('ember-cli/lib/broccoli/ember-app'); 
 var deployTarget = process.env.DEPLOY_TARGET;
 var fingerprintUrl;    
 
@@ -17,7 +19,7 @@ switch(deployTarget) {
 }
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
+  let app = new EmberApp(defaults, {
     sassOptions: {
       // Pages main sass file + font-awesome
       includePaths: ['vendor/pages/scss', 'bower_components/font-awesome/scss']
@@ -25,8 +27,8 @@ module.exports = function(defaults) {
     'ember-cli-bootstrap-sassy': {
       'glyphicons': false
     },
-    babel: {      
-      includePolyfill: true // for ember-concurrency
+    'ember-cli-babel': {      
+      includePolyfill: true // for ember-concurrency and async/await
     },
     fingerprint: {
       prepend: fingerprintUrl,
