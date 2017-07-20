@@ -12,7 +12,7 @@
       {{validated-input field="dba" label=(t 'enrollment.user_details.dba') placeholder="Doing Business As" model=model.contactInfo errors=model.errors.contactInfo.dba}}
     </div>
   </div>
-  {{validated-input field=(t 'enrollment.user_details.phone') label="Phone Number" model=model.contactInfo errors=model.errors.contactInfo.phone}}
+  {{validated-input field="phone" label=(t 'enrollment.user_details.phone') model=model.contactInfo errors=model.errors.contactInfo.phone}}
 </div>
 
 <br />
@@ -40,7 +40,7 @@
 
 
   <div class="row clearfix">
-    <div class="col-sm-9">
+    {{!-- <div class="col-sm-9">
       <div class="form-group form-group-default form-group-select">
         <label class="{{if model.merchant.level 'fade'}}">Level</label>
         {{let levels=(List (array (hash name="Level 1 Service Provider" value="LEVEL1") (hash name="Level 2 Service Provider" value="LEVEL2") (hash name="Level 3 Service Provider" value="LEVEL3") (hash name="Level 4 Service Provider" value="LEVEL4")))}}
@@ -54,8 +54,8 @@
           {{level.name}}          
         {{/power-select}}
       </div>
-    </div>
-    <div class="col-sm-3">
+    </div> --}}
+    <div class="col-sm-12">
       {{validated-input field="mid" label="Merchant ID (MID)" model=model.merchant errors=model.errors.merchant.mid}}
     </div>
   </div>
