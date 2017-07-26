@@ -23,8 +23,8 @@ const Validations = buildValidations({
     validator('length', { min: 1, max: 30 })
   ],
   phone: [
-    validator('format', { allowBlank: true, type: 'phone' }),
-    validator('length', { min: 3, max: 30 })
+    validator('presence', true),
+    validator('length', { min: 5, max: 20 })
   ],
   'address': validator('belongs-to')
 });
