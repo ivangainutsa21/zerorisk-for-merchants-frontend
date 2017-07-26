@@ -59,18 +59,21 @@
       {{validated-input field="mid" label="Merchant ID (MID)" model=model.merchant errors=model.errors.merchant.mid}}
     </div>
   </div>
+  {{!--selected=(find-by 'value' model.merchant.businessChannel businessChannels)       
+      onchange=(action (mut model.merchant.businessChannel) value="value")
+  --}}
   <div class="form-group form-group-default form-group-select">
-    <label class="{{if model.merchant.businessChannel 'fade'}}">Business Channel</label>
-    {{let businessChannels=(List (array (hash name="e-Commerce" value="E_COMMERCE") (hash name="MOTO (Mail and Telephone order)" value="MOTO") (hash name="F2F (Face to Face: store, retail..)" value="F2F") (hash name="Other" value="OTHER")))}}
-    {{#power-select
+    <label class="{{if model.merchant.merchantProfile.businessChannels 'fade'}}">Business Channel(s)</label>
+    {{let businessChannels=(List (array (hash friendlyName="e-Commerce" name="E_COMMERCE") (hash friendlyName="MOTO (Mail and Telephone order)" name="MOTO") (hash friendlyName="F2F (Face to Face: store, retail..)" name="F2F") (hash friendlyName="Other" name="OTHER")))}}
+    {{#power-select-multiple
       searchEnabled=false
       options=businessChannels
-      selected=(find-by 'value' model.merchant.businessChannel businessChannels)       
-      onchange=(action (mut model.merchant.businessChannel) value="value")
+      selected=model.merchant.merchantProfile.businessChannels
+      onchange=(action (mut model.merchant.merchantProfile.businessChannels))
       as |businessChannel|
     }}
       {{businessChannel.name}}          
-    {{/power-select}}
+    {{/power-select-multiple}}
 </div>
 </div>
 
