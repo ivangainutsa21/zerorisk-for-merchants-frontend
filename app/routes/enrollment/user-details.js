@@ -8,20 +8,20 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	hasCompletedStep: false,
 
 	beforeModel(transition) {
-	  if (!this.controllerFor('enrollment/welcome').get('hasCompletedStep')) {
-	    transition.abort();
-	    this.get('alerting').notify('You have to accept Terms and Conditions before proceeding.', 'info');
-	  } else {
-	  	if(this.controllerFor('enrollment/welcome').get('currentUser.hasDirtyAttributes')) {
-	  		this.controllerFor('enrollment/welcome').saveTc().catch(() => {
-	  			transition.abort();
-	  			alert("Error accepting Terms and Conditions.");
-	  		});
-	  	}
-	  }
+		if (!this.controllerFor('enrollment/welcome').get('hasCompletedStep')) {
+			transition.abort();
+			this.get('alerting').notify('You have to accept Terms and Conditions before proceeding.', 'info');
+		} else {
+			if (this.controllerFor('enrollment/welcome').get('currentUser.hasDirtyAttributes')) {
+				this.controllerFor('enrollment/welcome').saveTc().catch(() => {
+					transition.abort();
+					alert("Error accepting Terms and Conditions.");
+				});
+			}
+		}
 	},
 
-	model() {		
+	model() {
 		// TODO: change this when currentEntityId is a thing
 		return this.store.find('entity', this.get('currentUser.content').hasMany('entities').ids()[0]);
 	}

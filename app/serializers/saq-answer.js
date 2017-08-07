@@ -2,13 +2,13 @@ import ApplicationSerializer from './application';
 
 export default ApplicationSerializer.extend({
 	attrs: {
-		code: { serialize: false }		
+		code: { serialize: false }
 	},
 
 	serialize(snapshot, options) {
 		let json = this._super(snapshot, options);
 
-		switch(json.type) {
+		switch (json.type) {
 			case 'YES':
 			case 'NO':
 				delete json.constraints;

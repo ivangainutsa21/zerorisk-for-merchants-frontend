@@ -15,13 +15,13 @@ export default {
     'nl': 'Dutch'
   },
   'status': {
-  	'Compliant': 'Compliant',
-  	'NotCompliant': 'Not Compliant',
-  	'Enrolled': 'Enrolled',
-  	'NotEnrolled': 'Not Enrolled',
-  	'Closed': 'Closed',
-  	'asv_compliant': 'Passing',
-  	'asv_not_compliant': 'Not Passing'
+    'Compliant': 'Compliant',
+    'NotCompliant': 'Not Compliant',
+    'Enrolled': 'Enrolled',
+    'NotEnrolled': 'Not Enrolled',
+    'Closed': 'Closed',
+    'asv_compliant': 'Passing',
+    'asv_not_compliant': 'Not Passing'
   },
   'notification': {
     'no_notifications': "No notifications to display",
@@ -38,7 +38,7 @@ export default {
   'menus': {
     'dashboard_subtitle': 'Your Merchant Home',
     'saq_subtitle': 'Manage your SAQs'
-  },  
+  },
   'enrollment': {
     'welcome': {
       'title': "welcome",
@@ -81,65 +81,65 @@ export default {
     }
   },
   'saq_editor': {
-      'button_notapplicable': "Not Applicable",
-      'button_compenstatingcontrol': "Compensating Control",
-      'button_submit': "Submit SAQ",
-      'button_submitted': "Submitted",
-      'button_download': "Download",
-      'how_to_answer': "How to answer",
-      'button_submit_submittable': "You have completed the SAQ and you can now submit it.",
-      'button_submit_downloadable': "You can download a copy of your SAQ by clicking here.",
-      'hover_notapplicable': "Should this question not be applicable to your business, please select this option and provide a clear explanation in the following screen.",
-      'hover_notapplicable_edit': "View provided justification for this Not Applicable answer.",
-      'hover_compensatingcontrol': "If a componensating control is needed for this requirement, please select this option to provide all necessary information.",
-      'hover_compensatingcontrol_edit': "If a componensating control is needed for this requirement, please select this option to provide all necessary information.",
-      'not_applicable': {
-        'title': "Explanation of Non-Applicability",
-        'subtitle': "Explain why the related requirement is not applicable to your organization.",
-        'example': "e.g. Additional media not utilised for the processing of payment transactions.",
+    'button_notapplicable': "Not Applicable",
+    'button_compenstatingcontrol': "Compensating Control",
+    'button_submit': "Submit SAQ",
+    'button_submitted': "Submitted",
+    'button_download': "Download",
+    'how_to_answer': "How to answer",
+    'button_submit_submittable': "You have completed the SAQ and you can now submit it.",
+    'button_submit_downloadable': "You can download a copy of your SAQ by clicking here.",
+    'hover_notapplicable': "Should this question not be applicable to your business, please select this option and provide a clear explanation in the following screen.",
+    'hover_notapplicable_edit': "View provided justification for this Not Applicable answer.",
+    'hover_compensatingcontrol': "If a componensating control is needed for this requirement, please select this option to provide all necessary information.",
+    'hover_compensatingcontrol_edit': "If a componensating control is needed for this requirement, please select this option to provide all necessary information.",
+    'not_applicable': {
+      'title': "Explanation of Non-Applicability",
+      'subtitle': "Explain why the related requirement is not applicable to your organization.",
+      'example': "e.g. Additional media not utilised for the processing of payment transactions.",
+    },
+    'compensating_control': {
+      'constraints': {
+        'title': "Constraints",
+        'subtitle': "Please list all constraints precluding compliance with the original requirement. Refer to the following example of constraints forcing the submission of a Compensating Control.",
+        'example': "e.g. Company XYZ employs stand-alone Unix Servers without LDAP. As such, they each require a “root” login. It is not possible for Company XYZ to manage the “root” login nor is it feasible to log all “root” activity by each user."
       },
-      'compensating_control': {
-        'constraints': {
-          'title': "Constraints",
-          'subtitle': "Please list all constraints precluding compliance with the original requirement. Refer to the following example of constraints forcing the submission of a Compensating Control.",
-          'example': "e.g. Company XYZ employs stand-alone Unix Servers without LDAP. As such, they each require a “root” login. It is not possible for Company XYZ to manage the “root” login nor is it feasible to log all “root” activity by each user."
-        },
-        'objective': {
-          'title': "Objective",
-          'subtitle': "Please define the objective of the original control linked to this requirement, in order to confirm the compensating control is acceptable and consistent with the original intent.",
-          'example': "e.g. The objective of requiring unique logins is twofold. First, it is not considered acceptable from a security perspective to share login credentials. Secondly, having shared logins makes it impossible to state definitively that a person is responsible for a particular action."
-        },
-        'risks': {
-          'title': "Risks",
-          'subtitle': "Please include any additional risk posed by the lack of the original control, if any available. This is needed to also confirm the intent of this requirement is fully understood.",
-          'example': "e.g. Additional risk is introduced to the access control system by not ensuring all users have a unique ID and are able to be tracked."
-        },
-        'definition': {
-          'title': "Definition",
-          'subtitle': "Please define the compensating controls and explain how they address the objectives of the original control and the increased risk, if any. This is needed to verify the compensating controls are eliminating the risk residue generated by the lack of compliance against the original requirement.",
-          'example': "e.g. Company XYZ is going to require all users to log into the servers from their desktops using the SU command. SU allows a user to access the “root” account and perform actions under the “root” account but is able to be logged in the SU-log directory. In this way, each user’s actions can be tracked through the SU account."
-        },
-        'validation': {
-          'title': "Validation",
-          'subtitle': "Please define how the described compensating controls were validated and tested to confirm they are a valid countermeasure to the lack of compliance against the original requirement.",
-          'example': "e.g. Company XYZ demonstrates to assessor that the SU command being executed and that those individuals utilizing the command are logged to identify that the individual is performing actions under root privileges."
-        },
-        'maintenance': {
-          'title': "Maintenance",
-          'subtitle': "Please define all process and controls in place to maintain compensating controls once implemented.",
-          'example': "e.g. Company XYZ documents processes and procedures to ensure SU configurations are not changed, altered, or removed to allow individual users to execute root commands without being individually tracked or logged."
-        }
+      'objective': {
+        'title': "Objective",
+        'subtitle': "Please define the objective of the original control linked to this requirement, in order to confirm the compensating control is acceptable and consistent with the original intent.",
+        'example': "e.g. The objective of requiring unique logins is twofold. First, it is not considered acceptable from a security perspective to share login credentials. Secondly, having shared logins makes it impossible to state definitively that a person is responsible for a particular action."
+      },
+      'risks': {
+        'title': "Risks",
+        'subtitle': "Please include any additional risk posed by the lack of the original control, if any available. This is needed to also confirm the intent of this requirement is fully understood.",
+        'example': "e.g. Additional risk is introduced to the access control system by not ensuring all users have a unique ID and are able to be tracked."
+      },
+      'definition': {
+        'title': "Definition",
+        'subtitle': "Please define the compensating controls and explain how they address the objectives of the original control and the increased risk, if any. This is needed to verify the compensating controls are eliminating the risk residue generated by the lack of compliance against the original requirement.",
+        'example': "e.g. Company XYZ is going to require all users to log into the servers from their desktops using the SU command. SU allows a user to access the “root” account and perform actions under the “root” account but is able to be logged in the SU-log directory. In this way, each user’s actions can be tracked through the SU account."
+      },
+      'validation': {
+        'title': "Validation",
+        'subtitle': "Please define how the described compensating controls were validated and tested to confirm they are a valid countermeasure to the lack of compliance against the original requirement.",
+        'example': "e.g. Company XYZ demonstrates to assessor that the SU command being executed and that those individuals utilizing the command are logged to identify that the individual is performing actions under root privileges."
+      },
+      'maintenance': {
+        'title': "Maintenance",
+        'subtitle': "Please define all process and controls in place to maintain compensating controls once implemented.",
+        'example': "e.g. Company XYZ documents processes and procedures to ensure SU configurations are not changed, altered, or removed to allow individual users to execute root commands without being individually tracked or logged."
       }
+    }
   },
   'dashboard': {
-      'leftup_merchant_status': "Your merchant status",
-      'rightbottom_saq_completeness': "Saq Completeness",
-      'rightup_title': "Next up",
-      'rightup_greatnews_title': "Great news",
-      'rightup_greatnews_subtitle': "You are Compliant! Here's some actions you might find useful",
-      'rightup_message': "Actions needed to become Compliant",
-      'rightup_message_saq_submit': "Submit your SAQ",
-      'rightup_message_saq_complete': "Complete your SAQ",
-      'rightup_message_saq_download': "Download your SAQ"
+    'leftup_merchant_status': "Your merchant status",
+    'rightbottom_saq_completeness': "Saq Completeness",
+    'rightup_title': "Next up",
+    'rightup_greatnews_title': "Great news",
+    'rightup_greatnews_subtitle': "You are Compliant! Here's some actions you might find useful",
+    'rightup_message': "Actions needed to become Compliant",
+    'rightup_message_saq_submit': "Submit your SAQ",
+    'rightup_message_saq_complete': "Complete your SAQ",
+    'rightup_message_saq_download': "Download your SAQ"
   }
 };

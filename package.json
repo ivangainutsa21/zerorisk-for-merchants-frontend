@@ -47,6 +47,7 @@
     "ember-custom-actions": "^1.6.0",
     "ember-data": "~2.14.3",
     "ember-data-filter": "1.13.0",
+    "ember-data-model-fragments": "^2.14.0",
     "ember-deferred-content": "0.2.0",
     "ember-export-application-global": "^2.0.0",
     "ember-href-to": "^1.13.0",
