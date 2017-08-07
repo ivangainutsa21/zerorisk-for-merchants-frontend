@@ -3,6 +3,6 @@ import DS from 'ember-data';
 
 export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
 	attrs: {
-	  address: { embedded: 'always' }
+		address: { embedded: 'always' }
 	}
 });

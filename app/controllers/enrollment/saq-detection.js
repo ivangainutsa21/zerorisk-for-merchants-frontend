@@ -8,8 +8,8 @@ export default Ember.Controller.extend({
       this.set('hasCompletedPreFlight', true);
     },
     unlockApplication() {
-    	// test this.set('currentUser.merchantStatus', 'Enrolled')
-    	this.set('currentUser.merchantStatus', 'Enrolled');
+      // test this.set('currentUser.merchantStatus', 'Enrolled')
+      this.set('currentUser.merchantStatus', 'Enrolled');
     }
   }
 });

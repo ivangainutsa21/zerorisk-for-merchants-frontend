@@ -36,7 +36,7 @@
       {{validated-input field="zipCode" label=(t 'enrollment.user_details.zip') model=model.contactInfo.address errors=model.errors.contactInfo.address.zipCode}}
     </div>
   </div>
-  {{validated-input field="url" label=(t 'enrollment.user_details.zip') model=model.contactInfo.address errors=model.errors.contactInfo.address.url}}
+  {{validated-input field="url" label=(t 'enrollment.user_details.url') model=model.contactInfo.address errors=model.errors.contactInfo.address.url}}
 
 
   <div class="row clearfix">
@@ -60,20 +60,24 @@
     </div>
   </div>
   <div class="form-group form-group-default form-group-select">
-    <label class="{{if model.merchant.businessChannel 'fade'}}">Business Channel</label>
-    {{let businessChannels=(List (array (hash name="e-Commerce" value="E_COMMERCE") (hash name="MOTO (Mail and Telephone order)" value="MOTO") (hash name="F2F (Face to Face: store, retail..)" value="F2F") (hash name="Other" value="OTHER")))}}
-    {{#power-select
+    <label class="{{if model.merchant.merchantProfile.businessChannels 'fade'}}">Business Channel(s)</label>
+    {{#power-select-multiple
       searchEnabled=false
-      options=businessChannels
-      selected=(find-by 'value' model.merchant.businessChannel businessChannels)       
-      onchange=(action (mut model.merchant.businessChannel) value="value")
+      options=availableBusinessChannels
+      selected=model.merchant.merchantProfile.businessChannels
+      onchange=(action (mut model.merchant.merchantProfile.businessChannels))
       as |businessChannel|
     }}
-      {{businessChannel.name}}          
-    {{/power-select}}
+      {{business-channels businessChannel.name 'friendly'}}
+    {{/power-select-multiple}}
 </div>
 </div>
 
-<p class="pull-right m-t-20">
-  <button {{action "save"}} class="btn btn-success btn-cons" type="submit" disabled={{if (or cantSave isLoading) 'true'}}>{{{if isLoading (concat '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> ' saveText) saveText}}}</button>
+<p class="pull-right m-t-20">   
+  <button {{action "save"}} class="btn btn-success btn-cons" type="submit" disabled={{if (or cantSave isLoading) 'true'}}>
+    {{{if isLoading (concat '<i class="fa fa-circle-o-notch fa-spin m-r-10"></i> ' saveText) saveText}}}
+    {{#if cantSave}}
+      {{tooltip-on-element side='left' event='hover' effect='slide' text='Please correct your data to proceed.'}}
+    {{/if}}
+  </button>
 </p>

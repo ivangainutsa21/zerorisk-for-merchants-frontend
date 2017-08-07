@@ -154,8 +154,6 @@ export default Ember.Component.extend({
         get(this, 'answersHistory').push({ questionId: currentQuestionId, answerId: null, choiceId: choiceId });
       }
 
-      console.log(get(this, 'answersHistory'));
-
       this.goToQuestionId(destinationQuestionId);
     },
 

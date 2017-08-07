@@ -1,14 +1,20 @@
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { belongsTo } from 'ember-data/relationships';
 
-export default DS.Model.extend({
-  businessChannel: DS.attr('string'),
-  customizationId: DS.attr('number'),
-  email: DS.attr('string'),
-  enrolledAt: DS.attr('date'),
-  level: DS.attr('string'),
-  mccCode: DS.attr('string'),
-  merchantStatus: DS.attr('string'),
-  mid: DS.attr('string'),
-  pciPassed: DS.attr('boolean'),
-  saqType: DS.attr('string'),
+export default Model.extend({
+  //businessChannel: DS.attr('string'),
+  // rels
+  merchantProfile: belongsTo('merchant-profile'),
+
+  // attrs
+  customizationId: attr('number'),
+  email: attr('string'),
+  enrolledAt: attr('date'),
+  level: attr('string'),
+  mccCode: attr('string'),
+  merchantStatus: attr('string'),
+  mid: attr('string'),
+  pciPassed: attr('boolean'),
+  saqType: attr('string'),
 });
