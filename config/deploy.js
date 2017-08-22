@@ -41,6 +41,15 @@ module.exports = function(deployTarget) {
   //   ENV.build.environment = 'production';
   // }
 
+  if (deployTarget === 'staging') {
+    ENV.build.environment = 'production';
+    ENV['s3'].bucket = 'merchants-app-staging';
+    ENV['s3-index'].bucket = 'merchants-app-staging';
+    ENV.pipeline = {
+      activateOnDeploy: true
+    }
+  }
+
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
     ENV['s3'].bucket = 'merchants-app-prod';
