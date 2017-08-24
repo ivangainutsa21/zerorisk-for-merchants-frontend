@@ -49,7 +49,7 @@ export default Ember.Component.extend(EKMixin, {
 		});
 	},
 
-	savedAnswers: Ember.computed('saq.answers.[]', 'saq.answers.@each.type', function() {
+	savedAnswers: Ember.computed('saq.answers.[]', 'saq.answers.@each.type', 'saq.answers.@each.isNew', function() {
 		return this.get('saq.answers').filterBy('isNew', false).rejectBy('type', 'NO');
 	}),
 
