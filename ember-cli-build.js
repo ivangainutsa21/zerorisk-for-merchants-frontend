@@ -11,7 +11,7 @@ switch(deployTarget) {
     fingerprintUrl = "https://d3y8urx7pl70.cloudfront.net/";
     break;
   case 'staging':
-    fingerprintUrl = "https://d2doxy0rvepi76.cloudfront.net";
+    fingerprintUrl = "https://d2doxy0rvepi76.cloudfront.net/";
     break;        
   case 'demo':
     fingerprintUrl = "https://d34uw3u0sbeeqo.cloudfront.net/";
