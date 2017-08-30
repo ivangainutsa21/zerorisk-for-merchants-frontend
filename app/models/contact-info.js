@@ -9,21 +9,15 @@ const Validations = buildValidations({
     validator('format', { type: 'email' })
   ],
   companyName: [
-    validator('presence', true),
     validator('length', { min: 3, max: 30 })
   ],
   contactName: [
-    validator('presence', true),
-    validator('length', { min: 3, max: 30 })
-  ],
-  dba: [
     validator('length', { min: 3, max: 30 })
   ],
   title: [
     validator('length', { min: 1, max: 30 })
   ],
   phone: [
-    validator('presence', true),
     validator('length', { min: 5, max: 20 })
   ],
   'address': validator('belongs-to')
