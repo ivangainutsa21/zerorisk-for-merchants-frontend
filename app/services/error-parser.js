@@ -9,11 +9,10 @@ export default Ember.Service.extend({
   },
 
   parse(response) {
-    console.log(JSON.stringify(response));
     let errors = [];
     try {
-      if (Ember.isArray(response.errors)) {
-        response.errors.forEach((error) => {
+      if (Ember.isArray(response.payload.errors)) {
+        response.payload.errors.forEach((error) => {
           // JSON API error format
           if (error.source && typeof error.source.pointer !== undefined && error.source.pointer) {
             let pointer = error.source.pointer.substr(error.source.pointer.lastIndexOf('/') + 1);
@@ -21,7 +20,7 @@ export default Ember.Service.extend({
               pointer = pointer.substr(pointer.lastIndexOf('.') + 1);
             }
             pointer = Ember.String.capitalize(pointer).replace(/id/i, '').replace(/([a-z])([A-Z])/g, '$1 $2');
-            errors.push(pointer + ' ' + error.detail);
+            errors.push('<b>Error</b>: ' + pointer + ' ' + error.detail);
           } else if (error.detail) {
             if(error.detail.error) {
               errors.push(error.detail.error);
@@ -55,10 +54,7 @@ export default Ember.Service.extend({
   display(errors, target) {
     switch (target) {
       case 'notification':
-        errors.forEach((error, i, errors) => {
-          errors[i] = error + '<br>';
-        });
-        this.get('alerting').notify(errors, 'error', 'stand-alone');
+        errors.forEach(error => this.get('alerting').notify(error, 'error', 'stand-alone'));
         break;
       case 'box':
         return errors.join('<br>');

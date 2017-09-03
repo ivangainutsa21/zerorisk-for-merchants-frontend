@@ -3,31 +3,31 @@ import Ember from 'ember';
 import { EKMixin, keyDown } from 'ember-keyboard';
 import injectService from 'ember-service/inject';
 
-function isElementInViewport (el) {
+function isElementInViewport(el) {
 	//special bonus for those using jQuery
 	if (typeof jQuery === "function" && el instanceof jQuery) {
-			el = el[0];
+		el = el[0];
 	}
 
 	var rect = el.getBoundingClientRect();
 
 	return (
-			rect.top >= 0 &&
-			rect.left >= 0 &&
-			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-			rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+		rect.top >= 0 &&
+		rect.left >= 0 &&
+		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+		rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
 	);
 }
 
 export default Ember.Component.extend(EKMixin, {
-  errorParser: injectService(),
+	errorParser: injectService(),
 
 	tagName: '',
 
 	selectedQuestion: null,
 	isSubmitting: false,
 	downloadSaqTooltipIsShowing: false,
-	
+
 	init() {
 		this._super(...arguments);
 		// Select first unaswered question
@@ -39,8 +39,8 @@ export default Ember.Component.extend(EKMixin, {
 
 				let unansweredQuestions = questions.filter((question) => {
 					return question.belongsTo('answer').value() === null;
-				});				
-				if(!Ember.isEmpty(unansweredQuestions)) {
+				});
+				if (!Ember.isEmpty(unansweredQuestions)) {
 					this._setSelectedQuestion(unansweredQuestions.get('firstObject'));
 				} else {
 					this._setSelectedQuestion(questions.get('firstObject'));
@@ -49,7 +49,7 @@ export default Ember.Component.extend(EKMixin, {
 		});
 	},
 
-	savedAnswers: Ember.computed('saq.answers.[]', 'saq.answers.@each.type', 'saq.answers.@each.isNew', function() {
+	savedAnswers: Ember.computed('saq.answers.[]', 'saq.answers.@each.type', 'saq.answers.@each.isNew', function () {
 		return this.get('saq.answers').filterBy('isNew', false).rejectBy('type', 'NO');
 	}),
 
@@ -61,27 +61,27 @@ export default Ember.Component.extend(EKMixin, {
 
 	submitSaqTooltipIsShowing: Ember.computed.oneWay('isCompleted'),
 
-	globalCompleteness: Ember.computed('saq.questions.[]', 'savedAnswers.[]', function() {
-		if(this.get('savedAnswers.length') > 0) {
+	globalCompleteness: Ember.computed('saq.questions.[]', 'savedAnswers.[]', function () {
+		if (this.get('savedAnswers.length') > 0) {
 			let completeness = Math.floor((this.get('savedAnswers.length') / this.get('saq.questions.length')) * 100);
-			if(completeness > 100) {
+			if (completeness > 100) {
 				return 100;
 			} else {
 				return completeness;
-			}			
+			}
 		} else {
 			return 0;
 		}
 	}),
 
-	previousQuestion: Ember.computed('selectedQuestion', 'saq.questions.[]', function() {
-		let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));		
-		return this.get('saq.questions').objectAt(currentQuestionIndex-1);
+	previousQuestion: Ember.computed('selectedQuestion', 'saq.questions.[]', function () {
+		let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));
+		return this.get('saq.questions').objectAt(currentQuestionIndex - 1);
 	}),
 
-	nextQuestion: Ember.computed('selectedQuestion', 'saq.questions.[]', function() {
-		let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));		
-		return this.get('saq.questions').objectAt(currentQuestionIndex+1);
+	nextQuestion: Ember.computed('selectedQuestion', 'saq.questions.[]', function () {
+		let currentQuestionIndex = this.get('saq.questions').indexOf(this.get('selectedQuestion'));
+		return this.get('saq.questions').objectAt(currentQuestionIndex + 1);
 	}),
 
 	_setSelectedQuestion(question) {
@@ -96,28 +96,28 @@ export default Ember.Component.extend(EKMixin, {
 
 	_goNext() {
 		let nextQuestion = this.get('nextQuestion');
-	  if(nextQuestion) {
+		if (nextQuestion) {
 			this._setSelectedQuestion(nextQuestion);
-	  }
+		}
 	},
 
-	_goPrev() {			
-  	let previousQuestion = this.get('previousQuestion');
-    if(previousQuestion) {
-  		this._setSelectedQuestion(previousQuestion);
-	  }
+	_goPrev() {
+		let previousQuestion = this.get('previousQuestion');
+		if (previousQuestion) {
+			this._setSelectedQuestion(previousQuestion);
+		}
 	},
 
 	_okToLeaveSelectedQuestion() {
-		return this.get('selectedQuestion').get('answer').then((answer) => {										
-			if(answer && answer.get('hasDirtyAttributes')) {					
+		return this.get('selectedQuestion').get('answer').then((answer) => {
+			if (answer && answer.get('hasDirtyAttributes')) {
 				let c = confirm('Confirm leaving? You have unsaved changes.');
-				if(c === true) {					
-					answer.rollbackAttributes();					
+				if (c === true) {
+					answer.rollbackAttributes();
 					return true;
 				} else {
 					return false;
-				} 
+				}
 			} else {
 				return true;
 			}
@@ -125,11 +125,11 @@ export default Ember.Component.extend(EKMixin, {
 	},
 
 	// Keyboard events
-	kGoNext: Ember.on(keyDown('ArrowDown'), keyDown('ArrowRight'), function() {
+	kGoNext: Ember.on(keyDown('ArrowDown'), keyDown('ArrowRight'), function () {
 		this._goNext();
 	}),
 
-	kGoPrev: Ember.on(keyDown('ArrowUp'), keyDown('ArrowLeft'), function() {
+	kGoPrev: Ember.on(keyDown('ArrowUp'), keyDown('ArrowLeft'), function () {
 		this._goPrev();
 	}),
 
@@ -163,10 +163,10 @@ export default Ember.Component.extend(EKMixin, {
 				this.set('isSubmitting', false);
 				this.set('downloadSaqTooltipIsShowing', true);
 			}).catch((response) => {
-        this.set('isSubmitting', false);
-        saq.rollbackAttributes();
-        this.get('errorParser').parseAndDisplay(response, 'notification');
-      });
+				this.set('isSubmitting', false);
+				saq.rollbackAttributes();
+				this.get('errorParser').parseAndDisplay(response, 'notification');
+			});
 		},
 
 		download() {
