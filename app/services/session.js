@@ -49,6 +49,8 @@ export default Session.extend({
       this.get('alerting').notify("You've successfully logged out.", 'success', 'bottom-right-toast');
     } else if (this.get('data.reasonForInvalidation') === 'inactivity') {
       this.get('loginController').set('error', 'You were automatically logged out due to inactivity.');
+    } else if (this.get('data.reasonForInvalidation') === 'no_privilege') {
+      this.get('loginController').set('error', 'Your account does not have access to ZeroRisk for Merchants. If you think this is a mistake, please contact support.');          
     } else {
       this.get('alerting').notify('Your session has expired. Please log back in.', 'warning', 'bottom-right-toast');
     }
@@ -69,6 +71,18 @@ export default Session.extend({
     return this.get('store').find('user', userId).then(user => this.get('currentUser').set('content', user) && user);
   },
 
+  _checkPrivilege(user) {
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      if (user.get('privileges').includes('CAN_USE_MERCHANT')) {
+        resolve(user);
+      } else {
+        this.set('data.reasonForInvalidation', 'no_privilege');
+        this.invalidate();
+        reject();
+      }
+    });
+  },
+
   _forceEnrollment(user) {
     return new Ember.RSVP.Promise((resolve) => {
       if (user.get('merchantStatus') === 'NotEnrolled') {
@@ -85,8 +99,9 @@ export default Session.extend({
     if (this.get('isAuthenticated')) {
       this.get('notifications').startPolling();
       return this._populateCurrentUser()
+        .then(user => this._checkPrivilege(user))
         .then(user => this._forceEnrollment(user))
-        .catch((error) => {
+        .catch(() => {
           transition.abort();
           this.invalidate();
         });
@@ -94,7 +109,7 @@ export default Session.extend({
   },
 
   afterAuthentication() {
-    this._populateCurrentUser().then(user => this._forceEnrollment(user)).then((mustCompleteEnrollment) => {
+    this._populateCurrentUser().then(user => this._checkPrivilege(user)).then(user => this._forceEnrollment(user)).then((mustCompleteEnrollment) => {
       if (!mustCompleteEnrollment) {
         if (this.get('attemptedTransition') && this.get('attemptedTransition').targetName !== "login") {
           this.get('attemptedTransition').retry();
