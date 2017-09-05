@@ -3,38 +3,28 @@ import DS from 'ember-data';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
-  tag: {
-    description: 'Tag',
-    validators: [
-      validator('presence', true),
-      validator('length', { min: 1, max: 30 })
-    ]
-  },
   businessAddress: {
     description: 'Business Address',
     validators: [
-      validator('presence', true),
       validator('length', { min: 1, max: 30 })
     ]
   },
   city: {
     description: 'City',
     validators: [
-      validator('presence', true),
       validator('length', { min: 1, max: 30 })
     ]
   },
 
   stateProvince: {
     description: "State/Province",
-    validators: [
-      validator('presence', true)
+    validators: [      
+      validator('length', { min: 1, max: 30 })
     ]
   },
   country: {
     description: 'Country',
     validators: [
-      validator('presence', true),
       validator('length', { min: 1, max: 30 })
     ]
   },
