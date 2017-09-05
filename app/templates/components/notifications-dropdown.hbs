@@ -6,7 +6,7 @@
       {{/dd.content}}
       {{#dd.trigger}}
       
-        <a id="notification-center" class="fa {{if limitedUnreadCount 'fa-bell' 'fa-bell-o'}}" style="font-size: 15px;" data-toggle="dropdown">
+        <a id="notification-center" class="fa {{if limitedUnreadCount 'fa-bell' 'fa-bell-o'}} {{if currentUser.hasInvertedNavbar 'text-white hint-text' 'text-master'}}" style="font-size: 15px;" data-toggle="dropdown">
           {{#if limitedUnreadCount}}
             <span class="bubble">{{limitedUnreadCount}}</span>
           {{/if}}

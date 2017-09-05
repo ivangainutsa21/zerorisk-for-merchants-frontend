@@ -1,4 +1,4 @@
-  <div class="header">
+  <div class="header {{if currentUser.hasInvertedNavbar 'header-inverted'}}">
     
     <div class="pull-left full-height visible-sm visible-xs">
         <div class="sm-action-bar">      
@@ -15,6 +15,8 @@
 					<a href="{{href-to 'dashboard'}}">
             {{#if currentUser.isIngenico}}
               <img src="/assets/img/ingenico_logo.png" alt="logo" data-src="/assets/img/ingenico_logo.png" data-src-retina="/assets/img/ingenico_logo.png" width="130">
+            {{else if currentUser.isPaymentWall}}
+              <img src="/assets/img/paymentwall_logo_dark.png" alt="logo" data-src="/assets/img/paymentwall_logo_dark.png" data-src-retina="/assets/img/paymentwall_logo_dark.png" style="margin-left: 15px;" height="20">
             {{else}}
           	  <img src="/assets/img/logo_merchant.png" alt="logo" data-src="/assets/img/logo_merchant.png" data-src-retina="/assets/img/logo_merchant.png" width="130">
             {{/if}}
@@ -27,7 +29,7 @@
     
       <div class="visible-lg visible-md m-t-10">
         <div class="pull-left p-r-10 fs-16 font-heading" style="padding-top: 9px;">
-          <span class="text-master">{{currentUser.fullName}}</span> {{!-- <span class="text-master">Nest</span> --}}
+          <span class="{{if currentUser.hasInvertedNavbar 'text-white hint-text' 'text-master'}}">{{currentUser.fullName}}</span>
         </div>
         <div class="pull-right">
 					{{#basic-dropdown horizontalPosition="right" as |dd|}}
@@ -51,7 +53,7 @@
             {{#dd.trigger}}
               <button class="profile-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
                 <span class="fa-stack fa-lg hint-text">
-                  <i class="fa fa-circle fa-stack-2x" style="line-height: 36px; color: #353535; font-size: 33px;"></i>
+                  <i class="fa fa-circle fa-stack-2x" style="line-height: 36px; font-size: 33px;"></i>
                   <i class="fa fa-user fa-stack-1x fa-inverse" style="font-size: 15px; line-height: 33px;"></i>
                 </span>
               </button>

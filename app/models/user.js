@@ -17,7 +17,7 @@ export default Model.extend({
   tcAccepted: attr('boolean'),
   merchantStatus: attr('string'),
   merchantCustomizationId: attr('number'),
-  fullName: computed('firstName', 'lastName', function() {
+  fullName: computed('firstName', 'lastName', function () {
     return `${this.get('firstName')} ${this.get('lastName')}`;
   }),
   // humanMerchantStatus: computed('merchantStatus', function() {
@@ -33,32 +33,42 @@ export default Model.extend({
   // }),
 
   // Customizations
-  isUnbranded: computed('merchantCustomizationId', function() {
-    return this.get('isIngenico');
+  isUnbranded: computed('merchantCustomizationId', function () {
+    return this.get('isIngenico') || this.get('isPaymentWall');
   }),
 
-  hasCustomization: computed('merchantCustomizationId', function() {
+  hasCustomization: computed('merchantCustomizationId', function () {
     return this.get('merchantCustomizationId') !== 1;
   }),
 
-  isIngenico: computed('merchantCustomizationId', function() {
+  isIngenico: computed('merchantCustomizationId', function () {
     return this.get('merchantCustomizationId') === 2;
   }),
 
-  isBancaSella: computed('merchantCustomizationId', function() {
+  isBancaSella: computed('merchantCustomizationId', function () {
     return this.get('merchantCustomizationId') === 3;
   }),
 
-  isGenericDemo: computed('merchantCustomizationId', function() {
+  isPaymentWall: computed('merchantCustomizationId', function () {
+    return this.get('merchantCustomizationId') === 5;
+  }),
+
+  isGenericDemo: computed('merchantCustomizationId', function () {
     return this.get('merchantCustomizationId') === 4;
   }),
 
+  hasInvertedNavbar: computed('isPaymentWall', function () {
+    return this.get('isPaymentWall'); 
+  }),
+
   // Wizard
-  enrollmentWizardId: computed('isIngenico', 'isBancaSella', function() {
-    if(this.get('isIngenico')) {
+  enrollmentWizardId: computed('isIngenico', 'isBancaSella', 'isPaymentWall', function() {
+    if (this.get('isIngenico')) {
       return 3;
-    } else if(this.get('isBancaSella')) {
+    } else if (this.get('isBancaSella')) {
       return 4;
+    } else if (this.get('isPaymentWall')) {
+      return 6;
     }
     return 1;
   })

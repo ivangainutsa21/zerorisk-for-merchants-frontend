@@ -20,7 +20,7 @@ export default Ember.Service.extend({
               pointer = pointer.substr(pointer.lastIndexOf('.') + 1);
             }
             pointer = Ember.String.capitalize(pointer).replace(/id/i, '').replace(/([a-z])([A-Z])/g, '$1 $2');
-            errors.push('<b>Error</b>: ' + pointer + ' ' + error.detail);
+            errors.push('<b>Error</b>: ' + error.detail);
           } else if (error.detail) {
             if(error.detail.error) {
               errors.push(error.detail.error);
